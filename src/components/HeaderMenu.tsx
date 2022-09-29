@@ -18,12 +18,12 @@ interface Props {
 function HeaderMenu({ title, description, subTitle, href }: Props) {
   return (
     <div className="h-full">
-      <div className="h-full">
         <Link href={href}>
           <div className="peer flex h-full cursor-pointer items-center text-xl font-semibold">
             {title}
           </div>
         </Link>
+      {/*드랍다운  메뉴*/}
         <div className="absolute left-0 hidden w-screen justify-between border-b border-[#0096f5] hover:flex peer-hover:flex">
           <div className="flex w-[700px] flex-col gap-y-5 bg-[#0096f5] pl-96 pt-20 text-white ">
             <div className="text-2xl font-bold">{title}</div>
@@ -52,7 +52,6 @@ function HeaderMenu({ title, description, subTitle, href }: Props) {
               </li>
             ))}
           </ul>
-        </div>
       </div>
     </div>
   );
