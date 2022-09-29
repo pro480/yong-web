@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { PRIMARY_COLOR } from "../utiles/colors";
 import { MinusIcon } from "@heroicons/react/24/solid";
 
 interface SubTitle {
@@ -36,16 +35,16 @@ function HeaderMenu({ title, description, subTitle, href }: Props) {
             <div className="">{description}</div>
           </div>
           <ul className="grid w-full grid-cols-4 gap-x-14 gap-y-10 bg-white py-20 px-20">
-            {subTitle.map((item) => (
-              <li className="w-full border border-gray-500">
+            {subTitle.map((item, index) => (
+              <li key={index} className="w-full border border-gray-500">
                 <Link href={item.href}>
                   <div className="w-full border border-gray-500">
                     {item.title}
                   </div>
                 </Link>
                 <ul>
-                  {item.subMenu.map((subMenu) => (
-                    <li>
+                  {item.subMenu.map((subMenu, index) => (
+                    <li key={index}>
                       <Link href={subMenu.href}>{subMenu.title}</Link>
                     </li>
                   ))}
