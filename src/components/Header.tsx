@@ -54,7 +54,9 @@ function Header() {
           src="https://www.inha.ac.kr/sites/kr/images/logo.png"
           layout="fill"
           objectFit="contain"
-          className="flex cursor-pointer "
+          className="flex cursor-pointer"
+          alt="로고"
+          priority={true}
         />
       </div>
       <div className="flex w-[1500px] justify-between">
