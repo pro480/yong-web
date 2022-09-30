@@ -1,4 +1,4 @@
-import React, { useEffect,  useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { SubTitle } from "../../typing";
@@ -44,11 +44,8 @@ function SideBarMenu({ subTitle }: Props) {
       {isOpen && (
         <ul className="flex flex-col gap-y-2 bg-SUBMENU_COLOR p-5 text-sm font-semibold text-gray-400">
           {subTitle.subMenu.map((subMenu, index) => (
-            <Link href={subMenu.href}>
-              <li
-                key={index}
-                className="cursor-pointer before:mr-2 before:content-['\2022']"
-              >
+            <Link key={index} href={subMenu.href}>
+              <li className="cursor-pointer before:mr-2 before:content-['\2022']">
                 {subMenu.title}
               </li>
             </Link>
