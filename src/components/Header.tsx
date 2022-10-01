@@ -5,9 +5,6 @@ import Link from "next/link";
 import HeaderMenu from "./HeaderMenu";
 import { SiteMap } from "../../typing";
 
-
-
-
 interface Props {
   siteMap: SiteMap;
 }
@@ -44,18 +41,19 @@ function Header({ siteMap }: Props) {
           </nav>
           <div className="text-l flex w-[500px] items-center justify-around ">
             {/*기타 메뉴 리스트*/}
-            <Link href="/">
-              <a>GitHub</a>
-            </Link>
+            <a
+              target="_blank"
+              href="https://github.com/pro480/yong-web"
+              rel="noopener noreferrer"
+            >
+              {/*noopener noreferred은 보안 위협을 피하기 위함*/}
+              GitHub
+            </a>
             <Link href="/">
               <a>영문(EN)</a>
             </Link>
-            <Link href="/">
-              <a>ADMIN</a>
-            </Link>
-            <Link href="/">
-              <a>SITEMAP</a>
-            </Link>
+            <Link href="/adminLogin">ADMIN</Link>
+            <Link href="/">SITEMAP</Link>
             <Bars3CenterLeftIcon className="h-10 w-10" />
           </div>
         </div>

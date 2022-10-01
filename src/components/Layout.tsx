@@ -159,8 +159,11 @@ function Layout({ children }: Props) {
   };
 
   const router = useRouter();
+  const SIDEBAR_HIDDEN = ["/", "/adminLogin"];
 
-  return router.pathname === "/" ? (
+  console.log(router.pathname);
+
+  return SIDEBAR_HIDDEN.includes(router.pathname) ? (
     <div>
       <Header siteMap={siteMap} />
       {children}
