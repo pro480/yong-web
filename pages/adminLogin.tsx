@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useAuth from "../src/hooks/useAuth";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
@@ -21,8 +21,13 @@ function AdminLogin() {
     await signIn(email, password);
   };
 
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => router.back(), 3000);
+    }
+  }, []);
+
   if (user) {
-    setTimeout(() => router.back(), 3000);
     return (
       <div className="flex w-screen items-center justify-center py-20">
         <h1 className="text-3xl font-bold">

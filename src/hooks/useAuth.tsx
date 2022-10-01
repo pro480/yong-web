@@ -8,6 +8,7 @@ import React, {
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
   User,
 } from "@firebase/auth";
 import { auth } from "../../firebase";
@@ -18,6 +19,7 @@ interface IAuth {
   signIn: (email: string, password: string) => Promise<void>;
   error: string | null;
   loading: boolean;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<IAuth>({
@@ -25,6 +27,7 @@ const AuthContext = createContext<IAuth>({
   signIn: async () => {},
   error: null,
   loading: false,
+  logout: async () => {},
 });
 
 interface AuthProviderProps {
@@ -64,14 +67,26 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       .finally(() => setLoading(false));
   };
 
+  const logout = async () => {
+    setLoading(true);
+
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+      })
+      .catch((error) => alert(error.message))
+      .finally(() => setLoading(false));
+  };
+
   const memoedValue = useMemo(
     () => ({
       user,
       signIn,
       loading,
       error,
+      logout,
     }),
-    [user, loading, signIn, error]
+    [user, loading]
   );
 
   return (

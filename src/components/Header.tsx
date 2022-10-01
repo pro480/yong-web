@@ -4,12 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import HeaderMenu from "./HeaderMenu";
 import { SiteMap } from "../../typing";
+import useAuth from "../hooks/useAuth";
 
 interface Props {
   siteMap: SiteMap;
 }
 
 function Header({ siteMap }: Props) {
+  const { logout } = useAuth();
+
   return (
     <header className="min-h-[90px] w-screen items-center border-b px-5">
       {/*아래는 전체 컨테이너*/}
@@ -41,6 +44,7 @@ function Header({ siteMap }: Props) {
           </nav>
           <div className="text-l flex w-[500px] items-center justify-around ">
             {/*기타 메뉴 리스트*/}
+            <button onClick={logout}>logout</button>
             <a
               target="_blank"
               href="https://github.com/pro480/yong-web"
