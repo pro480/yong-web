@@ -25,10 +25,9 @@ function AdminLogin() {
     setTimeout(() => router.back(), 3000);
     return (
       <div className="flex w-screen items-center justify-center py-20">
-        <h1 className="text-3xl font-bold">{`
-          이미 로그인 되었습니다.
-          3초뒤 이전 페이지로 이동합니다.
-        `}</h1>
+        <h1 className="text-3xl font-bold">
+          이미 로그인 되었습니다. 3초뒤 이전 페이지로 이동합니다.
+        </h1>
       </div>
     );
   } else {
