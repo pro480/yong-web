@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         }
         setInitialLoading(false);
       }),
-    [auth]
+    []
   );
 
   const signIn = async (email: string, password: string) => {
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       loading,
       error,
     }),
-    [user, loading]
+    [user, loading, signIn, error]
   );
 
   return (

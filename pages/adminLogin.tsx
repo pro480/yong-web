@@ -1,8 +1,7 @@
 import React from "react";
 import useAuth from "../src/hooks/useAuth";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { router } from "next/client";
-
+import { useRouter } from "next/router";
 interface Inputs {
   email: string;
   password: string;
@@ -10,6 +9,7 @@ interface Inputs {
 
 function AdminLogin() {
   const { signIn, user } = useAuth();
+  const router = useRouter();
 
   const {
     register,
@@ -25,7 +25,7 @@ function AdminLogin() {
     setTimeout(() => router.back(), 3000);
     return (
       <div className="flex w-screen items-center justify-center py-20">
-        <h1 className="text-3xl font-bold ">{`
+        <h1 className="text-3xl font-bold">{`
           이미 로그인 되었습니다.
           3초뒤 이전 페이지로 이동합니다.
         `}</h1>
