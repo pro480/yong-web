@@ -44,7 +44,7 @@ function Header({ siteMap }: Props) {
           </nav>
           <div className="text-l flex w-[500px] items-center justify-around ">
             {/*기타 메뉴 리스트*/}
-            <button onClick={logout}>logout</button>
+            <button onClick={logout}>logout(임시)</button>
             <a
               target="_blank"
               href="https://github.com/pro480/yong-web"
@@ -57,7 +57,6 @@ function Header({ siteMap }: Props) {
               <a>영문(EN)</a>
             </Link>
             <Link href="/adminLogin">ADMIN</Link>
-            <Link href="/">SITEMAP</Link>
             <Bars3CenterLeftIcon className="h-10 w-10" />
           </div>
         </div>
