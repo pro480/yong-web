@@ -29,26 +29,26 @@ function AdminLogin() {
 
     if (user) {
         return (
-            <div className="flex w-screen items-center justify-center py-20">
-                <h1 className="text-3xl font-bold">
+            <div className='flex w-screen items-center justify-center py-20'>
+                <h1 className='text-3xl font-bold'>
                     이미 로그인 되었습니다. 3초뒤 이전 페이지로 이동합니다.
                 </h1>
             </div>
         );
     } else {
         return (
-            <div className="flex w-screen items-center justify-center py-20">
+            <div className='flex w-screen items-center justify-center py-20'>
                 <form
-                    className="flex w-[500px] flex-col gap-y-4 border px-24 py-16"
+                    className='flex w-[500px] flex-col gap-y-4 border px-24 py-16'
                     onSubmit={handleSubmit(onSubmit)}
                 >
-                    <h1 className="text-3xl font-bold ">Admin Login</h1>
-                    <div className="flex flex-col gap-y-4">
+                    <h1 className='text-3xl font-bold '>Admin Login</h1>
+                    <div className='flex flex-col gap-y-4'>
                         <label>
                             <input
-                                className=" h-8 w-full border border-gray-700  px-3"
-                                type="email"
-                                placeholder="E-mail"
+                                className=' h-8 w-full border border-gray-700  px-3'
+                                type='email'
+                                placeholder='E-mail'
                                 {...register("email", { required: true })}
                             />
                             {errors.email && (
@@ -58,9 +58,9 @@ function AdminLogin() {
 
                         <label>
                             <input
-                                className=" h-8 w-full border border-gray-700 px-3"
-                                type="password"
-                                placeholder="Password"
+                                className=' h-8 w-full border border-gray-700 px-3'
+                                type='password'
+                                placeholder='Password'
                                 {...register("password", { required: true })}
                             />
                             {errors.password && (
