@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function Footer() {
     return (
-        <div className='flex h-60 w-screen items-center justify-center bg-FOOTER_COLOR text-SUBFONT_COLOR'>
+        <div className='flex h-60 w-full items-center justify-center bg-FOOTER_COLOR text-SUBFONT_COLOR'>
             {/*아래는 FooterContainer*/}
             <div className='h-full w-[1500px]'>
                 {/*첫번쨰 줄*/}

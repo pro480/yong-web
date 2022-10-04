@@ -1,13 +1,13 @@
 import React from "react";
-import {useRouter} from "next/router";
-import {SiteMap} from "../../typing";
+import { useRouter } from "next/router";
+import { SiteMap } from "../../typing";
 import SidebarMenu from "./SidebarMenu";
 
 interface Props {
     siteMap: SiteMap;
 }
 
-function Sidebar({siteMap}: Props) {
+function Sidebar({ siteMap }: Props) {
     const pathName = useRouter().pathname.split("/")[1];
 
     let currentMenu;
@@ -25,16 +25,15 @@ function Sidebar({siteMap}: Props) {
     }
 
     return (
-        <div>
+        <div className=' top-[90px] w-96'>
             {/*현재 메뉴*/}
-            <div
-                className="flex h-32 items-center justify-center bg-gradient-to-tl from-PRIMARY_COLOR to-blue-400 text-2xl font-semibold text-white">
+            <div className='flex h-52 items-center justify-center bg-gradient-to-tl from-PRIMARY_COLOR to-blue-400 text-2xl font-semibold text-white'>
                 {currentMenu?.title}
             </div>
             {/*현재 메뉴 리스트*/}
             <ul>
                 {currentMenu?.subTitle.map((subTitle, index) => (
-                    <SidebarMenu key={index} subTitle={subTitle}/>
+                    <SidebarMenu key={index} subTitle={subTitle} />
                 ))}
             </ul>
         </div>

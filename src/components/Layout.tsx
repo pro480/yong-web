@@ -185,14 +185,12 @@ function Layout({ children }: Props) {
             <Footer />
         </div>
     ) : (
-        <div>
+        <div className='h-full w-full'>
             <Header siteMap={siteMap} />
-            <div className='m-auto flex w-[1350px]'>
-                <div className=' h-fit w-[20%]'>
-                    <Sidebar siteMap={siteMap} />
-                </div>
+            <main className='m-auto flex w-[1600px] items-start'>
+                <Sidebar siteMap={siteMap} />
                 <div className='min-h-[1000px] w-full p-20'>{children}</div>
-            </div>
+            </main>
             <Footer />
         </div>
     );

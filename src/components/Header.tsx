@@ -14,7 +14,7 @@ function Header({ siteMap }: Props) {
     const { logout } = useAuth();
 
     return (
-        <header className='min-h-[90px] w-screen items-center border-b px-5'>
+        <header className='sticky top-0 min-h-[90px] w-full items-center border-b bg-white px-5'>
             {/*아래는 전체 컨테이너*/}
             <div className='flex h-full justify-between'>
                 {/* 아래는 로고 컨테이너*/}
