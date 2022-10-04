@@ -7,16 +7,22 @@ interface Props {
     title: string;
     description: string;
     firstDepth: string;
+    firstLink: string;
     secondDepth?: string;
+    secondLink?: string;
     thirdDepth?: string;
+    thirdLink?: string;
 }
 
 function PageTitle({
     title,
     description,
     firstDepth,
+    firstLink,
     secondDepth,
+    secondLink,
     thirdDepth,
+    thirdLink,
 }: Props) {
     return (
         <div className='flex h-40 flex-col justify-between'>
@@ -36,19 +42,27 @@ function PageTitle({
                 {firstDepth && (
                     <span className='flex gap-x-4'>
                         <ChevronDoubleRightIcon className='h-6' />
-                        <span className='cursor-pointer'>{firstDepth}</span>
+                        <Link href={firstLink}>
+                            <span className='cursor-pointer'>{firstDepth}</span>
+                        </Link>
                     </span>
                 )}{" "}
                 {secondDepth && (
                     <span className='flex gap-x-4'>
                         <ChevronDoubleRightIcon className='h-6' />
-                        <span className='cursor-pointer'>{secondDepth}</span>
+                        <Link href={secondLink!}>
+                            <span className='cursor-pointer'>
+                                {secondDepth}
+                            </span>
+                        </Link>
                     </span>
                 )}
                 {thirdDepth && (
                     <span className='flex gap-x-4'>
                         <ChevronDoubleRightIcon className='h-6' />
-                        <span className='cursor-pointer'>{thirdDepth}</span>
+                        <Link href={thirdLink!}>
+                            <span className='cursor-pointer'>{thirdDepth}</span>
+                        </Link>
                     </span>
                 )}
             </div>
