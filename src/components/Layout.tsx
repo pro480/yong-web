@@ -178,7 +178,13 @@ function Layout({ children }: Props) {
 
     console.log(router);
 
-    return (
+    return SIDEBAR_HIDDEN.includes(router.pathname) ? (
+        <div>
+            <Header siteMap={siteMap} />
+            {children}
+            <Footer />
+        </div>
+    ) : (
         <div>
             <Header siteMap={siteMap} />
             <div className='m-auto flex w-[1350px]'>
