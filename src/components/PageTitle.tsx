@@ -25,7 +25,7 @@ function PageTitle({
     thirdLink,
 }: Props) {
     return (
-        <div className='flex h-40 flex-col justify-between'>
+        <div className='mb-10 flex h-40 flex-col justify-between'>
             <div className='flex flex-col'>
                 <h1 className='text-3xl font-bold'>{title}</h1>
                 <h3 className='mt-2 text-sm font-light text-SUBFONT_COLOR'>

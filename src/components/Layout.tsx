@@ -1,14 +1,14 @@
-import React, { ReactNode } from "react";
+import React, {ReactNode} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 import Sidebar from "./Sidebar";
 
 interface Props {
     children: ReactNode;
 }
 
-function Layout({ children }: Props) {
+function Layout({children}: Props) {
     const siteMap = {
         info: {
             title: "센터 소개",
@@ -22,8 +22,8 @@ function Layout({ children }: Props) {
                 {
                     title: "센터 비전",
                     subMenu: [
-                        { title: "센터 비전", href: "/info/vision" },
-                        { title: "설립 목적", href: "/info/vision/purpose" },
+                        {title: "센터 비전", href: "/info/vision"},
+                        {title: "설립 목적", href: "/info/vision/purpose"},
                         {
                             title: "중장기 발전 목표",
                             href: "/info/vision/goals",
@@ -180,20 +180,20 @@ function Layout({ children }: Props) {
 
     return SIDEBAR_HIDDEN.includes(router.pathname) ? (
         <div>
-            <Header siteMap={siteMap} />
+            <Header siteMap={siteMap}/>
             {children}
-            <Footer />
+            <Footer/>
         </div>
     ) : (
         <div>
-            <Header siteMap={siteMap} />
+            <Header siteMap={siteMap}/>
             <div className='m-auto flex w-[1350px]'>
                 <div className=' h-fit w-[20%]'>
-                    <Sidebar siteMap={siteMap} />
+                    <Sidebar siteMap={siteMap}/>
                 </div>
                 <div className='min-h-[1000px] w-full p-20'>{children}</div>
             </div>
-            <Footer />
+            <Footer/>
         </div>
     );
 }

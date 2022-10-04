@@ -24,10 +24,12 @@ interface IAuth {
 
 const AuthContext = createContext<IAuth>({
     user: null,
-    signIn: async () => {},
+    signIn: async () => {
+    },
     error: null,
     loading: false,
-    logout: async () => {},
+    logout: async () => {
+    },
 });
 
 interface AuthProviderProps {

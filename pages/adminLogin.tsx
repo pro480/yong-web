@@ -1,23 +1,24 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import useAuth from "../src/hooks/useAuth";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useRouter } from "next/router";
+import {SubmitHandler, useForm} from "react-hook-form";
+import {useRouter} from "next/router";
+
 interface Inputs {
     email: string;
     password: string;
 }
 
 function AdminLogin() {
-    const { signIn, user } = useAuth();
+    const {signIn, user} = useAuth();
     const router = useRouter();
 
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: {errors},
     } = useForm<Inputs>();
 
-    const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
+    const onSubmit: SubmitHandler<Inputs> = async ({email, password}) => {
         await signIn(email, password);
     };
 
@@ -49,7 +50,7 @@ function AdminLogin() {
                                 className=' h-8 w-full border border-gray-700  px-3'
                                 type='email'
                                 placeholder='E-mail'
-                                {...register("email", { required: true })}
+                                {...register("email", {required: true})}
                             />
                             {errors.email && (
                                 <p>정확한 이메일 주소를 입력하세요.</p>
@@ -61,7 +62,7 @@ function AdminLogin() {
                                 className=' h-8 w-full border border-gray-700 px-3'
                                 type='password'
                                 placeholder='Password'
-                                {...register("password", { required: true })}
+                                {...register("password", {required: true})}
                             />
                             {errors.password && (
                                 <p>비밀번호는 4~60자 사이여야 합니다.</p>
