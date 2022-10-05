@@ -9,6 +9,7 @@ interface Props {
 }
 
 function Layout({ children }: Props) {
+
     const siteMap = {
         info: {
             title: "센터 소개",
@@ -176,7 +177,7 @@ function Layout({ children }: Props) {
     const router = useRouter();
     const SIDEBAR_HIDDEN = ["/", "/adminLogin"];
 
-    console.log(router);
+    console.log(siteMap);
 
     return SIDEBAR_HIDDEN.includes(router.pathname) ? (
         <div>
