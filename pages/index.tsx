@@ -8,11 +8,11 @@ import MainForum from "../src/components/MainForum";
 const Home: NextPage = () => {
     return (
         <div>
-            {/*<Banner/>*/}
-            {/*<MainResearchProject/>*/}
-            {/*<ResearchReport/>*/}
-            {/*<MainNews/>*/}
-            {/*<MainForum/>*/}
+            <Banner/>
+            <MainResearchProject/>
+            <ResearchReport/>
+            <MainNews/>
+            <MainForum/>
         </div>
     );
 };
