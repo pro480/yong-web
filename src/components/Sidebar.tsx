@@ -56,7 +56,7 @@ function Sidebar({ siteMap }: Props) {
     }
 
     return (
-        <div className='relative mt-3 flex flex-col justify-center px-4 2xl:w-[300px] 2xl:mt-0'>
+        <div className='relative mt-3 flex flex-col justify-center px-4 2xl:mt-0 2xl:w-[300px]'>
             {/*현재 메뉴*/}
             <div
                 onClick={() => setMenuOpen(!menuOpen)}
