@@ -25,7 +25,7 @@ function SideBarMenu({subTitle}: Props) {
         <li>
             {/*사이드 바 메뉴 타이틀*/}
             <div
-                className='flex h-12 cursor-pointer items-center justify-between border px-3 font-semibold'
+                className='flex h-14 cursor-pointer items-center justify-between border px-3 font-semibold'
                 onClick={
                     subTitle.subMenu.length > 0
                         ? handleClickInside
