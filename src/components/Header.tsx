@@ -16,7 +16,7 @@ function Header({ siteMap }: Props) {
 
     return (
         <header
-            className='px-2 xl:h-[200px] desktop:h-[90px] border-b'
+            className='px-2 xl:h-[200px] desktop:h-[90px] border-b desktop:px-10'
             // className='sticky min-h-[90px] w-screen items-center border-b px-5'
         >
             {/*아래는 전체 컨테이너*/}
