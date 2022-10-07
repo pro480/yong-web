@@ -59,7 +59,10 @@ function Open() {
             />
             <main className='grid grid-cols-1 items-center gap-y-16 gap-x-14 self-center md:grid-cols-2 xl:grid-cols-3'>
                 {opens.map((open) => (
-                    <article className='mx-auto h-96 w-80 border hover:scale-110'>
+                    <article
+                        key={open.title}
+                        className='mx-auto h-96 w-80 border hover:scale-110'
+                    >
                         <div className='h-[40%] border px-4'>
                             <a
                                 className='relative block h-full cursor-pointer'
