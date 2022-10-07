@@ -91,7 +91,7 @@ function Open() {
                 ))}
             </main>
         </div>
-    )
+    );
 }
 
 export default Open;
