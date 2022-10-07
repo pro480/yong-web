@@ -11,9 +11,6 @@ module.exports = {
                 PRIMARY_FONT_COLOR: "#121212",
             },
 
-            box: {
-                PURPOSE_BOX:"flex justify-center items-center h-[150px] border-[5px] rounded-[70px]"
-            }
         },
         screens: {
             sm: "640px",

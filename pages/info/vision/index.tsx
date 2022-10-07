@@ -6,7 +6,8 @@ function Index() {
         <div>
             <PageTitle
                 title='센터 비전'
-                description='센터 비전 페이지의 설명을 입력해주세요.'
+                description='센터 비전 페이지의 설명을 입력해주세요.
+                비전 참고 사이트 : https://www.samchully.co.kr/company/info/philosophy.do?p=2'
                 firstDepth='센터 소개'
                 firstLink='/info'
                 secondDepth='센터 비전'
