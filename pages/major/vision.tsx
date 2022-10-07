@@ -6,7 +6,7 @@ function Vision() {
         <div>
             <PageTitle
                 title='졸업 후 진로'
-                description=''
+                description='졸업 후 진로에 대한 description'
                 firstDepth='전공 소개'
                 firstLink='/major'
                 secondDepth='졸업 후 진로'
@@ -21,58 +21,68 @@ function Vision() {
             </div>
 
             {/* 비전 설명 1, 2 ,3  */}
-            <div className='flex-col justify-center py-5 text-xl font-semibold'>
-                <div className='box-content flex h-[400px] rounded-[70px] border-r-8 border-b-8'>
-                    <div className='box-content w-1/3 rounded-[70px] bg-gray-200'>
+            <div className='flex-col py-5 text-xl font-semibold'>
+                <div className='my-10 box-content flex h-[400px] rounded-[70px] border-r-8 border-b-8'>
+                    <div className='box-content w-1/3 rounded-[60px] bg-gray-200'>
                         <div className='grid place-items-center py-[180px]'>
-                            비전 이미지 1
+                            진로 이미지 1
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <div>첫번째 비전 이미지</div>
-                            <div>첫번째 비전 설명</div>
-                        </div>
-                    </div>
-                </div>
 
-                <div className='box-content flex h-[400px] rounded-[70px] border-r-8 border-b-8'>
-                    <div className='box-content w-1/3 rounded-[70px] bg-gray-200'>
-                        <div className='grid place-items-center py-[180px]'>
-                            비전 이미지 1
+                    <div className='relative flex'>
+                        <div className='mt-10 ml-10 underline underline-offset-2'>
+                            첫번째 진로
                         </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>첫번째 비전 이미지</div>
-                            <div>첫번째 비전 설명</div>
+                        <div className='flex items-center'>
+                            첫 번째 진로에 대한 설명이 들어갑니다.
                         </div>
                     </div>
                 </div>
-                <div className='box-content flex h-[400px] rounded-[70px] border-r-8 border-b-8'>
-                    <div className='box-content w-1/3 rounded-[70px] bg-gray-200'>
+                <div className='my-10 box-content flex h-[400px] rounded-[70px] border-r-8 border-b-8 border-gray-300'>
+                    <div className='box-content w-1/3 rounded-[60px] bg-gray-300'>
                         <div className='grid place-items-center py-[180px]'>
-                            비전 이미지 1
+                            진로 이미지 2
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <div>첫번째 비전 이미지</div>
-                            <div>첫번째 비전 설명</div>
-                        </div>
-                    </div>
-                </div>
 
-                <div className='box-content flex h-[400px] rounded-[70px] border-r-8 border-b-8'>
-                    <div className='box-content w-1/3 rounded-[70px] bg-gray-200'>
-                        <div className='grid place-items-center py-[180px]'>
-                            비전 이미지 1
+                    <div className='relative flex'>
+                        <div className='mt-10 ml-10 underline underline-offset-2'>
+                            두번째 진로
+                        </div>
+                        <div className='flex items-center'>
+                            두 번째 진로에 대한 설명이 들어갑니다
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <div>첫번째 비전 이미지</div>
-                            <div>첫번째 비전 설명</div>
+                </div>
+                <div className='my-10 box-content flex h-[400px] rounded-[70px] border-r-8 border-b-8 border-gray-400'>
+                    <div className='box-content w-1/3 rounded-[60px] bg-gray-400'>
+                        <div className='grid place-items-center py-[180px]'>
+                            진로 이미지 3
+                        </div>
+                    </div>
+
+                    <div className='relative flex'>
+                        <div className='mt-10 ml-10 underline underline-offset-2'>
+                            세 번째 진로
+                        </div>
+                        <div className='flex items-center'>
+                            세 번째 진로에 대한 설명이 들어갑니다
+                        </div>
+                    </div>
+                </div>
+                <div className='my-10 box-content flex h-[400px] rounded-[70px] border-r-8 border-b-8 border-gray-500'>
+                    <div className='box-content w-1/3 rounded-[60px] bg-gray-500'>
+                        <div className='grid place-items-center py-[180px]'>
+                            진로 이미지 4
+                        </div>
+                    </div>
+
+                    <div className='relative flex'>
+                        <div className='mt-10 ml-10 underline underline-offset-2'>
+                            네번째 진로
+                        </div>
+                        <div className='flex items-center'>
+                            네 번째 진로에 대한 설명이 들어갑니다
                         </div>
                     </div>
                 </div>
