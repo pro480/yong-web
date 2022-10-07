@@ -98,7 +98,10 @@ function Index() {
                     </thead>
                     <tbody className='text-sm font-light text-gray-600'>
                         {posts.reverse().map((item) => (
-                            <tr className='border-b border-gray-200 hover:bg-gray-100'>
+                            <tr
+                                key={item.number}
+                                className='border-b border-gray-200 hover:bg-gray-100'
+                            >
                                 <td className='py-4 text-center'>
                                     {item.number}
                                 </td>
