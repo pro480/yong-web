@@ -92,9 +92,9 @@ function Index() {
 
                         {/* 학력내용 */}
                         <div className='ml-20 flex flex-col gap-y-4 font-semibold'>
-                            <ul>aa 대학교 aaaa 학사</ul>
-                            <ul>bb 대학교 대학원 bbbb 석사</ul>
-                            <ul>cc 대학교 대학원 cccc 박사</ul>
+                            <ul>aa 대학교 aaa 학사</ul>
+                            <ul>bb 대학교 대학원 bbb 석사</ul>
+                            <ul>cc 대학교 대학원 ccc 박사</ul>
                         </div>
                     </div>
                 </div>
