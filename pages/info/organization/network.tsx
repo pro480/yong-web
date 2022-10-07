@@ -1,7 +1,10 @@
+import Link from "next/link";
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
+import { ImMail4 } from "react-icons/im";
 
 function Network() {
+
     return (
         <div>
             <PageTitle
@@ -21,7 +24,23 @@ function Network() {
                  </h1>
             </div>
 
-            <table className="rounded-t-lg m-5 w-5/6 mx-auto bg-blue-100 text-gray-800">
+            {/* 통일성을 위해 테이블 형식으로 배너 */}
+            <table className="m-5 w-11/12 mx-auto bg-blue-100 text-gray-800">
+                <tr className="text-left border-b-2 border-blue-100">
+                    <th className="px-4 py-3">연구협력 네트워크</th>
+
+                </tr>
+                <tr className="bg-gray-50 border-b border-blue-200">
+                    <td className="text-center px-4 py-3">
+                        <br></br><br></br><br></br><br></br><br></br>
+                        교육빅데이터응용연구센터의 연구 협력 네트워크에 관한 설명
+                        <br></br><br></br><br></br><br></br><br></br><br></br>
+                    </td>
+                </tr>               
+            </table>
+
+            {/* 이메일 링크 a태그 추가 */}
+            <table className="m-5 w-11/12 mx-auto bg-blue-100 text-gray-800">
                 <tr className="text-left border-b-2 border-blue-100">
                     <th className="px-4 py-3">NO</th>
                     <th className="px-4 py-3">성명</th>
@@ -30,31 +49,71 @@ function Network() {
                 
                 <tr className="bg-gray-50">
                     <td className="px-4 py-3">1</td>
-                    <td className="px-4 py-3">정혜경</td>
+                    <td className="px-4 py-3">
+                        <a
+                            target='_blank'
+                            href='mailto:yong21c@inha.ac.kr?'
+                            rel='noopener noreferrer'
+                            className='flex mr-5'
+                            > 정해경 <ImMail4 size='22' />
+                        </a>
+                    </td>
                     <td className="px-4 py-3">한국기술교육대 교수</td>
                 </tr> 
 
                 <tr className="bg-gray-50">
                     <td className="px-4 py-3">2</td>
-                    <td className="px-4 py-3">이문수</td>
+                    <td className="px-4 py-3">
+                        <a
+                            target='_blank'
+                            href='mailto:yong21c@inha.ac.kr?'
+                            rel='noopener noreferrer'
+                            className='flex mr-5'
+                            > 이문수 <ImMail4 size='22' />
+                        </a>
+                    </td>
                     <td className="px-4 py-3">경상대 교수</td>
                 </tr> 
 
                 <tr className="bg-gray-50">
                     <td className="px-4 py-3">3</td>
-                    <td className="px-4 py-3">박연복</td>
+                    <td className="px-4 py-3">
+                        <a
+                            target='_blank'
+                            href='mailto:yong21c@inha.ac.kr?'
+                            rel='noopener noreferrer'
+                            className='flex mr-5'
+                            > 박연복 <ImMail4 size='22' />
+                        </a>
+                    </td>
                     <td className="px-4 py-3">대교협 연구원</td>
                 </tr> 
 
                 <tr className="bg-gray-50">
                     <td className="px-4 py-3">4</td>
-                    <td className="px-4 py-3">신동광</td>
+                    <td className="px-4 py-3">
+                        <a
+                            target='_blank'
+                            href='mailto:yong21c@inha.ac.kr?'
+                            rel='noopener noreferrer'
+                            className='flex mr-5'
+                            > 신동광 <ImMail4 size='22' />
+                        </a>
+                    </td>
                     <td className="px-4 py-3">광주교대 교수</td>
                 </tr> 
 
                 <tr className="bg-gray-50 border-b border-blue-200">
                     <td className="px-4 py-3">5</td>
-                    <td className="px-4 py-3">임황규</td>
+                    <td className="px-4 py-3">
+                        <a
+                            target='_blank'
+                            href='mailto:yong21c@inha.ac.kr?'
+                            rel='noopener noreferrer'
+                            className='flex mr-5'
+                            > 임황규 <ImMail4 size='22' />
+                        </a>
+                    </td>
                     <td className="px-4 py-3">Graduate Management Admission Council(GMAC)</td>
                 </tr> 
             </table>
