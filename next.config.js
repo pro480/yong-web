@@ -3,9 +3,6 @@
 module.exports = {
     // reactStrictMode: true,
     images: {
-
-        domains: ["www.inha.ac.kr", "bit.ly"]
-
-}
-}
-
+        domains: ["www.inha.ac.kr", "www.nia.or.kr", "bit.ly"],
+    },
+};

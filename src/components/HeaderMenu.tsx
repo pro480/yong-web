@@ -1,4 +1,4 @@
-import React, { memo,  useState } from "react";
+import React, { memo, useState } from "react";
 import Link from "next/link";
 import { MinusIcon } from "@heroicons/react/24/solid";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
@@ -14,7 +14,7 @@ function HeaderMenu({ subMap }: Props) {
     return (
         <div className='h-full'>
             {/*1st depth*/}
-            <div className='flex h-full items-center text-xl font-semibold '>
+            <div className='flex h-full items-center text-xl font-semibold hover:text-PRIMARY_COLOR'>
                 <div
                     className='group relative flex h-full w-full items-center justify-center'
                     onMouseOver={() => setDropdownOpen(true)}
@@ -54,14 +54,14 @@ function HeaderMenu({ subMap }: Props) {
                     <ul className='flex w-[70%] flex-wrap gap-x-14 gap-y-10 border-t bg-white py-20 px-20'>
                         {/*2nd depth map*/}
                         {subMap.subTitle.map((item, index) => (
-                            <li key={index} className='h-fit w-52'>
+                            <li key={index} className='w-52'>
                                 <Link href={item.href}>
-                                    <h1 className='z-20 flex w-full justify-between border p-3 shadow-lg'>
+                                    <h1 className='z-20 hover:text-PRIMARY_COLOR hover:font-semibold flex cursor-pointer w-full justify-between border p-3 shadow-lg hover:scale-105'>
                                         <span
                                             onClick={() =>
                                                 setDropdownOpen(false)
                                             }
-                                            className='cursor-pointer'
+                                            className=''
                                         >
                                             {item.title}
                                         </span>
@@ -79,7 +79,7 @@ function HeaderMenu({ subMap }: Props) {
                                         >
                                             <Link href={subMenu.href}>
                                                 <span
-                                                    className='cursor-pointer'
+                                                    className='cursor-pointer hover:text-PRIMARY_COLOR hover:font-semibold'
                                                     onClick={() =>
                                                         setDropdownOpen(false)
                                                     }
