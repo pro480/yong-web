@@ -1,3 +1,4 @@
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import PageTitle from "../../src/components/PageTitle";
 
@@ -13,67 +14,101 @@ function Gallery() {
                     secondDepth='갤러리'
                     secondLink='/data/gallery'
                 />
-                <div className=" h-full w-full flex-col justify-around ">
-                   <div className="  flex flex-wrap  ">
-                        <div className=" h-[450px] w-[500px] container m-auto flex-col justify-between bg-gray-500"> 
-                            <div className="m-5 bg-gray-300 flex items-center justify-center">이미지1을 넣어주세요</div>
-                            <div className="m-5 h-[150px] flex items-center justify-center">설명1을 넣어주세요</div>
-                        </div>
-                        <div className=" h-1/2 w-[500px] container m-auto flex-col justify-between"> 
-                            <div className="h-[300px] bg-gray-300 flex items-center justify-center">이미지2을 넣어주세요</div>
-                            <div className="m-5 h-[150px] bg-gray-300 flex items-center justify-center">설명2을 넣어주세요</div>
-                        </div>
-                        <div className=" h-1/2 w-[500px] container m-auto flex-col justify-between"> 
-                            <div className="h-[300px] bg-gray-300 flex items-center justify-center">이미지3을 넣어주세요</div>
-                            <div className="m-5 h-[150px] bg-gray-300 flex items-center justify-center">설명3을 넣어주세요</div>
-                        </div>
-                        <div className=" h-1/2 w-[500px] container m-auto flex-col justify-between"> 
-                            <div className="h-[300px] bg-gray-300 flex items-center justify-center">이미지4을 넣어주세요</div>
-                            <div className="m-5 h-[150px] bg-gray-300 flex items-center justify-center">설명4을 넣어주세요</div>
-                        </div>
 
+            <div>갤러리페이지는 무한 스크롤 방식으로 구현 할 예정입니다</div>
+            <main>
+                {/*카테고리*/}
+                <div className='flex'>
+                    <a className='w-24 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
+                        전체
+                    </a>
+                    <a className='w-48 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
+                        분류 1
+                    </a>
+                    <a className='w-48 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
+                        분류 2
+                    </a>
+                    <a className='w-52 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
+                        분류 3
+                    </a>
+                    <a className='w-52 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
+                        분류 4
+                    </a>
+                    
+                    <span className='w-full border-b'></span>
+                </div>
+                {/*검색창*/}
+                <div className='mt-5 flex h-9 items-center justify-end'>
+                    <select className='h-full border pl-2 pr-7'>
+                        <option>전체</option>
+                        <option value='title '>제목</option>
+                        <option value='content'>내용</option>
+                    </select>
 
-                   </div>
-                    <div className=" m-5 flex justify-center items-center">
-                            
-                        <ul className="inline-flex items-center -space-x-px ">
-                            <li>
-                                <a href="#" aria-current="page" className="py-2 px-3 text-sm text-PRIMARY_COLOR border border-PRIMARY_COLOR bg-white hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR hover:border-PRIMARY_COLOR m-1">1</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#" className="py-2 px-3 text-sm text-PRIMARY_FONT_COLOR border border-black bg-white hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR hover:border-PRIMARY_COLOR m-1">2</a>
-                            </li>
-                            <li>
-                                <a href="#" className="py-2 px-3 text-sm text-PRIMARY_FONT_COLOR border border-black bg-white hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR hover:border-PRIMARY_COLOR m-1">3</a>                        
-                            </li>
-                            
-                            <li>
-                                <a href="#" className="py-2 px-3 text-sm text-PRIMARY_FONT_COLOR border border-black bg-white hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR hover:border-PRIMARY_COLOR m-1">4</a>
-                            </li>
-                            <li>
-                                <a href="#" className="py-2 px-3 text-sm text-PRIMARY_FONT_COLOR border border-black bg-white hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR hover:border-PRIMARY_COLOR m-1">5</a>
-                            </li>
-                        
-                            
-                        </ul>
+                    <input className='ml-6 h-full w-32 border' />
+                    <MagnifyingGlassIcon className='h-full bg-PRIMARY_COLOR p-1 text-white' />
+                </div>
+                <div className=" my-5 grid grid-cols-1 items-center gap-y-16 gap-x-12 self-center md:grid-cols-2 xl:grid-cols-3">
+                    <div className="w-[350px] h-[350px] flex flex-col border-4 border-white justify-between hover:border-4 hover:border-PRIMARY_COLOR">
+                        <div className=" h-[216px] bg-FOOTER_FONT_COLOR flex justify-center items-center">이미지가 들어갈 공간입니다 </div>
+                        <div className=" h-[120px] my-2 flex flex-col justify-around items-center">
+                            <div className=" text-lg">이미지 제목</div>
+                            <div className=" text-sm text-FOOTER_FONT_COLOR">이미지 날짜</div>
+                        </div>      
+                    </div>
+                    <div className="w-[350px] h-[350px] flex flex-col border-4 border-white justify-between hover:border-4 hover:border-PRIMARY_COLOR">
+                        <div className=" h-[216px] bg-FOOTER_FONT_COLOR flex justify-center items-center">이미지가 들어갈 공간입니다 </div>
+                        <div className=" h-[120px] my-2 flex flex-col justify-around items-center">
+                            <div className=" text-lg">이미지 제목</div>
+                            <div className=" text-sm text-FOOTER_FONT_COLOR">이미지 날짜</div>
+                        </div>      
+                    </div>
+                    <div className="w-[350px] h-[350px] flex flex-col border-4 border-white justify-between hover:border-4 hover:border-PRIMARY_COLOR">
+                        <div className=" h-[216px] bg-FOOTER_FONT_COLOR flex justify-center items-center">이미지가 들어갈 공간입니다 </div>
+                        <div className=" h-[120px] my-2 flex flex-col justify-around items-center">
+                            <div className=" text-lg">이미지 제목</div>
+                            <div className=" text-sm text-FOOTER_FONT_COLOR">이미지 날짜</div>
+                        </div>      
+                    </div>
+                    <div className="w-[350px] h-[350px] flex flex-col border-4 border-white justify-between hover:border-4 hover:border-PRIMARY_COLOR">
+                        <div className=" h-[216px] bg-FOOTER_FONT_COLOR flex justify-center items-center">이미지가 들어갈 공간입니다 </div>
+                        <div className=" h-[120px] my-2 flex flex-col justify-around items-center">
+                            <div className=" text-lg">이미지 제목</div>
+                            <div className=" text-sm text-FOOTER_FONT_COLOR">이미지 날짜</div>
+                        </div>      
+                    </div>
+                    <div className="w-[350px] h-[350px] flex flex-col border-4 border-white justify-between hover:border-4 hover:border-PRIMARY_COLOR">
+                        <div className=" h-[216px] bg-FOOTER_FONT_COLOR flex justify-center items-center">이미지가 들어갈 공간입니다 </div>
+                        <div className=" h-[120px] my-2 flex flex-col justify-around items-center">
+                            <div className=" text-lg">이미지 제목</div>
+                            <div className=" text-sm text-FOOTER_FONT_COLOR">이미지 날짜</div>
+                        </div>      
+                    </div>
+                    <div className="w-[350px] h-[350px] flex flex-col border-4 border-white justify-between hover:border-4 hover:border-PRIMARY_COLOR">
+                        <div className=" h-[216px] bg-FOOTER_FONT_COLOR flex justify-center items-center">이미지가 들어갈 공간입니다 </div>
+                        <div className=" h-[120px] my-2 flex flex-col justify-around items-center">
+                            <div className=" text-lg">이미지 제목</div>
+                            <div className=" text-sm text-FOOTER_FONT_COLOR">이미지 날짜</div>
+                        </div>      
+                    </div>
+                    <div className="w-[350px] h-[350px] flex flex-col border-4 border-white justify-between hover:border-4 hover:border-PRIMARY_COLOR">
+                        <div className=" h-[216px] bg-FOOTER_FONT_COLOR flex justify-center items-center">이미지가 들어갈 공간입니다 </div>
+                        <div className=" h-[120px] my-2 flex flex-col justify-around items-center">
+                            <div className=" text-lg">이미지 제목</div>
+                            <div className=" text-sm text-FOOTER_FONT_COLOR">이미지 날짜</div>
+                        </div>      
+                    </div>
                     
 
-    
-
-        
-    
-                </div>
-
-
-
-
 
                 </div>
+                
 
-        
-    
-    
+
+
+
+            </main>
+                
     
         </div>
         )
