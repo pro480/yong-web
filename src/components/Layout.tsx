@@ -9,7 +9,6 @@ interface Props {
 }
 
 function Layout({ children }: Props) {
-
     const siteMap = {
         info: {
             title: "센터 소개",
@@ -101,12 +100,12 @@ function Layout({ children }: Props) {
                 {
                     title: "교육 측정",
                     subMenu: [],
-                    href: "/major/evaluation",
+                    href: "/major/measurement",
                 },
                 {
                     title: "교육 평가",
                     subMenu: [],
-                    href: "/major/measurement",
+                    href: "/major/evaluation",
                 },
                 {
                     title: "졸업 후 진로",
