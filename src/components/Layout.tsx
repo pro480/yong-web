@@ -45,6 +45,10 @@ function Layout({ children }: Props) {
                     title: "센터 조직(조직도)",
                     subMenu: [
                         {
+                            title: "조직도",
+                            href: "/info/organization",
+                        },
+                        {
                             title: "연구협력 네트워크",
                             href: "/info/organization/network",
                         },
