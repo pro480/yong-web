@@ -13,7 +13,7 @@ function Task() {
                 secondLink='/info/task'
             />
             <div className='flex w-full py-12'>
-                <div className='h-52 w-52 border border-8 p-5'>
+                <div className='h-52 w-52 border-8 p-5'>
                     <p className='text-lg font-semibold underline underline-offset-4'>
                         NO 1
                     </p>
@@ -23,7 +23,7 @@ function Task() {
             </div>
             <hr className='border-dashed border-gray-400' />
             <div className='flex h-full py-12'>
-                <div className='h-52 w-52 border border-8 p-5'>
+                <div className='h-52 w-52 border-8 p-5'>
                     <p className='text-lg font-semibold underline underline-offset-4'>
                         NO 2
                     </p>
@@ -33,7 +33,7 @@ function Task() {
             </div>
             <hr className='border-dashed border-gray-400' />
             <div className='flex h-full py-12'>
-                <div className='h-52 w-52 border border-8 p-5'>
+                <div className='h-52 w-52 border-8 p-5'>
                     <p className='text-lg font-semibold underline underline-offset-4'>
                         NO 3
                     </p>
