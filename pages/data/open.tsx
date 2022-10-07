@@ -1,4 +1,5 @@
 import React from "react";
+
 import PageTitle from "../../src/components/PageTitle";
 import Image from "next/image";
 import { ImGithub } from "react-icons/im";
@@ -90,7 +91,7 @@ function Open() {
                 ))}
             </main>
         </div>
-    );
+    )
 }
 
 export default Open;
