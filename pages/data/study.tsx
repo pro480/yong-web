@@ -5,6 +5,7 @@ import {
 import {
     ChevronDoubleLeftIcon,
     ChevronDoubleRightIcon,
+    MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
 import React from "react";
 import PageTitle from "../../src/components/PageTitle";
@@ -104,36 +105,35 @@ function Study() {
                 secondLink='/data/study'
             />
             <main>
-                {/*검색 필드*/}
-                <form className='flex flex-col gap-y-7 border-t border-t-black bg-PRIMARY_COLOR/40 py-6'>
-                    <div className='flex h-9 items-center'>
-                        <div className='mx-6 w-16 text-lg font-light'>검색</div>
-                        <select className='h-full border pl-2 pr-16'>
-                            <option value='title '>제목</option>
-                            <option value='content'>내용</option>
-                        </select>
+                {/*카테고리*/}
+                <div className='flex'>
+                    <a className='w-24 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
+                        전체
+                    </a>
+                    <a className='w-48 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
+                        수업 1
+                    </a>
+                    <a className='w-48 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
+                        수업 2
+                    </a>
+                    <a className='w-52 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
+                        수업 3
+                    </a>
+                    
+                    <span className='w-full border-b'></span>
+                </div>
+                {/*검색창*/}
+                <div className='mt-5 flex h-9 items-center justify-end'>
+                    <select className='h-full border pl-2 pr-7'>
+                        <option>전체</option>
+                        <option value='title '>제목</option>
+                        <option value='content'>내용</option>
+                    </select>
 
-                        <input className='ml-6 h-full w-1/2 border' />
-                    </div>
-                    <div className='relative flex h-9 w-full items-center'>
-                        <div className='mx-6 w-16 text-lg font-light'>
-                            등록일
-                        </div>
-                        <div className='flex h-full w-96 items-center justify-between'>
-                            <input className='h-full border' />-
-                            <input className='h-full border' />
-                        </div>
-                        <div className='ml-5 text-sm font-light text-gray-500'>
-                            날짜 입력 예시 : 20221007
-                        </div>
-                        <button
-                            type='submit'
-                            className='absolute right-12 h-full bg-amber-400 px-16 font-semibold'
-                        >
-                            검색
-                        </button>
-                    </div>
-                </form>
+                    <input className='ml-6 h-full w-32 border' />
+                    <MagnifyingGlassIcon className='h-full bg-PRIMARY_COLOR p-1 text-white' />
+                </div>
+                
                 <h1 className='my-4'>
                     전체{" "}
                     <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR'>
@@ -141,7 +141,7 @@ function Study() {
                     </span>{" "}
                     건
                 </h1>
-                {/*아래는 공지사항 테이블*/}
+                {/*테이블*/}
                 <table className='w-full table-auto border-t border-t-black'>
                     <thead>
                         <tr className='w-full bg-PRIMARY_COLOR/40 text-sm uppercase leading-normal text-gray-600'>
