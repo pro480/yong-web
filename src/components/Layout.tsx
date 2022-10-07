@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { memo, ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
@@ -9,7 +9,6 @@ interface Props {
 }
 
 function Layout({ children }: Props) {
-
     const siteMap = {
         info: {
             title: "센터 소개",
@@ -101,12 +100,12 @@ function Layout({ children }: Props) {
                 {
                     title: "교육 측정",
                     subMenu: [],
-                    href: "/major/evaluation",
+                    href: "/major/measurement",
                 },
                 {
                     title: "교육 평가",
                     subMenu: [],
-                    href: "/major/measurement",
+                    href: "/major/evaluation",
                 },
                 {
                     title: "졸업 후 진로",
@@ -197,4 +196,4 @@ function Layout({ children }: Props) {
     );
 }
 
-export default Layout;
+export default memo(Layout);

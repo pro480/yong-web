@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo,  useState } from "react";
 import Link from "next/link";
 import { MinusIcon } from "@heroicons/react/24/solid";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
@@ -21,7 +21,9 @@ function HeaderMenu({ subMap }: Props) {
                     onMouseOut={() => setDropdownOpen(false)}
                 >
                     <Link href={subMap.subTitle[0].href}>
-                        <a className='cursor-pointer px-6'>{subMap.title}</a>
+                        <a className='cursor-pointer px-6' onClick={() => {}}>
+                            {subMap.title}
+                        </a>
                     </Link>
                     <span className='absolute bottom-0 left-1/2 flex h-1.5 w-0 -translate-x-1/2 content-center justify-center bg-PRIMARY_COLOR group-hover:w-12 group-hover:transition-all'></span>
                 </div>
@@ -97,4 +99,4 @@ function HeaderMenu({ subMap }: Props) {
     );
 }
 
-export default HeaderMenu;
+export default memo(HeaderMenu);
