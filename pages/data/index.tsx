@@ -1,174 +1,249 @@
+import {
+    ChevronLeftIcon,
+    DocumentArrowDownIcon,
+} from "@heroicons/react/24/outline";
+import {
+    ChevronDoubleLeftIcon,
+    ChevronDoubleRightIcon,
+    LinkIcon,
+} from "@heroicons/react/24/solid";
 import React from "react";
 import PageTitle from "../../src/components/PageTitle";
 
-
 function Index() {
+    const posts = [
+        {
+            title: "2022 빅데이터 관련 논문 1",
+            writer: "이용상",
+            createAt: "2022.09.21",
+            content: "내용",
+            webLink: "link.gg",
+            number: 1,
+        },
+        {
+            title: "2022 빅데이터 관련 논문 2",
+            writer: "이용상",
+            createAt: "2022.09.22",
+            content: "내용",
+            webLink: "link.gg",
+            number: 2,
+        },
+        {
+            title: "2022 빅데이터 관련 논문 3",
+            writer: "이용상",
+            createAt: "2022.09.23",
+            content: "내용",
+            webLink: "link.gg",
+            number: 3,
+        },
+        {
+            title: "2022 빅데이터 관련 논문 4",
+            writer: "이용상",
+            createAt: "2022.09.24",
+            content: "내용",
+            webLink: "link.gg",
+            number: 4,
+        },
+        {
+            title: "2022 빅데이터 관련 논문 5",
+            writer: "이용상",
+            createAt: "2022.09.25",
+            content: "내용",
+            webLink: "link.gg",
+            number: 5,
+        },
+        {
+            title: "2022 빅데이터 관련 논문 6",
+            writer: "이용상",
+            createAt: "2022.09.26",
+            content: "내용",
+            webLink: "link.gg",
+            number: 6,
+        },
+        {
+            title: "2022 빅데이터 관련 논문 7",
+            writer: "이용상",
+            createAt: "2022.09.27",
+            content: "내용",
+            webLink: "link.gg",
+            number: 7,
+        },
+        {
+            title: "2022 빅데이터 관련 논문 8",
+            writer: "이용상",
+            createAt: "2022.09.28",
+            content: "내용",
+            webLink: "link.gg",
+            number: 8,
+        },
+        {
+            title: "2022 빅데이터 관련 논문 9",
+            writer: "이용상",
+            createAt: "2022.09.29",
+            content: "내용",
+            webLink: "link.gg",
+            number: 9,
+        },
+        {
+            title: "2022 빅데이터 관련 논문 10",
+            writer: "이용상",
+            createAt: "2022.09.30",
+            content: "내용",
+            webLink: "link.gg",
+            number: 10,
+        },
+    ];
+
     return (
         <div>
             <PageTitle
-                    title='논문 및 연구 보고서'
-                    description='논문 및 연구 보고서 페이지의 설명을 입력해주세요.'
-                    firstDepth='자료실'
-                    firstLink='/data'
-                    secondDepth='논문 및 연구 보고서'
-                    secondLink='/data'
-                />
-                <div className=" h-full w-full flex-col justify-around ">
-                <div className=" m-5 flex justify-between"> 
-                    <span className="text-xl text-FOOTER_FONT_COLOR">
-                        전체
-                        <strong className=" text-PRIMARY_COLOR">N</strong>
-                        건
-                    </span>
-                    
-                
-                </div>
-                
-                <table className="  table-auto">
-                    <thead className="text-lg text-black bg-gray-200  border-y-2 border-black">
-                        <tr>
-                            <th scope="col" className="py-3 px-6 w-1/6">번호</th>
-                            <th scope="col" className="py-3 px-6 w-fit">논문/연구 제목</th>
-                            <th scope="col" className="py-3 px-6 w-1/6">논문/연구 저자</th>                        
-                            <th scope="col" className="py-3 px-6 w-1/12">링크</th>
+                title='논문 및 연구 보고서'
+                description='논문 및 연구 보고서 페이지의 설명을 입력해주세요.'
+                firstDepth='자료실'
+                firstLink='/data'
+                secondDepth='논문 및 연구 보고서'
+                secondLink='/data'
+            />
+            <main>
+                {/*검색 필드*/}
+                <form className='flex flex-col gap-y-7 border-t border-t-black bg-PRIMARY_COLOR/40 py-6'>
+                    <div className='flex h-9 items-center'>
+                        <div className='mx-6 w-16 text-lg font-light'>검색</div>
+                        <select className='h-full border pl-2 pr-16'>
+                            <option value='title '>제목</option>
+                            <option value='content'>내용</option>
+                            <option value='writer '>저자</option>
+                        </select>
+
+                        <input className='ml-6 h-full w-1/2 border' />
+                    </div>
+                    <div className='relative flex h-9 w-full items-center'>
+                        <div className='mx-6 w-16 text-lg font-light'>
+                            등록일
+                        </div>
+                        <div className='flex h-full w-96 items-center justify-between'>
+                            <input className='h-full border' />-
+                            <input className='h-full border' />
+                        </div>
+                        <div className='ml-5 text-sm font-light text-gray-500'>
+                            날짜 입력 예시 : 20221007
+                        </div>
+                        <button
+                            type='submit'
+                            className='absolute right-12 h-full bg-amber-400 px-16 font-semibold'
+                        >
+                            검색
+                        </button>
+                    </div>
+                </form>
+                <h1 className='my-4'>
+                    전체{" "}
+                    <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR'>
+                        {posts.length}
+                    </span>{" "}
+                    건
+                </h1>
+                {/*아래는 공지사항 테이블*/}
+                <table className='w-full table-auto border-t border-t-black'>
+                    <thead>
+                        <tr className='w-full bg-PRIMARY_COLOR/40 text-sm uppercase leading-normal text-gray-600'>
+                            <th className='w-32 py-3 text-center'>번호</th>
+                            <th className='py-3 text-center'>논문/연구 제목</th>
+                            <th className='w-1/6 py-3 text-center'>저자</th>
+                            <th className='w-1/6 py-3 text-center'>등록일</th>
+                            <th className='w-1/6 py-3 text-center'>
+                                논문/연구 링크
+                            </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr className="border-b-2 border-gray-300">
-                            <th scope='row' className="py-3 px-6 font-medium ">1</th>
-                            <th scope="row" className="py-3 px-6 font-medium ">한국어 쓰기 평가를 위한 자동채점의 가능성 탐색</th>
-                            <th scope='row' className="py-3 px-6 font-medium ">이용상</th>
-                            <th scope = 'row' className="py-3 px-6 font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                </svg></th>
-                        </tr>
-                        <tr className="border-b-2 border-gray-300">
-                            <th scope='row' className="py-3 px-6 font-medium ">2</th>
-                            <th scope="row" className="py-3 px-6 font-medium ">한국어 쓰기 평가를 위한 자동채점의 가능성 탐색</th>
-                            <th scope='row' className="py-3 px-6 font-medium ">이용상</th>
-                            <th scope = 'row' className="py-3 px-6 font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                </svg></th>
-                        </tr>
-                        <tr className="border-b-2 border-gray-300">
-                            <th scope='row' className="py-3 px-6 font-medium ">3</th>
-                            <th scope="row" className="py-3 px-6 font-medium ">한국어 쓰기 평가를 위한 자동채점의 가능성 탐색</th>
-                            <th scope='row' className="py-3 px-6 font-medium ">이용상</th>
-                            <th scope = 'row' className="py-3 px-6 font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                </svg></th>
-                        </tr>
-                        <tr className="border-b-2 border-gray-300">
-                            <th scope='row' className="py-3 px-6 font-medium ">4</th>
-                            <th scope="row" className="py-3 px-6 font-medium ">한국어 쓰기 평가를 위한 자동채점의 가능성 탐색</th>
-                            <th scope='row' className="py-3 px-6 font-medium ">이용상</th>
-                            <th scope = 'row' className="py-3 px-6 font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                </svg></th>
-                        </tr>
-                        <tr className="border-b-2 border-gray-300">
-                            <th scope='row' className="py-3 px-6 font-medium ">5</th>
-                            <th scope="row" className="py-3 px-6 font-medium ">한국어 쓰기 평가를 위한 자동채점의 가능성 탐색</th>
-                            <th scope='row' className="py-3 px-6 font-medium ">이용상</th>
-                            <th scope = 'row' className="py-3 px-6 font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                </svg></th>
-                        </tr>
-                        <tr className="border-b-2 border-gray-300">
-                            <th scope='row' className="py-3 px-6 font-medium ">6</th>
-                            <th scope="row" className="py-3 px-6 font-medium ">한국어 쓰기 평가를 위한 자동채점의 가능성 탐색</th>
-                            <th scope='row' className="py-3 px-6 font-medium ">이용상</th>
-                            <th scope = 'row' className="py-3 px-6 font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                </svg></th>
-                        </tr>
-                        <tr className="border-b-2 border-gray-300">
-                            <th scope='row' className="py-3 px-6 font-medium ">7</th>
-                            <th scope="row" className="py-3 px-6 font-medium ">한국어 쓰기 평가를 위한 자동채점의 가능성 탐색</th>
-                            <th scope='row' className="py-3 px-6 font-medium ">이용상</th>
-                            <th scope = 'row' className="py-3 px-6 font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                </svg></th>
-                        </tr>
-                        <tr className="border-b-2 border-gray-300">
-                            <th scope='row' className="py-3 px-6 font-medium ">8</th>
-                            <th scope="row" className="py-3 px-6 font-medium ">한국어 쓰기 평가를 위한 자동채점의 가능성 탐색</th>
-                            <th scope='row' className="py-3 px-6 font-medium ">이용상</th>
-                            <th scope = 'row' className="py-3 px-6 font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                </svg></th>
-                        </tr>
-                        <tr className="border-b-2 border-gray-300">
-                            <th scope='row' className="py-3 px-6 font-medium ">9</th>
-                            <th scope="row" className="py-3 px-6 font-medium ">한국어 쓰기 평가를 위한 자동채점의 가능성 탐색</th>
-                            <th scope='row' className="py-3 px-6 font-medium ">이용상</th>
-                            <th scope = 'row' className="py-3 px-6 font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                </svg></th>
-                        </tr>
-                        <tr className="border-b-2 border-gray-300">
-                            <th scope='row' className="py-3 px-6 font-medium ">10</th>
-                            <th scope="row" className="py-3 px-6 font-medium ">한국어 쓰기 평가를 위한 자동채점의 가능성 탐색</th>
-                            <th scope='row' className="py-3 px-6 font-medium ">이용상</th>
-                            <th scope = 'row' className="py-3 px-6 font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                </svg></th>
-                        </tr>
-
+                    <tbody className='text-sm font-light text-gray-600'>
+                        {posts.reverse().map((item) => (
+                            <tr
+                                key={item.number}
+                                className='border-b border-gray-200 hover:bg-gray-100'
+                            >
+                                <td className='py-4 text-center'>
+                                    {item.number}
+                                </td>
+                                <td className='px-12 text-left'>
+                                    {item.title}
+                                </td>
+                                <td className='text-center'>{item.writer}</td>
+                                <td className='text-center'>{item.createAt}</td>
+                                <td>
+                                    <LinkIcon className='mx-auto h-6 w-6' />
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
+            </main>
 
-                <div className=" m-5 flex justify-center items-center">
-                            
-                    <ul className="inline-flex items-center -space-x-px ">
-                        
-                        <li>
-                            <a href="#" aria-current="page" className="py-2 px-3 text-sm text-PRIMARY_COLOR border border-PRIMARY_COLOR bg-white hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR hover:border-PRIMARY_COLOR m-1">1</a>
-                        </li>
-                        
-                        <li>
-                            <a href="#" className="py-2 px-3 text-sm text-PRIMARY_FONT_COLOR border border-black bg-white hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR hover:border-PRIMARY_COLOR m-1">2</a>
-                        </li>
-                        <li>
-                            <a href="#" className="py-2 px-3 text-sm text-PRIMARY_FONT_COLOR border border-black bg-white hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR hover:border-PRIMARY_COLOR m-1">3</a>                        
-                        </li>
-                        
-                        <li>
-                            <a href="#" className="py-2 px-3 text-sm text-PRIMARY_FONT_COLOR border border-black bg-white hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR hover:border-PRIMARY_COLOR m-1">4</a>
-                        </li>
-                        <li>
-                            <a href="#" className="py-2 px-3 text-sm text-PRIMARY_FONT_COLOR border border-black bg-white hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR hover:border-PRIMARY_COLOR m-1">5</a>
-                        </li>
-                       
-                        
-                    </ul>
-                    
+            <div className=' m-5 flex items-center justify-center'>
+                <ul className='inline-flex items-center -space-x-px '>
+                    <li>
+                        <a
+                            href='#'
+                            className='m-1 block border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                        >
+                            <ChevronDoubleLeftIcon className='h-3 w-3' />
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href='#'
+                            aria-current='page'
+                            className='m-1 border border-PRIMARY_COLOR bg-white py-2 px-3 text-sm text-PRIMARY_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                        >
+                            1
+                        </a>
+                    </li>
 
-    
+                    <li>
+                        <a
+                            href='#'
+                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                        >
+                            2
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href='#'
+                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                        >
+                            3
+                        </a>
+                    </li>
 
-        
-    
-                </div>
-
-
+                    <li>
+                        <a
+                            href='#'
+                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                        >
+                            4
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href='#'
+                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                        >
+                            5
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href='#'
+                            className='m-1 block border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                        >
+                            <ChevronDoubleRightIcon className='h-3 w-3' />
+                        </a>
+                    </li>
+                </ul>
             </div>
-
-    
-    
-    
         </div>
-        )
+    );
 }
-
 
 export default Index;
