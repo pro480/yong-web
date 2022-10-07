@@ -10,6 +10,10 @@ module.exports = {
                 FOOTER_FONT_COLOR: "#9EA1A5",
                 PRIMARY_FONT_COLOR: "#121212",
             },
+
+            box: {
+                PURPOSE_BOX:"flex justify-center items-center h-[150px] border-[5px] rounded-[70px]"
+            }
         },
         screens: {
             sm: "640px",
@@ -19,6 +23,7 @@ module.exports = {
             "2xl": "1536px",
             desktop: "1820px",
         },
+
     },
     plugins: [],
 };
