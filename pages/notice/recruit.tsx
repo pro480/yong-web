@@ -41,17 +41,6 @@ function Recruit() {
                     <Page pageNumber={pageNumber} width={800} />
                 </Document>
             </div>
-            {/*Page {pageNumber} of {numPages}*/}
-            {/*{pageNumber > 1 && (*/}
-            {/*    <button onClick={() => setPageNumber((prev) => prev + -1)}>*/}
-            {/*        이전페이지*/}
-            {/*    </button>*/}
-            {/*)}*/}
-            {/*{pageNumber < numPages && (*/}
-            {/*    <button onClick={() => setPageNumber((prev) => prev + +1)}>*/}
-            {/*        다음페이지*/}
-            {/*    </button>*/}
-            {/*)}*/}
         </div>
     );
 }
