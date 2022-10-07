@@ -1,0 +1,43 @@
+.outer {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 11rem;
+    border: 8px rgb(209 213 219) solid;
+}
+.outer div:before,
+.outer div:after {
+    content: "";
+    position: absolute;
+    height: 50px;
+    width: 50px;
+}
+.outer:after {
+    right: -8px;
+    border-right: 8px solid red;
+    border-top: 8px solid red;
+    z-index: 10;
+}
+.outer:before {
+    border-left: 8px solid green;
+    border-top: 8px solid green;
+    z-index: 10;
+}
+.inner:before {
+    top: -8px;
+    left: -8px;
+    border-left: 8px solid #0096f5;
+    border-top: 8px solid #0096f5;
+    z-index: 10;
+}
+.inner:after {
+    bottom: -8px;
+    right: -8px;
+    border-right: 8px solid #0096f5;
+    border-bottom: 8px solid #0096f5;
+    z-index: 10;
+}
+.inner {
+    width: 100%;
+    display: flex;
+}
