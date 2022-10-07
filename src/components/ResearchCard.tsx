@@ -28,7 +28,7 @@ function ResearchCard({
         >
             <div className='relative flex w-3/5 items-center justify-center rounded-[20px] bg-gray-300'>
                 {url}
-                <div className='absolute right-2 top-2'>
+                <div className='absolute right-3 top-3'>
                     {completed ? <CheckCircleIcon className="h-6" />: <ForwardIcon className="h-6" />}
                 </div>
             </div>
