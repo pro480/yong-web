@@ -5,6 +5,7 @@ import PageTitle from "../../src/components/PageTitle";
 function Open() {
     return (
         <div>
+
             <PageTitle
                     title='오픈 데이터'
                     description='오픈 데이터 페이지의 설명을 입력해주세요.'
@@ -58,6 +59,7 @@ function Open() {
     
         </div>
         )
+
 }
 
 export default Open;

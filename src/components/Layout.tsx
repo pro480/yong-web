@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { memo, ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
@@ -196,4 +196,4 @@ function Layout({ children }: Props) {
     );
 }
 
-export default Layout;
+export default memo(Layout);
