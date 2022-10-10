@@ -180,8 +180,6 @@ function Layout({ children }: Props) {
     const router = useRouter();
     const SIDEBAR_HIDDEN = ["/", "/adminLogin"];
 
-    console.log(siteMap);
-
     return SIDEBAR_HIDDEN.includes(router.pathname) ? (
         <div>
             <Header siteMap={siteMap} />

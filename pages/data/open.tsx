@@ -2,7 +2,6 @@ import React from "react";
 
 import PageTitle from "../../src/components/PageTitle";
 import Image from "next/image";
-import { ImGithub } from "react-icons/im";
 
 function Open() {
     const opens = [
@@ -59,9 +58,9 @@ function Open() {
                 secondLink='/data/open'
             />
             <main className='grid grid-cols-1 items-center gap-y-16 gap-x-14 self-center md:grid-cols-2 xl:grid-cols-3'>
-                {opens.map((open) => (
+                {opens.map((open, index) => (
                     <article
-                        key={open.title}
+                        key={index}
                         className='mx-auto h-96 w-80 border hover:scale-110'
                     >
                         <div className='h-[40%] border px-4'>

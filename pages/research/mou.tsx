@@ -59,19 +59,25 @@ function Mou() {
                             className='border-b border-gray-200 hover:bg-gray-100'
                             key={index}
                         >
-                            <a
-                                href={mou.href}
-                                target='_blank'
-                                rel='noopener noreferrer'
-                                className='flex'
-                            >
-                                <td className='flex items-center whitespace-nowrap py-3 px-6 text-left'>
+                            {/*<a*/}
+
+                            {/*>*/}
+                            <td className='flex items-center whitespace-nowrap py-3 px-6 text-left'>
+                                <a
+                                    href={mou.href}
+                                    target='_blank'
+                                    rel='noopener noreferrer'
+                                    className='flex'
+                                >
                                     <div className='flex h-16 w-52 items-center justify-center bg-gray-300'>
                                         {mou.logo}
                                     </div>
-                                    <div className='pl-8'>{mou.title}</div>
-                                </td>
-                            </a>
+                                    <div className='flex items-center pl-8'>
+                                        {mou.title}
+                                    </div>
+                                </a>
+                            </td>
+                            {/*</a>*/}
                             <td className='py-3 px-6 text-left'>
                                 {mou.content}
                             </td>

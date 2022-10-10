@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import { Bars3CenterLeftIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,19 +12,19 @@ interface Props {
 }
 
 function Header({ siteMap }: Props) {
-    const { logout } = useAuth();
+    const { user, logout } = useAuth();
 
     return (
-        <header className='border-b px-2 xl:h-[200px] desktop:h-[90px] desktop:px-10'>
+        <header className='border-b px-2 xl:h-[200px] xl:px-2 desktop:h-[100px]'>
             {/*아래는 전체 컨테이너*/}
-            <div className='flex flex-col-reverse justify-center md:h-[90px] md:flex-row md:items-center md:justify-between desktop:w-full'>
+            <div className='flex flex-col-reverse justify-center md:h-[100px] md:flex-row md:items-center md:justify-between'>
                 <Link href='/'>
                     {/* 아래는 로고 컨테이너*/}
-                    <div className='h-20 border-t py-3 md:w-60 md:border-none'>
+                    <div className='h-20 border-t md:h-full md:w-96 md:border-none desktop:w-[500px]'>
                         {/*아래는 로고 사이즈*/}
                         <div className='relative block h-full cursor-pointer'>
                             <Image
-                                src='https://www.inha.ac.kr/sites/kr/images/logo.png'
+                                src='/images/logo.png'
                                 layout='fill'
                                 objectFit='contain'
                                 objectPosition='center'
@@ -37,7 +37,7 @@ function Header({ siteMap }: Props) {
                 {/*아래는 GNB Wrap*/}
                 <div className='flex flex-col-reverse xl:flex-row-reverse desktop:w-full desktop:flex-row desktop:items-center desktop:justify-between'>
                     {/* 헤더메뉴 Container*/}
-                    <nav className='absolute top-[100px] left-0 hidden h-[90px] justify-around border-t xl:flex xl:w-full desktop:static desktop:px-24'>
+                    <nav className='absolute top-[100px] left-0 hidden h-[100px] justify-around border-t xl:flex xl:w-full desktop:static desktop:px-12'>
                         <HeaderMenu subMap={siteMap.info} />
                         <HeaderMenu subMap={siteMap.research} />
                         <HeaderMenu subMap={siteMap.major} />
@@ -56,9 +56,19 @@ function Header({ siteMap }: Props) {
                             <ImGithub size='24' />
                         </a>
                         <button className='fonts mr-5 '>영문(EN)</button>
-                        <Link href='/adminLogin'>
-                            <a className='mr-5 hidden md:flex'>ADMIN</a>
-                        </Link>
+
+                        {user ? (
+                            <button
+                                onClick={logout}
+                                className='mr-5 hidden md:flex'
+                            >
+                                Logout
+                            </button>
+                        ) : (
+                            <Link href='/adminLogin'>
+                                <a className='mr-5 hidden md:flex'>ADMIN</a>
+                            </Link>
+                        )}
                         <Bars3CenterLeftIcon className='ml-auto h-8 desktop:ml-0' />
                     </div>
                 </div>

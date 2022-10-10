@@ -39,7 +39,6 @@ function Sidebar({ siteMap }: Props) {
         };
     }, []);
 
-    console.log(window.innerWidth);
 
     let currentMenu;
 

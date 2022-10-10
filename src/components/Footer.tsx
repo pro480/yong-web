@@ -3,11 +3,11 @@ import Image from "next/image";
 
 function Footer() {
     return (
-        <div className='w-full bg-FOOTER_COLOR  text-gray-600/90 '>
+        <div className='h-fit w-full bg-FOOTER_COLOR text-gray-600/90  xl:h-56 '>
             {/*아래는 FooterContainer*/}
             <div className='m-auto xl:w-[1300px]'>
                 {/*첫번쨰 줄*/}
-                <div className='flex flex-col-reverse border-gray-500 xl:flex-row xl:justify-between'>
+                <div className='flex flex-col-reverse border-gray-500 xl:h-16 xl:flex-row xl:justify-between'>
                     <div className='flex h-full flex-wrap border-t border-b border-gray-500 text-sm sm:flex-nowrap sm:py-2 xl:w-[700px] xl:border-t-0 xl:border-dashed '>
                         <div className='w-1/2 border-b  border-r border-gray-500  py-2 text-center sm:border-none'>
                             개인정보 처리 방침
@@ -23,15 +23,14 @@ function Footer() {
                         </div>
                     </div>
                     {/*로고*/}
-                    <div className='flex h-[53px] w-full items-center justify-center gap-x-4 border-gray-600 xl:w-fit xl:border xl:py-2 xl:px-7'>
+                    <div className='flex h-16 w-full items-center justify-center gap-x-4 border-gray-600 xl:h-full xl:w-fit xl:border xl:py-2 xl:px-7'>
                         {/*로고 사이즈*/}
-                        <div className='relative block h-6 w-20'>
+                        <div className='relative block h-full w-32'>
                             <Image
-                                src='/logo.png'
+                                src='/images/logo.png'
                                 layout='fill'
                                 objectFit='contain'
                                 objectPosition='center'
-                                className='bg-white'
                                 alt='로고'
                             />
                         </div>
@@ -41,8 +40,8 @@ function Footer() {
                     </div>
                 </div>
                 {/*두번쨰 줄*/}
-                <div className='flex flex-col flex-wrap gap-y-2 gap-x-14 py-4 px-2 text-sm font-medium text-white xl:mt-4 xl:flex-row'>
-                    <span>
+                <div className='flex flex-wrap gap-y-2 gap-x-14 py-4 px-2 text-sm font-medium text-white xl:mt-4 xl:flex-row xl:gap-y-6'>
+                    <span className="w-full">
                         INHA UNIVERSITY, 100 Inha-ro, Michuhol-gu, Incheno
                         22212, KOREA
                     </span>
