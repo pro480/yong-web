@@ -191,7 +191,7 @@ function Layout({ children }: Props) {
             <Header siteMap={siteMap} />
             <main className='m-auto flex max-w-[1536px] flex-col 2xl:flex-row 2xl:items-start'>
                 <Sidebar siteMap={siteMap} />
-                <div className='w-full p-20'>{children}</div>
+                <div className='w-full p-10 md:p-20'>{children}</div>
             </main>
             <Footer />
         </div>

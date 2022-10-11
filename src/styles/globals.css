@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .organizationNode {
+        @apply flex h-1/2 w-28 cursor-pointer items-center justify-center rounded-full border  text-sm text-xs font-semibold sm:w-36 md:w-44 md:text-base;
+    }
+
+    .organizationTitle {
+        @apply h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500;
+    }
+}

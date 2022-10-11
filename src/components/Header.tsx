@@ -45,7 +45,7 @@ function Header({ siteMap }: Props) {
                         <HeaderMenu subMap={siteMap.notice} />
                     </nav>
                     {/*기타 메뉴 리스트*/}
-                    <div className='flex h-12 items-center px-3 text-PRIMARY_FONT_COLOR desktop:w-[500px] desktop:justify-between'>
+                    <div className='text-PRIMARY_FONT_COLOR flex h-12 items-center px-3 desktop:w-[500px] desktop:justify-between'>
                         <a
                             target='_blank'
                             href='https://github.com/pro480/yong-web'
