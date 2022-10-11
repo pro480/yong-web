@@ -25,7 +25,7 @@ function HeaderMenu({ subMap }: Props) {
     return (
         <div className='h-full'>
             {/*1st depth*/}
-            <div className='flex h-full items-center text-xl font-semibold hover:text-PRIMARY_COLOR'>
+            <div className='flex h-full items-center text-xl font-semibold hover:text-PRIMARY_COLOR-500'>
                 <Link href={subMap.subTitle[0].href}>
                     <div
                         onMouseOver={showMenu}
@@ -33,7 +33,7 @@ function HeaderMenu({ subMap }: Props) {
                         className='group relative flex h-full w-full cursor-pointer items-center justify-center px-4'
                     >
                         {subMap.title}
-                        <span className='absolute bottom-0 left-1/2 -z-50 flex h-1.5 w-0 -translate-x-1/2 content-center justify-center bg-PRIMARY_COLOR group-hover:w-12 group-hover:transition-all'></span>
+                        <span className='absolute bottom-0 left-1/2 -z-50 flex h-1.5 w-0 -translate-x-1/2 content-center justify-center bg-PRIMARY_COLOR-500 group-hover:w-12 group-hover:transition-all'></span>
                     </div>
                 </Link>
             </div>
@@ -42,12 +42,12 @@ function HeaderMenu({ subMap }: Props) {
             <div
                 onMouseOver={showMenu}
                 onMouseOut={closeMenu}
-                className={`absolute left-0 z-10  w-screen justify-between border-b-2 border-t border-b-PRIMARY_COLOR ${
+                className={`absolute left-0 z-10  w-screen justify-between border-b-2 border-t border-b-PRIMARY_COLOR-500 ${
                     dropdownOpen ? "flex" : "hidden"
                 }`}
             >
                 {/* 드랍다운 좌측 설명 wrap*/}
-                <section className='flex w-[30%] flex-col items-center border-t border-t-PRIMARY_COLOR bg-PRIMARY_COLOR py-20 text-white '>
+                <section className='flex w-[30%] flex-col items-center border-t border-t-PRIMARY_COLOR-500 bg-PRIMARY_COLOR-500 py-20 text-white '>
                     <div>
                         <h1 className='mb-5 text-2xl font-bold'>
                             {subMap.title}
@@ -66,7 +66,7 @@ function HeaderMenu({ subMap }: Props) {
                     {subMap.subTitle.map((item, index) => (
                         <li key={index} className='w-52'>
                             <Link href={item.href}>
-                                <h1 className='z-20 flex w-full cursor-pointer justify-between border p-3 shadow-lg hover:scale-105 hover:font-semibold hover:text-PRIMARY_COLOR'>
+                                <h1 className='z-20 flex w-full cursor-pointer justify-between border p-3 shadow-lg hover:scale-105 hover:font-semibold hover:text-PRIMARY_COLOR-500'>
                                     <span onClick={closeMenu} className=''>
                                         {item.title}
                                     </span>
@@ -79,12 +79,12 @@ function HeaderMenu({ subMap }: Props) {
                             <ul className='bg-SUBMENU_COLOR bg-opacity-50 text-sm'>
                                 {item.subMenu?.map((subMenu, index) => (
                                     <li
-                                        className="py-2 px-4 before:mr-2  before:text-PRIMARY_COLOR before:content-['\2022']"
+                                        className="py-2 px-4 before:mr-2  before:text-PRIMARY_COLOR-500 before:content-['\2022']"
                                         key={index}
                                     >
                                         <Link href={subMenu.href}>
                                             <span
-                                                className='cursor-pointer hover:font-semibold hover:text-PRIMARY_COLOR'
+                                                className='cursor-pointer hover:font-semibold hover:text-PRIMARY_COLOR-500'
                                                 onClick={() =>
                                                     setDropdownOpen(false)
                                                 }

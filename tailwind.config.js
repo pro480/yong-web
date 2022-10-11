@@ -4,13 +4,39 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                PRIMARY_COLOR: "#0096f5",
-                SUBMENU_COLOR: "#F5F5F5",
-                FOOTER_COLOR: "#22272D",
-                FOOTER_FONT_COLOR: "#9EA1A5",
-                PRIMARY_FONT_COLOR: "#121212",
-            },
+                PRIMARY_COLOR: {
+                    50: "#AADFFF",
+                    100: "#88BFFF",
+                    200: "#0092ff",
+                    300: "#0083e6",
+                    400: "#0075cd",
+                    500: "#0066B3",
+                    600: "#00579a",
+                    700: "#004980",
+                    800: "#003a67",
+                },
+                SUB_COLOR: {
+                    200: "#eabf56",
+                    300: "#e7b740",
+                    400: "#e4ae29",
+                    500: "#D9A21B",
+                    600: "#c29118",
+                    700: "#ac8015",
+                    800: "#956f13",
+                    900: "#603B00",
+                },
 
+                GRAY_COLOR: {
+                    200: "#d0d4dd",
+                    300: "#c2c6d2",
+                    400: "#b3b9c8",
+                    500: "#A4ABBD",
+                    600: "#959db2",
+                    700: "#8690a8",
+                    800: "#78829d",
+                    900: "#3B4251",
+                },
+            },
         },
         screens: {
             sm: "640px",
@@ -20,7 +46,6 @@ module.exports = {
             "2xl": "1536px",
             desktop: "1820px",
         },
-
     },
     plugins: [],
 };

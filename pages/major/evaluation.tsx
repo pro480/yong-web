@@ -20,7 +20,7 @@ function Evaluation() {
             <div className='h-[450px]'>
                 <div className='relative flex h-72 items-center justify-center bg-gray-300'>
                     교육 평가에 대한 이미지를 넣어주세요
-                    <div className='absolute -bottom-[80px] left-32 flex h-[160px] w-[500px] flex-col items-center justify-center gap-y-8 bg-PRIMARY_COLOR'>
+                    <div className='absolute -bottom-[80px] left-32 flex h-[160px] w-[500px] flex-col items-center justify-center gap-y-8 bg-PRIMARY_COLOR-500'>
                         <h1 className='text-2xl font-semibold text-white'>
                             교육 평가
                         </h1>
@@ -46,11 +46,11 @@ function Evaluation() {
                     </div>
                 </div>
                 <div className='my-8'>
-                    <p className=' w-[70px] border-b-2 border-b-PRIMARY_COLOR'></p>
+                    <p className=' w-[70px] border-b-2 border-b-PRIMARY_COLOR-500'></p>
                     <h1 className='text-2xl font-bold'>특성화 방향</h1>
                 </div>
                 <div className='flex h-80 justify-around'>
-                    <article className='flex h-[70%] w-1/4 flex-col items-center bg-PRIMARY_COLOR/70'>
+                    <article className='flex h-[70%] w-1/4 flex-col items-center bg-PRIMARY_COLOR-500/70'>
                         <h1 className='mt-8 text-xl text-white'>
                             특성화 방향 1
                         </h1>
@@ -64,7 +64,7 @@ function Evaluation() {
                             </li>
                         </ul>
                     </article>
-                    <article className='flex h-[85%] w-1/4 flex-col items-center bg-PRIMARY_COLOR/70'>
+                    <article className='flex h-[85%] w-1/4 flex-col items-center bg-PRIMARY_COLOR-500/70'>
                         <h1 className='mt-8 text-xl text-white'>
                             특성화 방향 2
                         </h1>
@@ -81,7 +81,7 @@ function Evaluation() {
                             </li>
                         </ul>
                     </article>
-                    <article className='flex h-full w-1/4 flex-col items-center bg-PRIMARY_COLOR/70'>
+                    <article className='flex h-full w-1/4 flex-col items-center bg-PRIMARY_COLOR-500/70'>
                         <h1 className='mt-8 text-xl text-white'>
                             특성화 방향 3
                         </h1>

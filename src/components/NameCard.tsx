@@ -21,7 +21,7 @@ function AlumniLayout({
                 넣어주세요.
             </div>
             <div>
-                <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR'>
+                <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                     {name}
                 </h1>
                 <div className='text-sm'>

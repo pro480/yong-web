@@ -80,7 +80,7 @@ function Open() {
                                 />
                             </a>
                         </div>
-                        <div className='flex h-[60%] flex-col items-center justify-center gap-y-4 bg-PRIMARY_COLOR/30  py-3 px-2'>
+                        <div className='flex h-[60%] flex-col items-center justify-center gap-y-4 bg-PRIMARY_COLOR-500/30  py-3 px-2'>
                             <h1 className='text-lg font-semibold'>
                                 {open.title}
                             </h1>

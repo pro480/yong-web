@@ -2,6 +2,15 @@ import React from "react";
 import PageTitle from "../../src/components/PageTitle";
 import NameCard from "../../src/components/NameCard";
 function Alumni() {
+    type member = {
+        imageUrl: string;
+        name: string;
+        history: string;
+        major: string;
+        email: string;
+        belong: string;
+    };
+
     return (
         <div>
             <PageTitle
@@ -14,7 +23,7 @@ function Alumni() {
             />
 
             {/*동문 소개란*/}
-            <main className='pb-12 flex flex-wrap gap-y-8'>
+            <main className='flex flex-wrap gap-y-8 pb-12'>
                 <NameCard
                     img='동문사진'
                     name='Yong Sang Lee'

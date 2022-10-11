@@ -34,7 +34,7 @@ function PageTitle({
             </div>
             <div className='flex gap-x-4 border-y py-3'>
                 <Link href='/'>
-                    <HomeIcon className='h-6 cursor-pointer text-PRIMARY_COLOR' />
+                    <HomeIcon className='h-6 cursor-pointer text-PRIMARY_COLOR-500' />
                 </Link>
                 <Link href='/'>
                     <span className='cursor-pointer'>HOME</span>

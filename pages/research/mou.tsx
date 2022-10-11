@@ -45,7 +45,7 @@ function Mou() {
             />
             <table className='w-full min-w-max table-auto border-t border-t-black'>
                 <thead>
-                    <tr className='bg-PRIMARY_COLOR/40 text-sm uppercase leading-normal text-gray-600'>
+                    <tr className='bg-PRIMARY_COLOR-500/40 text-sm uppercase leading-normal text-gray-600'>
                         <th className='w-2/5 py-3 px-6 text-left'>MOU 기관</th>
                         <th className='w-2/5 py-3 px-6 text-center'>
                             협력 내용

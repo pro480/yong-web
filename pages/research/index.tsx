@@ -4,6 +4,26 @@ import { ForwardIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import ResearchCard from "../../src/components/ResearchCard";
 
 function Index() {
+    type projectInProgress = {
+        imageUrl: string;
+        title: string;
+        summary: string;
+        consignment: string;
+        startedAt: string;
+        endedAt: string;
+        description: string;
+    };
+
+    type completedProject = {
+        imageUrl: string;
+        title: string;
+        summary: string;
+        consignment: string;
+        startedAt: string;
+        endedAt: string;
+        description: string;
+    };
+
     const projects = [
         {
             url: "이미지를 넣어주세요",
@@ -50,17 +70,17 @@ function Index() {
             />
             <div className='flex flex-col gap-y-10'>
                 {/* 필터 */}
-                <div className='border-b-2 border-PRIMARY_COLOR p-3'>
+                <div className='border-b-2 border-PRIMARY_COLOR-500 p-3'>
                     {/* 필터 카테고리 */}
                     <div className='pb-5'>
-                        <h1 className='h-full whitespace-nowrap text-2xl font-semibold text-PRIMARY_COLOR'>
+                        <h1 className='h-full whitespace-nowrap text-2xl font-semibold text-PRIMARY_COLOR-500'>
                             Filter
                         </h1>
                     </div>
 
                     {/* 진행여부 */}
                     <div className='flex gap-x-5'>
-                        <button className='h-[50px] w-[100px] rounded-[70px] border-[3px] border-PRIMARY_COLOR bg-PRIMARY_COLOR/20 font-semibold hover:bg-PRIMARY_COLOR'>
+                        <button className='h-[50px] w-[100px] rounded-[70px] border-[3px] border-PRIMARY_COLOR-500 bg-PRIMARY_COLOR-500/20 font-semibold hover:bg-PRIMARY_COLOR-500'>
                             진행 중
                         </button>
 

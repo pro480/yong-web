@@ -39,7 +39,6 @@ function Sidebar({ siteMap }: Props) {
         };
     }, []);
 
-
     let currentMenu;
 
     if (pathName === "info") {
@@ -59,7 +58,7 @@ function Sidebar({ siteMap }: Props) {
             {/*현재 메뉴*/}
             <div
                 onClick={() => setMenuOpen(!menuOpen)}
-                className='relative flex w-full items-center justify-center bg-PRIMARY_COLOR py-3 text-xl font-semibold text-white 2xl:h-36 '
+                className='relative flex w-full items-center justify-center bg-gradient-to-tl from-PRIMARY_COLOR-300 to-PRIMARY_COLOR-200 py-3 text-2xl text-white 2xl:h-36 '
             >
                 {currentMenu?.title}
             </div>

@@ -6,6 +6,18 @@ import {
 } from "@heroicons/react/24/solid";
 
 function Index() {
+    type notice = {
+        category: NoticeCategory;
+        title: string;
+        content: string; //react-quill
+        writer: string;
+        createAt: string;
+        priority: boolean;
+        fileUrl: string[];
+    };
+
+    type NoticeCategory = "공지사항" | "보도자료" | "상시 안내";
+
     const posts = [
         {
             title: "2022 교육 빅테이터 응용 정보센터 소식 1",
@@ -96,7 +108,7 @@ function Index() {
                 {/**/}
                 <h1 className='my-4'>
                     전체{" "}
-                    <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR'>
+                    <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR-500'>
                         {posts.length}
                     </span>{" "}
                     건
@@ -104,7 +116,7 @@ function Index() {
                 {/*아래는 공지사항 테이블*/}
                 <table className='w-full table-auto border-t border-t-black'>
                     <thead>
-                        <tr className='bg-PRIMARY_COLOR/40 text-sm uppercase leading-normal text-gray-600'>
+                        <tr className='bg-PRIMARY_COLOR-500/40 text-sm uppercase leading-normal text-gray-600'>
                             <th className='w-16 py-3 text-center'>번호</th>
                             <th className='w-32 py-3 text-center'>분류</th>
                             <th className='py-3 text-center'>제목</th>
@@ -121,7 +133,7 @@ function Index() {
                                     className='relative border-b border-gray-200 hover:bg-gray-100'
                                 >
                                     <td className=''>
-                                        <InformationCircleIcon className='h-9 mx-auto items-center text-PRIMARY_COLOR' />
+                                        <InformationCircleIcon className='mx-auto h-9 items-center text-PRIMARY_COLOR-500' />
                                     </td>
                                     <td className='py-4 text-center'>
                                         {item.category}

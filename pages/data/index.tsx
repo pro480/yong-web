@@ -12,6 +12,39 @@ import React from "react";
 import PageTitle from "../../src/components/PageTitle";
 
 function Index() {
+    type Thesis = {
+        title: string;
+        writer: string;
+        createAt: string; // 논문이 출간 된 닐찌
+        fileUrl: string;
+        journal?: Journal[]; // journal 인용 목록, 없을 수도 있음
+    }; // 미리보기, modal 로 구현
+
+    type ResearchReport = {
+        titleKO: string;
+        titleEN: string;
+        writer: string;
+        coAuthor: string[];
+        writersNum: number; // 연구 참여자 수
+        pageNum: number;
+        createAt: string; // 발간년도
+        fileUrl: string;
+        index: string; // 목차
+        purpose: string; // 연구 목적
+        content: string; // 연구 내용
+        keyword: string[];
+        benefit: string; // 기대 효과
+        ifOpen: boolean; // 공개 여부
+        startedAt: string;
+        endedAt: string;
+        whyNotOpen: string;
+    }; //table, 상세페이지로 구현, https://www.kice.re.kr/resrchBoard/list.do?cate=1&m=030101&s=kice
+
+    type Journal = {
+        info: string;
+        year: number;
+    };
+
     const posts = [
         {
             title: "2022 빅데이터 관련 논문 1",
@@ -106,7 +139,7 @@ function Index() {
                 secondLink='/data'
             />
             <main>
-            <div className='mt-5 flex h-9 items-center justify-end'>
+                <div className='mt-5 flex h-9 items-center justify-end'>
                     <select className='h-full border pl-2 pr-7'>
                         <option>전체</option>
                         <option value='title '>제목</option>
@@ -114,11 +147,11 @@ function Index() {
                     </select>
 
                     <input className='ml-6 h-full w-32 border' />
-                    < MagnifyingGlassIcon className='h-full bg-PRIMARY_COLOR p-1 text-white' />
+                    <MagnifyingGlassIcon className='h-full bg-PRIMARY_COLOR-500 p-1 text-white' />
                 </div>
                 <h1 className='my-4'>
                     전체{" "}
-                    <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR'>
+                    <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR-500'>
                         {posts.length}
                     </span>{" "}
                     건
@@ -126,7 +159,7 @@ function Index() {
                 {/*테이블*/}
                 <table className='w-full table-auto border-t border-t-black'>
                     <thead>
-                        <tr className='w-full bg-PRIMARY_COLOR/40 text-sm uppercase leading-normal text-gray-600'>
+                        <tr className='w-full bg-PRIMARY_COLOR-500/40 text-sm uppercase leading-normal text-gray-600'>
                             <th className='w-32 py-3 text-center'>번호</th>
                             <th className='py-3 text-center'>논문/연구 제목</th>
                             <th className='w-1/6 py-3 text-center'>저자</th>
@@ -164,7 +197,7 @@ function Index() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 block border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='m-1 block border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             <ChevronDoubleLeftIcon className='h-3 w-3' />
                         </a>
@@ -173,7 +206,7 @@ function Index() {
                         <a
                             href='#'
                             aria-current='page'
-                            className='m-1 border border-PRIMARY_COLOR bg-white py-2 px-3 text-sm text-PRIMARY_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             1
                         </a>
@@ -182,7 +215,7 @@ function Index() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             2
                         </a>
@@ -190,7 +223,7 @@ function Index() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             3
                         </a>
@@ -199,7 +232,7 @@ function Index() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             4
                         </a>
@@ -207,7 +240,7 @@ function Index() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             5
                         </a>
@@ -215,7 +248,7 @@ function Index() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 block border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='m-1 block border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             <ChevronDoubleRightIcon className='h-3 w-3' />
                         </a>

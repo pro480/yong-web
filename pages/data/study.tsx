@@ -11,6 +11,17 @@ import React from "react";
 import PageTitle from "../../src/components/PageTitle";
 
 function Study() {
+    type StudyData = {
+        category: StudyCategory;
+        title: string;
+        writer: string;
+        createAt: string;
+        fileUrl: string;
+        content: string;
+    };
+
+    type StudyCategory = "에듀데이터사이언스/인공지능" | "교육 측정/평가";
+
     const posts = [
         {
             title: "2022 빅데이터 학습자료 1",
@@ -119,7 +130,7 @@ function Study() {
                     <a className='w-52 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
                         수업 3
                     </a>
-                    
+
                     <span className='w-full border-b'></span>
                 </div>
                 {/*검색창*/}
@@ -131,12 +142,12 @@ function Study() {
                     </select>
 
                     <input className='ml-6 h-full w-32 border' />
-                    <MagnifyingGlassIcon className='h-full bg-PRIMARY_COLOR p-1 text-white' />
+                    <MagnifyingGlassIcon className='h-full bg-PRIMARY_COLOR-500 p-1 text-white' />
                 </div>
-                
+
                 <h1 className='my-4'>
                     전체{" "}
-                    <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR'>
+                    <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR-500'>
                         {posts.length}
                     </span>{" "}
                     건
@@ -144,7 +155,7 @@ function Study() {
                 {/*테이블*/}
                 <table className='w-full table-auto border-t border-t-black'>
                     <thead>
-                        <tr className='w-full bg-PRIMARY_COLOR/40 text-sm uppercase leading-normal text-gray-600'>
+                        <tr className='w-full bg-PRIMARY_COLOR-500/40 text-sm uppercase leading-normal text-gray-600'>
                             <th className='w-32 py-3 text-center'>번호</th>
                             <th className='py-3 text-center'>제목</th>
                             <th className='w-1/6 py-3 text-center'>작성자</th>
@@ -158,16 +169,16 @@ function Study() {
                                 key={item.number}
                                 className='border-b border-gray-200 hover:bg-gray-100'
                             >
-                                <td className="py-4 text-center" >
+                                <td className='py-4 text-center'>
                                     {item.number}
                                 </td>
-                                <td className="px-12 text-left">
+                                <td className='px-12 text-left'>
                                     {item.title}
                                 </td>
-                                <td className="text-center">{item.writer}</td>
-                                <td className="text-center">{item.createAt}</td>
+                                <td className='text-center'>{item.writer}</td>
+                                <td className='text-center'>{item.createAt}</td>
                                 <td>
-                                    <DocumentArrowDownIcon className='h-8 w-8 mx-auto' />
+                                    <DocumentArrowDownIcon className='mx-auto h-8 w-8' />
                                 </td>
                             </tr>
                         ))}
@@ -180,7 +191,7 @@ function Study() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 block border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='text-PRIMARY_FONT_COLOR m-1 block border border-black bg-white py-2 px-3 text-sm hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             <ChevronDoubleLeftIcon className='h-3 w-3' />
                         </a>
@@ -189,7 +200,7 @@ function Study() {
                         <a
                             href='#'
                             aria-current='page'
-                            className='m-1 border border-PRIMARY_COLOR bg-white py-2 px-3 text-sm text-PRIMARY_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             1
                         </a>
@@ -198,7 +209,7 @@ function Study() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='text-PRIMARY_FONT_COLOR m-1 border border-black bg-white py-2 px-3 text-sm hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             2
                         </a>
@@ -206,7 +217,7 @@ function Study() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='text-PRIMARY_FONT_COLOR m-1 border border-black bg-white py-2 px-3 text-sm hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             3
                         </a>
@@ -215,7 +226,7 @@ function Study() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='text-PRIMARY_FONT_COLOR m-1 border border-black bg-white py-2 px-3 text-sm hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             4
                         </a>
@@ -223,7 +234,7 @@ function Study() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='text-PRIMARY_FONT_COLOR m-1 border border-black bg-white py-2 px-3 text-sm hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             5
                         </a>
@@ -231,7 +242,7 @@ function Study() {
                     <li>
                         <a
                             href='#'
-                            className='m-1 block border border-black bg-white py-2 px-3 text-sm text-PRIMARY_FONT_COLOR hover:border-PRIMARY_COLOR hover:bg-FOOTER_FONT_COLOR hover:text-PRIMARY_COLOR'
+                            className='text-PRIMARY_FONT_COLOR m-1 block border border-black bg-white py-2 px-3 text-sm hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         >
                             <ChevronDoubleRightIcon className='h-3 w-3' />
                         </a>

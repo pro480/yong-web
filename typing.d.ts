@@ -17,3 +17,4 @@ export interface SiteMap {
     data: SubMap
     notice: SubMap
 }
+

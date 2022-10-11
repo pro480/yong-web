@@ -35,14 +35,14 @@ function SideBarMenu({subTitle}: Props) {
                 <div>{subTitle.title}</div>
                 {subTitle.subMenu.length > 0 &&
                     (isOpen ? (
-                        <ChevronUpIcon className='h-5 text-PRIMARY_COLOR'/>
+                        <ChevronUpIcon className='h-5 text-PRIMARY_COLOR-500'/>
                     ) : (
-                        <ChevronDownIcon className='h-5 text-PRIMARY_COLOR'/>
+                        <ChevronDownIcon className='h-5 text-PRIMARY_COLOR-500'/>
                     ))}
             </div>
             {/*사이트 바 메뉴 하위*/}
             {isOpen && (
-                <ul className='flex flex-col gap-y-2 bg-SUBMENU_COLOR p-5 text-sm font-semibold text-gray-400'>
+                <ul className='flex flex-col gap-y-2 bg-white p-5 text-sm font-semibold text-gray-400'>
                     {subTitle.subMenu.map((subMenu, index) => (
                         <Link key={index} href={subMenu.href}>
                             <li className="cursor-pointer before:mr-2 before:content-['\2022']">

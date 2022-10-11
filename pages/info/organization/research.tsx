@@ -25,7 +25,7 @@ function Research() {
             {/* 이메일 링크 a태그 추가 */}
             <table className='w-full min-w-max table-auto border-t border-t-black'>
                 <thead>
-                    <tr className='bg-PRIMARY_COLOR/40 text-sm uppercase leading-normal text-gray-600'>
+                    <tr className='bg-PRIMARY_COLOR-500/40 text-sm uppercase leading-normal text-gray-600'>
                         <th className='w-20 py-3 text-center'>구분</th>
                         <th className='w-12 py-3 text-center'>NO</th>
                         <th className='w-1/5 text-center'>성명</th>

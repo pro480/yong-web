@@ -16,7 +16,7 @@ function Index() {
 
             {/* 비전 제목 */}
             <div className = "pb-12">
-                <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR pb-2 text-2xl font-semibold text-PRIMARY_COLOR'>
+                <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                         Center Vision
                 </h1>
             </div>
@@ -51,7 +51,7 @@ function Index() {
 
             {/* 주요 기능 제목 */}
             <div className = "pb-12">
-                <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR pb-2 text-2xl font-semibold text-PRIMARY_COLOR'>
+                <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                         Main Function
                 </h1>
             </div>

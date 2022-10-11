@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import PageTitle from "../../src/components/PageTitle";
 
 function Member() {
+    type member = {
+        imageUrl: string;
+        name: string;
+        history: string;
+        major: string;
+        email: string;
+        belong: string;
+    };
+
+    const [state, setState] = useState();
+
     return (
         <div>
             <PageTitle
@@ -15,7 +26,7 @@ function Member() {
             {/*센터장 소개란*/}
             <section className='pb-12'>
                 <header className='flex pb-12 '>
-                    <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR pb-2 text-2xl font-semibold text-PRIMARY_COLOR'>
+                    <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                         Center Leader
                     </h1>
                     <span className='w-full border-b'></span>
@@ -27,7 +38,7 @@ function Member() {
                         넣어주세요.
                     </div>
                     <div>
-                        <h1 className='pb-12 text-3xl font-semibold text-PRIMARY_COLOR'>
+                        <h1 className='pb-12 text-3xl font-semibold text-PRIMARY_COLOR-500'>
                             Yong Sang Lee
                         </h1>
                         <div>
@@ -42,7 +53,7 @@ function Member() {
             {/*연구 자문단 소개란*/}
             <section className='pb-12'>
                 <header className='flex pb-12 '>
-                    <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR pb-2 text-2xl font-semibold text-PRIMARY_COLOR'>
+                    <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                         Research Advisory Group
                     </h1>
                     <span className='w-full border-b'></span>
@@ -55,10 +66,10 @@ function Member() {
                             넣어주세요.
                         </div>
                         <div>
-                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR'>
+                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                                 Yong Sang Lee
                             </h1>
-                            <div className="text-sm">
+                            <div className='text-sm'>
                                 이곳은 구성원 소개란 입니다.
                                 <br />
                                 구성원 소개글을 작성해주세요.
@@ -72,10 +83,10 @@ function Member() {
                             넣어주세요.
                         </div>
                         <div>
-                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR'>
+                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                                 Yong Sang Lee
                             </h1>
-                            <div className="text-sm">
+                            <div className='text-sm'>
                                 이곳은 구성원 소개란 입니다.
                                 <br />
                                 구성원 소개글을 작성해주세요.
@@ -87,7 +98,7 @@ function Member() {
             {/*연구 윤리 자문단 소개란*/}
             <section className='pb-12'>
                 <header className='flex pb-12 '>
-                    <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR pb-2 text-2xl font-semibold text-PRIMARY_COLOR'>
+                    <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                         Research Ethics Advisory Group
                     </h1>
                     <span className='w-full border-b'></span>
@@ -100,10 +111,10 @@ function Member() {
                             넣어주세요.
                         </div>
                         <div>
-                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR'>
+                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                                 Yong Sang Lee
                             </h1>
-                            <div className="text-sm">
+                            <div className='text-sm'>
                                 이곳은 구성원 소개란 입니다.
                                 <br />
                                 구성원 소개글을 작성해주세요.
@@ -117,10 +128,10 @@ function Member() {
                             넣어주세요.
                         </div>
                         <div>
-                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR'>
+                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                                 Yong Sang Lee
                             </h1>
-                            <div className="text-sm">
+                            <div className='text-sm'>
                                 이곳은 구성원 소개란 입니다.
                                 <br />
                                 구성원 소개글을 작성해주세요.
@@ -133,7 +144,7 @@ function Member() {
             {/*연구협력 네트워크 소개란*/}
             <section className='pb-12'>
                 <header className='flex pb-12 '>
-                    <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR pb-2 text-2xl font-semibold text-PRIMARY_COLOR'>
+                    <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                         {" "}
                         Research Collaboration Network
                     </h1>
@@ -147,10 +158,10 @@ function Member() {
                             넣어주세요.
                         </div>
                         <div>
-                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR'>
+                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                                 Yong Sang Lee
                             </h1>
-                            <div className="text-sm">
+                            <div className='text-sm'>
                                 이곳은 구성원 소개란 입니다.
                                 <br />
                                 구성원 소개글을 작성해주세요.
@@ -164,10 +175,10 @@ function Member() {
                             넣어주세요.
                         </div>
                         <div>
-                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR'>
+                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                                 Yong Sang Lee
                             </h1>
-                            <div className="text-sm">
+                            <div className='text-sm'>
                                 이곳은 구성원 소개란 입니다.
                                 <br />
                                 구성원 소개글을 작성해주세요.
@@ -180,7 +191,7 @@ function Member() {
             {/*데이터 분석팀 소개란*/}
             <section className='pb-12'>
                 <header className='flex pb-12 '>
-                    <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR pb-2 text-2xl font-semibold text-PRIMARY_COLOR'>
+                    <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                         Data Analytics Team
                     </h1>
                     <span className='w-full border-b'></span>
@@ -193,10 +204,10 @@ function Member() {
                             넣어주세요.
                         </div>
                         <div>
-                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR'>
+                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                                 Yong Sang Lee
                             </h1>
-                            <div className="text-sm">
+                            <div className='text-sm'>
                                 이곳은 구성원 소개란 입니다.
                                 <br />
                                 구성원 소개글을 작성해주세요.
@@ -210,10 +221,10 @@ function Member() {
                             넣어주세요.
                         </div>
                         <div>
-                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR'>
+                            <h1 className='pb-5 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                                 Yong Sang Lee
                             </h1>
-                            <div className="text-sm">
+                            <div className='text-sm'>
                                 이곳은 구성원 소개란 입니다.
                                 <br />
                                 구성원 소개글을 작성해주세요.

@@ -20,7 +20,7 @@ function Index() {
             />
 
             <div className='pb-12'>
-                <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR pb-2 text-2xl font-semibold text-PRIMARY_COLOR'>
+                <h1 className='h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500'>
                     Center Organization Chart
                 </h1>
             </div>

@@ -7,7 +7,7 @@ interface Props {
 
 function OrganizationBanner({ title, description }: Props) {
     return (
-        <div className='relative mb-10 flex h-80 flex-col items-center justify-center bg-gray-300 text-PRIMARY_COLOR'>
+        <div className='relative mb-10 flex h-80 flex-col items-center justify-center bg-gray-300 text-PRIMARY_COLOR-500'>
             <div className='absolute top-5 text-black'>
                 해당 조직에 대한 이미지가 들어갈 공간입니다
             </div>
