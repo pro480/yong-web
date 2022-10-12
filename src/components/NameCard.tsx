@@ -71,16 +71,18 @@ function NameCard(member: Member) {
                     >
                         약력
                     </div>
-                    {member.history.map((history, index) => (
-                        <div
-                            key={index}
-                            className={`h-fit min-w-1/2 border-l-2 ${
-                                isBig ? "text-base" : "text-"
-                            } border-l-PRIMARY_COLOR-200 pl-2`}
-                        >
-                            {history}
-                        </div>
-                    ))}
+                    <article className='flex w-full flex-wrap'>
+                        {member.history.map((history, index) => (
+                            <div
+                                key={index}
+                                className={`h-fit min-w-[50%] border-l-2 ${
+                                    isBig ? "text-base" : "text-"
+                                } border-l-PRIMARY_COLOR-200 pl-2`}
+                            >
+                                {history}
+                            </div>
+                        ))}
+                    </article>
                 </div>
             </div>
         </div>
