@@ -186,10 +186,10 @@ function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
                 </div>
                 <div>
                     <label className='flex'>
-                        <div className='flex w-1/6 flex-col'>
+                        <div className='flex w-1/6 flex-col gap-y-2'>
                             약력 (최대 8개)
                             <button
-                                className='flex'
+                                className='flex w-fit border bg-PRIMARY_COLOR-50 px-2'
                                 onClick={(e) => {
                                     e.preventDefault();
                                     addHistory();
@@ -198,7 +198,7 @@ function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
                                 약력 추가
                             </button>
                             <button
-                                className='flex'
+                                className='flex w-fit border bg-PRIMARY_COLOR-50 px-2'
                                 onClick={(e) => {
                                     e.preventDefault();
                                     deleteHistory();
@@ -252,7 +252,19 @@ function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
                         </select>
                     </label>
                 </div>
-                <input className='w-full' type='submit' />
+                <div className=' self-center'>
+                    <input
+                        className='mr-10 w-fit cursor-pointer self-center border bg-PRIMARY_COLOR-50 px-6 py-1'
+                        type='submit'
+                        value='센터 구성원 추가'
+                    />
+                    <button
+                        onClick={() => setModalOpen(false)}
+                        className='w-fit cursor-pointer self-center border bg-PRIMARY_COLOR-50 px-6 py-1'
+                    >
+                        취소
+                    </button>
+                </div>
             </div>
         </form>
     );
