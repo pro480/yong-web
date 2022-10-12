@@ -22,12 +22,11 @@ export interface Member {
     imageUrl: string;
     name: string;
     history: string[];
-    major: string;
     email: string;
     team: MemberTeam;
+    major?: string;
     division?: string;
 }
-
 export type MemberTeam =
     | "센터장"
     | "연구협력 네트워크"

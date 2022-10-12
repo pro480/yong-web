@@ -8,6 +8,6 @@
     }
 
     .organizationTitle {
-        @apply h-full whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500;
+        @apply h-full whitespace-nowrap w-fit border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500;
     }
 }

@@ -1,16 +1,23 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Member } from "../../typing";
 import Image from "next/image";
 import { ImMail4 } from "react-icons/im";
 
 function NameCard(member: Member) {
     const cardRef = useRef<HTMLDivElement>(null);
-    const width = cardRef.current?.clientWidth;
-    console.log(width);
+    const [isBig, setIsBig] = useState(false);
+
+    useEffect(() => {
+        if (cardRef.current!.clientWidth > 800) {
+            setIsBig(true);
+        }
+    }, []);
+
+    console.log(isBig);
 
     return (
-        <div ref={cardRef} className='flex h-full gap-x-8'>
-            {/*로고 사이즈*/}
+        <div ref={cardRef} className='flex h-full  w-full gap-x-8'>
+            {/*이미지 사이즈*/}
             <div className='relative flex h-full w-1/4 border'>
                 <Image
                     src={member.imageUrl}
@@ -22,35 +29,54 @@ function NameCard(member: Member) {
                 />
             </div>
             {/*오른쪽 설명*/}
-            <div className='flex h-full w-full flex-col gap-y-3'>
-                {/*이름, 이메일*/}
-                <header className='relative flex w-full items-end gap-x-6'>
-                    <h1 className='text-4xl font-semibold text-PRIMARY_COLOR-500'>
+            <div className='flex h-full w-3/4 flex-col gap-y-3 py-2'>
+                {/*이름, 관심분야, 이메일*/}
+                <header
+                    className={`flex w-full items-end ${
+                        isBig ? "gap-x-6" : "gap-x-3"
+                    }`}
+                >
+                    <h1
+                        className={` ${
+                            isBig ? "text-4xl" : "text-2xl"
+                        } font-semibold text-PRIMARY_COLOR-500`}
+                    >
                         {member.name}
                     </h1>
-                    <div className='flex text-PRIMARY_COLOR-500 '>
-                        주요 관심 분야 : {member.major}
-                    </div>
+                    {member.major && (
+                        <div
+                            className={`flex ${
+                                isBig ? "text-base" : "text-xs"
+                            } text-PRIMARY_COLOR-500 `}
+                        >
+                            {member.major}
+                        </div>
+                    )}
+
                     <a
                         href={`mailto:${member.email}`}
-                        className='text-lg hover:underline'
+                        className={`${
+                            isBig ? "text-lg" : "text-sm"
+                        }  hover:underline`}
                     >
                         {member.email}
-                        <ImMail4
-                            className='my-auto mx-auto ml-2 inline h-full'
-                            size={16}
-                        />
                     </a>
                 </header>
 
                 <div className='flex h-full w-full flex-wrap text-sm'>
-                    <div className='my-2 flex h-fit w-full items-center text-xl text-PRIMARY_COLOR-500'>
+                    <div
+                        className={`my-2 flex h-fit w-full items-center ${
+                            isBig ? "text-xl" : "text-base"
+                        } text-PRIMARY_COLOR-500`}
+                    >
                         약력
                     </div>
                     {member.history.map((history, index) => (
                         <div
                             key={index}
-                            className='h-fit w-1/2 border-l-2 border-l-PRIMARY_COLOR-200 pl-2'
+                            className={`h-fit min-w-1/2 border-l-2 ${
+                                isBig ? "text-base" : "text-"
+                            } border-l-PRIMARY_COLOR-200 pl-2`}
                         >
                             {history}
                         </div>
