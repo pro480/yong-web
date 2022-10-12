@@ -8,6 +8,7 @@ module.exports = {
             "www.nia.or.kr",
             "bit.ly",
             "p-yong21c.inha.ac.kr",
+            "firebasestorage.googleapis.com",
         ],
     },
 };
