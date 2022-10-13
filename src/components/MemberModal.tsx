@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction, useCallback, useState } from "react";
-import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { Member, MemberTeam } from "../../typing";
 import { CollectionReference } from "@firebase/firestore";
 import { useFirestoreCollectionMutation } from "@react-query-firebase/firestore";
@@ -20,6 +20,7 @@ interface Inputs {
     team: MemberTeam;
     major?: string;
     division?: string;
+    department: string;
 }
 
 function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
@@ -89,6 +90,7 @@ function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
                         name: data.name,
                         imageUrl: downloadURL,
                         division: data.division,
+                        department: data.department,
                     });
                 });
                 setModalOpen(false);
@@ -125,7 +127,7 @@ function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
             {/*이미지 입력 란*/}
             <div className='h-full w-1/4 flex-col border p-2'>
                 <label>
-                    이미지
+                    이미지 파일의 이름은 이름과 동일하게 해주세요(ex. 이용상)
                     <input
                         className=''
                         type='file'
@@ -231,6 +233,14 @@ function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
                 <div>
                     <label>
                         소속
+                        <input
+                            className=' mx-2 h-7 w-96  border border-gray-700 pl-3'
+                            placeholder='소속(ex. 인하대학교 교육학과 교수)'
+                            {...register("department", { required: true })}
+                        />
+                    </label>
+                    <label>
+                        센터 조직
                         <input
                             className=' mx-2 h-7 border  border-gray-700 bg-gray-300  pl-3'
                             placeholder='소속'
