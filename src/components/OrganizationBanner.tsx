@@ -21,6 +21,7 @@ function OrganizationBanner({ title, description, image }: Props) {
                         objectPosition='center'
                         alt='로고'
                         priority={true}
+                        quality={75}
                     />
                 </div>
             </div>
