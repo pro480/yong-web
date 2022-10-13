@@ -1,8 +1,8 @@
 import React from "react";
-import { ImMail4 } from "react-icons/im";
 import PageTitle from "../../../src/components/PageTitle";
 import OrganizationBanner from "../../../src/components/OrganizationBanner";
 import OrganizationTable from "../../../src/components/OrganizationTable";
+import ethicsImage from "../../../public/images/organization/ethicsBanner.jpg";
 
 function Ethics() {
     return (
@@ -21,7 +21,7 @@ function Ethics() {
             <OrganizationBanner
                 title='Research Ethics Advisory Team'
                 description='연구 윤리 자문단에 대한 설명을 적어주세요'
-                imageUrl='/images/organization/ethicsBanner.jpg'
+                image={ethicsImage}
             />
 
             {/* 이메일 링크 a태그 추가 */}

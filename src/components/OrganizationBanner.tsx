@@ -1,13 +1,13 @@
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface Props {
     title: string;
     description: string;
-    imageUrl: string;
+    image: StaticImageData;
 }
 
-function OrganizationBanner({ title, description, imageUrl }: Props) {
+function OrganizationBanner({ title, description, image }: Props) {
     return (
         <div className='relative mb-10 flex text-white'>
             {/*로고 투명도 조절*/}
@@ -15,7 +15,7 @@ function OrganizationBanner({ title, description, imageUrl }: Props) {
                 {/*로고 사이즈*/}
                 <div className='relative -z-10 flex h-80'>
                     <Image
-                        src={imageUrl}
+                        src={image}
                         layout='fill'
                         objectFit='cover'
                         objectPosition='center'

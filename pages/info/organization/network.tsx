@@ -1,20 +1,8 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
-import { ImMail4 } from "react-icons/im";
 import OrganizationBanner from "../../../src/components/OrganizationBanner";
-import {
-    collection,
-    DocumentData,
-    query,
-    QueryDocumentSnapshot,
-    SnapshotOptions,
-    WithFieldValue,
-} from "@firebase/firestore";
-import { Member } from "../../../typing";
-import { db } from "../../../firebase";
-import { useFirestoreQuery } from "@react-query-firebase/firestore";
-import memberConverter from "../../../src/utils/firebase/memberConverter";
 import OrganizationTable from "../../../src/components/OrganizationTable";
+import networkImage from "../../../public/images/organization/networkBanner.jpg";
 
 function Network() {
     return (
@@ -33,7 +21,7 @@ function Network() {
             <OrganizationBanner
                 title='Research Collaboration Network'
                 description='조직에 대한 설명을 적어주세요'
-                imageUrl='/images/organization/networkBanner.jpg'
+                image={networkImage}
             />
 
             {/* 이메일 링크 a태그 추가 */}

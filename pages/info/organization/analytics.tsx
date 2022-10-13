@@ -1,8 +1,8 @@
 import React from "react";
-import { ImMail4 } from "react-icons/im";
 import PageTitle from "../../../src/components/PageTitle";
 import OrganizationBanner from "../../../src/components/OrganizationBanner";
 import OrganizationTable from "../../../src/components/OrganizationTable";
+import analyticsImage from "../../../public/images/organization/analytics.jpg";
 
 function Analytics() {
     return (
@@ -21,7 +21,7 @@ function Analytics() {
             <OrganizationBanner
                 title='Data Analysis Research Team'
                 description='데이터분석 연구팀에 대한 설명을 적어주세요'
-                imageUrl='/images/organization/analytics.jpg'
+                image={analyticsImage}
             />
             <OrganizationTable team='데이터 분석팀' />
         </div>

@@ -1,21 +1,11 @@
 import React from "react";
-import { ImMail4 } from "react-icons/im";
 import PageTitle from "../../../src/components/PageTitle";
 import OrganizationBanner from "../../../src/components/OrganizationBanner";
-import { collection, query } from "@firebase/firestore";
-import { db } from "../../../firebase";
-import { Member } from "../../../typing";
-import memberConverter from "../../../src/utils/firebase/memberConverter";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import OrganizationTable from "../../../src/components/OrganizationTable";
+import researchImage from "../../../public/images/organization/researchBanner.jpg";
 
 function Research() {
-    const membersRef = query(collection(db, "members")).withConverter<Member>(
-        memberConverter
-    );
-
-    const membersQuery = useFirestoreQuery<Member>(["members"], membersRef);
-
     return (
         <div>
             <PageTitle
@@ -32,7 +22,7 @@ function Research() {
             <OrganizationBanner
                 title='Research Advisory Team'
                 description='연구 자문단에 대한 설명을 적어주세요'
-                imageUrl='/images/organization/researchBanner.jpg'
+                image={researchImage}
             />
 
             <OrganizationTable team='연구 자문단' />
