@@ -20,6 +20,7 @@ function OrganizationBanner({ title, description, imageUrl }: Props) {
                         objectFit='cover'
                         objectPosition='center'
                         alt='로고'
+                        priority={true}
                     />
                 </div>
             </div>

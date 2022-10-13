@@ -16,10 +16,6 @@ function Research() {
 
     const membersQuery = useFirestoreQuery<Member>(["members"], membersRef);
 
-    const memberSnapshot = membersQuery.data;
-
-    let count = 0;
-
     return (
         <div>
             <PageTitle
@@ -36,7 +32,7 @@ function Research() {
             <OrganizationBanner
                 title='Research Advisory Team'
                 description='연구 자문단에 대한 설명을 적어주세요'
-                imageUrl='/images/organization/researchBanner2.jpg'
+                imageUrl='/images/organization/researchBanner.jpg'
             />
 
             <OrganizationTable team='연구 자문단' />
