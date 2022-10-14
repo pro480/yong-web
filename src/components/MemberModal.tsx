@@ -1,43 +1,158 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Member, MemberTeam } from "../../typing";
-import { CollectionReference } from "@firebase/firestore";
-import { useFirestoreCollectionMutation } from "@react-query-firebase/firestore";
+import { collection, CollectionReference, doc } from "@firebase/firestore";
+import {
+    useFirestoreCollectionMutation,
+    useFirestoreDocumentMutation,
+} from "@react-query-firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import { storage } from "../../firebase";
+import { db, storage } from "../../firebase";
+import Image from "next/image";
 
 interface Props {
     memberRef: CollectionReference<Member>;
     team: MemberTeam;
     setModalOpen: Dispatch<SetStateAction<boolean>>;
-    member?: Member;
+    selectedDocument?: string | null | undefined;
+    selectedMember?: Member | null | undefined;
+    setSelectedMember: Dispatch<React.SetStateAction<Member | undefined>>;
 }
 interface Inputs {
-    imageUrl: File[];
     name: string;
     history: string[];
     email: string;
     team: MemberTeam;
+    imageFile: File[];
     major?: string;
     division?: string;
     department: string;
 }
 
-function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
-    const [historyList, setHistoryList] = useState([0]);
+function MemberModal({
+    memberRef,
+    selectedMember,
+    team,
+    setModalOpen,
+    selectedDocument,
+    setSelectedMember,
+}: Props) {
+    const [historyList, setHistoryList] = useState<string[]>([""]);
+    const [editImage, setEditImage] = useState(false);
     const membersRef = memberRef;
+
+    useEffect(() => {
+        if (selectedMember) {
+            let newHistoryList = [...selectedMember.history];
+            setHistoryList(newHistoryList);
+        } else {
+        }
+    }, []);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<Inputs>();
+    } = useForm<Inputs>({
+        defaultValues: {
+            department: selectedMember?.department,
+            division: selectedMember?.division,
+            email: selectedMember?.email,
+            history: selectedMember?.history,
+            major: selectedMember?.major,
+            name: selectedMember?.name,
+            team: selectedMember?.team,
+        },
+    });
 
-    // firebase members 컬렉션에 문서 추가하기 위한 작ㅇ버
+    // firebase members 컬렉션에 문서 추가하기 위한 작업
     const addMutation = useFirestoreCollectionMutation(membersRef);
+    // firebase members 컬렉션에 있는 특정 문서를 수정하기 위한 작업
+    const updateMutation = useFirestoreDocumentMutation(
+        doc(collection(db, "members"), `${selectedDocument}`),
+        { merge: true }
+    );
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        let file = data.imageUrl[0];
+    const onUpdateMember: SubmitHandler<Inputs> = (data) => {
+        if (editImage) {
+            let file = data.imageFile[0];
+            const storageRef = ref(storage, "images/" + file.name);
+            const uploadImage = uploadBytesResumable(storageRef, file);
+
+            uploadImage.on(
+                "state_changed",
+                (snapshot) => {
+                    // 이미지 업로드가 얼마나 진행됐는지 알려주는 상태
+                    const progress =
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log("Upload is " + progress + "% done");
+                    switch (snapshot.state) {
+                        case "paused":
+                            console.log("Upload is paused");
+                            break;
+                        case "running":
+                            console.log("Upload is running");
+                            break;
+                    }
+                },
+
+                (error) => {
+                    // 아래는 에러 처리 코드, 여기서는 3가지 경우만 했지만 아래 사이트를 참고하면 모든 에러를 볼 수 있다.
+                    // https://firebase.google.com/docs/storage/web/handle-errors
+                    switch (error.code) {
+                        case "storage/unauthorized":
+                            // 유저에게 업로드 권한이 없는 경우, firebase storage 의 Rules 를 확인하자
+                            console.log(error);
+                            break;
+                        case "storage/canceled":
+                            // 유저가 업로드를 취소한 경우
+                            console.log(error);
+                            break;
+                        case "storage/unknown":
+                            // 알수 없는 에러, 아마도 서버측 에러?
+                            console.log(error);
+                            break;
+                    }
+                },
+                () => {
+                    // 업로드가 성공하면 업로드 주소를 가져오고 addMutation.mutate 함수를 실행해 문서를 추가한다
+                    getDownloadURL(uploadImage.snapshot.ref).then(
+                        (downloadURL) => {
+                            updateMutation.mutate({
+                                email: data.email,
+                                major: data.major,
+                                history: data.history.slice(
+                                    0,
+                                    historyList.length
+                                ),
+                                team: data.team,
+                                name: data.name,
+                                imageUrl: downloadURL,
+                                division: data.division,
+                                department: data.department,
+                            });
+                        }
+                    );
+                    setModalOpen(false);
+                }
+            );
+        } else {
+            updateMutation.mutate({
+                email: data.email,
+                major: data.major,
+                history: data.history.slice(0, historyList.length),
+                team: data.team,
+                name: data.name,
+                division: data.division,
+                department: data.department,
+            });
+            setModalOpen(false);
+        }
+    };
+
+    const onAddMember: SubmitHandler<Inputs> = (data) => {
+        console.log(data.imageFile);
+        let file = data.imageFile[0];
         const storageRef = ref(storage, "images/" + file.name);
         const uploadImage = uploadBytesResumable(storageRef, file);
 
@@ -82,10 +197,7 @@ function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
                     addMutation.mutate({
                         email: data.email,
                         major: data.major,
-                        history: data.history
-                            .slice(0, historyList.length)
-                            .map((item) => item.trim())
-                            .filter(Boolean),
+                        history: data.history.slice(0, historyList.length),
                         team: data.team,
                         name: data.name,
                         imageUrl: downloadURL,
@@ -100,46 +212,65 @@ function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
 
     // 약력 입력란 추가
     const addHistory = () => {
-        let historyArr = [...historyList];
-        let historyNum = historyArr.slice(-1)[0];
-        if (historyNum < 7) {
-            historyNum++;
-            historyArr.push(historyNum);
-            setHistoryList(historyArr);
+        if (historyList.length < 8) {
+            let newHistoryList = [...historyList];
+            newHistoryList.push("");
+            setHistoryList(newHistoryList);
         }
     };
 
     // 약력 입력란 삭제
     const deleteHistory = () => {
-        let historyArr = [...historyList];
-        let historyNum = historyArr.slice(-1)[0];
-        if (historyNum > 0) {
-            historyArr.pop();
-            setHistoryList(historyArr);
+        if (historyList.length > 1) {
+            let newHistoryList = [...historyList];
+            newHistoryList.pop();
+            setHistoryList(newHistoryList);
         }
     };
 
     return (
+        // Props로 받은 member가 있으면 해당 멤버를 업데이트 하고, 아니면 새로 추가한다.
         <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={
+                selectedMember
+                    ? handleSubmit(onUpdateMember)
+                    : handleSubmit(onAddMember)
+            }
             className='min-h-44 relative flex w-full flex-wrap bg-gray-300 p-4'
         >
             {/*이미지 입력 란*/}
-            <div className='h-full w-1/4 flex-col border p-2'>
-                <label>
-                    이미지 파일의 이름은 이름과 동일하게 해주세요(ex. 이용상)
-                    <input
-                        className=''
-                        type='file'
-                        {...register("imageUrl", { required: true })}
+            {selectedMember && !editImage ? (
+                <div className='relative h-80 w-1/4 flex-col border p-2'>
+                    <Image
+                        src={selectedMember.imageUrl}
+                        layout='fill'
+                        objectFit='cover'
                     />
-                    {errors.imageUrl && (
-                        <p className='text-sm text-SUB_COLOR-500'>
-                            정확한 사진을 입력해주세요
-                        </p>
-                    )}
-                </label>
-            </div>
+                    <button
+                        className='absolute right-2 bottom-2 z-50 border bg-GRAY_COLOR-600 text-sm'
+                        onClick={() => setEditImage(true)}
+                    >
+                        이미지 수정
+                    </button>
+                </div>
+            ) : (
+                <div className='h-full w-1/4 flex-col border p-2'>
+                    <label>
+                        이미지 파일의 이름은 이름과 동일하게 해주세요(ex.
+                        이용상)
+                        <input
+                            type='file'
+                            {...register("imageFile", { required: true })}
+                        />
+                        {errors.imageFile && (
+                            <p className='text-sm text-SUB_COLOR-500'>
+                                정확한 사진을 입력해주세요
+                            </p>
+                        )}
+                    </label>
+                </div>
+            )}
+
             {/*우측 입력란*/}
             <div className='flex w-3/4 flex-col gap-y-2 p-2'>
                 <div className='flex'>
@@ -211,10 +342,10 @@ function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
                         </div>
 
                         <div className='w-5/6'>
-                            {historyList?.map((item, index) => (
+                            {historyList.map((history, index) => (
                                 <input
                                     key={index}
-                                    className=' m-1 h-7 w-[30%] border border-gray-700  pl-3'
+                                    className='m-1 h-7 w-[30%] border border-gray-700  pl-3'
                                     type='history'
                                     placeholder='약력'
                                     {...register(`history.${index}`, {
@@ -266,10 +397,13 @@ function MemberModal({ memberRef, member, team, setModalOpen }: Props) {
                     <input
                         className='mr-10 w-fit cursor-pointer self-center border bg-PRIMARY_COLOR-50 px-6 py-1'
                         type='submit'
-                        value='센터 구성원 추가'
+                        value={selectedMember ? "편집" : "추가"}
                     />
                     <button
-                        onClick={() => setModalOpen(false)}
+                        onClick={() => {
+                            setModalOpen(false);
+                            setSelectedMember(undefined);
+                        }}
                         className='w-fit cursor-pointer self-center border bg-PRIMARY_COLOR-50 px-6 py-1'
                     >
                         취소
