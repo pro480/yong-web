@@ -1,19 +1,38 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Dispatch, useRef } from "react";
 import { Member } from "../../typing";
 import Image from "next/image";
-import { ImMail4 } from "react-icons/im";
+import useAuth from "../hooks/useAuth";
+import { db } from "../../firebase";
+import { collection, doc } from "@firebase/firestore";
+import { useFirestoreDocumentDeletion } from "@react-query-firebase/firestore";
+import memberConverter from "../utils/firebase/memberConverter";
 
-function NameCard(member: Member) {
+interface Props {
+    member: Member;
+    documentID: string;
+    setModalOpen: Dispatch<React.SetStateAction<boolean>>;
+    setSelectedMember: Dispatch<React.SetStateAction<Member | undefined>>;
+    setSelectedDocument: Dispatch<
+        React.SetStateAction<string | null | undefined>
+    >;
+}
+
+function NameCard({
+    member,
+    documentID,
+    setSelectedMember,
+    setModalOpen,
+    setSelectedDocument,
+}: Props) {
+    const { user } = useAuth();
+
     const cardRef = useRef<HTMLDivElement>(null);
-    const [isBig, setIsBig] = useState(false);
-
-    useEffect(() => {
-        if (cardRef.current!.clientWidth > 800) {
-            setIsBig(true);
-        }
-    }, []);
-
-    console.log(isBig);
+    const isCenterLeader = member.team === "센터장";
+    const membersCollection = collection(db, "members").withConverter<Member>(
+        memberConverter
+    );
+    const membersRef = doc(membersCollection, `${documentID}`);
+    const deleteMutation = useFirestoreDocumentDeletion(membersRef);
 
     return (
         <div ref={cardRef} className='flex h-full  w-full gap-x-8'>
@@ -25,7 +44,8 @@ function NameCard(member: Member) {
                     objectFit='cover'
                     objectPosition='center'
                     alt='멤버사진'
-                    priority={true}
+                    priority={isCenterLeader}
+                    quality={50}
                 />
             </div>
             {/*오른쪽 설명*/}
@@ -33,12 +53,12 @@ function NameCard(member: Member) {
                 {/*이름, 관심분야, 이메일*/}
                 <header
                     className={`flex w-full items-end ${
-                        isBig ? "gap-x-6" : "gap-x-3"
+                        isCenterLeader ? "gap-x-6" : "gap-x-3"
                     }`}
                 >
                     <h1
                         className={` ${
-                            isBig ? "text-4xl" : "text-2xl"
+                            isCenterLeader ? "text-4xl" : "text-2xl"
                         } font-semibold text-PRIMARY_COLOR-500`}
                     >
                         {member.name}
@@ -46,7 +66,7 @@ function NameCard(member: Member) {
                     {member.major && (
                         <div
                             className={`flex ${
-                                isBig ? "text-base" : "text-xs"
+                                isCenterLeader ? "text-base" : "text-xs"
                             } text-PRIMARY_COLOR-500 `}
                         >
                             {member.major}
@@ -56,7 +76,7 @@ function NameCard(member: Member) {
                     <a
                         href={`mailto:${member.email}`}
                         className={`${
-                            isBig ? "text-lg" : "text-sm"
+                            isCenterLeader ? "text-lg" : "text-sm"
                         }  hover:underline`}
                     >
                         {member.email}
@@ -65,18 +85,41 @@ function NameCard(member: Member) {
 
                 <div className='flex h-full w-full flex-wrap text-sm'>
                     <div
-                        className={`my-2 flex h-fit w-full items-center ${
-                            isBig ? "text-xl" : "text-base"
+                        className={`my-2 flex h-fit w-full items-center justify-between ${
+                            isCenterLeader ? "text-xl" : "text-base"
                         } text-PRIMARY_COLOR-500`}
                     >
-                        약력
+                        <div className='whitespace-nowrap'>약력</div>
+                        {user && (
+                            <div className='flex gap-x-4 px-4'>
+                                <button
+                                    className='rounded-sm border bg-SUB_COLOR-400'
+                                    onClick={() => {
+                                        setSelectedMember(member);
+                                        setSelectedDocument(documentID);
+                                        setModalOpen(true);
+                                    }}
+                                >
+                                    수정
+                                </button>
+                                <button
+                                    className='rounded-sm border'
+                                    onClick={() => deleteMutation.mutate()}
+                                >
+                                    삭제
+                                </button>
+                                {deleteMutation.isError && (
+                                    <p>{deleteMutation.error.message}</p>
+                                )}
+                            </div>
+                        )}
                     </div>
                     <article className='flex w-full flex-wrap'>
                         {member.history.map((history, index) => (
                             <div
                                 key={index}
                                 className={`h-fit min-w-[50%] border-l-2 ${
-                                    isBig ? "text-base" : "text-"
+                                    isCenterLeader ? "text-base" : "text-"
                                 } border-l-PRIMARY_COLOR-200 pl-2`}
                             >
                                 {history}
