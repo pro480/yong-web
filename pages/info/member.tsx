@@ -18,38 +18,10 @@ import NameCard from "../../src/components/NameCard";
 import { Member, MemberTeam } from "../../typing";
 import useAuth from "../../src/hooks/useAuth";
 import MemberModal from "../../src/components/MemberModal";
+import memberConverter from "../../src/utils/firebase/memberConverter";
 
 function Member() {
     const { user } = useAuth();
-
-    const memberConverter = {
-        toFirestore(member: WithFieldValue<Member>): DocumentData {
-            return {
-                name: member.name,
-                division: member.division,
-                email: member.email,
-                history: member.history,
-                team: member.team,
-                major: member.major,
-                imageUrl: member.imageUrl,
-            };
-        },
-        fromFirestore(
-            snapshot: QueryDocumentSnapshot,
-            options: SnapshotOptions
-        ): Member {
-            const member = snapshot.data(options)!;
-            return {
-                name: member.name,
-                division: member.division,
-                email: member.email,
-                history: member.history,
-                team: member.team,
-                major: member.major,
-                imageUrl: member.imageUrl,
-            };
-        },
-    };
 
     // db는 ./firebase.ts 에 있는 db를 의미, "member"는 컬렉션의 이름, withConverter()는 typeScript 를 유용하게 사용하기 위함 없어도 큰 문제 X, 다만 에러방지의 어려움이 있음
     const membersRef = collection(db, "members").withConverter<Member>(

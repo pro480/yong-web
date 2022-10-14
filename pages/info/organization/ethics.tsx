@@ -1,7 +1,8 @@
 import React from "react";
-import { ImMail4 } from "react-icons/im";
 import PageTitle from "../../../src/components/PageTitle";
 import OrganizationBanner from "../../../src/components/OrganizationBanner";
+import OrganizationTable from "../../../src/components/OrganizationTable";
+import ethicsImage from "../../../public/images/organization/ethicsBanner.jpg";
 
 function Ethics() {
     return (
@@ -20,73 +21,11 @@ function Ethics() {
             <OrganizationBanner
                 title='Research Ethics Advisory Team'
                 description='연구 윤리 자문단에 대한 설명을 적어주세요'
+                image={ethicsImage}
             />
 
             {/* 이메일 링크 a태그 추가 */}
-            <table className='w-full min-w-max table-auto border-t border-t-black'>
-                <thead>
-                <tr className='bg-PRIMARY_COLOR-500/40 text-sm uppercase leading-normal text-gray-600'>
-                    <th className='w-12 py-3 text-center'>NO</th>
-                    <th className='w-1/5 text-center'>성명</th>
-                    <th className='w-2/5 text-center'>소속</th>
-                    <th className='w-1/8 text-center'>이메일</th>
-                </tr>
-                </thead>
-                <tbody className='text-sm font-light text-gray-600'>
-                <tr className='border-b border-gray-200 hover:bg-gray-100'>
-                    <td className='py-3 text-center'>1</td>
-                    <td className='text-center'>이규민</td>
-                    <td className='text-center'>
-                        연세대학교 교육학부 교수
-                    </td>
-                    <td className='text-center'>
-                        <div className='flex w-full items-center justify-center'>
-                            <a
-                                className='ju flex w-fit justify-center self-center self-center hover:underline hover:underline-offset-2'
-                                href='mailto:yong21c@inha.ac.kr'
-                            >
-                                <div>yong21c@inha.ac.kr</div>
-                                <ImMail4 className='ml-2' size={20} />
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                <tr className='border-b border-gray-200 hover:bg-gray-100'>
-                    <td className='py-3 text-center'>1</td>
-                    <td className='text-center'>민경석</td>
-                    <td className='text-center'>
-                        세종대학교 교육학과 교수
-                    </td>
-                    <td className='text-center'>
-                        <div className='flex w-full items-center justify-center'>
-                            <a
-                                className='ju flex w-fit justify-center self-center self-center hover:underline hover:underline-offset-2'
-                                href='mailto:yong21c@inha.ac.kr'
-                            >
-                                <div>yong21c@inha.ac.kr</div>
-                                <ImMail4 className='ml-2' size={20} />
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                <tr className='border-b border-gray-200 hover:bg-gray-100'>
-                    <td className='py-3 text-center'>1</td>
-                    <td className='text-center'>이현숙</td>
-                    <td className='text-center'>건국대학교 교직과 교수</td>
-                    <td className=''>
-                        <div className='flex w-full items-center justify-center'>
-                            <a
-                                className='ju flex w-fit justify-center self-center self-center hover:underline hover:underline-offset-2'
-                                href='mailto:yong21c@inha.ac.kr'
-                            >
-                                <div>yong21c@inha.ac.kr</div>
-                                <ImMail4 className='ml-2' size={20} />
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <OrganizationTable team='연구 윤리 자문단' />
         </div>
     );
 }
