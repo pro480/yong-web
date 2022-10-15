@@ -1,20 +1,38 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
 import OrganizationBanner from "../../../src/components/OrganizationBanner";
-import OrganizationTable from "../../../src/components/OrganizationTable";
 import analyticsImage from "../../../public/images/organization/analytics.jpg";
+import NameCard from "../../../src/components/NameCard";
+import { collection } from "@firebase/firestore";
+import { db } from "../../../firebase";
+import { InternalMember } from "../../../typing";
+import memberConverter from "../../../src/utils/firebase/internalMemberConverter";
+import { useFirestoreQuery } from "@react-query-firebase/firestore";
 
 function Analytics() {
+    const internalMembersRef = collection(
+        db,
+        "internalMembers"
+    ).withConverter<InternalMember>(memberConverter);
+    // firebase 에서 불러온 정보를 reactQuery 에 담음
+    const internalMembersQuery = useFirestoreQuery<InternalMember>(
+        ["internalMembers"],
+        internalMembersRef,
+        { subscribe: true }
+    );
+
+    const memberSnapshot = internalMembersQuery.data;
+
     return (
         <div>
             <PageTitle
-                title='데이터분석 연구팀'
+                title='연구원'
                 description='교육빅데이터응용연구센터의 데이터분석 연구팀입니다.'
                 firstDepth='센터 소개'
                 firstLink='/info'
                 secondDepth='센터 조직'
                 secondLink='/info/organization'
-                thirdDepth='데이터분석 연구팀'
+                thirdDepth='연구원'
                 thirdLink='/info/organization/analytics'
             />
 
@@ -23,7 +41,21 @@ function Analytics() {
                 description='데이터분석 연구팀에 대한 설명을 적어주세요'
                 image={analyticsImage}
             />
-            <OrganizationTable team='데이터 분석팀' />
+            <section className='flex h-fit flex-wrap'>
+                {memberSnapshot?.docs.map((docSnapshot) => {
+                    const member = docSnapshot.data();
+                    if (member.team !== "센터장") {
+                        return (
+                            <div
+                                key={docSnapshot.id}
+                                className='h-52 w-1/2 p-2'
+                            >
+                                <NameCard member={member} />
+                            </div>
+                        );
+                    }
+                })}
+            </section>
         </div>
     );
 }

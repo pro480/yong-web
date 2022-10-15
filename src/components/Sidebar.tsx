@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {memo, useEffect, useState} from "react";
 import { useRouter } from "next/router";
 import { SiteMap } from "../../typing";
 import SidebarMenu from "./SidebarMenu";
@@ -80,4 +80,4 @@ function Sidebar({ siteMap }: Props) {
     );
 }
 
-export default Sidebar;
+export default memo(Sidebar);

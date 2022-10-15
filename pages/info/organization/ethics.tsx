@@ -1,7 +1,7 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
 import OrganizationBanner from "../../../src/components/OrganizationBanner";
-import OrganizationTable from "../../../src/components/OrganizationTable";
+import MemberTable from "../../../src/components/MemberTable";
 import ethicsImage from "../../../public/images/organization/ethicsBanner.jpg";
 
 function Ethics() {
@@ -25,7 +25,7 @@ function Ethics() {
             />
 
             {/* 이메일 링크 a태그 추가 */}
-            <OrganizationTable team='연구 윤리 자문단' />
+            <MemberTable organization='연구 윤리 자문단' />
         </div>
     );
 }

@@ -1,6 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Member, MemberTeam } from "../../typing";
 import { collection, CollectionReference, doc } from "@firebase/firestore";
 import {
     useFirestoreCollectionMutation,
@@ -9,24 +8,27 @@ import {
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { db, storage } from "../../firebase";
 import Image from "next/image";
+import { Course, InternalMember, Team } from "../../typing";
 
 interface Props {
-    memberRef: CollectionReference<Member>;
-    team: MemberTeam;
+    memberRef: CollectionReference<InternalMember>;
+    team: Team;
     setModalOpen: Dispatch<SetStateAction<boolean>>;
     selectedDocument?: string | null | undefined;
-    selectedMember?: Member | null | undefined;
-    setSelectedMember: Dispatch<React.SetStateAction<Member | undefined>>;
+    selectedMember?: InternalMember | null | undefined;
+    setSelectedMember: Dispatch<
+        React.SetStateAction<InternalMember | undefined>
+    >;
 }
 interface Inputs {
-    name: string;
-    history: string[];
-    email: string;
-    team: MemberTeam;
-    imageFile: File[];
-    major?: string;
-    division?: string;
-    department: string;
+    name: string; // 이름
+    email: string; // 개인 이메일
+    major: string; //전공
+    imageFile: File[]; // 사진 주소
+    department: string; // 소속 (ex.인하대학교 교육학과 교수)
+    course: Course;
+    team: Team; // 소속 조직
+    history: string[]; // 약력
 }
 
 function MemberModal({
@@ -39,15 +41,16 @@ function MemberModal({
 }: Props) {
     const [historyList, setHistoryList] = useState<string[]>([""]);
     const [editImage, setEditImage] = useState(false);
-    const membersRef = memberRef;
 
     useEffect(() => {
-        if (selectedMember) {
+        if (selectedMember?.history) {
             let newHistoryList = [...selectedMember.history];
             setHistoryList(newHistoryList);
         } else {
         }
-    }, []);
+    }, [selectedMember]);
+
+    const membersRef = memberRef;
 
     const {
         register,
@@ -55,13 +58,13 @@ function MemberModal({
         formState: { errors },
     } = useForm<Inputs>({
         defaultValues: {
-            department: selectedMember?.department,
-            division: selectedMember?.division,
-            email: selectedMember?.email,
-            history: selectedMember?.history,
-            major: selectedMember?.major,
-            name: selectedMember?.name,
-            team: selectedMember?.team,
+            name: selectedMember?.name, // 이름
+            email: selectedMember?.email, // 개인 이메일
+            major: selectedMember?.major, //전공
+            department: selectedMember?.department, // 소속 (ex.인하대학교 교육학과 교수)
+            course: selectedMember?.course,
+            team: selectedMember?.team, // 소속 조직
+            history: selectedMember?.history, // 약력
         },
     });
 
@@ -69,7 +72,7 @@ function MemberModal({
     const addMutation = useFirestoreCollectionMutation(membersRef);
     // firebase members 컬렉션에 있는 특정 문서를 수정하기 위한 작업
     const updateMutation = useFirestoreDocumentMutation(
-        doc(collection(db, "members"), `${selectedDocument}`),
+        doc(collection(db, "internalMembers"), `${selectedDocument}`),
         { merge: true }
     );
 
@@ -119,17 +122,17 @@ function MemberModal({
                     getDownloadURL(uploadImage.snapshot.ref).then(
                         (downloadURL) => {
                             updateMutation.mutate({
-                                email: data.email,
-                                major: data.major,
+                                name: data.name, // 이름
+                                email: data.email, // 개인 이메일
+                                major: data.major, //전공
+                                imageUrl: downloadURL, // 사진 주소
+                                department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
+                                course: data.course,
+                                team: data.team, // 소속 조직
                                 history: data.history.slice(
                                     0,
                                     historyList.length
-                                ),
-                                team: data.team,
-                                name: data.name,
-                                imageUrl: downloadURL,
-                                division: data.division,
-                                department: data.department,
+                                ), // 약력
                             });
                         }
                     );
@@ -138,13 +141,13 @@ function MemberModal({
             );
         } else {
             updateMutation.mutate({
-                email: data.email,
-                major: data.major,
+                name: data.name, // 이름
+                email: data.email, // 개인 이메일
+                major: data.major, //전공
+                department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
+                course: data.course,
+                team: data.team, // 소속 조직
                 history: data.history.slice(0, historyList.length),
-                team: data.team,
-                name: data.name,
-                division: data.division,
-                department: data.department,
             });
             setModalOpen(false);
         }
@@ -195,14 +198,14 @@ function MemberModal({
                 // 업로드가 성공하면 업로드 주소를 가져오고 addMutation.mutate 함수를 실행해 문서를 추가한다
                 getDownloadURL(uploadImage.snapshot.ref).then((downloadURL) => {
                     addMutation.mutate({
-                        email: data.email,
-                        major: data.major,
-                        history: data.history.slice(0, historyList.length),
-                        team: data.team,
-                        name: data.name,
-                        imageUrl: downloadURL,
-                        division: data.division,
-                        department: data.department,
+                        name: data.name, // 이름
+                        email: data.email, // 개인 이메일
+                        major: data.major, //전공
+                        imageUrl: downloadURL, // 사진 주소
+                        department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
+                        course: data.course,
+                        team: data.team, // 소속 조직
+                        history: data.history.slice(0, historyList.length), // 약력
                     });
                 });
                 setModalOpen(false);
@@ -374,7 +377,7 @@ function MemberModal({
                         센터 조직
                         <input
                             className=' mx-2 h-7 border  border-gray-700 bg-gray-300  pl-3'
-                            placeholder='소속'
+                            placeholder='연구팀'
                             value={team}
                             {...register("team", { required: true })}
                         />
@@ -382,14 +385,16 @@ function MemberModal({
                 </div>
                 <div>
                     <label>
-                        구분
+                        현재 과정
                         <select
                             className='mx-2 h-8 border border-gray-700  pl-3'
-                            placeholder='소속'
-                            {...register("division", { required: true })}
+                            placeholder='현재 과정'
+                            {...register("course", { required: true })}
                         >
-                            <option value='대학'>대학</option>
-                            <option value='연구기관'>연구기관</option>
+                            <option value='학부연구생'>학부연구생</option>
+                            <option value='석사 과정'>석사 과정</option>
+                            <option value='박사 과정'>박사 과정</option>
+                            <option value='교수'>교수</option>
                         </select>
                     </label>
                 </div>
