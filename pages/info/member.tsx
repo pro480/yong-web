@@ -1,6 +1,6 @@
 import React from "react";
 import PageTitle from "../../src/components/PageTitle";
-import ShowMember from "../../src/components/ShowMember";
+import MemberList from "../../src/components/MemberList";
 
 function Member() {
     return (
@@ -13,11 +13,10 @@ function Member() {
                 secondDepth='센터 구성원'
                 secondLink='/info/member'
             />
-            <ShowMember organization='센터장' />
-            <ShowMember organization='연구협력 네트워크' />
-            <ShowMember organization='연구 자문단' />
-            <ShowMember organization='연구 윤리 자문단' />
-            <ShowMember organization='데이터 분석팀' />
+            <MemberList team='센터장' />
+            <MemberList team='연구팀1' />
+            <MemberList team='연구팀2' />
+            <MemberList team='연구팀3' />
         </div>
     );
 }

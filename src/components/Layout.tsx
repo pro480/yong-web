@@ -61,7 +61,7 @@ function Layout({ children }: Props) {
                             href: "/info/organization/ethics",
                         },
                         {
-                            title: "데이터 분석팀",
+                            title: "연구원",
                             href: "/info/organization/analytics",
                         },
                     ],

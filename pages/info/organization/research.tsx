@@ -1,8 +1,7 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
 import OrganizationBanner from "../../../src/components/OrganizationBanner";
-import { useFirestoreQuery } from "@react-query-firebase/firestore";
-import OrganizationTable from "../../../src/components/OrganizationTable";
+import MemberTable from "../../../src/components/MemberTable";
 import researchImage from "../../../public/images/organization/researchBanner.jpg";
 
 function Research() {
@@ -25,7 +24,7 @@ function Research() {
                 image={researchImage}
             />
 
-            <OrganizationTable team='연구 자문단' />
+            <MemberTable organization='연구 자문단' />
         </div>
     );
 }

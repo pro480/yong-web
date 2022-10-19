@@ -1,18 +1,20 @@
 import React, { Dispatch, useRef } from "react";
-import { Member } from "../../typing";
 import Image from "next/image";
 import useAuth from "../hooks/useAuth";
 import { db } from "../../firebase";
 import { collection, doc } from "@firebase/firestore";
 import { useFirestoreDocumentDeletion } from "@react-query-firebase/firestore";
-import memberConverter from "../utils/firebase/memberConverter";
+import memberConverter from "../utils/firebase/internalMemberConverter";
+import { InternalMember } from "../../typing";
 
 interface Props {
-    member: Member;
-    documentID: string;
-    setModalOpen: Dispatch<React.SetStateAction<boolean>>;
-    setSelectedMember: Dispatch<React.SetStateAction<Member | undefined>>;
-    setSelectedDocument: Dispatch<
+    member: InternalMember;
+    documentID?: string;
+    setModalOpen?: Dispatch<React.SetStateAction<boolean>>;
+    setSelectedMember?: Dispatch<
+        React.SetStateAction<InternalMember | undefined>
+    >;
+    setSelectedDocument?: Dispatch<
         React.SetStateAction<string | null | undefined>
     >;
 }
@@ -28,9 +30,10 @@ function NameCard({
 
     const cardRef = useRef<HTMLDivElement>(null);
     const isCenterLeader = member.team === "센터장";
-    const membersCollection = collection(db, "members").withConverter<Member>(
-        memberConverter
-    );
+    const membersCollection = collection(
+        db,
+        "internalMembers"
+    ).withConverter<InternalMember>(memberConverter);
     const membersRef = doc(membersCollection, `${documentID}`);
     const deleteMutation = useFirestoreDocumentDeletion(membersRef);
 
@@ -90,29 +93,32 @@ function NameCard({
                         } text-PRIMARY_COLOR-500`}
                     >
                         <div className='whitespace-nowrap'>약력</div>
-                        {user && (
-                            <div className='flex gap-x-4 px-4'>
-                                <button
-                                    className='rounded-sm border bg-SUB_COLOR-400'
-                                    onClick={() => {
-                                        setSelectedMember(member);
-                                        setSelectedDocument(documentID);
-                                        setModalOpen(true);
-                                    }}
-                                >
-                                    수정
-                                </button>
-                                <button
-                                    className='rounded-sm border'
-                                    onClick={() => deleteMutation.mutate()}
-                                >
-                                    삭제
-                                </button>
-                                {deleteMutation.isError && (
-                                    <p>{deleteMutation.error.message}</p>
-                                )}
-                            </div>
-                        )}
+                        {user &&
+                            setSelectedMember &&
+                            setSelectedDocument &&
+                            setModalOpen && (
+                                <div className='flex gap-x-4 px-4'>
+                                    <button
+                                        className='rounded-sm border bg-SUB_COLOR-400'
+                                        onClick={() => {
+                                            setSelectedMember(member);
+                                            setSelectedDocument(documentID);
+                                            setModalOpen(true);
+                                        }}
+                                    >
+                                        수정
+                                    </button>
+                                    <button
+                                        className='rounded-sm border'
+                                        onClick={() => deleteMutation.mutate()}
+                                    >
+                                        삭제
+                                    </button>
+                                    {deleteMutation.isError && (
+                                        <p>{deleteMutation.error.message}</p>
+                                    )}
+                                </div>
+                            )}
                     </div>
                     <article className='flex w-full flex-wrap'>
                         {member.history.map((history, index) => (

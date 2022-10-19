@@ -1,7 +1,7 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
 import OrganizationBanner from "../../../src/components/OrganizationBanner";
-import OrganizationTable from "../../../src/components/OrganizationTable";
+import MemberTable from "../../../src/components/MemberTable";
 import networkImage from "../../../public/images/organization/networkBanner.jpg";
 
 function Network() {
@@ -25,7 +25,7 @@ function Network() {
             />
 
             {/* 이메일 링크 a태그 추가 */}
-            <OrganizationTable team='연구협력 네트워크' />
+            <MemberTable organization='연구협력 네트워크' />
         </div>
     );
 }
