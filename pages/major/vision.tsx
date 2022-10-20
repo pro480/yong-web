@@ -2,10 +2,13 @@ import React from "react";
 import PageTitle from "../../src/components/PageTitle";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import styles from "../../src/styles/styles.module.css";
+import MajorBanner from "../../src/components/MajorBanner";
+import graduateCourseImage from "../../public/images/major/course.jpg"
+
 
 function Vision() {
     return (
-        <div>
+        <div className="relative">
             <PageTitle
                 title='졸업 후 진로'
                 description='졸업 후 진로에 대한 설명을 적어주세요'
@@ -14,40 +17,27 @@ function Vision() {
                 secondDepth='졸업 후 진로'
                 secondLink='/major/vision'
             />
-            <div className=' bg-gray-300'>
-                아래 정보는 https://ed.pusan.ac.kr/ed/15379/subview.do 를 참고한
-                것이며 교수님께서 아래 컨텐츠에 들어갈 내용을 주시면 내용을
-                변경하도록 하겠습니다.
-            </div>
 
-            <div className='mb-12 mt-4 flex border'>
-                <div className=' flex h-[200px] w-[400px] items-center justify-center bg-gray-300'>
-                    이미지를 넣어주세요
-                </div>
-                <div className='w-full px-6 pt-5'>
-                    <h1 className='mb-8 font-semibold'>취업진로분야</h1>
-                    <p>
-                        교육학과의 졸업 후 진로는 중등학교 교사, 대학교수,
-                        평생교육사, 일반기업체, 기업교육전문가, 교육공무원,
-                        교육행정가 전문가, 상담전문가, 사설 교육훈련 및
-                        입시전문기관의 교육전문요원 등 매우 다양한 분야에 진출할
-                        수 있다. 현재 교육학과 동문들은 다양한 분야에서 활동하고
-                        있으며, 학문의 사회적 환원과 지역사회의 발전에 공헌하고
-                        있다.
-                    </p>
-                </div>
-            </div>
+            {/* 취업진로분야 -> 이미지로 대체
+            - 적당한 관련 이미지를 찾지 못해서 샘플 이미지(course.jpg - 라이센스(courseLicense.pdf)로 대체
+            - OrganizationBanner를 약간 변형시켜서 적용
+            - 더욱 유연한 반응형 구현을 위해 tailwind.config.js에 xs속성을 추가했습니다.
+            */}
+            <MajorBanner
+                title='취업 진로 분야'
+                image={graduateCourseImage}
+            />
 
-            <main className='flex flex-col gap-y-12'>
+            <main className='relative flex flex-col gap-y-12'>
                 <div className={styles.outer}>
                     <div className={styles.inner}>
-                        <div className='relative w-36'>
+                        <div className='relative xs:hidden sm:flex w-36'>
                             <div className='absolute right-4 top-4 h-24 w-24 rounded-full bg-gray-300 p-6 '>
                                 <FaChalkboardTeacher className='h-full w-full' />
                             </div>
                         </div>
 
-                        <div className='w-full pt-6'>
+                        <div className='w-full md:pt-6 xs:pt-0'>
                             <h1 className='text-2xl font-bold'>
                                 중등학교 교사
                             </h1>
@@ -55,7 +45,7 @@ function Vision() {
                                 교육학 전공 또는 학생이 희망하는 교과목에 대해
                                 부전공이나 복수전공을 하면 중등학교 2급 정교사
                                 자격증을 얻을 수 있다.
-                                <br /> 교사자격증을 획득한 다음 임용고시를
+                                교사자격증을 획득한 다음 임용고시를
                                 통과하거나 아니면 소정의 공채과정을 통해서
                                 중등학교의 교사로서 취업할 수 있다 .
                             </p>
@@ -64,13 +54,13 @@ function Vision() {
                 </div>
                 <div className={styles.outer}>
                     <div className={styles.inner}>
-                        <div className='relative w-36'>
+                        <div className='relative xs:hidden sm:flex w-36'>
                             <div className='absolute right-4 top-4 h-24 w-24 rounded-full bg-gray-300 p-6 '>
                                 <FaChalkboardTeacher className='h-full w-full' />
                             </div>
                         </div>
 
-                        <div className='w-full pt-6'>
+                        <div className='w-full md:pt-6 xs:pt-0'>
                             <h1 className='text-2xl font-bold'>
                                 대학교수 및 교육연구전문가
                             </h1>
@@ -86,13 +76,13 @@ function Vision() {
                 </div>
                 <div className={styles.outer}>
                     <div className={styles.inner}>
-                        <div className='relative w-36'>
+                        <div className='relative xs:hidden sm:flex w-36'>
                             <div className='absolute right-4 top-4 h-24 w-24 rounded-full bg-gray-300 p-6 '>
                                 <FaChalkboardTeacher className='h-full w-full' />
                             </div>
                         </div>
 
-                        <div className='w-full pt-6'>
+                        <div className='w-full md:pt-6 xs:pt-0'>
                             <h1 className='text-2xl font-bold'>
                                 기업체의 HRD 전문가
                             </h1>
@@ -110,13 +100,13 @@ function Vision() {
                 </div>
                 <div className={styles.outer}>
                     <div className={styles.inner}>
-                        <div className='relative w-36'>
+                        <div className='relative xs:hidden sm:flex w-36'>
                             <div className='absolute right-4 top-4 h-24 w-24 rounded-full bg-gray-300 p-6 '>
                                 <FaChalkboardTeacher className='h-full w-full' />
                             </div>
                         </div>
 
-                        <div className='w-full pt-6'>
+                        <div className='w-full md:pt-6 xs:pt-0'>
                             <h1 className='text-2xl font-bold'>
                                 교육공무원 및 교육행정전문가
                             </h1>
@@ -132,13 +122,13 @@ function Vision() {
                 </div>
                 <div className={styles.outer}>
                     <div className={styles.inner}>
-                        <div className='relative w-36'>
+                        <div className='relative xs:hidden sm:flex w-36'>
                             <div className='absolute right-4 top-4 h-24 w-24 rounded-full bg-gray-300 p-6 '>
                                 <FaChalkboardTeacher className='h-full w-full' />
                             </div>
                         </div>
 
-                        <div className='w-full pt-6'>
+                        <div className='w-full md:pt-6 xs:pt-0'>
                             <h1 className='text-2xl font-bold'>상담전문가</h1>
                             <p className='mt-2'>
                                 교육학과에서 개설되는 상담관련 과목의 이수를

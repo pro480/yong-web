@@ -4,7 +4,7 @@
 
 @layer components {
     .organizationNode {
-        @apply flex h-1/2 w-28 cursor-pointer items-center justify-center rounded-full border  text-sm text-xs font-semibold sm:w-36 md:w-44 md:text-base;
+        @apply flex h-1/2 w-28 cursor-pointer items-center justify-center rounded-full border text-xs font-semibold sm:w-36 md:w-44 md:text-base;
     }
 
     .organizationTitle {
