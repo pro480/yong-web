@@ -2,102 +2,163 @@ import React from "react";
 import Image from "next/image";
 import PageTitle from "../../src/components/PageTitle";
 import { AcademicCapIcon, BriefcaseIcon } from "@heroicons/react/24/outline";
+import centerLeaderImage from "../../public/images/centerLeader.png";
+import logoImage from "../../public/images/logo/logo_mini_nobg.png";
+import symbolImage from "../../public/images/logo/symbol-removebg.png";
+import CenterLeaderHistory from "../../src/components/CenterLeaderHistory";
 
 function Index() {
     return (
         <div>
-            <div>
-                <PageTitle
-                    title='센터장 소개'
-                    description=' 센터장 소개 페이지에 대한 설명을 입력해주세요 '
-                    firstDepth='센터 소개'
-                    firstLink='/info'
-                    secondDepth='센터장 소개'
-                    secondLink='/info'
-                />
+            <PageTitle
+                title='센터장 소개'
+                description=' 센터장 소개 페이지에 대한 설명을 입력해주세요 '
+                firstDepth='센터 소개'
+                firstLink='/info'
+                secondDepth='센터장 소개'
+                secondLink='/info'
+            />
 
-                {/* 센터장 소개 */}
-                <div>
-                    {/* 협회이름 및 센터장 신상 정보 */}
-                    <div className='relative flex h-[500px] w-[1000px] flex-col justify-between'>
-                        {/* 센터장 이미지 */}
-                        <div className='absolute right-20 bottom-5 flex h-[450px] w-[350px] items-center justify-center bg-slate-400'>
-                            {" "}
-                            배경이 제거된 <br /> 센터장 이미지를 넣어주세요
+            {/* 센터장 소개 */}
+            <>
+                {/* 협회이름 및 센터장 신상 정보 */}
+                <div className='relative flex h-[500px] flex-col justify-end'>
+                    {/* 센터장 이미지 */}
+                    <div className='flex'>
+                        <div className='flex h-[250px] w-3/5 items-center bg-gradient-to-l from-PRIMARY_COLOR-500 to-PRIMARY_COLOR-400 pl-12 text-xl text-white'>
+                            <ul className='flex flex-col gap-y-6'>
+                                <li className='before: flex'>
+                                    <span className="mx-4 w-60  before:mr-3  before:content-['\2022']">
+                                        교육빅데이터 센터장
+                                    </span>
+                                    이용상(Yongsang Lee)
+                                </li>
+                                <li className='flex'>
+                                    <span className="mx-4 w-60 before:mr-3  before:content-['\2022']">
+                                        소속 및 직함
+                                    </span>
+                                    인하대학교 교육학과 교수
+                                </li>
+                                <li className='flex'>
+                                    <span className="mx-4 w-60 before:mr-3  before:content-['\2022']">
+                                        E-mail
+                                    </span>
+                                    <a
+                                        href='mailto:yong21c@gmail.com'
+                                        className='hover:underline hover:underline-offset-4'
+                                    >
+                                        yong21c@gmail.com
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-
-                        {/* 협회이름 */}
-                        <div className='mt-[200px] flex flex-col'>
-                            <p>Education Big Data Application</p>
-                            <p className='text-3xl font-semibold'>
-                                EBDA Research Center
-                            </p>
+                        <div className='over absolute bottom-0 right-1/3 z-10 mx-auto flex h-52 w-52 '>
+                            <Image src={symbolImage} layout='fill' />
                         </div>
-
-                        {/* 센터장 이름 & 직함 */}
-                        <div className='flex h-2/5 flex-col justify-center gap-y-5 bg-slate-600  px-10'>
-                            <p className='text-2xl text-white'>
-                                Chief Director
-                            </p>
-                            <p className='text-3xl text-white'>Lee Yong Sang</p>
-                        </div>
+                        <div className=' relative border-b-[250px] border-r-[200px] border-b-PRIMARY_COLOR-500 border-r-transparent '></div>
+                    </div>
+                    <div className='absolute top-16 z-50 h-52 w-[700px] '>
+                        <Image
+                            className='z-50'
+                            src={logoImage}
+                            layout='fill'
+                            objectFit='contain'
+                            alt='로고'
+                            priority={true}
+                        />
+                    </div>
+                    <div className='absolute right-0 h-full w-96'>
+                        <Image
+                            className='z-50'
+                            src={centerLeaderImage}
+                            layout='fill'
+                            objectFit='contain'
+                            objectPosition='right'
+                            alt='센터장'
+                            priority={true}
+                        />
                     </div>
                 </div>
+            </>
 
-                {/* 학력 및 경력 */}
-                <div className='mt-10 flex h-[500px] w-[1000px] flex-col'>
-                    {/* 경력 */}
-                    <div className='w-100 ml-20 flex h-[248px] items-center justify-start gap-x-[100px]'>
-                        <div className='flex h-[100px] w-[100px] flex-col items-center'>
-                            {/* 경력 아이콘 */}
-                            <BriefcaseIcon className='h-[50px] w-[50px]' />
-
-                            {/* 텍스트 */}
-                            <p className='text-xl font-semibold'>주요 경력</p>
-                        </div>
-
-                        {/* 경력 내용 */}
-                        <div className='ml-20 flex w-[500px] flex-col gap-y-4 font-semibold'>
-                            <div className='flex gap-x-10'>
-                                <ul className='w-[150px]'>2000 ~ 2000</ul>
-                                <ul>한국대학교 교수</ul>
-                            </div>
-
-                            <div className='flex gap-x-10'>
-                                <ul className='w-[150px]'>201X ~ 현재</ul>
-                                <ul>인하대학교 교수</ul>
-                            </div>
-
-                            <div className='flex gap-x-10'>
-                                <ul className='w-[150px]'>2022 ~ 현재</ul>
-                                <ul>교육 빅데이터 응용 연구 센터장</ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* 구분선 */}
-                    <p className='h-[1px] w-[1000px] border-b-[2px] border-black'></p>
-
-                    {/* 학력 */}
-                    <div className='w-100 ml-20 flex h-[248px] items-center justify-start gap-x-[100px]'>
-                        <div className='flex h-[100px] w-[100px] flex-col items-center'>
-
-                            {/* 학력 아이콘 */}
-                            <AcademicCapIcon className='h-[50px] w-[50px]' />
-
-                            {/* 텍스트 */}
-                            <p className='text-xl font-semibold'>학력</p>
-
-                        </div>
-
-                        {/* 학력내용 */}
-                        <div className='ml-20 flex flex-col gap-y-4 font-semibold'>
-                            <ul>aa 대학교 aaa 학사</ul>
-                            <ul>bb 대학교 대학원 bbb 석사</ul>
-                            <ul>cc 대학교 대학원 ccc 박사</ul>
-                        </div>
-                    </div>
+            {/* 경력 */}
+            <div className='flex h-fit items-center py-16 text-PRIMARY_COLOR-700'>
+                <div className='flex h-full w-1/4 flex-col items-center gap-y-2 '>
+                    <BriefcaseIcon className='h-12' />
+                    <p className='text-xl font-semibold'>주요 경력</p>
                 </div>
+
+                {/* 경력 내용 */}
+                <ul className='ml-12 flex flex-col text-lg font-semibold '>
+                    <CenterLeaderHistory
+                        startedAt={2011}
+                        endedAt={2011}
+                        content='UC Berkeley BEAR 센터 PostDoc'
+                    />
+                    <CenterLeaderHistory
+                        startedAt={2011}
+                        endedAt={2018}
+                        content='한국교육과정평가원 실장'
+                    />
+                    <CenterLeaderHistory
+                        startedAt={2018}
+                        endedAt={2021}
+                        content='한국교육평가학회 이사'
+                    />
+                    <CenterLeaderHistory
+                        startedAt={2018}
+                        endedAt={2019}
+                        content='국회미래연구원 연구원'
+                    />{" "}
+                    <CenterLeaderHistory
+                        startedAt={2019}
+                        endedAt={2021}
+                        content='영남대학교 교육학과 조교수'
+                    />{" "}
+                    <CenterLeaderHistory
+                        startedAt={2019}
+                        endedAt={2021}
+                        content='개인정보보호법학회 이사'
+                    />{" "}
+                    <CenterLeaderHistory
+                        startedAt={2021}
+                        endedAt={2021}
+                        content='인하대학교 교육학과 교수'
+                    />
+                </ul>
+            </div>
+
+            {/* 구분선 */}
+            <p className='mx-auto flex w-[1000px] self-center border-b-[2px] border-PRIMARY_COLOR-100'></p>
+
+            {/* 학력 */}
+            <div className='flex h-fit items-center py-12 text-PRIMARY_COLOR-700'>
+                <div className='flex h-full w-1/4 flex-col items-center gap-y-2 '>
+                    {/* 학력 아이콘 */}
+                    <AcademicCapIcon className='h-12' />
+
+                    {/* 텍스트 */}
+                    <p className='text-xl font-semibold'>학력</p>
+                </div>
+
+                {/* 학력내용 */}
+                <ul className='ml-12 flex flex-col text-lg font-semibold '>
+                    <CenterLeaderHistory
+                        startedAt={1994}
+                        endedAt={2002}
+                        content='연세대학교 교육학 학사'
+                    />
+                    <CenterLeaderHistory
+                        startedAt={2004}
+                        endedAt={2006}
+                        content='연세대학교 교육학 석사'
+                    />
+                    <CenterLeaderHistory
+                        startedAt={2006}
+                        endedAt={2010}
+                        content='UC Berkeley 교육학 박사'
+                    />
+                </ul>
             </div>
         </div>
     );

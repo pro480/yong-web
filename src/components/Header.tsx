@@ -24,7 +24,7 @@ function Header({ siteMap }: Props) {
                         {/*아래는 로고 사이즈*/}
                         <div className='relative block h-full cursor-pointer'>
                             <Image
-                                src='/images/logo.png'
+                                src='/images/logo/logo_mini.png'
                                 layout='fill'
                                 objectFit='contain'
                                 objectPosition='center'
