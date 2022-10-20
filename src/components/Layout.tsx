@@ -21,14 +21,7 @@ function Layout({ children }: Props) {
                 },
                 {
                     title: "센터 비전",
-                    subMenu: [
-                        { title: "센터 비전", href: "/info/vision" },
-                        { title: "설립 목적", href: "/info/vision/purpose" },
-                        {
-                            title: "중장기 발전 목표",
-                            href: "/info/vision/goals",
-                        },
-                    ],
+                    subMenu: [],
                     href: "/info/vision",
                 },
                 {

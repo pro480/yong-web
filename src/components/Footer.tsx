@@ -9,16 +9,16 @@ function Footer() {
                 {/*첫번쨰 줄*/}
                 <div className='flex flex-col-reverse border-gray-500 xl:h-16 xl:flex-row xl:justify-between'>
                     <div className='flex h-full flex-wrap border-t border-b border-gray-500 text-sm sm:flex-nowrap sm:py-2 xl:w-[700px] xl:border-t-0 xl:border-dashed'>
-                        <div className='w-1/2 border-b  items-center flex justify-center border-r border-gray-500  py-2 text-center sm:border-none'>
+                        <div className='flex w-1/2  items-center justify-center border-b border-r border-gray-500  py-2 text-center sm:border-none'>
                             개인정보 처리 방침
                         </div>
-                        <div className='w-1/2 border-b items-center flex justify-center border-gray-500 py-2 text-center sm:border-none'>
+                        <div className='flex w-1/2 items-center justify-center border-b border-gray-500 py-2 text-center sm:border-none'>
                             저작권 보호 정책
                         </div>
-                        <div className='w-1/2 border-r items-center flex justify-center border-gray-500 py-2 text-center sm:border-none'>
+                        <div className='flex w-1/2 items-center justify-center border-r border-gray-500 py-2 text-center sm:border-none'>
                             연구원 모집
                         </div>
-                        <div className='w-1/2 items-center flex justify-center  border-gray-500 py-2 text-center sm:border-none'>
+                        <div className='flex w-1/2 items-center justify-center  border-gray-500 py-2 text-center sm:border-none'>
                             찾아오는 길
                         </div>
                     </div>
@@ -27,7 +27,7 @@ function Footer() {
                         {/*로고 사이즈*/}
                         <div className='relative block h-full w-32'>
                             <Image
-                                src='/images/logo.png'
+                                src='/images/logo/logo_mini.png'
                                 layout='fill'
                                 objectFit='contain'
                                 objectPosition='center'
