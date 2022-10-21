@@ -1,6 +1,6 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
-import FirstDepthBanner from "../../../src/components/FirstDepthBanner";
+import Banner from "../../../src/components/Banner";
 import analyticsImage from "../../../public/images/banner/researchBanner.jpg";
 import NameCard from "../../../src/components/NameCard";
 import { collection } from "@firebase/firestore";

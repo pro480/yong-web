@@ -1,6 +1,6 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
-import FirstDepthBanner from "../../../src/components/FirstDepthBanner";
+import Banner from "../../../src/components/Banner";
 import MemberTable from "../../../src/components/MemberTable";
 
 function Research() {
