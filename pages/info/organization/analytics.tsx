@@ -36,11 +36,6 @@ function Analytics() {
                 thirdLink='/info/organization/analytics'
             />
 
-            <FirstDepthBanner
-                title='Data Analysis Research Team'
-                description='데이터분석 연구팀에 대한 설명을 적어주세요'
-                image={analyticsImage}
-            />
             <section className='flex h-fit flex-wrap'>
                 {memberSnapshot?.docs.map((docSnapshot) => {
                     const member = docSnapshot.data();
