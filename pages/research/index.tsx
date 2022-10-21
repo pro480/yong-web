@@ -27,7 +27,7 @@ function Index() {
     const projects = [
         {
             url: "이미지를 넣어주세요",
-            title: "연구 프로젝트 1",
+            title_KO: "연구 프로젝트 1",
             summary: "프로젝트1 요약 내용입니다",
             description:
                 "프로젝트에 관련한 내용 본문입니다. 내용을 입력해주세요.",
@@ -38,7 +38,7 @@ function Index() {
         },
         {
             url: "이미지를 넣어주세요",
-            title: "연구 프로젝트 2",
+            title_KO: "연구 프로젝트 2",
             summary: "프로젝트2 요약 내용입니다",
             description:
                 "프로젝트에 관련한 내용 본문입니다. 내용을 입력해주세요.",
@@ -49,7 +49,7 @@ function Index() {
         },
         {
             url: "이미지를 넣어주세요",
-            title: "연구 프로젝트 3",
+            title_KO: "연구 프로젝트 3",
             summary: "프로젝트3 요약 내용입니다",
             description:
                 "프로젝트에 관련한 내용 본문입니다. 내용을 입력해주세요.",
@@ -95,8 +95,8 @@ function Index() {
                 <div className='flex flex-col gap-y-8'>
                     {projects.map((project) => (
                         <ResearchCard
-                            key={project.title}
-                            title={project.title}
+                            key={project.title_KO}
+                            title={project.title_KO}
                             url={project.url}
                             summary={project.summary}
                             center={project.center}

@@ -59,7 +59,7 @@ function Index() {
                     </div>
                     <div className='absolute top-16 z-50 h-52 w-[700px] '>
                         <Image
-                            className='z-50'
+                            className=''
                             src={logoImage}
                             layout='fill'
                             objectFit='contain'
@@ -90,41 +90,11 @@ function Index() {
 
                 {/* 경력 내용 */}
                 <ul className='ml-12 flex flex-col text-lg font-semibold '>
-                    <CenterLeaderHistory
-                        startedAt={2011}
-                        endedAt={2011}
-                        content='UC Berkeley BEAR 센터 PostDoc'
-                    />
-                    <CenterLeaderHistory
-                        startedAt={2011}
-                        endedAt={2018}
-                        content='한국교육과정평가원 실장'
-                    />
-                    <CenterLeaderHistory
-                        startedAt={2018}
-                        endedAt={2021}
-                        content='한국교육평가학회 이사'
-                    />
-                    <CenterLeaderHistory
-                        startedAt={2018}
-                        endedAt={2019}
-                        content='국회미래연구원 연구원'
-                    />{" "}
-                    <CenterLeaderHistory
-                        startedAt={2019}
-                        endedAt={2021}
-                        content='영남대학교 교육학과 조교수'
-                    />{" "}
-                    <CenterLeaderHistory
-                        startedAt={2019}
-                        endedAt={2021}
-                        content='개인정보보호법학회 이사'
-                    />{" "}
-                    <CenterLeaderHistory
-                        startedAt={2021}
-                        endedAt={2021}
-                        content='인하대학교 교육학과 교수'
-                    />
+                    <CenterLeaderHistory content='(전) 한국교육과정평가원 수능기획분석실장' />
+                    <CenterLeaderHistory content='(전) 국회미래연구원 연구위원' />
+                    <CenterLeaderHistory content='(전) 영남대학교 교육학과 교수' />
+                    <CenterLeaderHistory content='(현) 한국교육평가학회 이사' />
+                    <CenterLeaderHistory content='(현) 인하대학교 교육학과 교수' />
                 </ul>
             </div>
 
@@ -143,21 +113,9 @@ function Index() {
 
                 {/* 학력내용 */}
                 <ul className='ml-12 flex flex-col text-lg font-semibold '>
-                    <CenterLeaderHistory
-                        startedAt={1994}
-                        endedAt={2002}
-                        content='연세대학교 교육학 학사'
-                    />
-                    <CenterLeaderHistory
-                        startedAt={2004}
-                        endedAt={2006}
-                        content='연세대학교 교육학 석사'
-                    />
-                    <CenterLeaderHistory
-                        startedAt={2006}
-                        endedAt={2010}
-                        content='UC Berkeley 교육학 박사'
-                    />
+                    <CenterLeaderHistory content='연세대학교 학사 (교육학)' />
+                    <CenterLeaderHistory content='연세대학교 석사 (교육 통계)' />
+                    <CenterLeaderHistory content='UC Berkeley 박사 (교육 측정/평가)' />
                 </ul>
             </div>
         </div>

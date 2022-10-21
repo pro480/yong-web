@@ -47,7 +47,7 @@ function Index() {
 
     const posts = [
         {
-            title: "2022 빅데이터 관련 논문 1",
+            title_KO: "2022 빅데이터 관련 논문 1",
             writer: "이용상",
             createAt: "2022.09.21",
             content: "내용",
@@ -55,7 +55,7 @@ function Index() {
             number: 1,
         },
         {
-            title: "2022 빅데이터 관련 논문 2",
+            title_KO: "2022 빅데이터 관련 논문 2",
             writer: "이용상",
             createAt: "2022.09.22",
             content: "내용",
@@ -63,7 +63,7 @@ function Index() {
             number: 2,
         },
         {
-            title: "2022 빅데이터 관련 논문 3",
+            title_KO: "2022 빅데이터 관련 논문 3",
             writer: "이용상",
             createAt: "2022.09.23",
             content: "내용",
@@ -71,7 +71,7 @@ function Index() {
             number: 3,
         },
         {
-            title: "2022 빅데이터 관련 논문 4",
+            title_KO: "2022 빅데이터 관련 논문 4",
             writer: "이용상",
             createAt: "2022.09.24",
             content: "내용",
@@ -79,7 +79,7 @@ function Index() {
             number: 4,
         },
         {
-            title: "2022 빅데이터 관련 논문 5",
+            title_KO: "2022 빅데이터 관련 논문 5",
             writer: "이용상",
             createAt: "2022.09.25",
             content: "내용",
@@ -87,7 +87,7 @@ function Index() {
             number: 5,
         },
         {
-            title: "2022 빅데이터 관련 논문 6",
+            title_KO: "2022 빅데이터 관련 논문 6",
             writer: "이용상",
             createAt: "2022.09.26",
             content: "내용",
@@ -95,7 +95,7 @@ function Index() {
             number: 6,
         },
         {
-            title: "2022 빅데이터 관련 논문 7",
+            title_KO: "2022 빅데이터 관련 논문 7",
             writer: "이용상",
             createAt: "2022.09.27",
             content: "내용",
@@ -103,7 +103,7 @@ function Index() {
             number: 7,
         },
         {
-            title: "2022 빅데이터 관련 논문 8",
+            title_KO: "2022 빅데이터 관련 논문 8",
             writer: "이용상",
             createAt: "2022.09.28",
             content: "내용",
@@ -111,7 +111,7 @@ function Index() {
             number: 8,
         },
         {
-            title: "2022 빅데이터 관련 논문 9",
+            title_KO: "2022 빅데이터 관련 논문 9",
             writer: "이용상",
             createAt: "2022.09.29",
             content: "내용",
@@ -119,7 +119,7 @@ function Index() {
             number: 9,
         },
         {
-            title: "2022 빅데이터 관련 논문 10",
+            title_KO: "2022 빅데이터 관련 논문 10",
             writer: "이용상",
             createAt: "2022.09.30",
             content: "내용",
@@ -179,7 +179,7 @@ function Index() {
                                     {item.number}
                                 </td>
                                 <td className='px-12 text-left'>
-                                    {item.title}
+                                    {item.title_KO}
                                 </td>
                                 <td className='text-center'>{item.writer}</td>
                                 <td className='text-center'>{item.createAt}</td>
