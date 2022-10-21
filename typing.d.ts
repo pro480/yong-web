@@ -1,13 +1,15 @@
-export interface SubTitle {
-    title: string;
-    subMenu: { title: string; href: string }[];
+export interface SubMenu {
+    title_KO: string;
+    title_EN: string;
+    subMenu: { title_KO: string; title_EN: string; href: string }[];
     href: string;
 }
 
 export interface SubMap {
-    title: string;
+    title_KO: string;
+    title_EN: string;
     description: string;
-    subTitle: SubTitle[];
+    subMenu: SubMenu[];
 }
 
 export interface SiteMap {

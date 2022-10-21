@@ -39,7 +39,7 @@ function MemberList({ team }: Props) {
     const memberSnapshot = internalMembersQuery.data;
 
     return (
-        <React.Fragment>
+        <div className='h-full w-full'>
             <header className='my-12 flex '>
                 <h1 className='organizationTitle'>{team}</h1>
                 <span className='w-full border-b'></span>
@@ -56,7 +56,9 @@ function MemberList({ team }: Props) {
             </header>
             <section
                 className={`${
-                    team === "센터장" ? "h-fit" : "flex h-fit flex-wrap gap-y-4"
+                    team === "센터장"
+                        ? "h-fit w-full"
+                        : "flex h-fit flex-wrap gap-y-4"
                 }`}
             >
                 {memberSnapshot?.docs
@@ -67,7 +69,10 @@ function MemberList({ team }: Props) {
                     .map((docSnapshot) => {
                         const memberData = docSnapshot.data();
                         return team === "센터장" ? (
-                            <div key={docSnapshot.id} className='h-80 p-2'>
+                            <div
+                                key={docSnapshot.id}
+                                className='h-80 w-full p-2'
+                            >
                                 <NameCard
                                     member={memberData}
                                     documentID={docSnapshot.id}
@@ -102,7 +107,7 @@ function MemberList({ team }: Props) {
                     />
                 )}
             </section>
-        </React.Fragment>
+        </div>
     );
 }
 

@@ -8,7 +8,7 @@ function Open() {
         {
             imgUrl: "https://www.nia.or.kr/img/nia_kor/ci_03.png",
             href: "https://www.nia.or.kr/site/nia_kor/main.do",
-            title: "NIA : 한국지능정보사회진흥원",
+            title_KO: "NIA : 한국지능정보사회진흥원",
             description:
                 "대한민국 국가기관의 정보화 추진과 관련된 정책을\n" +
                 "개발, 정보문화 조성, 정보격차 해소 등을\n" +
@@ -18,7 +18,7 @@ function Open() {
         {
             imgUrl: "https://www.nia.or.kr/img/nia_kor/ci_03.png",
             href: "https://www.nia.or.kr/site/nia_kor/main.do",
-            title: "NIA : 한국지능정보사회진흥원",
+            title_KO: "NIA : 한국지능정보사회진흥원",
             description:
                 "대한민국 국가기관의 정보화 추진과 관련된 정책을\n" +
                 "개발, 정보문화 조성, 정보격차 해소 등을\n" +
@@ -28,7 +28,7 @@ function Open() {
         {
             imgUrl: "https://www.nia.or.kr/img/nia_kor/ci_03.png",
             href: "https://www.nia.or.kr/site/nia_kor/main.do",
-            title: "NIA : 한국지능정보사회진흥원",
+            title_KO: "NIA : 한국지능정보사회진흥원",
             description:
                 "대한민국 국가기관의 정보화 추진과 관련된 정책을\n" +
                 "개발, 정보문화 조성, 정보격차 해소 등을\n" +
@@ -38,7 +38,7 @@ function Open() {
         {
             imgUrl: "https://www.nia.or.kr/img/nia_kor/ci_03.png",
             href: "https://www.nia.or.kr/site/nia_kor/main.do",
-            title: "NIA : 한국지능정보사회진흥원",
+            title_KO: "NIA : 한국지능정보사회진흥원",
             description:
                 "대한민국 국가기관의 정보화 추진과 관련된 정책을\n" +
                 "개발, 정보문화 조성, 정보격차 해소 등을\n" +
@@ -82,7 +82,7 @@ function Open() {
                         </div>
                         <div className='flex h-[60%] flex-col items-center justify-center gap-y-4 bg-PRIMARY_COLOR-500/30  py-3 px-2'>
                             <h1 className='text-lg font-semibold'>
-                                {open.title}
+                                {open.title_KO}
                             </h1>
                             <p className='text-sm'>{open.description}</p>
                         </div>

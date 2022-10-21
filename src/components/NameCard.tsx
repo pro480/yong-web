@@ -38,21 +38,20 @@ function NameCard({
     const deleteMutation = useFirestoreDocumentDeletion(membersRef);
 
     return (
-        <div ref={cardRef} className='flex h-full  w-full gap-x-8'>
+        <div className='flex h-full w-full flex-wrap justify-between'>
             {/*이미지 사이즈*/}
-            <div className='relative flex h-full w-1/4 border'>
+            <div className='relative h-full w-[25%] border'>
                 <Image
                     src={member.imageUrl}
                     layout='fill'
-                    objectFit='cover'
-                    objectPosition='center'
+                    objectFit='contain'
                     alt='멤버사진'
                     priority={isCenterLeader}
                     quality={50}
                 />
             </div>
             {/*오른쪽 설명*/}
-            <div className='flex h-full w-3/4 flex-col gap-y-3 py-2'>
+            <div className='inline-block flex h-full w-[70%] flex-col gap-y-3 py-2'>
                 {/*이름, 관심분야, 이메일*/}
                 <header
                     className={`flex w-full items-end ${
@@ -93,33 +92,31 @@ function NameCard({
                         } text-PRIMARY_COLOR-500`}
                     >
                         <div className='whitespace-nowrap'>약력</div>
-                        {user &&
-                            setSelectedMember &&
-                            setSelectedDocument &&
-                            setModalOpen && (
-                                <div className='flex gap-x-4 px-4'>
-                                    <button
-                                        className='rounded-sm border bg-SUB_COLOR-400'
-                                        onClick={() => {
-                                            setSelectedMember(member);
-                                            setSelectedDocument(documentID);
-                                            setModalOpen(true);
-                                        }}
-                                    >
-                                        수정
-                                    </button>
-                                    <button
-                                        className='rounded-sm border'
-                                        onClick={() => deleteMutation.mutate()}
-                                    >
-                                        삭제
-                                    </button>
-                                    {deleteMutation.isError && (
-                                        <p>{deleteMutation.error.message}</p>
-                                    )}
-                                </div>
-                            )}
+                        {user && (
+                            <div className='flex gap-x-4 px-4'>
+                                <button
+                                    className='rounded-sm border bg-SUB_COLOR-400'
+                                    onClick={() => {
+                                        setSelectedMember!(member);
+                                        setSelectedDocument!(documentID);
+                                        setModalOpen!(true);
+                                    }}
+                                >
+                                    수정
+                                </button>
+                                <button
+                                    className='rounded-sm border'
+                                    onClick={() => deleteMutation.mutate()}
+                                >
+                                    삭제
+                                </button>
+                                {deleteMutation.isError && (
+                                    <p>{deleteMutation.error.message}</p>
+                                )}
+                            </div>
+                        )}
                     </div>
+
                     <article className='flex w-full flex-wrap'>
                         {member.history.map((history, index) => (
                             <div

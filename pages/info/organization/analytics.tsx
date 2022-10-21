@@ -1,7 +1,7 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
-import OrganizationBanner from "../../../src/components/OrganizationBanner";
-import analyticsImage from "../../../public/images/organization/analytics.jpg";
+import FirstDepthBanner from "../../../src/components/FirstDepthBanner";
+import analyticsImage from "../../../public/images/banner/researchBanner.jpg";
 import NameCard from "../../../src/components/NameCard";
 import { collection } from "@firebase/firestore";
 import { db } from "../../../firebase";
@@ -36,11 +36,6 @@ function Analytics() {
                 thirdLink='/info/organization/analytics'
             />
 
-            <OrganizationBanner
-                title='Data Analysis Research Team'
-                description='데이터분석 연구팀에 대한 설명을 적어주세요'
-                image={analyticsImage}
-            />
             <section className='flex h-fit flex-wrap'>
                 {memberSnapshot?.docs.map((docSnapshot) => {
                     const member = docSnapshot.data();

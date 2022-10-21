@@ -24,7 +24,7 @@ function Study() {
 
     const posts = [
         {
-            title: "2022 빅데이터 학습자료 1",
+            title_KO: "2022 빅데이터 학습자료 1",
             writer: "이용상",
             createAt: "2022.09.21",
             content: "내용",
@@ -32,7 +32,7 @@ function Study() {
             number: 1,
         },
         {
-            title: "2022 빅데이터 학습자료 2",
+            title_KO: "2022 빅데이터 학습자료 2",
             writer: "이용상",
             createAt: "2022.09.22",
             content: "내용",
@@ -40,7 +40,7 @@ function Study() {
             number: 2,
         },
         {
-            title: "2022 빅데이터 학습자료 3",
+            title_KO: "2022 빅데이터 학습자료 3",
             writer: "이용상",
             createAt: "2022.09.23",
             content: "내용",
@@ -48,7 +48,7 @@ function Study() {
             number: 3,
         },
         {
-            title: "2022 빅데이터 학습자료 4",
+            title_KO: "2022 빅데이터 학습자료 4",
             writer: "이용상",
             createAt: "2022.09.24",
             content: "내용",
@@ -56,7 +56,7 @@ function Study() {
             number: 4,
         },
         {
-            title: "2022 빅데이터 학습자료 5",
+            title_KO: "2022 빅데이터 학습자료 5",
             writer: "이용상",
             createAt: "2022.09.25",
             content: "내용",
@@ -64,7 +64,7 @@ function Study() {
             number: 5,
         },
         {
-            title: "2022 빅데이터 학습자료 6",
+            title_KO: "2022 빅데이터 학습자료 6",
             writer: "이용상",
             createAt: "2022.09.26",
             content: "내용",
@@ -72,7 +72,7 @@ function Study() {
             number: 6,
         },
         {
-            title: "2022 빅데이터 학습자료 7",
+            title_KO: "2022 빅데이터 학습자료 7",
             writer: "이용상",
             createAt: "2022.09.27",
             content: "내용",
@@ -80,7 +80,7 @@ function Study() {
             number: 7,
         },
         {
-            title: "2022 빅데이터 학습자료 8",
+            title_KO: "2022 빅데이터 학습자료 8",
             writer: "이용상",
             createAt: "2022.09.28",
             content: "내용",
@@ -88,7 +88,7 @@ function Study() {
             number: 8,
         },
         {
-            title: "2022 빅데이터 학습자료 9",
+            title_KO: "2022 빅데이터 학습자료 9",
             writer: "이용상",
             createAt: "2022.09.29",
             content: "내용",
@@ -96,7 +96,7 @@ function Study() {
             number: 9,
         },
         {
-            title: "2022 빅데이터 학습자료 10",
+            title_KO: "2022 빅데이터 학습자료 10",
             writer: "이용상",
             createAt: "2022.09.30",
             content: "내용",
@@ -173,7 +173,7 @@ function Study() {
                                     {item.number}
                                 </td>
                                 <td className='px-12 text-left'>
-                                    {item.title}
+                                    {item.title_KO}
                                 </td>
                                 <td className='text-center'>{item.writer}</td>
                                 <td className='text-center'>{item.createAt}</td>

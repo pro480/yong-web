@@ -20,7 +20,7 @@ function Index() {
 
     const posts = [
         {
-            title: "2022 교육 빅테이터 응용 정보센터 소식 1",
+            title_KO: "2022 교육 빅테이터 응용 정보센터 소식 1",
             content: "내용 1",
             writer: "이용상",
             createAt: "2022.10.05",
@@ -29,7 +29,7 @@ function Index() {
             priority: false,
         },
         {
-            title: "2022 교육 빅테이터 응용 정보센터 소식 2",
+            title_KO: "2022 교육 빅테이터 응용 정보센터 소식 2",
             content: "내용 2",
             writer: "이용상",
             createAt: "2021.10.06",
@@ -38,7 +38,7 @@ function Index() {
             priority: false,
         },
         {
-            title: "2022 교육 빅테이터 응용 정보센터 소식 3",
+            title_KO: "2022 교육 빅테이터 응용 정보센터 소식 3",
             content: "내용 3",
             writer: "이용상",
             createAt: "2020.10.07",
@@ -47,7 +47,7 @@ function Index() {
             priority: false,
         },
         {
-            title: "2022 교육 빅테이터 응용 정보센터 소식 4",
+            title_KO: "2022 교육 빅테이터 응용 정보센터 소식 4",
             content: "내용 4",
             writer: "이용상",
             createAt: "2020.10.07",
@@ -56,7 +56,7 @@ function Index() {
             priority: true,
         },
         {
-            title: "2022 교육 빅테이터 응용 정보센터 소식 5",
+            title_KO: "2022 교육 빅테이터 응용 정보센터 소식 5",
             content: "내용 5",
             writer: "이용상",
             createAt: "2020.10.07",
@@ -140,7 +140,7 @@ function Index() {
                                     </td>
 
                                     <td className='px-12 text-left'>
-                                        {item.title}
+                                        {item.title_KO}
                                     </td>
                                     <td className='text-center'>
                                         {item.writer}
@@ -163,7 +163,7 @@ function Index() {
                                 </td>
 
                                 <td className='px-12 text-left'>
-                                    {item.title}
+                                    {item.title_KO}
                                 </td>
                                 <td className='text-center'>{item.writer}</td>
                                 <td className='text-center'>{item.createAt}</td>

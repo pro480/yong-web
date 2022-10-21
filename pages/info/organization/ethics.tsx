@@ -1,8 +1,7 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
-import OrganizationBanner from "../../../src/components/OrganizationBanner";
+import FirstDepthBanner from "../../../src/components/FirstDepthBanner";
 import MemberTable from "../../../src/components/MemberTable";
-import ethicsImage from "../../../public/images/organization/ethicsBanner.jpg";
 
 function Ethics() {
     return (
@@ -16,12 +15,6 @@ function Ethics() {
                 secondLink='/info/organization'
                 thirdDepth='연구윤리 자문단'
                 thirdLink='/info/organization/ethics'
-            />
-
-            <OrganizationBanner
-                title='Research Ethics Advisory Team'
-                description='연구 윤리 자문단에 대한 설명을 적어주세요'
-                image={ethicsImage}
             />
 
             {/* 이메일 링크 a태그 추가 */}

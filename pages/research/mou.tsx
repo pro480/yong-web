@@ -8,22 +8,22 @@ function Mou() {
         {
             imgUrl: "https://ska.ksif.or.kr/assets/publish/img/common/logo.png",
             href: "https://ska.ksif.or.kr/cmn/main",
-            title: "세종한국어평가(SKA)",
+            title_KO: "세종한국어평가(SKA)",
         },
         {
             imgUrl: "https://www.ksif.or.kr/site/ksif/kor/images/common/f_logo.png",
             href: "https://www.ksif.or.kr/intro.do",
-            title: "세종학당재단",
+            title_KO: "세종학당재단",
         },
         {
             imgUrl: "https://www.ikefbooks.com/images/logo_ikef_transp.png",
             href: "https://www.ikefbooks.com/",
-            title: "국제한국어교육재단",
+            title_KO: "국제한국어교육재단",
         },
         {
             imgUrl: "https://sdf.seoul.kr/assets/theme/seouldigital/images/common/logo.png",
             href: "https://sdf.seoul.kr/index",
-            title: "서울디지털재단",
+            title_KO: "서울디지털재단",
         },
     ];
 
@@ -62,7 +62,7 @@ function Mou() {
                         </div>
                         <div className='flex h-[20%] flex-col items-center justify-center gap-y-4 bg-black/5  py-3 px-2'>
                             <h1 className='text-lg font-semibold'>
-                                {mou.title}
+                                {mou.title_KO}
                             </h1>
                         </div>
                     </article>

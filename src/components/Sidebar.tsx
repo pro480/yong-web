@@ -1,17 +1,19 @@
-import React, {memo, useEffect, useState} from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { SiteMap } from "../../typing";
+import { SiteMap, SubMap } from "../../typing";
 import SidebarMenu from "./SidebarMenu";
 import {
     ArrowDownCircleIcon,
     ArrowUpCircleIcon,
 } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 interface Props {
     siteMap: SiteMap;
 }
 
 function Sidebar({ siteMap }: Props) {
+    const [currentMenu, setCurrentMenu] = useState<SubMap>();
     const pathName = useRouter().pathname.split("/")[1];
     const [menuOpen, setMenuOpen] = useState(false);
     const [isWide, setIsWide] = useState(false);
@@ -39,19 +41,19 @@ function Sidebar({ siteMap }: Props) {
         };
     }, []);
 
-    let currentMenu;
-
-    if (pathName === "info") {
-        currentMenu = siteMap.info;
-    } else if (pathName === "research") {
-        currentMenu = siteMap.research;
-    } else if (pathName === "major") {
-        currentMenu = siteMap.major;
-    } else if (pathName === "data") {
-        currentMenu = siteMap.data;
-    } else if (pathName === "notice") {
-        currentMenu = siteMap.notice;
-    }
+    useEffect(() => {
+        if (pathName === "info") {
+            setCurrentMenu(siteMap.info);
+        } else if (pathName === "research") {
+            setCurrentMenu(siteMap.research);
+        } else if (pathName === "major") {
+            setCurrentMenu(siteMap.major);
+        } else if (pathName === "data") {
+            setCurrentMenu(siteMap.data);
+        } else if (pathName === "notice") {
+            setCurrentMenu(siteMap.notice);
+        }
+    }, [pathName]);
 
     return (
         <div className='relative mt-3 flex flex-col justify-center px-4 2xl:mt-0 2xl:w-[300px]'>
@@ -60,7 +62,7 @@ function Sidebar({ siteMap }: Props) {
                 onClick={() => setMenuOpen(!menuOpen)}
                 className='relative flex w-full items-center justify-center bg-gradient-to-tl from-PRIMARY_COLOR-300 to-PRIMARY_COLOR-200 py-3 text-2xl text-white 2xl:h-36 '
             >
-                {currentMenu?.title}
+                {currentMenu?.title_KO}
             </div>
             {isWide ? null : menuOpen ? (
                 <ArrowUpCircleIcon className='absolute right-8 top-3.5 inline-block h-6 text-white' />
@@ -70,9 +72,9 @@ function Sidebar({ siteMap }: Props) {
 
             {/*현재 메뉴 리스트*/}
             {(menuOpen || isWide) && (
-                <ul className='flex flex-col'>
-                    {currentMenu?.subTitle.map((subTitle, index) => (
-                        <SidebarMenu key={index} subTitle={subTitle} />
+                <ul className='flex flex-col border-l border-b border-r'>
+                    {currentMenu?.subMenu.map((subMenu, index) => (
+                        <SidebarMenu key={index} subMenu={subMenu} />
                     ))}
                 </ul>
             )}

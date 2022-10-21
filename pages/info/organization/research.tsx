@@ -1,8 +1,7 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
-import OrganizationBanner from "../../../src/components/OrganizationBanner";
+import FirstDepthBanner from "../../../src/components/FirstDepthBanner";
 import MemberTable from "../../../src/components/MemberTable";
-import researchImage from "../../../public/images/organization/researchBanner.jpg";
 
 function Research() {
     return (
@@ -16,12 +15,6 @@ function Research() {
                 secondLink='/info/organization'
                 thirdDepth='연구 자문단'
                 thirdLink='/info/organization/research'
-            />
-
-            <OrganizationBanner
-                title='Research Advisory Team'
-                description='연구 자문단에 대한 설명을 적어주세요'
-                image={researchImage}
             />
 
             <MemberTable organization='연구 자문단' />
