@@ -1,6 +1,8 @@
 import React from "react";
 import PageTitle from "../../src/components/PageTitle";
-import NameCard from "../../src/components/NameCard";
+// import MemberList from "../../src/components/MemberList";
+import GraduateList from "../../src/components/GraduateList";
+
 function Alumni() {
     return (
         <div>
@@ -12,10 +14,21 @@ function Alumni() {
                 secondDepth='동문'
                 secondLink='/major/alumni'
             />
+            {/* <MemberList team='연구팀1' />
+            <MemberList team='연구팀2' /> */}
+            <GraduateList classification='교수' />
+            <GraduateList classification='졸업생' />
 
             {/*동문 소개란*/}
             <main className='flex flex-wrap gap-y-8 pb-12'></main>
         </div>
+
+
+
+
+
+
+
     );
 }
 
