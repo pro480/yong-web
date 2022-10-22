@@ -26,7 +26,7 @@ interface Props {
     selectedDocument?: string | null | undefined;
     selectedMember?: GraduateMember | null | undefined;
     setSelectedMember: Dispatch<
-       React.SetStateAction<GraduateMember | undefined>
+        React.SetStateAction<GraduateMember | undefined>
     >;
 }
 interface Inputs {
@@ -44,7 +44,6 @@ interface Inputs {
     major: string; //전공
     imageFile: File[]; // 사진 주소
     department: string; // 소속 (ex.인하대학교 교육학과 교수)
-    course: string;
     history: string[]; // 약력
 }
 
@@ -89,7 +88,6 @@ function GraduateModal({
             email: selectedMember?.email, // 개인 이메일
             major: selectedMember?.major, //전공
             department: selectedMember?.department, // 소속 (ex.인하대학교 교육학과 교수)
-            course: selectedMember?.course,
             history: selectedMember?.history, // 약력
         },
     });
@@ -106,7 +104,7 @@ function GraduateModal({
     const onUpdateMember: SubmitHandler<Inputs> = (data) => {
         if (editImage) {
             let file = data.imageFile[0];
-            const storageRef = ref(storage, "images/" + file.name);
+            const storageRef = ref(storage, "image/alumni/" + file.name);
             const uploadImage = uploadBytesResumable(storageRef, file);
 
             uploadImage.on(
@@ -166,7 +164,6 @@ function GraduateModal({
                                 major: data.major, //전공
                                 imageUrl: downloadURL, // 사진 주소
                                 department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
-                                course: data.course,
                                 history: data.history.slice(
                                     0,
                                     historyList.length
@@ -191,7 +188,6 @@ function GraduateModal({
                 email: data.email, // 개인 이메일
                 major: data.major, //전공
                 department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
-                course: data.course,
                 history: data.history.slice(0, historyList.length),
             });
             setModalOpen(false);
@@ -201,7 +197,7 @@ function GraduateModal({
     const onAddMember: SubmitHandler<Inputs> = (data) => {
         console.log(data.imageFile);
         let file = data.imageFile[0];
-        const storageRef = ref(storage, "images/" + file.name);
+        const storageRef = ref(storage, "image/alumni/" + file.name);
         const uploadImage = uploadBytesResumable(storageRef, file);
 
         uploadImage.on(
@@ -257,7 +253,6 @@ function GraduateModal({
                         major: data.major, //전공
                         imageUrl: downloadURL, // 사진 주소
                         department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
-                        course: data.course,
                         history: data.history.slice(0, historyList.length),
                     });
                 });
@@ -301,6 +296,7 @@ function GraduateModal({
                         src={selectedMember.imageUrl}
                         layout='fill'
                         objectFit='cover'
+                        alt=''
                     />
                     <button
                         className='absolute right-2 bottom-2 z-50 border bg-GRAY_COLOR-600 text-sm'

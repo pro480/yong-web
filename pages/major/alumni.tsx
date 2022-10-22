@@ -16,7 +16,6 @@ function Alumni() {
             />
             {/* <MemberList team='연구팀1' />
             <MemberList team='연구팀2' /> */}
-            <GraduateList classification='교수' />
             <GraduateList classification='졸업생' />
 
             {/*동문 소개란*/}

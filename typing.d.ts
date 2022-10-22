@@ -48,7 +48,6 @@ export interface GraduateMember {
     major: string; //전공
     imageUrl: string; // 사진 주소
     department: string; // 소속 (ex.인하대학교 교육학과 교수)
-    course: string;
     history: string[]; // 약력
 }
 

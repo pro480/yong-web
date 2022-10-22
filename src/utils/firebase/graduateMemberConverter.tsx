@@ -15,7 +15,6 @@ const graduateMemberConverter = {
             major: member.major, //전공
             imageUrl: member.imageUrl, // 사진 주소
             department: member.department, // 소속 (ex.인하대학교 교육학과 교수)
-            course: member.course,
             history: member.history, // 약력
         };
     },
@@ -31,7 +30,6 @@ const graduateMemberConverter = {
             major: member.major, //전공
             imageUrl: member.imageUrl, // 사진 주소
             department: member.department, // 소속 (ex.인하대학교 교육학과 교수)
-            course: member.course,
             history: member.history, // 약력
         };
     },
