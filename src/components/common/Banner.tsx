@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
-import { SiteMap, SubMenu } from "../../typing";
+import { SiteMap, SubMenu } from "../../../typing";
 
 interface Props {
     image: StaticImageData;
@@ -10,9 +10,10 @@ interface Props {
 
 function Banner({ image, siteMap }: Props) {
     const [title, setTitle] = useState("");
-    const router = useRouter();
-    const path = router.pathname.split("/");
+
+    const path = useRouter().pathname.split("/");
     const [a, firstDepth, secondDepth, thirdDepth] = path;
+
     let subMenu: SubMenu[];
 
     useEffect(() => {

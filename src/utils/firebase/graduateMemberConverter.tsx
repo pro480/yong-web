@@ -9,8 +9,8 @@ import { GraduateMember } from "../../../typing";
 const graduateMemberConverter = {
     toFirestore(member: WithFieldValue<GraduateMember>): DocumentData {
         return {
-            name: member.name, // 이름
             classification: member.classification, // 교수, 학생 구분
+            name: member.name, // 이름
             email: member.email, // 개인 이메일
             major: member.major, //전공
             imageUrl: member.imageUrl, // 사진 주소
@@ -25,8 +25,8 @@ const graduateMemberConverter = {
     ): GraduateMember {
         const member = snapshot.data(options)!;
         return {
-            name: member.name, // 이름
             classification: member.classification, //교수, 학생 구분
+            name: member.name, // 이름
             email: member.email, // 개인 이메일
             major: member.major, //전공
             imageUrl: member.imageUrl, // 사진 주소

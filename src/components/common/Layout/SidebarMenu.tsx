@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { SubMenu } from "../../typing";
+import { SubMenu } from "../../../../typing";
 import { useRouter } from "next/router";
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
 

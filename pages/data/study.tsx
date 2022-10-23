@@ -8,7 +8,7 @@ import {
     MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
 import React from "react";
-import PageTitle from "../../src/components/PageTitle";
+import PageTitle from "../../src/components/common/Layout/PageTitle";
 
 function Study() {
     type StudyData = {

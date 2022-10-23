@@ -33,10 +33,10 @@ function PageTitle({
                 </h3>
             </div>
             <div className='flex gap-x-4 border-y py-3'>
-                <Link href='/'>
+                <Link href='/pages'>
                     <HomeIcon className='h-6 cursor-pointer text-PRIMARY_COLOR-500' />
                 </Link>
-                <Link href='/'>
+                <Link href='/pages'>
                     <span className='cursor-pointer'>HOME</span>
                 </Link>
                 {firstDepth && (

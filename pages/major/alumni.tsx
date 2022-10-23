@@ -1,11 +1,18 @@
 import React from "react";
-import PageTitle from "../../src/components/PageTitle";
-// import MemberList from "../../src/components/MemberList";
-import GraduateList from "../../src/components/GraduateList";
+import PageTitle from "../../src/components/common/Layout/PageTitle";
+import MemberList from "../../src/components/common/MemberList";
+import useFirebase from "../../src/hooks/useFirebase";
+import { GraduateMember } from "../../typing";
 
 function Alumni() {
+    const { collectionRef, collectionQuery, deleteDocument } =
+        useFirebase<GraduateMember>("graduateMembers", ["graduateMembers"]);
+
+    const memberList = collectionQuery.data?.docs;
+    console.log(memberList);
+
     return (
-        <div>
+        <div className='relative'>
             <PageTitle
                 title='동문'
                 description='동문 페이지입니다. 설명을 입력해주세요'
@@ -14,21 +21,16 @@ function Alumni() {
                 secondDepth='동문'
                 secondLink='/major/alumni'
             />
-            {/* <MemberList team='연구팀1' />
-            <MemberList team='연구팀2' /> */}
-            <GraduateList classification='교수' />
-            <GraduateList classification='졸업생' />
 
-            {/*동문 소개란*/}
-            <main className='flex flex-wrap gap-y-8 pb-12'></main>
+            <MemberList<GraduateMember>
+                team='동문'
+                memberList={memberList}
+                collectionRef={collectionRef}
+                collectionQuery={collectionQuery}
+                isBig={false}
+                deleteDocument={deleteDocument}
+            />
         </div>
-
-
-
-
-
-
-
     );
 }
 
