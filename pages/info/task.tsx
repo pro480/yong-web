@@ -1,5 +1,6 @@
 import React from "react";
 import PageTitle from "../../src/components/PageTitle";
+import Image from "next/image";
 
 function Task() {
     return (
@@ -13,31 +14,34 @@ function Task() {
                 secondLink='/info/task'
             />
             <div className='flex w-full py-12'>
-                <div className='h-52 w-52 border-8 p-5'>
-                    <p className='text-lg font-semibold underline underline-offset-4'>
-                        NO 1
-                    </p>
-                    <p className='mt-1 text-2xl font-semibold'>업무 1</p>
+                <div className='relative h-52 w-52 p-5'>
+                    <Image
+                        src="https://bit.ly/3TgcItU"
+                        alt="교육데이터 분석 이미지"
+                        layout="fill"
+                    />
                 </div>
                 <div className='ml-10'>내용을 입력해주세요</div>
             </div>
             <hr className='border-dashed border-gray-400' />
             <div className='flex h-full py-12'>
-                <div className='h-52 w-52 border-8 p-5'>
-                    <p className='text-lg font-semibold underline underline-offset-4'>
-                        NO 2
-                    </p>
-                    <p className='mt-1 text-2xl font-semibold'>업무 2</p>
+                <div className='relative h-52 w-52 border-8 p-5'>
+                    <Image
+                        src="https://bit.ly/3SoQ5lD"
+                        alt="교육데이터 분석 이미지"
+                        layout="fill"
+                    />
                 </div>
                 <div className='ml-10'>내용을 입력해주세요</div>
             </div>
             <hr className='border-dashed border-gray-400' />
             <div className='flex h-full py-12'>
-                <div className='h-52 w-52 border-8 p-5'>
-                    <p className='text-lg font-semibold underline underline-offset-4'>
-                        NO 3
-                    </p>
-                    <p className='mt-1 text-2xl font-semibold'>업무 3</p>
+                <div className='relative h-52 w-52 border-8 p-5'>
+                    <Image
+                        src="https://bit.ly/2DHOHYB"
+                        alt="교육데이터 분석 이미지"
+                        layout="fill"
+                    />
                 </div>
                 <div className='ml-10'>내용을 입력해주세요</div>
             </div>
