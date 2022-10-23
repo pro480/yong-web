@@ -1,15 +1,11 @@
 import React from "react";
 import PageTitle from "../../../src/components/common/Layout/PageTitle";
 import NameCard from "../../../src/components/info/NameCard";
-import { collection } from "@firebase/firestore";
-import { db } from "../../../firebase";
 import { InternalMember } from "../../../typing";
-import memberConverter from "../../../src/utils/firebase/internalMemberConverter";
-import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import useFirebase from "../../../src/hooks/useFirebase";
 
 function Engineer() {
-    const { collectionRef, collectionQuery } = useFirebase<InternalMember>(
+    const {  collectionQuery } = useFirebase<InternalMember>(
         "internalMembers",
         ["internalMembers"]
     );
@@ -40,6 +36,7 @@ function Engineer() {
                             className='h-32 sm:h-40 md:h-48 lg:h-36 xl:h-44'
                         >
                             <NameCard
+                                documentID={docSnapshot.id}
                                 isEditable={false}
                                 isBig={false}
                                 member={member}
