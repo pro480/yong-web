@@ -13,8 +13,9 @@ function HistoryCard({ year, contents }: Props) {
                 {year}
             </h1>
             <div>
-                {contents.map((content) => (
+                {contents.map((content, index) => (
                     <HistoryPost
+                        key={index}
                         month={content.month}
                         history={content.history}
                     />

@@ -1,28 +1,14 @@
 import {
     collection,
-    CollectionReference,
     deleteDoc,
     doc,
     DocumentData,
-    DocumentReference,
-    FirestoreDataConverter,
     QueryDocumentSnapshot,
     SnapshotOptions,
     WithFieldValue,
 } from "@firebase/firestore";
-import { db, storage } from "../../firebase";
-import {
-    useFirestoreCollectionMutation,
-    useFirestoreDocumentDeletion,
-    useFirestoreQuery,
-} from "@react-query-firebase/firestore";
-import React from "react";
-import { SubmitHandler } from "react-hook-form";
-import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-
-interface InputProps {
-    imageFile: File[];
-}
+import { db } from "../../firebase";
+import { useFirestoreQuery } from "@react-query-firebase/firestore";
 
 export default function useFirebase<T>(path: string, queryKey: string[]) {
     const converter = {
@@ -50,11 +36,6 @@ export default function useFirebase<T>(path: string, queryKey: string[]) {
             .catch((error) => {
                 console.log(error);
             });
-    };
-
-    const addDocument = (inputs: any) => {
-        const addMutation = useFirestoreCollectionMutation(collectionRef);
-        return addMutation.mutate(inputs);
     };
 
     return { converter, collectionRef, collectionQuery, deleteDocument };
