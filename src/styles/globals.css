@@ -19,4 +19,8 @@ html {
     .info_pattern {
         @apply flex h-[250px] w-3/5 items-center bg-PRIMARY_COLOR-500 pl-12 text-xl text-white;
     }
+
+    .history_division {
+        @apply before:content-[""] mx-10 before:mt-2 before:block before:h-3 before:w-3 before:rounded-full before:border-2 before:border-PRIMARY_COLOR-500 after:mx-auto after:block after:h-9 after:w-0 after:border after:border-dashed after:border-PRIMARY_COLOR-50;
+    }
 }

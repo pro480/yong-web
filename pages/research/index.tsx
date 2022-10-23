@@ -1,7 +1,7 @@
 import React from "react";
-import PageTitle from "../../src/components/PageTitle";
+import PageTitle from "../../src/components/common/Layout/PageTitle";
 import { ForwardIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
-import ResearchCard from "../../src/components/ResearchCard";
+import ResearchCard from "../../src/components/research/ResearchCard";
 
 function Index() {
     type projectInProgress = {

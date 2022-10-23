@@ -1,6 +1,8 @@
 import React from "react";
-import PageTitle from "../../src/components/PageTitle";
-import Image from "next/image";
+import PageTitle from "../../src/components/common/Layout/PageTitle";
+import HorizontalRule from "../../src/components/common/HorizontalRule";
+import TaskCard from "../../src/components/info/TaskCard";
+import dummyImage from "../../public/dummy.png";
 
 function Task() {
     return (
@@ -13,38 +15,26 @@ function Task() {
                 secondDepth='주요 수행 업무'
                 secondLink='/info/task'
             />
-            <div className='flex w-full py-12'>
-                <div className='relative h-52 w-52 p-5'>
-                    <Image
-                        src="https://bit.ly/3TgcItU"
-                        alt="교육데이터 분석 이미지"
-                        layout="fill"
-                    />
-                </div>
-                <div className='ml-10'>내용을 입력해주세요</div>
-            </div>
-            <hr className='border-dashed border-gray-400' />
-            <div className='flex h-full py-12'>
-                <div className='relative h-52 w-52 border-8 p-5'>
-                    <Image
-                        src="https://bit.ly/3SoQ5lD"
-                        alt="교육데이터 분석 이미지"
-                        layout="fill"
-                    />
-                </div>
-                <div className='ml-10'>내용을 입력해주세요</div>
-            </div>
-            <hr className='border-dashed border-gray-400' />
-            <div className='flex h-full py-12'>
-                <div className='relative h-52 w-52 border-8 p-5'>
-                    <Image
-                        src="https://bit.ly/2DHOHYB"
-                        alt="교육데이터 분석 이미지"
-                        layout="fill"
-                    />
-                </div>
-                <div className='ml-10'>내용을 입력해주세요</div>
-            </div>
+
+            <TaskCard
+                image={dummyImage}
+                title='업무 1'
+                content='업무 내용에 관한 설명'
+            />
+            <HorizontalRule />
+
+            <TaskCard
+                image={dummyImage}
+                title='업무 2'
+                content='업무 내용에 관한 설명'
+            />
+            <HorizontalRule />
+
+            <TaskCard
+                image={dummyImage}
+                title='업무 3'
+                content='업무 내용에 관한 설명'
+            />
         </div>
     );
 }

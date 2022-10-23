@@ -1,56 +1,44 @@
-import React, { Dispatch } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ExternalMember,  Organization } from "../../typing";
+import { Organization } from "../../../typing";
 import {
     useFirestoreCollectionMutation,
     useFirestoreDocumentMutation,
 } from "@react-query-firebase/firestore";
-import { collection, CollectionReference, doc } from "@firebase/firestore";
-import { db } from "../../firebase";
+import { collection, doc } from "@firebase/firestore";
+import { db } from "../../../firebase";
+import { MemberTableContext } from "./MemberTable";
+import { MemberTableCancelButton } from "./MemberTableButton";
 
 interface Inputs {
     name: string; // 이름
     email: string; // 개인 이메일
     department: string; // 소속 (ex.인하대학교 교육학과 교수)
     organization: Organization;
-    division?: string; // 구분 (대학 or 연구 기관)
+    division?: string | null; // 구분 (대학 or 연구 기관)
 }
 
 interface Props {
-    selectedMember: ExternalMember | undefined;
-    setSelectedMember: Dispatch<
-        React.SetStateAction<ExternalMember | undefined>
-    >;
-    collectionRef: CollectionReference<ExternalMember>;
     organization: Organization;
-    setIsEditing: Dispatch<React.SetStateAction<boolean>>;
-    isAdvisor: boolean;
-    count: number;
-    selectedDocId: string | null;
 }
 
-function MemberTableModal({
-    selectedMember,
-    setSelectedMember,
-    collectionRef,
-    organization,
-    setIsEditing,
-    isAdvisor,
-    count,
-    selectedDocId,
-}: Props) {
-    const {
-        register,
-        handleSubmit,
-    } = useForm<Inputs>({
-        defaultValues: {
-            name: selectedMember?.name,
-            email: selectedMember?.email,
-            department: selectedMember?.department,
-            division: selectedMember?.division,
-            organization: selectedMember?.organization,
-        },
+function MemberTableToggle({ organization }: Props) {
+    const { selectedMember, collectionRef, selectedDocId, selectedIndex } =
+        useContext(MemberTableContext);
+
+    const { register, reset, handleSubmit } = useForm<Inputs>({
+        defaultValues: useMemo(() => {
+            if (selectedMember) {
+                return selectedMember;
+            }
+        }, [selectedMember]),
     });
+
+    useEffect(() => {
+        if (selectedMember) {
+            reset(selectedMember);
+        }
+    }, [selectedMember]);
 
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
@@ -64,7 +52,7 @@ function MemberTableModal({
             email: data.email, // 개인 이메일
             department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
             organization: organization,
-            division: data?.division, // 구분 (대학 or 연구 기관)
+            division: data.division ? data.division : null, // 구분 (대학 or 연구 기관)
         });
     };
 
@@ -87,7 +75,7 @@ function MemberTableModal({
                     : handleSubmit(onAddMember)
             }
         >
-            {isAdvisor && (
+            {organization === "연구 자문단" && (
                 <div className='w-[10%] text-center'>
                     <select
                         className='mx-2 h-8 border border-gray-700  pl-3'
@@ -99,7 +87,7 @@ function MemberTableModal({
                     </select>
                 </div>
             )}
-            <div className='w-[5%] py-3 text-center'>{count + 1}</div>
+            <div className='w-[5%] py-3 text-center'>{selectedIndex}</div>
             <label className='w-[20%] text-center'>
                 <input
                     className=' mx-2 h-7 border  border-gray-700   pl-3'
@@ -121,6 +109,7 @@ function MemberTableModal({
             <label className='w-[35%] items-center  justify-center text-center'>
                 <input
                     className=' mx-2 h-7 w-44 border border-gray-700   pl-3'
+                    type='email'
                     placeholder='이메일'
                     {...register("email", {
                         required: true,
@@ -129,18 +118,10 @@ function MemberTableModal({
             </label>
             <div className='absolute right-2 flex gap-x-3 text-sm'>
                 <input type='submit' className=' border p-1' />
-                <button
-                    className='border p-1'
-                    onClick={() => {
-                        setIsEditing(false);
-                        setSelectedMember(undefined);
-                    }}
-                >
-                    취소
-                </button>
+                <MemberTableCancelButton />
             </div>
         </form>
     );
 }
 
-export default MemberTableModal;
+export default MemberTableToggle;

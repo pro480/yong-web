@@ -1,24 +1,19 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { collection, CollectionReference, doc } from "@firebase/firestore";
+import { collection, doc } from "@firebase/firestore";
 import {
     useFirestoreCollectionMutation,
     useFirestoreDocumentMutation,
 } from "@react-query-firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import { db, storage } from "../../firebase";
+import { db, storage } from "../../../firebase";
 import Image from "next/image";
-import { Course, InternalMember, Team } from "../../typing";
+import { Course, Team } from "../../../typing";
+import { MemberListContext } from "../common/MemberList";
+import { MemberCancelButton } from "./MemberButton";
 
 interface Props {
-    memberRef: CollectionReference<InternalMember>;
     team: Team;
-    setModalOpen: Dispatch<SetStateAction<boolean>>;
-    selectedDocument?: string | null | undefined;
-    selectedMember?: InternalMember | null | undefined;
-    setSelectedMember: Dispatch<
-        React.SetStateAction<InternalMember | undefined>
-    >;
 }
 interface Inputs {
     name: string; // 이름
@@ -26,137 +21,58 @@ interface Inputs {
     major: string; //전공
     imageFile: File[]; // 사진 주소
     department: string; // 소속 (ex.인하대학교 교육학과 교수)
-    course: Course;
-    team: Team; // 소속 조직
     history: string[]; // 약력
+    team: Team; // 소속 조직
+    course?: Course;
 }
 
-function MemberModal({
-    memberRef,
-    selectedMember,
-    team,
-    setModalOpen,
-    selectedDocument,
-    setSelectedMember,
-}: Props) {
+function MemberToggle({ team }: Props) {
     const [historyList, setHistoryList] = useState<string[]>([""]);
     const [editImage, setEditImage] = useState(false);
+    const { selectedMember, collectionRef, selectedDocId, setModalOpen } =
+        useContext(MemberListContext);
 
     useEffect(() => {
-        if (selectedMember?.history) {
+        if (selectedMember) {
             let newHistoryList = [...selectedMember.history];
             setHistoryList(newHistoryList);
-        } else {
+            reset(selectedMember);
         }
     }, [selectedMember]);
-
-    const membersRef = memberRef;
 
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm<Inputs>({
-        defaultValues: {
-            name: selectedMember?.name, // 이름
-            email: selectedMember?.email, // 개인 이메일
-            major: selectedMember?.major, //전공
-            department: selectedMember?.department, // 소속 (ex.인하대학교 교육학과 교수)
-            course: selectedMember?.course,
-            team: selectedMember?.team, // 소속 조직
-            history: selectedMember?.history, // 약력
-        },
+        defaultValues: useMemo(() => {
+            if (selectedMember) {
+                return selectedMember;
+            }
+        }, [selectedMember]),
     });
 
     // firebase members 컬렉션에 문서 추가하기 위한 작업
-    const addMutation = useFirestoreCollectionMutation(membersRef);
+    const addMutation = useFirestoreCollectionMutation(collectionRef);
     // firebase members 컬렉션에 있는 특정 문서를 수정하기 위한 작업
     const updateMutation = useFirestoreDocumentMutation(
-        doc(collection(db, "internalMembers"), `${selectedDocument}`),
+        doc(
+            collection(
+                db,
+                team === "동문" ? "graduateMembers" : "internalMembers"
+            ),
+            `${selectedDocId}`
+        ),
         { merge: true }
     );
 
-    const onUpdateMember: SubmitHandler<Inputs> = (data) => {
-        if (editImage) {
-            let file = data.imageFile[0];
-            const storageRef = ref(storage, "images/" + file.name);
-            const uploadImage = uploadBytesResumable(storageRef, file);
-
-            uploadImage.on(
-                "state_changed",
-                (snapshot) => {
-                    // 이미지 업로드가 얼마나 진행됐는지 알려주는 상태
-                    const progress =
-                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log("Upload is " + progress + "% done");
-                    switch (snapshot.state) {
-                        case "paused":
-                            console.log("Upload is paused");
-                            break;
-                        case "running":
-                            console.log("Upload is running");
-                            break;
-                    }
-                },
-
-                (error) => {
-                    // 아래는 에러 처리 코드, 여기서는 3가지 경우만 했지만 아래 사이트를 참고하면 모든 에러를 볼 수 있다.
-                    // https://firebase.google.com/docs/storage/web/handle-errors
-                    switch (error.code) {
-                        case "storage/unauthorized":
-                            // 유저에게 업로드 권한이 없는 경우, firebase storage 의 Rules 를 확인하자
-                            console.log(error);
-                            break;
-                        case "storage/canceled":
-                            // 유저가 업로드를 취소한 경우
-                            console.log(error);
-                            break;
-                        case "storage/unknown":
-                            // 알수 없는 에러, 아마도 서버측 에러?
-                            console.log(error);
-                            break;
-                    }
-                },
-                () => {
-                    // 업로드가 성공하면 업로드 주소를 가져오고 addMutation.mutate 함수를 실행해 문서를 추가한다
-                    getDownloadURL(uploadImage.snapshot.ref).then(
-                        (downloadURL) => {
-                            updateMutation.mutate({
-                                name: data.name, // 이름
-                                email: data.email, // 개인 이메일
-                                major: data.major, //전공
-                                imageUrl: downloadURL, // 사진 주소
-                                department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
-                                course: data.course,
-                                team: data.team, // 소속 조직
-                                history: data.history.slice(
-                                    0,
-                                    historyList.length
-                                ), // 약력
-                            });
-                        }
-                    );
-                    setModalOpen(false);
-                }
-            );
-        } else {
-            updateMutation.mutate({
-                name: data.name, // 이름
-                email: data.email, // 개인 이메일
-                major: data.major, //전공
-                department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
-                course: data.course,
-                team: data.team, // 소속 조직
-                history: data.history.slice(0, historyList.length),
-            });
-            setModalOpen(false);
-        }
-    };
-
-    const onAddMember: SubmitHandler<Inputs> = (data) => {
-        console.log(data.imageFile);
+    function uploadImageAndAddDoc(data: Inputs, mutation: any) {
         let file = data.imageFile[0];
-        const storageRef = ref(storage, "images/" + file.name);
+        const storageRef = ref(
+            storage,
+            data.team ? "images/internalMembers/" : "images/alumni/" + file.name
+        );
         const uploadImage = uploadBytesResumable(storageRef, file);
 
         uploadImage.on(
@@ -197,20 +113,41 @@ function MemberModal({
             () => {
                 // 업로드가 성공하면 업로드 주소를 가져오고 addMutation.mutate 함수를 실행해 문서를 추가한다
                 getDownloadURL(uploadImage.snapshot.ref).then((downloadURL) => {
-                    addMutation.mutate({
+                    mutation.mutate({
                         name: data.name, // 이름
                         email: data.email, // 개인 이메일
                         major: data.major, //전공
                         imageUrl: downloadURL, // 사진 주소
                         department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
-                        course: data.course,
-                        team: data.team, // 소속 조직
                         history: data.history.slice(0, historyList.length), // 약력
+                        team: data.team, // 소속 조직
+                        course: data.course ? data.course : null,
                     });
                 });
                 setModalOpen(false);
             }
         );
+    }
+
+    const onUpdateMember: SubmitHandler<Inputs> = (data) => {
+        if (editImage) {
+            uploadImageAndAddDoc(data, updateMutation);
+        } else {
+            updateMutation.mutate({
+                name: data.name, // 이름
+                email: data.email, // 개인 이메일
+                major: data.major, //전공
+                department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
+                course: data.course,
+                team: data.team, // 소속 조직
+                history: data.history.slice(0, historyList.length),
+            });
+            setModalOpen(false);
+        }
+    };
+
+    const onAddMember: SubmitHandler<Inputs> = (data) => {
+        uploadImageAndAddDoc(data, addMutation);
     };
 
     // 약력 입력란 추가
@@ -404,19 +341,11 @@ function MemberModal({
                         type='submit'
                         value={selectedMember ? "편집" : "추가"}
                     />
-                    <button
-                        onClick={() => {
-                            setModalOpen(false);
-                            setSelectedMember(undefined);
-                        }}
-                        className='w-fit cursor-pointer self-center border bg-PRIMARY_COLOR-50 px-6 py-1'
-                    >
-                        취소
-                    </button>
+                    <MemberCancelButton />
                 </div>
             </div>
         </form>
     );
 }
 
-export default MemberModal;
+export default MemberToggle;

@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
-import MainPageBanner from "../src/components/MainPageBanner";
-import MainResearchProject from "../src/components/MainResearchProject";
-import ResearchReport from "../src/components/ResearchReport";
-import MainNews from "../src/components/MainNews";
-import MainForum from "../src/components/MainForum";
+import MainPageBanner from "../src/components/main/MainPageBanner";
+import MainResearchProject from "../src/components/main/MainResearchProject";
+import ResearchReport from "../src/components/main/ResearchReport";
+import MainNews from "../src/components/main/MainNews";
+import MainForum from "../src/components/main/MainForum";
 import Head from "next/head";
 
 const Home: NextPage = () => {

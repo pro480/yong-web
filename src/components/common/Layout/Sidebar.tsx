@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { SiteMap, SubMap } from "../../typing";
+import { SiteMap, SubMap } from "../../../../typing";
 import SidebarMenu from "./SidebarMenu";
 import {
     ArrowDownCircleIcon,

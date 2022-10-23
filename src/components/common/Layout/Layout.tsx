@@ -3,8 +3,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
 import Sidebar from "./Sidebar";
-import networkImage from "../../public/images/banner/infoBanner.jpg";
-import Banner from "./Banner";
+import networkImage from "../../../../public/images/banner/infoBanner.jpg";
+import Banner from "../Banner";
 
 interface Props {
     children: ReactNode;
@@ -68,7 +68,7 @@ function Layout({ children }: Props) {
                         {
                             title_KO: "센터 연구원",
                             title_EN: "Center Research Engineer",
-                            href: "/info/organization/analytics",
+                            href: "/info/organization/engineer",
                         },
                     ],
                     href: "/info/organization",
@@ -216,7 +216,7 @@ function Layout({ children }: Props) {
         <div className='h-full w-full'>
             <Header siteMap={siteMap} />
             <Banner image={networkImage} siteMap={siteMap} />
-            <main className='m-auto flex min-h-[600px] max-w-[1536px] flex-col 2xl:flex-row 2xl:items-start'>
+            <main className='mx-auto mb-32 flex min-h-[600px] max-w-[1536px] flex-col 2xl:flex-row 2xl:items-start'>
                 <Sidebar siteMap={siteMap} />
                 <div className='w-full p-10 md:px-20 md:py-10'>{children}</div>
             </main>

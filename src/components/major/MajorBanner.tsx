@@ -10,9 +10,9 @@ function MajorBanner({ title, image }: Props) {
     return (
         <div className='relative mb-10 flex text-white'>
             {/*로고 투명도 조절*/}
-            <div className="bg-black/20">
+            <div className='bg-black/20'>
                 {/*로고 사이즈*/}
-                <div className='relative -z-10 flex w-full h-full'>
+                <div className='relative -z-10 flex h-full w-full'>
                     <Image
                         width=''
                         height=''

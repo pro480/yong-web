@@ -1,7 +1,7 @@
 import "../src/styles/globals.css";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-import Layout from "../src/components/Layout";
+import Layout from "../src/components/common/Layout/Layout";
 import { AuthProvider } from "../src/hooks/useAuth";
 import { QueryClient, QueryClientProvider } from "react-query";
 

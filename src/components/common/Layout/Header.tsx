@@ -3,8 +3,8 @@ import { Bars3CenterLeftIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import HeaderMenu from "./HeaderMenu";
-import { SiteMap } from "../../typing";
-import useAuth from "../hooks/useAuth";
+import { SiteMap } from "../../../../typing";
+import useAuth from "../../../hooks/useAuth";
 import { ImGithub } from "react-icons/im";
 
 interface Props {

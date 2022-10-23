@@ -1,5 +1,5 @@
 import React from "react";
-import PageTitle from "../../src/components/PageTitle";
+import PageTitle from "../../src/components/common/Layout/PageTitle";
 import {
     DocumentDuplicateIcon,
     PresentationChartLineIcon,
