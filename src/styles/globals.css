@@ -2,16 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+body,
+html {
+    font-family: "Noto Sans KR", "Open Sans", sans-serif;
+}
+
 @layer components {
     .organizationNode {
         @apply flex h-1/2 w-28 cursor-pointer items-center justify-center rounded-full border text-xs font-semibold sm:w-36 md:w-44 md:text-base;
     }
 
     .organizationTitle {
-        @apply h-full whitespace-nowrap w-fit border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500;
+        @apply h-full w-fit whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500;
     }
 
-    .info_pattern{
-        @apply flex h-[250px] w-3/5 items-center bg-PRIMARY_COLOR-500 pl-12 text-xl text-white
+    .info_pattern {
+        @apply flex h-[250px] w-3/5 items-center bg-PRIMARY_COLOR-500 pl-12 text-xl text-white;
     }
 }

@@ -4,7 +4,7 @@ import PageTitle from "../../src/components/PageTitle";
 import { AcademicCapIcon, BriefcaseIcon } from "@heroicons/react/24/outline";
 import centerLeaderImage from "../../public/images/centerLeader.png";
 import logoImage from "../../public/images/logo/logo_mini_nobg.png";
-import symbolImage from "../../public/images/logo/symbol-removebg.png";
+import symbolImage from "../../public/images/logo/symbol_outline.png";
 import CenterLeaderHistory from "../../src/components/CenterLeaderHistory";
 
 function Index() {
@@ -52,7 +52,7 @@ function Index() {
                                 </li>
                             </ul>
                         </div>
-                        <div className='over absolute bottom-0 right-1/3 z-10 mx-auto flex h-52 w-52 '>
+                        <div className='absolute bottom-2 right-1/3 z-10 mx-auto flex h-48 w-48 '>
                             <Image src={symbolImage} layout='fill' />
                         </div>
                         <div className=' relative border-b-[250px] border-r-[200px] border-b-PRIMARY_COLOR-500 border-r-transparent '></div>

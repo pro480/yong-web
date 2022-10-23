@@ -1,13 +1,13 @@
 import React from "react";
 import PageTitle from "../../../src/components/PageTitle";
-import FirstDepthBanner from "../../../src/components/FirstDepthBanner";
+import Banner from "../../../src/components/Banner";
 import MemberTable from "../../../src/components/MemberTable";
 import networkImage from "../../../public/images/banner/infoBanner.jpg";
 
 function Network() {
     return (
         <div>
-            {/*<FirstDepthBanner*/}
+            {/*<Banner*/}
             {/*    title='Research Collaboration Network'*/}
             {/*    description='조직에 대한 설명을 적어주세요'*/}
             {/*    image={networkImage}*/}
