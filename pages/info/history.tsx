@@ -7,14 +7,7 @@ import HorizontalRule from "../../src/components/common/HorizontalRule";
 function History() {
     return (
         <div>
-            <PageTitle
-                title='센터 연혁'
-                description='센터 연혁 페이지의 설명을 입력해주세요.'
-                firstDepth='센터 소개'
-                firstLink='/info'
-                secondDepth='센터 연혁'
-                secondLink='/info/history'
-            />
+
 
             {/*2022년*/}
             <HistoryCard

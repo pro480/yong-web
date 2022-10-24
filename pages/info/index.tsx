@@ -10,14 +10,7 @@ import CenterLeaderEducation from "../../src/components/info/CenterLeaderEducati
 function Index() {
     return (
         <div>
-            <PageTitle
-                title='센터장 소개'
-                description=' 센터장 소개 페이지에 대한 설명을 입력해주세요 '
-                firstDepth='센터 소개'
-                firstLink='/info'
-                secondDepth='센터장 소개'
-                secondLink='/info'
-            />
+
             <CenterLeaderInfo />
             <CenterLeaderCareer />
             <HorizontalRule />

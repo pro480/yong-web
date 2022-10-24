@@ -29,14 +29,7 @@ function Mou() {
 
     return (
         <div>
-            <PageTitle
-                title='MOU 기관'
-                description='MOU기관 페이지 설명을 입력해주세요'
-                firstDepth='연구 및 사업'
-                firstLink='/research'
-                secondDepth='MOU 기관'
-                secondLink='/research/mou'
-            />
+
             <main className='grid grid-cols-1 items-center gap-y-16 gap-x-14 self-center md:grid-cols-2 xl:grid-cols-3'>
                 {mous.map((mou, index) => (
                     <article

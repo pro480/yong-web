@@ -1,18 +1,19 @@
 import React, { memo, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { SiteMap, SubMap } from "../../../../typing";
+import {  SubMap } from "../../../../typing";
 import SidebarMenu from "./SidebarMenu";
 import {
     ArrowDownCircleIcon,
     ArrowUpCircleIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { useRecoilValue } from "recoil";
+import { siteMapState } from "../../../atoms/sitemapAtom";
 
-interface Props {
-    siteMap: SiteMap;
-}
+interface Props {}
 
-function Sidebar({ siteMap }: Props) {
+function Sidebar() {
+    const siteMap = useRecoilValue(siteMapState);
     const [currentMenu, setCurrentMenu] = useState<SubMap>();
     const pathName = useRouter().pathname.split("/")[1];
     const [menuOpen, setMenuOpen] = useState(false);

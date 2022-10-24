@@ -107,14 +107,6 @@ function Study() {
 
     return (
         <div>
-            <PageTitle
-                title='학습 자료'
-                description='학습 자료 페이지의 설명을 입력해주세요.'
-                firstDepth='자료실'
-                firstLink='/data'
-                secondDepth='학습 자료'
-                secondLink='/data/study'
-            />
             <main>
                 {/*카테고리*/}
                 <div className='flex'>

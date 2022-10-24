@@ -1,7 +1,13 @@
 export interface SubMenu {
     title_KO: string;
     title_EN: string;
-    subMenu: { title_KO: string; title_EN: string; href: string }[];
+    description: string;
+    subMenu: {
+        title_KO: string;
+        title_EN: string;
+        description: string;
+        href: string;
+    }[];
     href: string;
 }
 
@@ -10,6 +16,7 @@ export interface SubMap {
     title_EN: string;
     description: string;
     subMenu: SubMenu[];
+    href: string;
 }
 
 export interface SiteMap {

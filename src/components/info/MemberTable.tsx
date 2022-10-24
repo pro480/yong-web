@@ -1,4 +1,10 @@
-import React, { createContext, Dispatch, useEffect, useState } from "react";
+import React, {
+    createContext,
+    Dispatch,
+    useEffect,
+    useLayoutEffect,
+    useState,
+} from "react";
 import { ExternalMember, Organization } from "../../../typing";
 import MemberTableToggle from "./MemberTableToggle";
 import useFirebase from "../../hooks/useFirebase";
@@ -26,7 +32,6 @@ interface MemberTableContextProps {
     >;
     selectedMember: ExternalMember | null;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
-    memberList: QueryDocumentSnapshot<ExternalMember>[] | undefined;
     selectedDocId: string | null;
     collectionRef: CollectionReference<ExternalMember>;
     deleteDocument: (docID: string) => void;
@@ -45,10 +50,16 @@ function MemberTable({ organization }: Props) {
     const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
     const [isEditing, setIsEditing] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
+    const [memberList, setMemberList] = useState<
+        QueryDocumentSnapshot<ExternalMember>[] | undefined
+    >(collectionQuery.data?.docs);
 
-    const memberList = collectionQuery.data?.docs.filter(
-        (docSnapshot) => docSnapshot.data().organization === organization
-    );
+    useLayoutEffect(() => {
+        const newMemberList = collectionQuery.data?.docs.filter(
+            (docSnapshot) => docSnapshot.data().organization === organization
+        );
+        setMemberList(newMemberList);
+    }, [collectionQuery.isSuccess]);
 
     const value = {
         isEditing,
@@ -57,7 +68,6 @@ function MemberTable({ organization }: Props) {
         setSelectedMember,
         collectionQuery,
         collectionRef,
-        memberList,
         deleteDocument,
         selectedDocId,
         setSelectedDocId,
@@ -65,11 +75,18 @@ function MemberTable({ organization }: Props) {
         setSelectedIndex,
     };
 
+    if (collectionQuery.isLoading) {
+        return <>로딩</>;
+    }
+
     return (
         <MemberTableContext.Provider value={value}>
             <table className='w-full table-auto border-t border-t-black'>
                 <MemberTableHeader organization={organization} />
-                <MemberTableBody organization={organization} />
+                <MemberTableBody
+                    organization={organization}
+                    memberList={memberList}
+                />
             </table>
             {isEditing && <MemberTableToggle organization={organization} />}
         </MemberTableContext.Provider>

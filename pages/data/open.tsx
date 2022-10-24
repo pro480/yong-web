@@ -49,14 +49,7 @@ function Open() {
 
     return (
         <div>
-            <PageTitle
-                title='오픈 데이터'
-                description='오픈 데이터 페이지의 설명을 입력해주세요.'
-                firstDepth='자료실'
-                firstLink='/data'
-                secondDepth='오픈 데이터'
-                secondLink='/data/open'
-            />
+
             <main className='grid grid-cols-1 items-center gap-y-16 gap-x-14 self-center md:grid-cols-2 xl:grid-cols-3'>
                 {opens.map((open, index) => (
                     <article
