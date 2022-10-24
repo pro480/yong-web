@@ -9,14 +9,7 @@ import graduateCourseImage from "../../public/images/major/course.jpg"
 function Vision() {
     return (
         <div className="relative">
-            <PageTitle
-                title='졸업 후 진로'
-                description='졸업 후 진로에 대한 설명을 적어주세요'
-                firstDepth='전공 소개'
-                firstLink='/major'
-                secondDepth='졸업 후 진로'
-                secondLink='/major/vision'
-            />
+
 
             {/* 취업진로분야 -> 이미지로 대체
             - 적당한 관련 이미지를 찾지 못해서 샘플 이미지(course.jpg - 라이센스(courseLicense.pdf)로 대체

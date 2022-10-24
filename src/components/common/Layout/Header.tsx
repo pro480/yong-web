@@ -6,12 +6,15 @@ import HeaderMenu from "./HeaderMenu";
 import { SiteMap } from "../../../../typing";
 import useAuth from "../../../hooks/useAuth";
 import { ImGithub } from "react-icons/im";
+import { useRecoilValue } from "recoil";
+import { siteMapState } from "../../../atoms/sitemapAtom";
 
 interface Props {
     siteMap: SiteMap;
 }
 
-function Header({ siteMap }: Props) {
+function Header() {
+    const siteMap = useRecoilValue(siteMapState);
     const { user, logout } = useAuth();
 
     return (

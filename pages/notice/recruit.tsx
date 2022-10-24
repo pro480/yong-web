@@ -38,14 +38,7 @@ function Recruit() {
     }
     return (
         <div>
-            <PageTitle
-                title='연구원 모집'
-                description='연구원 모집 페이지의 설명을 입력해주세요.'
-                firstDepth='공지사항'
-                firstLink='/notice'
-                secondDepth='연구원 모집'
-                secondLink='/notice/recruit'
-            />
+
             <div className='flex w-full justify-center '>
                 <Document
                     className='border'

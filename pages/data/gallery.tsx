@@ -14,15 +14,6 @@ function Gallery() {
 
     return (
         <div>
-            <PageTitle
-                title='갤러리'
-                description='갤러리 페이지의 설명을 입력해주세요.'
-                firstDepth='자료실'
-                firstLink='/data'
-                secondDepth='갤러리'
-                secondLink='/data/gallery'
-            />
-
             <div>갤러리페이지는 무한 스크롤 방식으로 구현 할 예정입니다</div>
             <main>
                 {/*카테고리*/}

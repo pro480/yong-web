@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
-import { SiteMap, SubMenu } from "../../../typing";
+import { SiteMap, SubMenu } from "../../../../typing";
+import { useRecoilValue } from "recoil";
+import { siteMapState } from "../../../atoms/sitemapAtom";
 
-interface Props {
-    image: StaticImageData;
-    siteMap: SiteMap;
-}
-
-function Banner({ image, siteMap }: Props) {
+function Banner() {
+    const siteMap = useRecoilValue(siteMapState);
     const [title, setTitle] = useState("");
 
     const path = useRouter().pathname.split("/");

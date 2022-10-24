@@ -14,14 +14,7 @@ function Index() {
     }
     return (
         <div>
-            <PageTitle
-                title='센터 조직도'
-                description='교육빅데이터응용연구센터의 센터 조직도입니다.'
-                firstDepth='센터 소개'
-                firstLink='/info'
-                secondDepth='센터 조직'
-                secondLink='/info/organization'
-            />
+
 
             <div className='relative flex h-96 w-full flex-col items-center justify-center xl:px-20'>
                 <div className='relative flex h-1/3 w-full items-center justify-between'>

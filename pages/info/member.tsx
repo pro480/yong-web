@@ -15,14 +15,7 @@ function Member() {
 
     return (
         <div className='relative'>
-            <PageTitle
-                title='센터 구성원'
-                description='센터 구성원 페이지입니다. 설명을 입력해주세요'
-                firstDepth='센터 소개'
-                firstLink='/info'
-                secondDepth='센터 구성원'
-                secondLink='/info/member'
-            />
+
 
             {team.map((team) => {
                 const memberList = collectionQuery.data?.docs.filter(
