@@ -56,17 +56,8 @@ function MemberModal({
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<Inputs>({
-        defaultValues: {
-            name: selectedMember?.name, // 이름
-            email: selectedMember?.email, // 개인 이메일
-            major: selectedMember?.major, //전공
-            department: selectedMember?.department, // 소속 (ex.인하대학교 교육학과 교수)
-            course: selectedMember?.course,
-            team: selectedMember?.team, // 소속 조직
-            history: selectedMember?.history, // 약력
-        },
-    });
+    } = useForm<Inputs>(
+    );
 
     // firebase members 컬렉션에 문서 추가하기 위한 작업
     const addMutation = useFirestoreCollectionMutation(membersRef);
@@ -281,7 +272,6 @@ function MemberModal({
                         이름
                         <input
                             className=' mx-2 h-7  border border-gray-700  pl-3'
-                            type='name'
                             placeholder='이름'
                             {...register("name", { required: true })}
                         />

@@ -42,6 +42,13 @@ export interface ExternalMember {
     division?: string; // 구분 (대학 or 연구 기관)
 }
 
+export interface GalleryProps {
+    imgUrl:string;
+    title:string;
+    createdAt:string;
+    isBanner:boolean;
+}
+
 export type Organization =
     | "연구협력 네트워크"
     | "연구 자문단"
