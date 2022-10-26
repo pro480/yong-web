@@ -19,9 +19,9 @@ function MainPageBanner() {
             >
                 {/*로고 사이즈*/}
                 <div className='bg-black/30'>
-                    <div className='relative -z-10 -z-10 h-full w-full'>
+                    <div className='relative -z-10 h-full w-full'>
                         <Image
-                            src='/images/dummy/banner11.jpg'
+                            src='/images/dummy/banner1.jpg'
                             width={1000}
                             height={500}
                             layout='responsive'
