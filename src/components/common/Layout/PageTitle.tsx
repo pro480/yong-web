@@ -32,8 +32,6 @@ function PageTitle() {
 
     const currentPath: SubMap | SubMenu = pathList[pathList.length - 1];
 
-    console.log(pathList);
-
     return (
         <div className='mb-10 flex h-40 flex-col justify-between'>
             <div className='flex flex-col'>

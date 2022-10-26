@@ -1,6 +1,6 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect, useLayoutEffect, useState } from "react";
 import { useRouter } from "next/router";
-import {  SubMap } from "../../../../typing";
+import { SubMap } from "../../../../typing";
 import SidebarMenu from "./SidebarMenu";
 import {
     ArrowDownCircleIcon,
@@ -42,7 +42,7 @@ function Sidebar() {
         };
     }, []);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (pathName === "info") {
             setCurrentMenu(siteMap.info);
         } else if (pathName === "research") {
@@ -56,15 +56,18 @@ function Sidebar() {
         }
     }, [pathName]);
 
+    console.log(currentMenu);
+
     return (
         <div className='relative mt-3 flex flex-col justify-center px-4 2xl:mt-0 2xl:w-[300px]'>
             {/*현재 메뉴*/}
             <div
                 onClick={() => setMenuOpen(!menuOpen)}
-                className='relative flex w-full items-center justify-center bg-gradient-to-tl from-PRIMARY_COLOR-300 to-PRIMARY_COLOR-200 py-3 text-2xl text-white 2xl:h-36 '
+                className='relative flex w-full items-center justify-center bg-gradient-to-tl from-PRIMARY_COLOR-500 to-PRIMARY_COLOR-400 py-3 text-2xl text-white 2xl:h-36 '
             >
                 {currentMenu?.title_KO}
             </div>
+
             {isWide ? null : menuOpen ? (
                 <ArrowUpCircleIcon className='absolute right-8 top-3.5 inline-block h-6 text-white' />
             ) : (

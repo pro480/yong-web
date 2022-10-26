@@ -52,10 +52,6 @@ module.exports = {
             "2/1": "2 / 1",
             "1/1": "1 / 1 ",
         },
-        backgroundImage: {
-            "main-news-bg":
-                "linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url('/images/main/news.jpg')",
-        },
         borderRadius: {
             none: "0",
             sm: "0.125rem",

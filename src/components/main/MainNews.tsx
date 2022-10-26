@@ -4,7 +4,7 @@ import NewsCard from "./NewsCard";
 
 function MainNews() {
     return (
-        <div className='flex h-[700px] w-full flex-col items-center bg-main-news-bg pt-20 pb-32 '>
+        <div className='flex h-[700px] w-full flex-col items-center main_news_bg pt-20 pb-32 '>
             {/*타이틀 입니다*/}
             <div className='h-[20%] text-4xl font-bold text-white'>
                 교육 빅데이터 응용 연구센터 소식
