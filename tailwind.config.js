@@ -47,6 +47,25 @@ module.exports = {
             "2xl": "1536px",
             desktop: "1820px",
         },
+        aspectRatio: {
+            "3/1": "3 / 1",
+            "2/1": "2 / 1",
+            "1/1": "1 / 1 ",
+        },
+        backgroundImage: {
+            "main-news-bg":
+                "linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url('/images/main/news.jpg')",
+        },
+        borderRadius: {
+            none: "0",
+            sm: "0.125rem",
+            DEFAULT: "4px",
+            md: "0.375rem",
+            lg: "0.5rem",
+            full: "9999px",
+            large: "12px",
+            "3xl": "40px",
+        },
     },
     plugins: [],
 };
