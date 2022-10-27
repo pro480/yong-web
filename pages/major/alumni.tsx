@@ -9,7 +9,6 @@ function Alumni() {
         useFirebase<GraduateMember>("graduateMembers", ["graduateMembers"]);
 
     const memberList = collectionQuery.data?.docs;
-    console.log(memberList);
 
     return (
         <div className='relative'>

@@ -4,61 +4,29 @@ import {
     ChevronLeftIcon,
     ChevronRightIcon,
 } from "@heroicons/react/24/solid";
-import {NewspaperIcon} from "@heroicons/react/24/outline";
+import { NewspaperIcon, PlusIcon } from "@heroicons/react/24/outline";
+import ReportCard from "./ReportCard";
+import Link from "next/link";
 
 function ResearchReport() {
     return (
-        <div className="relative flex h-[600px] w-screen items-center justify-center">
-            <div className="absolute left-16 top-16 text-2xl font-semibold underline">
-                최신 연구 보고서
-            </div>
-            <div className="relative flex w-[1300px]  items-center justify-center">
-                <ChevronLeftIcon className="absolute left-0 h-10 "/>
-                <div className="flex h-full w-[1000px] justify-between border ">
-                    {/*아래는 연구보고서 미리보기 입니다.*/}
-                    <div className="flex w-[30%] border p-5">
-                        <div className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-yellow-500">
-                            <NewspaperIcon className="h-full p-2"/>
+        <div className='-mt-32 flex h-[700px] w-full flex-col items-center justify-center'>
+            <div className='relative z-50 flex h-full w-4/5 flex-col bg-white px-20 pt-6 pb-24'>
+                <h1 className='flex h-[20%] items-center text-4xl font-semibold '>
+                    <span className='text-PRIMARY_COLOR-600'>최신 연구</span>
+                    &nbsp;&nbsp;보고서
+                    <Link href='/data'>
+                        <div className='absolute right-20 float-right flex gap-x-4 text-xl'>
+                            자세히 보러 가기
+                            <PlusIcon className='h-6 w-6 self-center rounded-full border border-PRIMARY_COLOR-500 p-1' />
                         </div>
-                        <div className="relative ml-4 h-[300px]">
-                            <div className="py-2 text-2xl font-bold">보고서 제목</div>
-                            <p className="mt-5">이곳에는 보고서의 요약이 들어갑니다</p>
-                            <div className="absolute bottom-0 right-5 text-sm">
-                                연구자 : 이용상, 이용상
-                            </div>
-                        </div>
-                    </div>
-                    {/* 여기까지 연구보고서 미리보기 입니다*/}
-                    <div className="flex w-[30%] border p-5">
-                        <div className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-yellow-500">
-                            <NewspaperIcon className="h-full p-2"/>
-                        </div>
-                        <div className="relative ml-4 h-[300px]">
-                            <div className="py-2 text-2xl font-bold">보고서 제목</div>
-                            <p className="mt-5">이곳에는 보고서의 요약이 들어갑니다</p>
-                            <div className="absolute bottom-0 right-5 text-sm">
-                                연구자 : 이용상, 이용상
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex w-[30%] border p-5">
-                        <div className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-yellow-500">
-                            <NewspaperIcon className="h-full p-2"/>
-                        </div>
-                        <div className="relative ml-4 h-[300px]">
-                            <div className="py-2 text-2xl font-bold">보고서 제목</div>
-                            <p className="mt-5">이곳에는 보고서의 요약이 들어갑니다</p>
-                            <div className="absolute bottom-0 right-5 text-sm">
-                                연구자 : 이용상, 이용상
-                            </div>
-                        </div>
-                    </div>
+                    </Link>
+                </h1>
+                <div className='flex flex-1 justify-between'>
+                    <ReportCard />
+                    <ReportCard />
+                    <ReportCard />
                 </div>
-                <ChevronRightIcon className="absolute right-0 h-10 "/>
-            </div>
-            <div className="absolute bottom-10 flex h-16 items-center justify-center text-3xl font-bold">
-                <div>더 많은 연구보고서 보러 가기</div>
-                <ArrowRightIcon className="h-8 px-3"/>
             </div>
         </div>
     );

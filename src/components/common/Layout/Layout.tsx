@@ -17,11 +17,11 @@ function Layout({ children }: Props) {
     const SIDEBAR_HIDDEN = ["/", "/adminLogin"];
 
     return SIDEBAR_HIDDEN.includes(router.pathname) ? (
-        <div>
+        <>
             <Header />
             {children}
             <Footer />
-        </div>
+        </>
     ) : (
         <div className='h-full w-full'>
             <Header />
