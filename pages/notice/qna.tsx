@@ -10,12 +10,20 @@ import { collection } from "firebase/firestore";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import { db } from "../../firebase";
 import Link from "next/link";
-import { Button } from "react-bootstrap";
+import useAuth from "../../src/hooks/useAuth";
+import useFirebase from "../../src/hooks/useFirebase";
+import { QNA } from "../../typing";
+import SubmitForm from "../../src/components/notice/SubmitForm";
 
 function Qna() {
-    const qnaRef = collection(db, "qna");
-    const qnaQuery = useFirestoreQuery(["qna"], qnaRef);
-    const qnaSnapshot = qnaQuery.data;
+    const { collectionRef, collectionQuery, deleteDocument } = useFirebase<QNA>(
+        "qna",
+        ["qna"]
+    );
+    const { user } = useAuth();
+    // const qnaRef = collection(db, "qna");
+    // const qnaQuery = useFirestoreQuery(["qna"], qnaRef);
+    // const qnaSnapshot = qnaQuery.data;
 
     return (
         <div>
@@ -36,7 +44,7 @@ function Qna() {
                     <h1 className='my-4'>
                         {"전체 "}
                         <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR-500'>
-                            {qnaSnapshot?.size}
+                            {collectionQuery.data?.docs.length}
                         </span>
                         {" 건"}
                     </h1>
@@ -47,24 +55,19 @@ function Qna() {
                                 <th className='w-32 py-3 text-center'>
                                     답변 유무
                                 </th>
-                                <th className='py-3 text-center'> 제목</th>
-                                <th className='w-1/6 py-3 text-center'>
-                                    작성자
-                                </th>
+                                <th className='py-3 text-center'> 내용</th>
+
                                 <th className='w-1/6 py-3 text-center'>
                                     등록일
-                                </th>
-                                <th className='w-1/6 py-3 text-center'>
-                                    첨부파일
                                 </th>
                             </tr>
                         </thead>
                         <tbody className='text-sm font-light text-gray-600'>
-                            {qnaSnapshot?.docs.map((items) => {
+                            {collectionQuery.data?.docs.map((items) => {
                                 const memberItem = items.data();
                                 return (
                                     <QnaRow
-                                        key={items.id} // table key를 지정하기 위함. 없어도 상관 없음 ㅋㅋ 빨간줄이 뜰뿐
+                                        key={items.id}
                                         doc={items.id}
                                         {...memberItem}
                                     />
@@ -72,14 +75,11 @@ function Qna() {
                             })}
                         </tbody>
                     </table>
+                    {/* 글쓰기 */}
+                    <SubmitForm />
+                    {/*글쓰기 버튼*/}
                 </main>
-                {/*글쓰기 버튼*/}
-                <Button
-                    className='float-right my-3 mr-5 rounded bg-PRIMARY_COLOR-300 py-2 px-4 font-bold text-white hover:bg-PRIMARY_COLOR-500'
-                    href='/notice/write'
-                >
-                    글쓰기
-                </Button>
+
                 {/*페이지 수*/}
                 <div className=' m-5 flex items-center justify-center'>
                     <ul className='inline-flex items-center -space-x-px '>
