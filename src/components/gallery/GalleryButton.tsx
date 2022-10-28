@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
-import {GalleryContext} from "../../../pages/data/gallery";
-import {GalleryPost} from "../../../typing";
+import React, { useContext } from "react";
+import { GalleryBoardContext } from "./GalleryBoard";
+import { GalleryPost } from "../../../typing";
 
 function GalleryAddButton() {
-    const {toggleOpen, setToggleOpen} = useContext(GalleryContext);
+    const { toggleOpen, setToggleOpen } = useContext(GalleryBoardContext);
 
     return (
         <div>
@@ -19,51 +19,55 @@ function GalleryAddButton() {
     );
 }
 
-
-function GalleryUpdateButton<T extends GalleryPost>(
-    {
-      post,
-      documentId,
-    }:{
-        post: T;
-        documentId:string|null;
-    }
-){
-    const { setSelectedPost ,setSelectedDocId, setToggleOpen} = useContext(GalleryContext);
-    return(
+function GalleryUpdateButton({ docId, data }: { data:GalleryPost, docId: string }) {
+    const { setSelectedPost, setSelectedDocId, setToggleOpen } = useContext(GalleryBoardContext);
+    return (
         <div>
             <button
-                className='font-light border-t border-black'
-                onClick={()=>{
-                    setSelectedPost(post);
-                    setSelectedDocId(documentId);
+                className='border-t border-black font-light'
+                onClick={() => {
+                    setSelectedPost(data);
+                    setSelectedDocId(docId);
                     setToggleOpen(true);
                 }}
             >
                 수정
             </button>
         </div>
-    )
-
+    );
 }
 
-function GalleryDeleteButton({ documentId }: { documentId: string }){
-    const {deleteDocument} = useContext(GalleryContext);
-    return(
+function GalleryDeleteButton({ docId }: { docId: string }) {
+    const { deleteDocument } = useContext(GalleryBoardContext);
+    return (
         <div>
             <button
-                className='font-light border-t border-black'
-                onClick={()=> deleteDocument(documentId)}
+                className='border-t border-black font-light'
+                onClick={() => deleteDocument(docId)}
             >
                 삭제
             </button>
         </div>
+    );
+}
 
-    )
+function GalleryCancelButton() {
+    const { setToggleOpen } = useContext(GalleryBoardContext);
+    return (
+        <button
+            className='border-t border-black font-light'
+            onClick={() => {
+                setToggleOpen(false);
+            }}
+        >
+            취소
+        </button>
+    );
 }
 
 export {
     GalleryAddButton,
     GalleryUpdateButton,
-    GalleryDeleteButton
+    GalleryDeleteButton,
+    GalleryCancelButton,
 };

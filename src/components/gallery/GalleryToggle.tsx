@@ -1,12 +1,11 @@
 import React, {useState, useEffect, useMemo, useContext} from "react";
 import Image from "next/image";
-import {MemberListContext} from "../common/MemberList";
-import {GalleryContext} from "../../../pages/data/gallery";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {useFirestoreCollectionMutation, useFirestoreDocumentMutation} from "@react-query-firebase/firestore";
 import {collection, doc} from "@firebase/firestore";
 import {db, storage} from "../../../firebase";
 import {getDownloadURL, ref, uploadBytesResumable} from "@firebase/storage";
+import {GalleryBoardContext} from "./GalleryBoard";
 
 interface Inputs {
     title:string;
@@ -19,19 +18,14 @@ interface Inputs {
 function GalleryToggle() {
     const [editImage, setEditImage] = useState(false);
     const { selectedPost ,collectionRef, selectedDocId, setToggleOpen } =
-        useContext(GalleryContext);
+        useContext(GalleryBoardContext);
+
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm({
-        defaultValues: useMemo(()=>{
-            if(selectedDocId){
-                return(selectedDocId)
-            }
-        },[selectedDocId])
-    })
+    } = useForm<Inputs>();
 
     // firebase members 컬렉션에 문서 추가하기 위한 작업
     const addMutation = useFirestoreCollectionMutation(collectionRef);
@@ -129,10 +123,9 @@ function GalleryToggle() {
     return (
         <form
             onSubmit={
-                selectedDocId
+                selectedPost
                     ? handleSubmit(onUpdatePost)
-                    : handleSubmit(onAddPost)
-            }
+                    : handleSubmit(onAddPost)}
         >
 
             <div className='mt-3 flex h-80 flex-col rounded-md bg-GRAY_COLOR-500'>
@@ -147,9 +140,7 @@ function GalleryToggle() {
                                 />
                             </div>
                             <input
-                                placeholder='이미지 파일을 넣어주세요'
-                                {...register("imgUrl", { required: true })}
-                                type='file'
+                                onClick={()=>setEditImage(true)}
                                 className='file:rounded-[10px] file:border-4 file:border-GRAY_COLOR-800 file:bg-PRIMARY_COLOR-100'
                             />
                         </div>
