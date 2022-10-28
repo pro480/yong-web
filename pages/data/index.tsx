@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Report from "../../src/components/data/Report";
+import StudyMaterialTable from "../../src/components/data/StudyMaterialTable";
 
 function Index() {
     const [tab, setTab] = useState("thesis");
@@ -29,7 +30,11 @@ function Index() {
 
             <div>
                 {/* 현호C~ 이부분 수정하시면 됩니당~ */}
-                {tab === "thesis" ? null : <Report />}
+                {tab === "thesis" ? (
+                    <StudyMaterialTable material='학습 자료' />
+                ) : (
+                    <Report />
+                )}
             </div>
         </div>
     );
