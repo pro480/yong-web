@@ -21,7 +21,7 @@ function Gallery() {
     )
 
     const gallerypostSnapshot = galleryDatasQuery.data;
-
+    //meanless
     // @ts-ignore
     return (
         <div>
