@@ -9,7 +9,7 @@ import {
     MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
 import React from "react";
-import PageTitle from "../../src/components/PageTitle";
+import PageTitle from "../../src/components/common/Layout/PageTitle";
 
 function Index() {
     type Thesis = {
@@ -130,14 +130,6 @@ function Index() {
 
     return (
         <div>
-            <PageTitle
-                title='논문 및 연구 보고서'
-                description='논문 및 연구 보고서 페이지의 설명을 입력해주세요.'
-                firstDepth='자료실'
-                firstLink='/data'
-                secondDepth='논문 및 연구 보고서'
-                secondLink='/data'
-            />
             <main>
                 <div className='mt-5 flex h-9 items-center justify-end'>
                     <select className='h-full border pl-2 pr-7'>

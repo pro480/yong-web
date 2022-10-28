@@ -1,6 +1,4 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
-import PageTitle from "../../src/components/PageTitle";
 import GalleryCard from "../../src/components/GalleryCard";
 import useAuth from "../../src/hooks/useAuth";
 import GalleryToggle from "../../src/components/GalleryToggle";
@@ -8,8 +6,8 @@ import {GalleryProps} from "../../typing";
 import {collection} from "@firebase/firestore";
 import {db} from "../../firebase"
 import {useFirestoreQuery} from "@react-query-firebase/firestore";
-import memberConverter from "../utils/firebase/galleryPostConverter";
-
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import galleryPostConverter from "../utils/firebase/galleryPostConverter"
 
 
 function Gallery() {
@@ -27,15 +25,6 @@ function Gallery() {
     // @ts-ignore
     return (
         <div>
-            <PageTitle
-                title='갤러리'
-                description='갤러리 페이지의 설명을 입력해주세요.'
-                firstDepth='자료실'
-                firstLink='/data'
-                secondDepth='갤러리'
-                secondLink='/data/gallery'
-            />
-
             <main>
                 {/*검색창*/}
                 <div className='mt-5 flex h-9 items-center justify-end space-x-5'>

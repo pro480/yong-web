@@ -1,5 +1,5 @@
 import React from "react";
-import PageTitle from "../../src/components/PageTitle";
+import PageTitle from "../../src/components/common/Layout/PageTitle";
 import {
     DocumentDuplicateIcon,
     PresentationChartLineIcon,
@@ -8,14 +8,7 @@ import {
 function Evaluation() {
     return (
         <div>
-            <PageTitle
-                title='교육 평가'
-                description='교육 평가에 대한 설명을 적어주세요'
-                firstDepth='전공 소개'
-                firstLink='/major'
-                secondDepth='교육 평가'
-                secondLink='/major/evaluation'
-            />
+            =
             {/*배너*/}
             <div className='h-[450px]'>
                 <div className='relative flex h-72 items-center justify-center bg-gray-300'>
