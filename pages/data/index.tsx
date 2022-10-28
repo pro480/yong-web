@@ -1,144 +1,53 @@
 import {
-    ChevronLeftIcon,
-    DocumentArrowDownIcon,
-} from "@heroicons/react/24/outline";
-import {
     ChevronDoubleLeftIcon,
     ChevronDoubleRightIcon,
-    LinkIcon,
     MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
-import React from "react";
-import PageTitle from "../../src/components/PageTitle";
+import { useFirestoreQuery } from "@react-query-firebase/firestore";
+import { collection } from "firebase/firestore";
+import React, { useState } from "react";
+import { db } from "../../firebase";
+import ResearchRow from "../../src/components/data/ResearchRow";
+import ThesisRow from "../../src/components/data/ThesisRow";
+import useFirebase from "../../src/hooks/useFirebase";
 
 function Index() {
-    type Thesis = {
-        title: string;
-        writer: string;
-        createAt: string; // 논문이 출간 된 닐찌
-        fileUrl: string;
-        journal?: Journal[]; // journal 인용 목록, 없을 수도 있음
-    }; // 미리보기, modal 로 구현
+    const thesisRef = collection(db, "thesis");
+    const thesisQuery = useFirestoreQuery(["thesis"], thesisRef, {
+        subscribe: true,
+    });
 
-    type ResearchReport = {
-        titleKO: string;
-        titleEN: string;
-        writer: string;
-        coAuthor: string[];
-        writersNum: number; // 연구 참여자 수
-        pageNum: number;
-        createAt: string; // 발간년도
-        fileUrl: string;
-        index: string; // 목차
-        purpose: string; // 연구 목적
-        content: string; // 연구 내용
-        keyword: string[];
-        benefit: string; // 기대 효과
-        ifOpen: boolean; // 공개 여부
-        startedAt: string;
-        endedAt: string;
-        whyNotOpen: string;
-    }; //table, 상세페이지로 구현, https://www.kice.re.kr/resrchBoard/list.do?cate=1&m=030101&s=kice
+    const researchRef = collection(db, "research");
+    const researchQuery = useFirestoreQuery(["research"], researchRef, {
+        subscribe: true,
+    });
 
-    type Journal = {
-        info: string;
-        year: number;
-    };
-
-    const posts = [
-        {
-            title_KO: "2022 빅데이터 관련 논문 1",
-            writer: "이용상",
-            createAt: "2022.09.21",
-            content: "내용",
-            webLink: "link.gg",
-            number: 1,
-        },
-        {
-            title_KO: "2022 빅데이터 관련 논문 2",
-            writer: "이용상",
-            createAt: "2022.09.22",
-            content: "내용",
-            webLink: "link.gg",
-            number: 2,
-        },
-        {
-            title_KO: "2022 빅데이터 관련 논문 3",
-            writer: "이용상",
-            createAt: "2022.09.23",
-            content: "내용",
-            webLink: "link.gg",
-            number: 3,
-        },
-        {
-            title_KO: "2022 빅데이터 관련 논문 4",
-            writer: "이용상",
-            createAt: "2022.09.24",
-            content: "내용",
-            webLink: "link.gg",
-            number: 4,
-        },
-        {
-            title_KO: "2022 빅데이터 관련 논문 5",
-            writer: "이용상",
-            createAt: "2022.09.25",
-            content: "내용",
-            webLink: "link.gg",
-            number: 5,
-        },
-        {
-            title_KO: "2022 빅데이터 관련 논문 6",
-            writer: "이용상",
-            createAt: "2022.09.26",
-            content: "내용",
-            webLink: "link.gg",
-            number: 6,
-        },
-        {
-            title_KO: "2022 빅데이터 관련 논문 7",
-            writer: "이용상",
-            createAt: "2022.09.27",
-            content: "내용",
-            webLink: "link.gg",
-            number: 7,
-        },
-        {
-            title_KO: "2022 빅데이터 관련 논문 8",
-            writer: "이용상",
-            createAt: "2022.09.28",
-            content: "내용",
-            webLink: "link.gg",
-            number: 8,
-        },
-        {
-            title_KO: "2022 빅데이터 관련 논문 9",
-            writer: "이용상",
-            createAt: "2022.09.29",
-            content: "내용",
-            webLink: "link.gg",
-            number: 9,
-        },
-        {
-            title_KO: "2022 빅데이터 관련 논문 10",
-            writer: "이용상",
-            createAt: "2022.09.30",
-            content: "내용",
-            webLink: "link.gg",
-            number: 10,
-        },
-    ];
+    const [tab, setTab] = useState("thesis");
+    function handleClick() {
+        tab == "thesis" ? setTab("research") : setTab("thesis");
+    }
 
     return (
         <div>
-            <PageTitle
-                title='논문 및 연구 보고서'
-                description='논문 및 연구 보고서 페이지의 설명을 입력해주세요.'
-                firstDepth='자료실'
-                firstLink='/data'
-                secondDepth='논문 및 연구 보고서'
-                secondLink='/data'
-            />
             <main>
+                {/*카테고리*/}
+                <div className='flex'>
+                    <div
+                        className='w-24 cursor-pointer border px-4 py-3 text-center  hover:border-t-2 hover:border-b-0 hover:border-t-black'
+                        onClick={handleClick}
+                    >
+                        논문
+                    </div>
+                    <div
+                        className='w-40 cursor-pointer border px-4 py-3 text-center hover:border-t-2 hover:border-b-0 hover:border-t-black'
+                        onClick={handleClick}
+                    >
+                        연구 보고서
+                    </div>
+                    <span className='w-full border-b'></span>
+                </div>
+
+                {/* 전체 몇건 */}
                 <div className='mt-5 flex h-9 items-center justify-end'>
                     <select className='h-full border pl-2 pr-7'>
                         <option>전체</option>
@@ -152,10 +61,13 @@ function Index() {
                 <h1 className='my-4'>
                     전체{" "}
                     <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR-500'>
-                        {posts.length}
+                        {tab == "thesis"
+                            ? thesisQuery.data?.docs.length
+                            : researchQuery.data?.docs.length}
                     </span>{" "}
                     건
                 </h1>
+
                 {/*테이블*/}
                 <table className='w-full table-auto border-t border-t-black'>
                     <thead>
@@ -170,24 +82,27 @@ function Index() {
                         </tr>
                     </thead>
                     <tbody className='text-sm font-light text-gray-600'>
-                        {posts.reverse().map((item) => (
-                            <tr
-                                key={item.number}
-                                className='border-b border-gray-200 hover:bg-gray-100'
-                            >
-                                <td className='py-4 text-center'>
-                                    {item.number}
-                                </td>
-                                <td className='px-12 text-left'>
-                                    {item.title_KO}
-                                </td>
-                                <td className='text-center'>{item.writer}</td>
-                                <td className='text-center'>{item.createAt}</td>
-                                <td>
-                                    <LinkIcon className='mx-auto h-6 w-6' />
-                                </td>
-                            </tr>
-                        ))}
+                        {tab == "thesis"
+                            ? thesisQuery.data?.docs.map((items) => {
+                                  const memberItem = items.data();
+                                  return (
+                                      <ThesisRow
+                                          key={items.id}
+                                          doc={items.id}
+                                          {...memberItem}
+                                      />
+                                  );
+                              })
+                            : researchQuery.data?.docs.map((items) => {
+                                  const memberItem = items.data();
+                                  return (
+                                      <ResearchRow
+                                          key={items.id}
+                                          doc={items.id}
+                                          {...memberItem}
+                                      />
+                                  );
+                              })}
                     </tbody>
                 </table>
             </main>

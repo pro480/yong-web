@@ -1,19 +1,17 @@
 import type { NextPage } from "next";
-import Banner from "../src/components/Banner";
-import MainResearchProject from "../src/components/MainResearchProject";
-import ResearchReport from "../src/components/ResearchReport";
-import MainNews from "../src/components/MainNews";
-import MainForum from "../src/components/MainForum";
+import MainPageBanner from "../src/components/main/MainPageBanner";
+import ResearchReport from "../src/components/main/ResearchReport";
+import MainNews from "../src/components/main/MainNews";
+import MainForum from "../src/components/main/MainForum";
 import Head from "next/head";
 
 const Home: NextPage = () => {
     return (
-        <div>
+        <div className='relative w-full'>
             <Head>
                 <title>EBA | 교육 빅데이터 응용연구센터</title>
             </Head>
-            <Banner />
-            <MainResearchProject />
+            <MainPageBanner />
             <ResearchReport />
             <MainNews />
             <MainForum />

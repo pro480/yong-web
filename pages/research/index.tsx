@@ -1,7 +1,7 @@
 import React from "react";
-import PageTitle from "../../src/components/PageTitle";
+import PageTitle from "../../src/components/common/Layout/PageTitle";
 import { ForwardIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
-import ResearchCard from "../../src/components/ResearchCard";
+import ResearchCard from "../../src/components/research/ResearchCard";
 
 function Index() {
     type projectInProgress = {
@@ -62,12 +62,6 @@ function Index() {
 
     return (
         <div>
-            <PageTitle
-                title='연구 및 사업'
-                description='연구 및 사업 페이지의 설명을 입력해주세요.'
-                firstDepth='연구 및 사업'
-                firstLink='/research'
-            />
             <div className='flex flex-col gap-y-10'>
                 {/* 필터 */}
                 <div className='border-b-2 border-PRIMARY_COLOR-500 p-3'>

@@ -1,5 +1,5 @@
 import React from "react";
-import PageTitle from "../../src/components/PageTitle";
+import PageTitle from "../../src/components/common/Layout/PageTitle";
 import {
     DocumentDuplicateIcon,
     PresentationChartBarIcon,
@@ -9,14 +9,7 @@ import {
 function Index() {
     return (
         <div>
-            <PageTitle
-                title='에듀 데이터 사이언스'
-                description='에듀 데이터 사이언스에 대한 설명을 적어주세요'
-                firstDepth='전공 소개'
-                firstLink='/major'
-                secondDepth='에듀 데이터 사이언스'
-                secondLink='/major'
-            />
+
             {/*배너*/}
             <div className='h-[450px]'>
                 <div className='relative flex h-72 items-center justify-center bg-gray-300'>
