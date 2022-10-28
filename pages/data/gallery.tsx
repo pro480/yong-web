@@ -1,41 +1,32 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
-import PageTitle from "../../src/components/PageTitle";
 import GalleryCard from "../../src/components/GalleryCard";
 import useAuth from "../../src/hooks/useAuth";
 import GalleryToggle from "../../src/components/GalleryToggle";
-import {GalleryProps} from "../../typing";
-import {collection} from "@firebase/firestore";
-import {db} from "../../firebase"
-import {useFirestoreQuery} from "@react-query-firebase/firestore";
-import memberConverter from "../utils/firebase/galleryPostConverter";
-
-
+import { GalleryProps } from "../../typing";
+import { collection } from "@firebase/firestore";
+import { db } from "../../firebase";
+import { useFirestoreQuery } from "@react-query-firebase/firestore";
+import useFirebase from "../../src/hooks/useFirebase";
 
 function Gallery() {
     const [onToggle, setToggleOpen] = useState(false);
     const { user } = useAuth();
-    const galleryDatasRef = collection(db,"galleryDatas").withConverter<GalleryProps>(galleryPostConverter);
+    const { collectionRef: galleryDatasRef } = useFirebase<GalleryProps>(
+        "galleryDatas",
+        ["galleryDatas"]
+    );
     const galleryDatasQuery = useFirestoreQuery<GalleryProps>(
         ["galleryDatas"],
         galleryDatasRef,
-        {subscribe: true}
-    )
+        { subscribe: true }
+    );
 
     const gallerypostSnapshot = galleryDatasQuery.data;
 
     // @ts-ignore
     return (
         <div>
-            <PageTitle
-                title='갤러리'
-                description='갤러리 페이지의 설명을 입력해주세요.'
-                firstDepth='자료실'
-                firstLink='/data'
-                secondDepth='갤러리'
-                secondLink='/data/gallery'
-            />
-
             <main>
                 {/*검색창*/}
                 <div className='mt-5 flex h-9 items-center justify-end space-x-5'>
@@ -63,14 +54,16 @@ function Gallery() {
                 </div>
 
                 {/* 게시물 추가 창 토글 */}
-                {onToggle &&
+                {onToggle && (
                     <GalleryToggle
                         galleryRef={galleryDatasRef}
-                        setToggleOpen={setToggleOpen}/>}
+                        setToggleOpen={setToggleOpen}
+                    />
+                )}
 
                 <div className=' my-5 grid grid-cols-1 items-center gap-y-16 gap-x-12 self-center md:grid-cols-2 xl:grid-cols-3'>
                     <GalleryCard
-                        imgUrl={''}
+                        imgUrl={""}
                         title='test1'
                         createdAt='2022-10-21'
                         isBanner={false}

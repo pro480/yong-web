@@ -1,5 +1,5 @@
 import React from "react";
-import PageTitle from "../../src/components/PageTitle";
+import PageTitle from "../../src/components/common/Layout/PageTitle";
 import {
     InformationCircleIcon,
     MagnifyingGlassIcon,
@@ -68,12 +68,7 @@ function Index() {
 
     return (
         <div>
-            <PageTitle
-                title='센터 소식'
-                description='센터 소식 페이지에 대한 설명을 입력해주세요.'
-                firstDepth='공지사항'
-                firstLink='/notice'
-            />
+
             <main>
                 {/*카테고리 탭*/}
                 <div className='flex'>
