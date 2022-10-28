@@ -21,7 +21,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
     return (
         <section className='flex h-full w-full flex-wrap justify-between'>
             {/*이미지 사이즈*/}
-            <div className='relative w-[25%] '>
+            <div className='xs:w-[40%] relative sm:w-[25%] '>
                 <Image
                     src={member.imageUrl}
                     layout='fill'
@@ -32,9 +32,9 @@ function NameCard<T extends InternalMember | GraduateMember>({
                 />
             </div>
             {/*오른쪽 설명*/}
-            <main className='flex h-[90%] w-[70%] flex-col self-center text-xs text-PRIMARY_COLOR-500 sm:text-sm md:text-base lg:text-sm xl:text-base'>
+            <main className='flex h-[90%] xs:w-[50%] sm:w-[70%] flex-col self-center text-xs text-PRIMARY_COLOR-500 sm:text-sm md:text-base lg:text-sm xl:text-base'>
                 {/*이름, 관심분야, 이메일*/}
-                <header className='flex h-1/4 w-full items-center'>
+                <header className='sm:flex whitespace-pre h-1/4 w-full items-center'>
                     <h1 className='flex-1 text-lg font-semibold text-PRIMARY_COLOR-800 sm:text-xl md:text-2xl lg:text-lg xl:text-2xl'>
                         {member.name}
                     </h1>
@@ -48,7 +48,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
                     </a>
                 </header>
 
-                <div className='flex xs:h-1/6 sm:h-1/4 justify-between text-base md:text-lg lg:text-base xl:text-lg'>
+                <div className='flex xs:h-1/7 sm:h-1/6 justify-between text-base md:text-lg lg:text-base xl:text-lg'>
                     약력{" "}
                     {isEditable && user && (
                         <div className='flex h-fit gap-x-5'>
