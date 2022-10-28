@@ -38,7 +38,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
                     <h1 className='flex-1 text-lg font-semibold text-PRIMARY_COLOR-800 sm:text-xl md:text-2xl lg:text-lg xl:text-2xl'>
                         {member.name}
                     </h1>
-                    <div className='flex-1'>{member.major}</div>
+                    <div className='flex-1 '>{member.major}</div>
 
                     <a
                         href={`mailto:${member.email}`}
@@ -48,7 +48,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
                     </a>
                 </header>
 
-                <div className='flex h-1/4 justify-between text-base md:text-lg lg:text-base xl:text-lg'>
+                <div className='flex xs:h-1/6 sm:h-1/4 justify-between text-base md:text-lg lg:text-base xl:text-lg'>
                     약력{" "}
                     {isEditable && user && (
                         <div className='flex h-fit gap-x-5'>
@@ -61,7 +61,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
                     )}
                 </div>
 
-                <article className='flex w-full flex-wrap gap-y-3'>
+                <article className='flex w-full flex-wrap xs:gap-x-10 sm:gap-x-0 gap-y-3'>
                     {member.history.map((history, index) => (
                         <div
                             key={index}
