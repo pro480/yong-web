@@ -4,14 +4,27 @@ import PageTitle from "../../src/components/PageTitle";
 import GalleryCard from "../../src/components/GalleryCard";
 import useAuth from "../../src/hooks/useAuth";
 import GalleryToggle from "../../src/components/GalleryToggle";
+import {GalleryProps} from "../../typing";
+import {collection} from "@firebase/firestore";
+import {db} from "../../firebase"
+import {useFirestoreQuery} from "@react-query-firebase/firestore";
+import memberConverter from "../utils/firebase/galleryPostConverter";
+
+
 
 function Gallery() {
-    const [onToggle, setToggleOpen] = useState<boolean>(false);
-    const {user} = useAuth();
-    function changeToggle() {
-        setToggleOpen(!onToggle);
-    }
+    const [onToggle, setToggleOpen] = useState(false);
+    const { user } = useAuth();
+    const galleryDatasRef = collection(db,"galleryDatas").withConverter<GalleryProps>(galleryPostConverter);
+    const galleryDatasQuery = useFirestoreQuery<GalleryProps>(
+        ["galleryDatas"],
+        galleryDatasRef,
+        {subscribe: true}
+    )
 
+    const gallerypostSnapshot = galleryDatasQuery.data;
+
+    // @ts-ignore
     return (
         <div>
             <PageTitle
@@ -26,10 +39,15 @@ function Gallery() {
             <main>
                 {/*검색창*/}
                 <div className='mt-5 flex h-9 items-center justify-end space-x-5'>
-                    <div className="flex">
+                    <div className='flex'>
                         {user && (
-                            <button className='border p-1' onClick={changeToggle}>
-                                {onToggle? "취소" : "추가"}
+                            <button
+                                className='border p-1'
+                                onClick={() => {
+                                    setToggleOpen((prev) => !prev);
+                                }}
+                            >
+                                {onToggle ? "취소" : "추가"}
                             </button>
                         )}
                     </div>
@@ -45,13 +63,14 @@ function Gallery() {
                 </div>
 
                 {/* 게시물 추가 창 토글 */}
-                {onToggle && (
-                    <GalleryToggle/>
-                )}
+                {onToggle &&
+                    <GalleryToggle
+                        galleryRef={galleryDatasRef}
+                        setToggleOpen={setToggleOpen}/>}
 
                 <div className=' my-5 grid grid-cols-1 items-center gap-y-16 gap-x-12 self-center md:grid-cols-2 xl:grid-cols-3'>
                     <GalleryCard
-                        imgUrl=''
+                        imgUrl={''}
                         title='test1'
                         createdAt='2022-10-21'
                         isBanner={false}
