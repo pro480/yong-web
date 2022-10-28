@@ -32,23 +32,23 @@ function NameCard<T extends InternalMember | GraduateMember>({
                 />
             </div>
             {/*오른쪽 설명*/}
-            <main className='flex h-[90%] xs:w-[50%] sm:w-[70%] flex-col self-center text-xs text-PRIMARY_COLOR-500 sm:text-sm md:text-base lg:text-sm xl:text-base'>
+            <main className='h-[90%] xs:w-[50%] sm:w-[70%] flex-col self-center text-xs text-PRIMARY_COLOR-500 sm:text-sm md:text-base'>
                 {/*이름, 관심분야, 이메일*/}
-                <header className='sm:flex whitespace-pre h-1/4 w-full items-center'>
-                    <h1 className='flex-1 text-lg font-semibold text-PRIMARY_COLOR-800 sm:text-xl md:text-2xl lg:text-lg xl:text-2xl'>
+                <header className='flex w-full items-center gap-x-5'>
+                    <h1 className='flex-1 whitespace-nowrap text-lg font-semibold text-PRIMARY_COLOR-800 sm:text-xl md:text-2xl'>
                         {member.name}
                     </h1>
-                    <div className='flex-1 '>{member.major}</div>
+                    <div className='flex-1 whitespace-nowrap truncate hover:overflow-visible'>{member.major}</div>
 
                     <a
                         href={`mailto:${member.email}`}
-                        className='text-PRIMARY_COLOR-800 hover:underline lg:text-xs xl:text-sm'
+                        className='flex-1 whitespace-nowrap truncate hover:overflow-visible text-PRIMARY_COLOR-800 hover:underline md:text-xs lg:text-sm'
                     >
                         {member.email}
                     </a>
                 </header>
 
-                <div className='flex xs:h-1/7 sm:h-1/6 justify-between text-base md:text-lg lg:text-base xl:text-lg'>
+                <div className='flex xs:pd-10 sm:pd-20 justify-between text-base md:text-lg xl:text-xl'>
                     약력{" "}
                     {isEditable && user && (
                         <div className='flex h-fit gap-x-5'>
@@ -61,7 +61,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
                     )}
                 </div>
 
-                <article className='flex w-full flex-wrap xs:gap-x-10 sm:gap-x-0 gap-y-3'>
+                <article className='flex w-full flex-wrap xs:gap-x-10 sm:gap-x-0 gap-y-3 '>
                     {member.history.map((history, index) => (
                         <div
                             key={index}
