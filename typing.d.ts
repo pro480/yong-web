@@ -72,6 +72,18 @@ export type Organization =
     | "연구 자문단"
     | "연구 윤리 자문단";
 
-    export type Material =
+export interface QNA {
+    answer: string; // 답변
+    content: string; // 내용
+    createAt: string; // 생성일
+    fileUrl: string; // 첨부파일
+    password: string; //비번
+    isAnswered: boolean; // 답변유무
+    title: string; // 제목
+    writer: string; // 작성자
+}
+
+export type Material =
     | "논문 및 연구 보고서"
     | "학습 자료";
+
