@@ -8,7 +8,7 @@ function CenterLeaderInfo() {
     return (
         <>
             {/* 협회이름 및 센터장 신상 정보 */}
-            <div className='relative flex h-[500px] flex-col justify-end'>
+            <div className='relative flex h-[500px] flex-col justify-end bg-green-300'>
                 {/* 센터장 이미지 */}
                 <div className='flex'>
                     <div className='flex h-[250px] w-3/5 items-center bg-gradient-to-l from-PRIMARY_COLOR-500 to-PRIMARY_COLOR-400 pl-12 text-xl text-white'>
