@@ -1,13 +1,26 @@
+<<<<<<< HEAD
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+=======
+>>>>>>> 34b95fa1f24b7af00db49b9b15691193b4bf46ff
 import React, { useState } from "react";
 import GalleryCard from "../../src/components/GalleryCard";
 import useAuth from "../../src/hooks/useAuth";
 import GalleryToggle from "../../src/components/GalleryToggle";
+<<<<<<< HEAD
 import { GalleryProps } from "../../typing";
 import { collection } from "@firebase/firestore";
 import { db } from "../../firebase";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import useFirebase from "../../src/hooks/useFirebase";
+=======
+import {GalleryProps} from "../../typing";
+import {collection} from "@firebase/firestore";
+import {db} from "../../firebase"
+import {useFirestoreQuery} from "@react-query-firebase/firestore";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import galleryPostConverter from "../utils/firebase/galleryPostConverter"
+
+>>>>>>> 34b95fa1f24b7af00db49b9b15691193b4bf46ff
 
 function Gallery() {
     const [onToggle, setToggleOpen] = useState(false);
@@ -23,7 +36,7 @@ function Gallery() {
     );
 
     const gallerypostSnapshot = galleryDatasQuery.data;
-
+    //meanless
     // @ts-ignore
     return (
         <div>
