@@ -59,6 +59,14 @@ export interface GraduateMember {
     team: Team;
 }
 
+export interface StudyMaterial {
+    title: string; // 자료명
+    writer: string; // 작성자
+    date: string; // 등록일
+    fileUrl: string; // 첨부파일 주소
+    material: Material; // 학습 자료랑 논문 및 연구보고서로 분류할 생각
+}
+
 export type Organization =
     | "연구협력 네트워크"
     | "연구 자문단"
@@ -74,3 +82,8 @@ export interface QNA {
     title: string; // 제목
     writer: string; // 작성자
 }
+
+export type Material =
+    | "논문 및 연구 보고서"
+    | "학습 자료";
+
