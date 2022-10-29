@@ -59,6 +59,14 @@ export interface GraduateMember {
     team: Team;
 }
 
+
+export interface GalleryProps {
+    imgUrl:string;
+    title:string;
+    createdAt:string;
+    isBanner:boolean;
+}
+
 export interface StudyMaterial {
     title: string; // 자료명
     writer: string; // 작성자
