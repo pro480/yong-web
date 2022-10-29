@@ -59,6 +59,14 @@ export interface GraduateMember {
     team: Team;
 }
 
+
+export interface GalleryProps {
+    imgUrl:string;
+    title:string;
+    createdAt:string;
+    isBanner:boolean;
+}
+
 export interface StudyMaterial {
     title: string; // 자료명
     writer: string; // 작성자
@@ -79,6 +87,12 @@ export interface QNA {
     fileUrl: string; // 첨부파일
     password: string; //비번
     isAnswered: boolean; // 답변유무
+}
+
+export interface Thesis {
+    content: string; // 내용
+    createAt: string; // 생성일
+    fileUrl: string; // 첨부파일
     title: string; // 제목
     writer: string; // 작성자
 }

@@ -1,43 +1,46 @@
+import { useFirestoreQuery } from "@react-query-firebase/firestore";
+import useFirebase from "../../src/hooks/useFirebase";
+import { GalleryProps } from "../../typing";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import React from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
+import { useState } from "react";
+import GalleryToggle from "../../src/components/GalleryToggle";
+import GalleryCard from "../../src/components/GalleryCard";
+import useAuth from "../../src/hooks/useAuth";
 
 function Gallery() {
-    type GalleryData = {
-        mainPage: boolean;
-        title: string;
-        writer: string;
-        createAt: string;
-        imgUrl: string[];
-        content: string;
-    };
+    const [onToggle, setToggleOpen] = useState(false);
+    const { user } = useAuth();
+    const { collectionRef: galleryDatasRef } = useFirebase<GalleryProps>(
+        "galleryDatas",
+        ["galleryDatas"]
+    );
+    const galleryDatasQuery = useFirestoreQuery<GalleryProps>(
+        ["galleryDatas"],
+        galleryDatasRef,
+        { subscribe: true }
+    );
 
+    const gallerypostSnapshot = galleryDatasQuery.data;
+    //meanless
+    // @ts-ignore
     return (
         <div>
-            <div>갤러리페이지는 무한 스크롤 방식으로 구현 할 예정입니다</div>
             <main>
-                {/*카테고리*/}
-                <div className='flex'>
-                    <a className='w-24 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
-                        전체
-                    </a>
-                    <a className='w-48 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
-                        분류 1
-                    </a>
-                    <a className='w-48 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
-                        분류 2
-                    </a>
-                    <a className='w-52 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
-                        분류 3
-                    </a>
-                    <a className='w-52 cursor-pointer border px-4 py-3 text-center hover:border-t hover:border-t-2 hover:border-b-0 hover:border-t-black'>
-                        분류 4
-                    </a>
-
-                    <span className='w-full border-b'></span>
-                </div>
                 {/*검색창*/}
-                <div className='mt-5 flex h-9 items-center justify-end'>
+                <div className='mt-5 flex h-9 items-center justify-end space-x-5'>
+                    <div className='flex'>
+                        {user && (
+                            <button
+                                className='border p-1'
+                                onClick={() => {
+                                    setToggleOpen((prev) => !prev);
+                                }}
+                            >
+                                {onToggle ? "취소" : "추가"}
+                            </button>
+                        )}
+                    </div>
+
                     <select className='h-full border pl-2 pr-7'>
                         <option>전체</option>
                         <option value='title '>제목</option>
@@ -47,84 +50,22 @@ function Gallery() {
                     <input className='ml-6 h-full w-32 border' />
                     <MagnifyingGlassIcon className='h-full bg-PRIMARY_COLOR-500 p-1 text-white' />
                 </div>
+
+                {/* 게시물 추가 창 토글 */}
+                {onToggle && (
+                    <GalleryToggle
+                        galleryRef={galleryDatasRef}
+                        setToggleOpen={setToggleOpen}
+                    />
+                )}
+
                 <div className=' my-5 grid grid-cols-1 items-center gap-y-16 gap-x-12 self-center md:grid-cols-2 xl:grid-cols-3'>
-                    <div className='flex h-[350px] w-[350px] flex-col justify-between border-4 border-white hover:border-4 hover:border-PRIMARY_COLOR-500'>
-                        <div className=' flex h-[216px] items-center justify-center bg-GRAY_COLOR-500'>
-                            이미지가 들어갈 공간입니다{" "}
-                        </div>
-                        <div className=' my-2 flex h-[120px] flex-col items-center justify-around'>
-                            <div className=' text-lg'>이미지 제목</div>
-                            <div className=' text-sm text-GRAY_COLOR-500'>
-                                이미지 날짜
-                            </div>
-                        </div>
-                    </div>
-                    <div className='flex h-[350px] w-[350px] flex-col justify-between border-4 border-white hover:border-4 hover:border-PRIMARY_COLOR-500'>
-                        <div className=' flex h-[216px] items-center justify-center bg-GRAY_COLOR-500'>
-                            이미지가 들어갈 공간입니다{" "}
-                        </div>
-                        <div className=' my-2 flex h-[120px] flex-col items-center justify-around'>
-                            <div className=' text-lg'>이미지 제목</div>
-                            <div className=' text-sm text-GRAY_COLOR-500'>
-                                이미지 날짜
-                            </div>
-                        </div>
-                    </div>
-                    <div className='flex h-[350px] w-[350px] flex-col justify-between border-4 border-white hover:border-4 hover:border-PRIMARY_COLOR-500'>
-                        <div className=' flex h-[216px] items-center justify-center bg-GRAY_COLOR-500'>
-                            이미지가 들어갈 공간입니다{" "}
-                        </div>
-                        <div className=' my-2 flex h-[120px] flex-col items-center justify-around'>
-                            <div className=' text-lg'>이미지 제목</div>
-                            <div className=' text-sm text-GRAY_COLOR-500'>
-                                이미지 날짜
-                            </div>
-                        </div>
-                    </div>
-                    <div className='flex h-[350px] w-[350px] flex-col justify-between border-4 border-white hover:border-4 hover:border-PRIMARY_COLOR-500'>
-                        <div className=' flex h-[216px] items-center justify-center bg-GRAY_COLOR-500'>
-                            이미지가 들어갈 공간입니다{" "}
-                        </div>
-                        <div className=' my-2 flex h-[120px] flex-col items-center justify-around'>
-                            <div className=' text-lg'>이미지 제목</div>
-                            <div className=' text-sm text-GRAY_COLOR-500'>
-                                이미지 날짜
-                            </div>
-                        </div>
-                    </div>
-                    <div className='flex h-[350px] w-[350px] flex-col justify-between border-4 border-white hover:border-4 hover:border-PRIMARY_COLOR-500'>
-                        <div className=' flex h-[216px] items-center justify-center bg-GRAY_COLOR-500'>
-                            이미지가 들어갈 공간입니다{" "}
-                        </div>
-                        <div className=' my-2 flex h-[120px] flex-col items-center justify-around'>
-                            <div className=' text-lg'>이미지 제목</div>
-                            <div className=' text-sm text-GRAY_COLOR-500'>
-                                이미지 날짜
-                            </div>
-                        </div>
-                    </div>
-                    <div className='flex h-[350px] w-[350px] flex-col justify-between border-4 border-white hover:border-4 hover:border-PRIMARY_COLOR-500'>
-                        <div className=' flex h-[216px] items-center justify-center bg-GRAY_COLOR-500'>
-                            이미지가 들어갈 공간입니다{" "}
-                        </div>
-                        <div className=' my-2 flex h-[120px] flex-col items-center justify-around'>
-                            <div className=' text-lg'>이미지 제목</div>
-                            <div className=' text-sm text-GRAY_COLOR-500'>
-                                이미지 날짜
-                            </div>
-                        </div>
-                    </div>
-                    <div className='flex h-[350px] w-[350px] flex-col justify-between border-4 border-white hover:border-4 hover:border-PRIMARY_COLOR-500'>
-                        <div className=' flex h-[216px] items-center justify-center bg-GRAY_COLOR-500'>
-                            이미지가 들어갈 공간입니다{" "}
-                        </div>
-                        <div className=' my-2 flex h-[120px] flex-col items-center justify-around'>
-                            <div className=' text-lg'>이미지 제목</div>
-                            <div className=' text-sm text-GRAY_COLOR-500'>
-                                이미지 날짜
-                            </div>
-                        </div>
-                    </div>
+                    <GalleryCard
+                        imgUrl={""}
+                        title='test1'
+                        createdAt='2022-10-21'
+                        isBanner={false}
+                    />
                 </div>
             </main>
         </div>
