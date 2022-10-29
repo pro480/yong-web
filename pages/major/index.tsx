@@ -11,8 +11,8 @@ function Index() {
         <div>
 
             {/*배너*/}
-            <div className='h-[450px]'>
-                <div className='relative flex h-72 items-center justify-center bg-gray-300'>
+            <div className=' h-48  md:h-[250px] lg:h-96 xl:h-[450px] bg-slate-700'>
+                <div className='relative flex h-32  md:h-44 lg:h-64 xl:h-72 items-center justify-center bg-gray-300'>
                     에듀 데이터 사이언스에 대한 이미지를 넣어주세요
                     <div className='absolute -bottom-[80px] left-32 flex h-[160px] w-[500px] flex-col items-center justify-center gap-y-8 bg-PRIMARY_COLOR-500'>
                         <h1 className='text-2xl font-semibold text-white'>
@@ -43,65 +43,10 @@ function Index() {
                         </p>
                     </div>
                 </div>
-                <div className='my-8'>
-                    <p className=' w-[70px] border-b-2 border-b-PRIMARY_COLOR-500'></p>
-                    <h1 className='text-2xl font-bold'>특성화 방향</h1>
-                </div>
-                <div className='flex h-80 justify-around'>
-                    <article className='flex h-[70%] w-1/4 flex-col items-center bg-PRIMARY_COLOR-500/70'>
-                        <h1 className='mt-8 text-xl text-white'>
-                            특성화 방향 1
-                        </h1>
-                        <span className='mt-5 w-24 border-b-2 border-b-amber-400'></span>
-                        <ul className='mt-5 flex flex-col gap-y-3 text-white'>
-                            <li className=" px-4 before:mr-2  before:text-amber-400 before:content-['\2022']">
-                                특성화 방향 1 에 대한 내용 1
-                            </li>
-                            <li className=" px-4 before:mr-2  before:text-amber-400 before:content-['\2022']">
-                                특성화 방향 1 에 대한 내용 2
-                            </li>
-                        </ul>
-                    </article>
-                    <article className='flex h-[85%] w-1/4 flex-col items-center bg-PRIMARY_COLOR-500/70'>
-                        <h1 className='mt-8 text-xl text-white'>
-                            특성화 방향 2
-                        </h1>
-                        <span className='mt-5 w-24 border-b-2 border-b-amber-400'></span>
-                        <ul className='mt-5 flex flex-col gap-y-3 text-white'>
-                            <li className=" px-4 before:mr-2  before:text-amber-400 before:content-['\2022']">
-                                특성화 방향 2 에 대한 내용 1
-                            </li>
-                            <li className=" px-4 before:mr-2  before:text-amber-400 before:content-['\2022']">
-                                특성화 방향 2 에 대한 내용 2
-                            </li>
-                            <li className=" px-4 before:mr-2  before:text-amber-400 before:content-['\2022']">
-                                특성화 방향 2 에 대한 내용 3
-                            </li>
-                        </ul>
-                    </article>
-                    <article className='flex h-full w-1/4 flex-col items-center bg-PRIMARY_COLOR-500/70'>
-                        <h1 className='mt-8 text-xl text-white'>
-                            특성화 방향 3
-                        </h1>
-                        <span className='mt-5 w-24 border-b-2 border-b-amber-400'></span>
-                        <ul className='mt-5 flex flex-col gap-y-3 text-white'>
-                            <li className=" px-4 before:mr-2  before:text-amber-400 before:content-['\2022']">
-                                특성화 방향 3 에 대한 내용 1
-                            </li>
-                            <li className=" px-4 before:mr-2  before:text-amber-400 before:content-['\2022']">
-                                특성화 방향 3 에 대한 내용 2
-                            </li>
-                            <li className=" px-4 before:mr-2  before:text-amber-400 before:content-['\2022']">
-                                특성화 방향 3 에 대한 내용 3
-                            </li>
-                        </ul>
-                    </article>
-                </div>
+            
+      
             </main>
-            <div className='mt-12'>
-                특성화 방향에 들어갈 컨텐츠는 다음 페이지를 참고해주세요
-                http://education.cau.ac.kr/bbs/page.php?hid=s0102
-            </div>
+
         </div>
     );
 }

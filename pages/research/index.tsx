@@ -62,7 +62,6 @@ function Index() {
 
     return (
         <div>
-
             <div className='flex flex-col gap-y-10'>
                 {/* 필터 */}
                 <div className='border-b-2 border-PRIMARY_COLOR-500 p-3'>
