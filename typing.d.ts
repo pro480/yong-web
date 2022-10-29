@@ -61,7 +61,7 @@ export interface GraduateMember {
 
 
 
-export interface GalleryPost {
+export interface GalleryProps {
     imgUrl:string;
     title:string;
     createdAt:string;
