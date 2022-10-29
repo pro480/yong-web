@@ -59,15 +59,6 @@ export interface GraduateMember {
     team: Team;
 }
 
-
-
-export interface GalleryPost {
-    imgUrl:string;
-    title:string;
-    createdAt:string;
-    isBanner:boolean;
-}
-
 export interface StudyMaterial {
     title: string; // 자료명
     writer: string; // 작성자
@@ -98,7 +89,5 @@ export interface Thesis {
     writer: string; // 작성자
 }
 
-export type Material =
-    | "논문 및 연구 보고서"
-    | "학습 자료";
+export type Material = "논문 및 연구 보고서" | "학습 자료";
 

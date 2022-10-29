@@ -7,12 +7,12 @@ import {
 } from "@react-query-firebase/firestore";
 import { db, storage } from "../../firebase";
 import { CollectionReference } from "@firebase/firestore";
-import { GalleryProps } from "../../typing";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
+import { GalleryPost } from "./gallery/GalleryCard";
 
 interface Props {
-    galleryRef: CollectionReference<GalleryProps>;
+    galleryRef: CollectionReference<GalleryPost>;
     setToggleOpen: Dispatch<SetStateAction<boolean>>;
 }
 

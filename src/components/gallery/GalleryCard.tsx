@@ -1,21 +1,22 @@
-import React from "react";
+import useAuth from "../../hooks/useAuth";
 import Image from "next/image";
 import { GalleryDeleteButton, GalleryUpdateButton } from "./GalleryButton";
-import { GalleryPost } from "../../../typing";
-import useAuth from "../../hooks/useAuth";
 
-interface Props<T> {
-    docId: string;
-    isEditable: boolean;
-    data: T;
+export interface GalleryPost {
+    imgUrl: string;
+    title: string;
+    createdAt: string;
+    isBanner: boolean;
 }
 
-function GalleryCard<T extends GalleryPost>({
-    isEditable,
-    docId,
-    data,
-}: Props<T>) {
-    const{user} = useAuth();
+interface Props {
+    docId: string;
+    isEditable: boolean;
+    data: GalleryPost;
+}
+
+function GalleryCard({ isEditable, docId, data }: Props) {
+    const { user } = useAuth();
 
     return (
         <div>
@@ -35,10 +36,7 @@ function GalleryCard<T extends GalleryPost>({
                     </div>
                     {isEditable && user && (
                         <div>
-                            <GalleryUpdateButton
-                                data={data}
-                                docId={docId}
-                            />
+                            <GalleryUpdateButton data={data} docId={docId} />
 
                             <GalleryDeleteButton docId={docId} />
                         </div>

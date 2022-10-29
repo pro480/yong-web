@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GalleryBoardContext } from "./GalleryBoard";
-import { GalleryPost } from "../../../typing";
+import { GalleryPost } from "./GalleryCard";
 
 function GalleryAddButton() {
     const { toggleOpen, setToggleOpen } = useContext(GalleryBoardContext);
@@ -19,8 +19,15 @@ function GalleryAddButton() {
     );
 }
 
-function GalleryUpdateButton({ docId, data }: { data:GalleryPost, docId: string }) {
-    const { setSelectedPost, setSelectedDocId, setToggleOpen } = useContext(GalleryBoardContext);
+function GalleryUpdateButton({
+    docId,
+    data,
+}: {
+    data: GalleryPost;
+    docId: string;
+}) {
+    const { setSelectedPost, setSelectedDocId, setToggleOpen } =
+        useContext(GalleryBoardContext);
     return (
         <div>
             <button

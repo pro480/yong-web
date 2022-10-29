@@ -1,35 +1,30 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import {GalleryPost} from "../../../typing";
-import {QueryDocumentSnapshot} from "@firebase/firestore";
-import GalleryCard from "./GalleryCard";
+import { QueryDocumentSnapshot } from "@firebase/firestore";
+import GalleryCard, {GalleryPost} from "./GalleryCard";
 
-
-interface Props{
-    postList: QueryDocumentSnapshot<GalleryPost>[]|undefined;
+interface Props {
+    postList: QueryDocumentSnapshot<GalleryPost>[] | undefined;
 }
 
-function GalleryBody ({postList}:Props) {
-    const {user} = useAuth();
+function GalleryBody({ postList }: Props) {
+    const { user } = useAuth();
 
     return (
         <div>
-            {postList?.map((docSnapshot)=>{
+            {postList?.map((docSnapshot) => {
                 const data = docSnapshot.data();
-                return(
-                    <div
-                        key={docSnapshot.id}
-                    >
+                return (
+                    <div key={docSnapshot.id}>
                         <GalleryCard
                             isEditable={true}
                             docId={docSnapshot.id}
                             data={data}
                         />
                     </div>
-                )
+                );
             })}
         </div>
-
     );
 }
 
