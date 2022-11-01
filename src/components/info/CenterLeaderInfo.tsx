@@ -45,7 +45,7 @@ function CenterLeaderInfo() {
                     </div>
 
                     {/*사다리꼴 내부 로고*/}
-                    <div className='absolute bottom-2 right-1/4 z-10 mx-auto flex h-12 w-12 xs:right-1/3 xs:h-20 xs:w-20 md:h-36 md:w-36  lg:h-48 lg:w-48   desktop:h-48 desktop:w-48 '>
+                    <div className='absolute bottom-2 right-1/4 z-10 mx-auto flex aspect-1/1 w-12 xs:right-1/3 xs:w-20 md:w-36 lg:w-48 desktop:w-48 '>
                         <Image src={symbolImage} layout='fill' />
                     </div>
 
@@ -53,7 +53,7 @@ function CenterLeaderInfo() {
                     <div className=' relative border-b-[90px] border-r-[72px] border-b-PRIMARY_COLOR-500 border-r-transparent  xs:border-b-[110px] xs:border-r-[88px]  md:border-b-[180px] md:border-r-[144px] lg:border-b-[230px] lg:border-r-[184px] desktop:border-b-[250px] desktop:border-r-[200px] '></div>
                 </div>
 
-                <div className='absolute top-6 z-50 h-1/2 w-3/5 xs:top-8 md:top-12 lg:top-14 desktop:top-16 '>
+                <div className='absolute top-12 z-50 aspect-3/1 w-3/5 xs:top-10 md:top-20 lg:top-14 desktop:top-16 '>
                     {/*eba 로고*/}
                     <Image
                         className=''
