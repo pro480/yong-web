@@ -10,11 +10,14 @@ import CenterLeaderEducation from "../../src/components/info/CenterLeaderEducati
 function Index() {
     return (
         <div>
-
             <CenterLeaderInfo />
+            {/*교수님사진부분*/}
             <CenterLeaderCareer />
+            {/*커리어*/}
             <HorizontalRule />
+            {/*구분선*/}
             <CenterLeaderEducation />
+            {/*학력*/}
         </div>
     );
 }
