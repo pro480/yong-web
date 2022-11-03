@@ -79,11 +79,15 @@ export interface QNA {
     fileUrl: string; // 첨부파일
     password: string; //비번
     isAnswered: boolean; // 답변유무
+}
+
+export interface Thesis {
+    content: string; // 내용
+    createAt: string; // 생성일
+    fileUrl: string; // 첨부파일
     title: string; // 제목
     writer: string; // 작성자
 }
 
-export type Material =
-    | "논문 및 연구 보고서"
-    | "학습 자료";
+export type Material = "논문 및 연구 보고서" | "학습 자료";
 

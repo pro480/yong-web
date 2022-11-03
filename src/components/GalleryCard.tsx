@@ -1,14 +1,10 @@
 import React, {useState} from "react";
 import Image from "next/image";
 import useAuth from "../hooks/useAuth";
+import {GalleryPost} from "./gallery/GalleryCard";
 
-interface props {
-    imgUrl: string;
-    title: string;
-    createdAt: string;
-}
 
-function GalleryCard({ imgUrl, title, createdAt }: props) {
+function GalleryCard({ imgUrl, title, createdAt, isBanner }: GalleryPost) {
     const {user} = useAuth();
     const [isModified, setModify] = useState(false)
     function changeMod() {

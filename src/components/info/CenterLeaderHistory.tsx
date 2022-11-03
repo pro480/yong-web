@@ -4,11 +4,11 @@ interface Props {
     content: string;
 }
 
-function CenterLeaderHistory({  content }: Props) {
+function CenterLeaderHistory({ content }: Props) {
     return (
-        <li className='flex'>
-            <div className='history_division'></div>
-            {content}
+        <li className='my-4 flex xs:my-auto'>
+            <div className=' history_division absolute left-0 xs:relative xs:w-auto '></div>
+            <div className=' ml-8 xs:ml-0'>{content}</div>
         </li>
     );
 }

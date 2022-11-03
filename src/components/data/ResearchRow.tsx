@@ -1,7 +1,7 @@
 import React from "react";
 import { LinkIcon } from "@heroicons/react/24/solid";
 
-export default function ReportRow(items: any) {
+export default function ResearchRow(items: any) {
     return (
         <React.Fragment>
             <tr
