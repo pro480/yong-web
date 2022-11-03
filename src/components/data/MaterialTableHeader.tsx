@@ -1,18 +1,17 @@
 import React from "react";
-import { MaterialTableAddButton } from "./StudyMaterialTableButton";
-import { Material } from "../../../typing";
+import { MaterialTableAddButton } from "./MaterialTableButton";
+import { Material, StudyMaterial, PaperMaterial } from "../../../typing";
 import useAuth from "../../hooks/useAuth";
 
-interface Props {
+interface Props<M> {
     material: Material;
 }
 
-function StudyMaterialTableHeader({ material }: Props) {
+function MaterialTableHeader<M extends StudyMaterial | PaperMaterial>({ material }: Props<M>) {
     const { user } = useAuth();
     return (
         <thead>
             <tr className='bg-PRIMARY_COLOR-500/40 h-12 text-sm uppercase leading-normal text-gray-600'>
-                {material === "학습 자료"}
                 <th className='w-[5%] text-center'>NO</th>
                 <th className='w-[30%] text-center'>제목</th>
                 <th className='w-[15%] text-center'>작성자</th>
@@ -26,4 +25,4 @@ function StudyMaterialTableHeader({ material }: Props) {
     );
 }
 
-export default StudyMaterialTableHeader;
+export default MaterialTableHeader;

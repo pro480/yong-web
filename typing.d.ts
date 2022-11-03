@@ -67,6 +67,14 @@ export interface StudyMaterial {
     material: Material; // 학습 자료랑 논문 및 연구보고서로 분류할 생각
 }
 
+export interface PaperMaterial {
+    title: string; // 논문명
+    writer: string; // 저자
+    date: string; // 작성일자
+    fileUrl: string; // 논문파일 주소
+    material: Material; // 학습 자료랑 논문 및 연구보고서로 분류할 생각
+}
+
 export type Organization =
     | "연구협력 네트워크"
     | "연구 자문단"
@@ -89,5 +97,7 @@ export interface Thesis {
     writer: string; // 작성자
 }
 
-export type Material = "논문 및 연구 보고서" | "학습 자료";
+export type Material = 
+    |"논문" 
+    | "학습 자료";
 

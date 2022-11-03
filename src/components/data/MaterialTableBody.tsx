@@ -1,21 +1,21 @@
 import React, { useContext, useEffect } from "react";
 import { ImMail4, ImFileText2 } from "react-icons/im";
-import { Material, StudyMaterial } from "../../../typing";
-import { StudyMaterialTableContext } from "./StudyMaterialTable";
+import { Material, PaperMaterial, StudyMaterial } from "../../../typing";
+import { MaterialTableContext } from "./MaterialTable";
 import useAuth from "../../hooks/useAuth";
 import {
     MaterialTableDeleteButton,
     MaterialTableUpdateButton,
-} from "./StudyMaterialTableButton";
+} from "./MaterialTableButton";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
-import MoreInfo from "./StudyMaterialTooltips"; // using tooltips
+import MoreInfo from "./xStudyMaterialTooltips"; // using tooltips
 
-interface Props {
+interface Props<M> {
     material: Material;
-    materialList: QueryDocumentSnapshot<StudyMaterial>[] | undefined;
+    materialList: QueryDocumentSnapshot<StudyMaterial | PaperMaterial>[] | undefined;
 }
 
-function MaterialTableBody({ material, materialList }: Props) {
+function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({ material, materialList }: Props<M>) {
     const { user } = useAuth();
 
     return (
@@ -27,15 +27,9 @@ function MaterialTableBody({ material, materialList }: Props) {
                         key={docSnapshot.id}
                         className='border-b text-xs sm:text-sm md:text-base border-gray-200 hover:bg-gray-100'
                     >
-                        {/* {material === "학습 자료"} */}
                         <td className='py-3 text-center'>{index + 1}</td>
                         <td className='text-center'>
-                            {/* Tooltips - info */}
                             {data.title}
-                            {/* <MoreInfo
-                                title={data.title}
-                                content="툴팁 박스 형태로 구현할 예정입니다."
-                            /> */}
                         </td> 
                         <td className='text-center'>{data.writer}</td>
                         <td className='text-center'>{data.date}</td>
