@@ -25,6 +25,7 @@ export function ReportDeleteButton({ docId }: { docId: string }) {
             className='h-[30px] w-[40px] cursor-pointer rounded-md bg-gray-400 text-center text-white hover:bg-gray-600'
             onClick={() => {
                 deleteDocument(docId);
+                alert("보고서가 삭제되었습니다.");
             }}
         >
             삭제
