@@ -39,14 +39,15 @@ interface StudyMaterialTableContextProps {
     setSelectedIndex: Dispatch<React.SetStateAction<number>>;
 }
 
-export const StudyMaterialTableContext = createContext({} as StudyMaterialTableContextProps);
+export const StudyMaterialTableContext = createContext(
+    {} as StudyMaterialTableContextProps
+);
 
 function StudyMaterialTable({ material }: Props) {
     const { collectionRef, collectionQuery, deleteDocument } =
         useFirebase<StudyMaterial>("studyMaterial", ["studyMaterial"]);
-    const [selectedMaterial, setSelectedMaterial] = useState<StudyMaterial | null>(
-        null
-    );
+    const [selectedMaterial, setSelectedMaterial] =
+        useState<StudyMaterial | null>(null);
     const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
     const [isEditing, setIsEditing] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
