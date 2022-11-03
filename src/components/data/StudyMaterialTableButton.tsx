@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import useAuth from "../../hooks/useAuth";
 import { StudyMaterialTableContext } from "./StudyMaterialTable";
 import { StudyMaterial } from "../../../typing";
 
