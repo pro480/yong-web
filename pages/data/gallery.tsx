@@ -1,105 +1,12 @@
-import React, {
-    createContext,
-    Dispatch,
-    useLayoutEffect,
-    useState,
-} from "react";
-import {Card, GalleryCard} from "../../typing";
-import { UseQueryResult } from "react-query";
-import {
-    CollectionReference,
-    FirestoreError,
-    QueryDocumentSnapshot,
-    QuerySnapshot,
-} from "@firebase/firestore";
-import useFirebase from "../../src/hooks/useFirebase";
+import GalleryMain from "../../src/components/gallery/GalleryMain";
+import React from "react";
 
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import useAuth from "../../src/hooks/useAuth";
-import { GalleryAddButton } from "../../src/components/gallery/GalleryButton";
-import GalleryCardGrid from "../../src/components/gallery/GalleryCardGrid";
-import GalleryToggle from "../../src/components/gallery/GalleryToggle";
-
-interface Props{
-    card: Card;
-}
-
-interface GalleryContextProps {
-    isEditing: boolean;
-    setIsEditing: Dispatch<React.SetStateAction<boolean>>;
-    collectionQuery: UseQueryResult<QuerySnapshot<GalleryCard>, FirestoreError>;
-    setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
-    selectedDocId: string | null;
-    collectionRef: CollectionReference<GalleryCard>;
-    deleteDocument: (docID: string) => void;
-    selectedIndex: number;
-    setSelectedIndex: Dispatch<React.SetStateAction<number>>;
-    selectedCard: GalleryCard | null;
-    setSelectedCard: Dispatch<React.SetStateAction<GalleryCard | null>>;
-}
-
-export const GalleryContext = createContext({} as GalleryContextProps);
-
-function Gallery({card}: Props) {
-    const { user } = useAuth();
-    const { collectionRef, collectionQuery, deleteDocument } =
-        useFirebase<GalleryCard>("galleryCard", ["galleryCard"]);
-    const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
-    const [isEditing, setIsEditing] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const [galleryList, setGalleryList] = useState<
-        QueryDocumentSnapshot<GalleryCard>[] | undefined
-        >(collectionQuery.data?.docs);
-    const [selectedCard, setSelectedCard] = useState<GalleryCard | null >(null)
-
-    useLayoutEffect(() => {
-        const newGalleryList = collectionQuery.data?.docs.filter(
-            (docSnapshot) => docSnapshot.data().card === card
-        );
-        setGalleryList(newGalleryList);
-    }, [collectionQuery.isSuccess]);
-
-    const value = {
-        isEditing,
-        setIsEditing,
-        collectionQuery,
-        collectionRef,
-        deleteDocument,
-        selectedDocId,
-        setSelectedDocId,
-        selectedIndex,
-        setSelectedIndex,
-        selectedCard,
-        setSelectedCard
-    };
-
-    if (collectionQuery.isLoading) {
-        return <>로딩</>;
-    }
-
-    return (
-        <GalleryContext.Provider value={value}>
-            <div className='flex w-full flex-col'>
-                {/* 헤더 (검색창 + 추가 버튼) */}
-                <div className='relative mt-5 flex h-9 items-center justify-end space-x-5'>
-                    {/*추가 버튼*/}
-                    {user && <GalleryAddButton />}
-                    {/* 검색 창 */}
-                    <select className='h-full border pl-2 pr-7'>
-                        <option>전체</option>
-                        <option value='title '>제목</option>
-                        <option value='content'>내용</option>
-                    </select>
-                    <input className='ml-6 h-full w-32 border' />
-                    <MagnifyingGlassIcon className='h-full bg-black p-1 text-white' />
-                </div>
-                {isEditing && <GalleryToggle card={card} />}
-                <div>
-                    <GalleryCardGrid card={card} galleryList={galleryList} />
-                </div>
-            </div>
-        </GalleryContext.Provider>
-    );
+function Gallery(){
+    return(
+        <div>
+            <GalleryMain card='갤러리 게시물'/>
+        </div>
+    )
 }
 
 export default Gallery;

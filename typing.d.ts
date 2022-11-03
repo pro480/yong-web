@@ -89,5 +89,15 @@ export interface Thesis {
     writer: string; // 작성자
 }
 
+export interface GalleryCard {
+    title: string;
+    createdAt: string;
+    imgUrl: string;
+    isBanner:boolean;
+    card: Card;
+}
+
+
+export type Card = "갤러리 게시물"
 export type Material = "논문 및 연구 보고서" | "학습 자료";
 
