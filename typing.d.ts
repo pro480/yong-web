@@ -76,18 +76,6 @@ export interface QNA {
     answer: string; // 답변
     content: string; // 내용
     createAt: string; // 생성일
-<<<<<<< HEAD
-=======
-    fileUrl: string; // 첨부파일
-    password: string; //비번
-    isAnswered: boolean; // 답변유무
-}
-
-export interface Thesis {
-    content: string; // 내용
-    createAt: string; // 생성일
-    fileUrl: string; // 첨부파일
->>>>>>> 29d2f781488a6281dbd0849d1ae6f05986f82256
     title: string; // 제목
 }
 
