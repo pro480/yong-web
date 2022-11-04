@@ -36,14 +36,27 @@ interface MaterialTableContextProps<M> {
     setSelectedIndex: Dispatch<React.SetStateAction<number>>;
 }
 
+<<<<<<< HEAD:src/components/data/MaterialTable.tsx
 export const MaterialTableContext = createContext<
     MaterialTableContextProps<StudyMaterial | PaperMaterial>
 >({} as MaterialTableContextProps<StudyMaterial | PaperMaterial>);
+=======
+export const StudyMaterialTableContext = createContext(
+    {} as StudyMaterialTableContextProps
+);
+>>>>>>> main:src/components/data/StudyMaterialTable.tsx
 
 function MaterialTable<M extends StudyMaterial | PaperMaterial>({ material }: Props<M>) {
     const { collectionRef, collectionQuery, deleteDocument } =
+<<<<<<< HEAD:src/components/data/MaterialTable.tsx
         useFirebase<StudyMaterial | PaperMaterial>(material, [material]);
     // ?
+=======
+        useFirebase<StudyMaterial>("studyMaterial", ["studyMaterial"]);
+    const [selectedMaterial, setSelectedMaterial] =
+        useState<StudyMaterial | null>(null);
+    const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
+>>>>>>> main:src/components/data/StudyMaterialTable.tsx
     const [isEditing, setIsEditing] = useState(false);
     const [selectedMaterial, setSelectedMaterial] = useState<
         StudyMaterial | PaperMaterial | null

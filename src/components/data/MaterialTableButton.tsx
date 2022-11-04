@@ -3,12 +3,18 @@ import { MaterialTableContext } from "./MaterialTable";
 import { StudyMaterial, PaperMaterial } from "../../../typing";
 
 function MaterialTableAddButton() {
+<<<<<<< HEAD:src/components/data/MaterialTableButton.tsx
     const { setIsEditing, isEditing, setSelectedMaterial } =
         useContext(MaterialTableContext);
+=======
+    const { setIsEditing, isEditing, setSelectedMaterial } = useContext(
+        StudyMaterialTableContext
+    );
+>>>>>>> main:src/components/data/StudyMaterialTableButton.tsx
 
     return (
         <button
-            className='absolute hidden md:flex right-3 top-1/2 -translate-y-1/2 border p-1'
+            className='absolute right-3 top-1/2 hidden -translate-y-1/2 border p-1 md:flex'
             onClick={() => {
                 setIsEditing((prev) => !prev);
                 isEditing ? setSelectedMaterial(null) : null;
@@ -59,8 +65,14 @@ function MaterialTableDeleteButton({ docID }: { docID: string }) {
 }
 
 function MaterialTableCancelButton() {
+<<<<<<< HEAD:src/components/data/MaterialTableButton.tsx
     const { setIsEditing, setSelectedMaterial, setSelectedIndex } =
         useContext(MaterialTableContext);
+=======
+    const { setIsEditing, setSelectedMaterial, setSelectedIndex } = useContext(
+        StudyMaterialTableContext
+    );
+>>>>>>> main:src/components/data/StudyMaterialTableButton.tsx
     return (
         <button
             className='border p-1'
