@@ -1,15 +1,12 @@
-import React, { createContext, Dispatch, useState } from "react";
-import GalleryBoard from "../../src/components/gallery/GalleryBoard";
+import GalleryMain from "../../src/components/data/GalleryMain";
+import React from "react";
 
-
-function Gallery() {
-
-
-    return (
+function Gallery(){
+    return(
         <div>
-            <GalleryBoard/>
+            <GalleryMain card='갤러리 게시물'/>
         </div>
-    );
+    )
 }
 
 export default Gallery;

@@ -119,6 +119,18 @@ export interface QNA {
     title: string; // 제목
 }
 
+export interface GalleryCard {
+    title: string;
+    createdAt: string;
+    imgUrl: string;
+    isBanner:boolean;
+    card: Card;
+}
+
+
+export type Card = "갤러리 게시물"
+export type Material = "논문 및 연구 보고서" | "학습 자료";
+
 export interface Research {
     createdAt: string; // 파일 올린 날짜
     fileUrl: string;
