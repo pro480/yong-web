@@ -30,7 +30,6 @@ interface Props {
 }
 
 function NewsTableToggle({ news }: Props) {
-    const moment = require('moment');
     const today = moment();
     const { selectedNews ,collectionRef, selectedDocId, selectedIndex, setIsEditing } = useContext(NewsTableContext);
     const [editFile, setEditFile] = useState(false);
