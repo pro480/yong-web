@@ -19,7 +19,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
     const { user } = useAuth();
 
     return (
-        <section className='flex h-full w-full flex-wrap justify-between'>
+        <section className='pb-1 flex h-full w-full flex-wrap justify-between'>
             {/*이미지 사이즈*/}
             <div className='xs:w-[40%] relative sm:w-[25%] '>
                 <Image
@@ -32,17 +32,17 @@ function NameCard<T extends InternalMember | GraduateMember>({
                 />
             </div>
             {/*오른쪽 설명*/}
-            <main className='xs:w-[50%] sm:w-[70%] flex-col self-center text-xs text-PRIMARY_COLOR-500 sm:text-sm md:text-base'>
+            <main className='xs:w-[50%] sm:w-[70%] xs:flex-col self-center text-PRIMARY_COLOR-500 sx:text-xs sm:text-sm md:text-base'>
                 {/*이름, 관심분야, 이메일*/}
                 <header className='md:flex-wrap w-full pb-1 items-center gap-x-5'>
-                    <h1 className='flex-1 md:pb-1 whitespace-nowrap text-lg font-semibold text-PRIMARY_COLOR-800 sm:text-xl md:text-2xl'>
+                    <h1 className='md:pb-1 whitespace-nowrap text-lg font-semibold text-PRIMARY_COLOR-800 sm:text-xl md:text-2xl'>
                         {member.name}
                     </h1>
-                    <div className='flex-1 md:pb-1 whitespace-nowrap '>{member.major}</div>
+                    <div className='md:pb-1 whitespace-nowrap '>{member.major}</div>
 
                     <a
                         href={`mailto:${member.email}`}
-                        className='flex-1 md:pb-1 text-PRIMARY_COLOR-800 hover:underline '
+                        className='md:pb-1 text-PRIMARY_COLOR-800 hover:underline '
                     >
                         {member.email}
                     </a>
@@ -51,7 +51,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
                 <div className='flex pb-1 justify-between text-base md:text-lg xl:text-xl'>
                     약력{" "}
                     {isEditable && user && (
-                        <div className='flex h-fit gap-x-5 pl-5'>
+                        <div className='flex gap-x-5 pl-5'>
                             <MemberUpdateButton<T>
                                 member={member}
                                 documentID={documentID}

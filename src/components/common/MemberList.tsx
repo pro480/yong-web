@@ -72,11 +72,12 @@ function MemberList<T extends InternalMember | GraduateMember>({
             {user && <MemberAddButton />}
             <div className='relative mb-10 h-full w-full'>
                 <section
-                    className={` mt-5 flex w-full flex-wrap ${
+                    className={`mt-5 flex w-full flex-wrap ${
                         isBig
                             ? ""
-                            : "grid grid-cols-1 gap-y-6 gap-x-4 px-2 md:px-5 lg:grid-cols-2 xl:gap-x-8"
-                    }`}
+                            : "grid grid-cols-1 gap-y-6 gap-x-4 px-2 md:px-7 lg:grid-cols-2 xl:gap-x-10"
+                    }
+                    `}
                 >
                     {memberList?.map((docSnapshot) => {
                         const member = docSnapshot.data();
@@ -86,7 +87,7 @@ function MemberList<T extends InternalMember | GraduateMember>({
                                 className={`${
                                     isBig
                                         ? "h-80 w-full"
-                                        : "h-32 sm:h-40 md:h-48 lg:h-36 xl:h-44"
+                                        : "h-fit"
                                 } h-80 p-2`}
                             >
                                 <NameCard
