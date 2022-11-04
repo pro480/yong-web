@@ -1,4 +1,4 @@
-import GalleryMain from "../../src/components/gallery/GalleryMain";
+import GalleryMain from "../../src/components/data/GalleryMain";
 import React from "react";
 
 function Gallery(){

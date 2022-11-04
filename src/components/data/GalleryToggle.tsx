@@ -11,6 +11,7 @@ import { Card } from "../../../typing";
 import Image from "next/image";
 import { GalleryCancelButton } from "./GalleryButton";
 import { GalleryContext } from "./GalleryMain";
+import moment from "moment";
 
 interface Inputs {
     title: string; // 자료명
@@ -24,6 +25,8 @@ interface Props {
 }
 
 function GalleryToggle({ card }: Props) {
+    const moment = require('moment');
+    const today = moment();
     const { collectionRef, selectedDocId, selectedCard, setIsEditing } =
         useContext(GalleryContext);
     const [editImage, setEditImage] = useState(false);
@@ -50,7 +53,7 @@ function GalleryToggle({ card }: Props) {
     const onAddCard: SubmitHandler<Inputs> = (data) => {
         console.log(data.imgFile);
         let file = data.imgFile[0];
-        const storageRef = ref(storage, "documents/galleryDatas/" + file.name);
+        const storageRef = ref(storage, "images/gallery/" + file.name);
         const uploadFile = uploadBytesResumable(storageRef, file);
 
         uploadFile.on(
@@ -110,7 +113,7 @@ function GalleryToggle({ card }: Props) {
             let file = data.imgFile[0];
             const storageRef = ref(
                 storage,
-                "documents/galleryDatas/" + file.name
+                "images/gallery/" + file.name
             );
             const uploadFile = uploadBytesResumable(storageRef, file);
 
@@ -217,13 +220,21 @@ function GalleryToggle({ card }: Props) {
                             />
                         </div>
 
-                        <input
-                            className=' w-full border border-gray-700 text-center'
-                            type='date'
-                            {...register("createdAt", {
-                                required: true,
-                            })}
-                        />
+                        {selectedCard?(
+                            <label className='w-full border border-gray-700 text-center'>
+                                {selectedCard.createdAt}
+                            </label>
+
+                        ):(
+                            <label>
+                                <input
+                                    className=' w-full border border-gray-700 text-center'
+                                    type='date'
+                                    defaultValue={today.format('YYYY-MM-DD')}
+                                    {...register("createdAt", {required: selectedCard ? false : true})}
+                                />
+                            </label>
+                        )}
 
                         <label className='flex space-x-2'>
                             <a>메인페이지 배너</a>
