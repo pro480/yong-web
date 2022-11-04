@@ -43,7 +43,6 @@ export const MaterialTableContext = createContext<
 function MaterialTable<M extends StudyMaterial | PaperMaterial>({ material }: Props<M>) {
     const { collectionRef, collectionQuery, deleteDocument } =
         useFirebase<StudyMaterial | PaperMaterial>(material, [material]);
-    // ?
     const [isEditing, setIsEditing] = useState(false);
     const [selectedMaterial, setSelectedMaterial] = useState<
         StudyMaterial | PaperMaterial | null

@@ -1,3 +1,5 @@
+import { content } from "@material-tailwind/react/types/components/popover";
+
 export interface SubMenu {
     title_KO: string;
     title_EN: string;
@@ -59,12 +61,16 @@ export interface GraduateMember {
     team: Team;
 }
 
+export type Material = 
+    | "논문" 
+    | "학습 자료";
+
 export interface StudyMaterial {
     title: string; // 자료명
     writer: string; // 작성자
     date: string; // 등록일
     fileUrl: string; // 첨부파일 주소
-    material: Material; // 학습 자료랑 논문 및 연구보고서로 분류할 생각
+    material: Material;
 }
 
 export interface PaperMaterial {
@@ -72,7 +78,31 @@ export interface PaperMaterial {
     writer: string; // 저자
     date: string; // 작성일자
     fileUrl: string; // 논문파일 주소
-    material: Material; // 학습 자료랑 논문 및 연구보고서로 분류할 생각
+    material: Material;
+}
+
+export type News = 
+| "센터 소식" 
+| "행사 소식";
+
+export interface CenterNews {
+    title: string; // 제목
+    writer: string; // 작성자
+    date: string; // 등록일
+    content: string; // 내용
+    imgUrl: string; // 이미지
+    fileUrl: string; // 파일
+    news: News;
+}
+
+export interface EventNews {
+    title: string; // 제목
+    writer: string; // 저자
+    date: string; // 작성일자
+    content: string; // 내용
+    imgUrl: string; // 이미지
+    fileUrl: string; // 파일
+    news: News;
 }
 
 export type Organization =
@@ -96,8 +126,3 @@ export interface Thesis {
     title: string; // 제목
     writer: string; // 작성자
 }
-
-export type Material = 
-    |"논문" 
-    | "학습 자료";
-
