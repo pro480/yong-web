@@ -3,14 +3,9 @@ import { MaterialTableContext } from "./MaterialTable";
 import { StudyMaterial, PaperMaterial } from "../../../typing";
 
 function MaterialTableAddButton() {
-<<<<<<< HEAD:src/components/data/MaterialTableButton.tsx
     const { setIsEditing, isEditing, setSelectedMaterial } =
         useContext(MaterialTableContext);
-=======
-    const { setIsEditing, isEditing, setSelectedMaterial } = useContext(
-        StudyMaterialTableContext
-    );
->>>>>>> main:src/components/data/StudyMaterialTableButton.tsx
+
 
     return (
         <button
@@ -65,14 +60,9 @@ function MaterialTableDeleteButton({ docID }: { docID: string }) {
 }
 
 function MaterialTableCancelButton() {
-<<<<<<< HEAD:src/components/data/MaterialTableButton.tsx
     const { setIsEditing, setSelectedMaterial, setSelectedIndex } =
         useContext(MaterialTableContext);
-=======
-    const { setIsEditing, setSelectedMaterial, setSelectedIndex } = useContext(
-        StudyMaterialTableContext
-    );
->>>>>>> main:src/components/data/StudyMaterialTableButton.tsx
+
     return (
         <button
             className='border p-1'
