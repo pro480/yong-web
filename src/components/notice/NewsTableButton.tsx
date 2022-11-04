@@ -1,18 +1,17 @@
 import React, { useContext } from "react";
-import { StudyMaterialTableContext } from "./StudyMaterialTable";
-import { StudyMaterial } from "../../../typing";
+import { NewsTableContext } from "./NewsTable";
+import { CenterNews, EventNews } from "../../../typing";
 
-function MaterialTableAddButton() {
-    const { setIsEditing, isEditing, setSelectedMaterial } = useContext(
-        StudyMaterialTableContext
-    );
+function NewsTableAddButton() {
+    const { setIsEditing, isEditing, setSelectedNews } =
+        useContext(NewsTableContext);
 
     return (
         <button
-            className='absolute right-3 top-1/2 hidden -translate-y-1/2 border p-1 md:flex'
+            className='absolute hidden md:flex right-3 top-1/2 -translate-y-1/2 border p-1'
             onClick={() => {
                 setIsEditing((prev) => !prev);
-                isEditing ? setSelectedMaterial(null) : null;
+                isEditing ? setSelectedNews(null) : null;
             }}
         >
             {isEditing ? "취소" : "추가"}
@@ -20,28 +19,28 @@ function MaterialTableAddButton() {
     );
 }
 
-function MaterialTableUpdateButton({
+function NewsTableUpdateButton<N extends CenterNews | EventNews>({
     data,
     docID,
     index,
 }: {
-    data: StudyMaterial;
+    data: N;
     docID: string;
     index: number;
 }) {
     const {
         setIsEditing,
-        setSelectedMaterial,
+        setSelectedNews,
         setSelectedDocId,
         setSelectedIndex,
-    } = useContext(StudyMaterialTableContext);
+    } = useContext(NewsTableContext);
 
     return (
         <button
             className='border p-1'
             onClick={() => {
                 setIsEditing(false);
-                setSelectedMaterial({
+                setSelectedNews({
                     ...data,
                 });
                 setSelectedDocId(docID);
@@ -54,21 +53,20 @@ function MaterialTableUpdateButton({
     );
 }
 
-function MaterialTableDeleteButton({ docID }: { docID: string }) {
-    const { deleteDocument } = useContext(StudyMaterialTableContext);
+function NewsTableDeleteButton({ docID }: { docID: string }) {
+    const { deleteDocument } = useContext(NewsTableContext);
     return <button onClick={() => deleteDocument(docID)}>삭제</button>;
 }
 
-function MaterialTableCancelButton() {
-    const { setIsEditing, setSelectedMaterial, setSelectedIndex } = useContext(
-        StudyMaterialTableContext
-    );
+function NewsTableCancelButton() {
+    const { setIsEditing, setSelectedNews, setSelectedIndex } =
+        useContext(NewsTableContext);
     return (
         <button
             className='border p-1'
             onClick={() => {
                 setIsEditing(false);
-                setSelectedMaterial(null);
+                setSelectedNews(null);
                 setSelectedIndex(0);
             }}
         >
@@ -78,8 +76,8 @@ function MaterialTableCancelButton() {
 }
 
 export {
-    MaterialTableAddButton,
-    MaterialTableUpdateButton,
-    MaterialTableDeleteButton,
-    MaterialTableCancelButton,
+    NewsTableAddButton,
+    NewsTableUpdateButton,
+    NewsTableDeleteButton,
+    NewsTableCancelButton,
 };
