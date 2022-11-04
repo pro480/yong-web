@@ -43,6 +43,7 @@ export interface InternalMember {
 
 export type Course = "학부연구생" | "석사 과정" | "박사 과정" | "교수";
 export type Team = "센터장" | "연구팀1" | "연구팀2" | "연구팀3" | "동문";
+export type Classification = "교수" | "졸업생";
 
 export interface ExternalMember {
     name: string; // 이름
@@ -53,13 +54,13 @@ export interface ExternalMember {
 }
 
 export interface GraduateMember {
+    classification: Classification;
     name: string; // 이름
     email: string; // 개인 이메일
     major: string; //전공
     imageUrl: string; // 사진 주소
     department: string; // 소속 (ex.인하대학교 교육학과 교수)
     history: string[]; // 약력
-    team: Team;
 }
 
 export type Material = 
