@@ -25,6 +25,7 @@ export interface SiteMap {
     major: SubMap;
     data: SubMap;
     notice: SubMap;
+    location: SubMap;
 }
 
 export interface InternalMember {
