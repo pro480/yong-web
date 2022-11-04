@@ -15,8 +15,6 @@ function Member() {
 
     return (
         <div className='relative'>
-
-
             {team.map((team) => {
                 const memberList = collectionQuery.data?.docs.filter(
                     (docSnapshot) => {

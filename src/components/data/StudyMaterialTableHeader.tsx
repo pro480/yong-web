@@ -11,7 +11,7 @@ function StudyMaterialTableHeader({ material }: Props) {
     const { user } = useAuth();
     return (
         <thead>
-            <tr className='bg-PRIMARY_COLOR-500/40 h-12 text-sm uppercase leading-normal text-gray-600'>
+            <tr className='h-12 bg-PRIMARY_COLOR-500/40 text-sm uppercase leading-normal text-gray-600'>
                 {material === "학습 자료"}
                 <th className='w-[5%] text-center'>NO</th>
                 <th className='w-[30%] text-center'>제목</th>
