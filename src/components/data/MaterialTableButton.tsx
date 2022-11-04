@@ -6,9 +6,10 @@ function MaterialTableAddButton() {
     const { setIsEditing, isEditing, setSelectedMaterial } =
         useContext(MaterialTableContext);
 
+
     return (
         <button
-            className='absolute hidden md:flex right-3 top-1/2 -translate-y-1/2 border p-1'
+            className='absolute right-3 top-1/2 hidden -translate-y-1/2 border p-1 md:flex'
             onClick={() => {
                 setIsEditing((prev) => !prev);
                 isEditing ? setSelectedMaterial(null) : null;
@@ -61,6 +62,7 @@ function MaterialTableDeleteButton({ docID }: { docID: string }) {
 function MaterialTableCancelButton() {
     const { setIsEditing, setSelectedMaterial, setSelectedIndex } =
         useContext(MaterialTableContext);
+
     return (
         <button
             className='border p-1'

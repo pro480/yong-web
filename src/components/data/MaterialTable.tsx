@@ -40,6 +40,7 @@ export const MaterialTableContext = createContext<
     MaterialTableContextProps<StudyMaterial | PaperMaterial>
 >({} as MaterialTableContextProps<StudyMaterial | PaperMaterial>);
 
+
 function MaterialTable<M extends StudyMaterial | PaperMaterial>({ material }: Props<M>) {
     const { collectionRef, collectionQuery, deleteDocument } =
         useFirebase<StudyMaterial | PaperMaterial>(material, [material]);
@@ -52,7 +53,6 @@ function MaterialTable<M extends StudyMaterial | PaperMaterial>({ material }: Pr
     const [materialList, setMaterialList] = useState<
         QueryDocumentSnapshot<StudyMaterial | PaperMaterial>[] | undefined
     >(collectionQuery.data?.docs);
-
     useLayoutEffect(() => {
         const newMaterialList = collectionQuery.data?.docs.filter(
             (docSnapshot) => docSnapshot.data().material === material

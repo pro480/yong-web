@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 function Footer() {
     return (
@@ -18,9 +19,12 @@ function Footer() {
                         <div className='flex w-1/2 items-center justify-center border-r border-gray-500 py-2 text-center sm:border-none'>
                             연구원 모집
                         </div>
-                        <div className='flex w-1/2 items-center justify-center  border-gray-500 py-2 text-center sm:border-none'>
-                            찾아오는 길
-                        </div>
+                        <Link href='/location'>
+                            <a className='flex w-1/2 items-center justify-center  border-gray-500 py-2 text-center sm:border-none'>
+                                찾아오는 길
+                            </a>
+                        </Link>
+
                     </div>
                     {/*로고*/}
                     <div className='flex h-16 w-full items-center justify-center gap-x-4 border-gray-600 xl:h-full xl:w-fit xl:border xl:py-2 xl:px-7'>
