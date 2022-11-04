@@ -224,5 +224,13 @@ export const siteMapState = atom<SiteMap>({
                 },
             ],
         },
+
+        location: {
+            title_KO: "오시는 길",
+            title_EN: "Location",
+            description: "",
+            href: "/location",
+            subMenu: []
+        },
     },
 });
