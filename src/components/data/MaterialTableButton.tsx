@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { StudyMaterialTableContext } from "./StudyMaterialTable";
-import { StudyMaterial } from "../../../typing";
+import { MaterialTableContext } from "./MaterialTable";
+import { StudyMaterial, PaperMaterial } from "../../../typing";
 
 function MaterialTableAddButton() {
-    const { setIsEditing, isEditing, setSelectedMaterial } = useContext(
-        StudyMaterialTableContext
-    );
+    const { setIsEditing, isEditing, setSelectedMaterial } =
+        useContext(MaterialTableContext);
+
 
     return (
         <button
@@ -20,12 +20,12 @@ function MaterialTableAddButton() {
     );
 }
 
-function MaterialTableUpdateButton({
+function MaterialTableUpdateButton<M extends StudyMaterial | PaperMaterial>({
     data,
     docID,
     index,
 }: {
-    data: StudyMaterial;
+    data: M;
     docID: string;
     index: number;
 }) {
@@ -34,7 +34,7 @@ function MaterialTableUpdateButton({
         setSelectedMaterial,
         setSelectedDocId,
         setSelectedIndex,
-    } = useContext(StudyMaterialTableContext);
+    } = useContext(MaterialTableContext);
 
     return (
         <button
@@ -55,14 +55,14 @@ function MaterialTableUpdateButton({
 }
 
 function MaterialTableDeleteButton({ docID }: { docID: string }) {
-    const { deleteDocument } = useContext(StudyMaterialTableContext);
+    const { deleteDocument } = useContext(MaterialTableContext);
     return <button onClick={() => deleteDocument(docID)}>삭제</button>;
 }
 
 function MaterialTableCancelButton() {
-    const { setIsEditing, setSelectedMaterial, setSelectedIndex } = useContext(
-        StudyMaterialTableContext
-    );
+    const { setIsEditing, setSelectedMaterial, setSelectedIndex } =
+        useContext(MaterialTableContext);
+
     return (
         <button
             className='border p-1'
