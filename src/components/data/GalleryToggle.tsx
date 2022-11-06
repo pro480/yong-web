@@ -29,10 +29,9 @@ function GalleryToggle({ card }: Props) {
     const today = moment();
     const { collectionRef, selectedDocId, selectedCard, setIsEditing } =
         useContext(GalleryContext);
-    const [editImage, setEditImage] = useState(false);
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
-        doc(collection(db, "galleryData"), `${selectedDocId}`),
+        doc(collection(db, "갤러리 데이터"), `${selectedDocId}`),
         { merge: true }
     );
     const [editFile, setEditFile] = useState(false);
@@ -51,7 +50,6 @@ function GalleryToggle({ card }: Props) {
     }, [selectedCard]);
 
     const onAddCard: SubmitHandler<Inputs> = (data) => {
-        console.log(data.imgFile);
         let file = data.imgFile[0];
         const storageRef = ref(storage, "images/gallery/" + file.name);
         const uploadFile = uploadBytesResumable(storageRef, file);
@@ -139,7 +137,8 @@ function GalleryToggle({ card }: Props) {
                     // https://firebase.google.com/docs/storage/web/handle-errors
                     switch (error.code) {
                         case "storage/unauthorized":
-                            // 유저에게 업로드 권한이 없는 경우, firebase storage 의 Rules 를 확인하자
+                            // 유저에게 업로드 권한이 없는 경우, firebase st
+                            // orage 의 Rules 를 확인하자
                             console.log(error);
                             break;
                         case "storage/canceled":
@@ -159,6 +158,8 @@ function GalleryToggle({ card }: Props) {
                             updateMutation.mutate({
                                 title: data.title,
                                 isBanner: data.isBanner,
+                                imgUrl:downloadURL,
+                                card: card,
                             });
                         }
                     );
@@ -171,6 +172,7 @@ function GalleryToggle({ card }: Props) {
                 isBanner: data.isBanner,
             });
         }
+        setIsEditing(false);
     };
 
     return (
