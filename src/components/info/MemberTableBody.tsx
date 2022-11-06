@@ -35,15 +35,15 @@ function MemberTableBody({ organization, memberList }: Props) {
                         <td className='relative flex items-center text-center'>
                             <div className='flex h-12 w-full items-center justify-center'>
                                 <a
-                                    className='flex w-fit justify-center self-center break-all hover:underline hover:underline-offset-2 xs:break-normal'
+                                    className='XS:hover:underline hidden xs:flex xs:w-fit xs:justify-center  xs:self-center xs:break-normal xs:hover:underline-offset-2'
                                     href={`mailto:${data.email}`}
                                 >
                                     <div>{data.email}</div>
-                                    <ImMail4 className='ml-2' size={20} />
+                                    <ImMail4 className='xs:ml-2' size={20} />
                                 </a>
                             </div>
                             {user && (
-                                <div className='hidden md:absolute md:right-2 md:flex md:gap-x-2 md:text-sm'>
+                                <div className='hidden lg:absolute lg:right-0 lg:flex lg:gap-x-2 lg:text-sm'>
                                     <MemberTableUpdateButton
                                         index={index + 1}
                                         data={data}
