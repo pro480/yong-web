@@ -32,7 +32,7 @@ function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({ material, 
                             {data.title}
                         </td> 
                         <td className='text-center'>{data.writer}</td>
-                        <td className='text-center'>{data.date}</td>
+                        <td className='text-center'>{data.date.substring(0,10)}</td>
                         <td className='relative flex items-center text-center'>
                             <div className='flex h-12 w-full items-center justify-center'>
                                 <a

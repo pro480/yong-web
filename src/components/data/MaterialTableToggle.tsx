@@ -28,7 +28,6 @@ interface Props {
 }
 
 function MaterialTableToggle({ material }: Props) {
-    const moment = require('moment');
     const today = moment();
     const { selectedMaterial, collectionRef, selectedDocId, selectedIndex, setIsEditing } = useContext(MaterialTableContext);
     const [editFile, setEditFile] = useState(false);
@@ -104,7 +103,8 @@ function MaterialTableToggle({ material }: Props) {
                     addMutation.mutate({
                         title: data.title, // 제목
                         writer: data.writer, // 작성자
-                        date: data.date, // 등록일
+                        // date: data.date, // 등록일
+                        date: today.format(),
                         fileUrl: downloadURL, // 첨부파일 주소
                         material: material, // 학습 자료 | 논문
                     });
@@ -159,28 +159,48 @@ function MaterialTableToggle({ material }: Props) {
 
                 {selectedMaterial?(
                     <label className='w-[15%] text-center'>
-                        {selectedMaterial.date}
+                        {selectedMaterial.date.substring(0,10)}
                     </label>
                 ) : (
-                    <label className='w-[15%]'>
-                        <input
-                            className='w-full'
-                            type='date'
-                            defaultValue={today.format('YYYY-MM-DD')}
-                            {...register("date", { 
-                                required: selectedMaterial ? false : true 
-                            })}
-                        />
+                    /*  input type:data로 받는 방법
+                        <label className='w-[15%]'>
+                            <input
+                                className='w-full'
+                                type='date'
+                                defaultValue={today.format('YYYY-MM-DD')}
+                                {...register("date", { 
+                                    required: selectedMaterial ? false : true 
+                                })}
+                            />
+                        </label>
+                    */
+                    
+                    <label className='w-[15%] text-center'>
+                        {today.format("YYYY-MM-DD")}
                     </label>
                 )}
 
-                {selectedMaterial?(
-                    <a 
-                        className='w-[20%] flex justify-center self-center hover:underline hover:underline-offset-2'
-                        href={selectedMaterial.fileUrl}
-                    >
-                        <ImFileText2 className='ml-2' size={20} />
-                    </a>
+                {selectedMaterial && !editFile? (     
+                    <label className='w-[20%] flex text-center text-xs'>
+                        {/* 파일 아이콘 있는 버전
+                        <a 
+                            className='w-1/2 hover:underline hover:underline-offset-2'
+                            href={selectedMaterial.fileUrl}
+                        >
+                            <ImFileText2 className='ml-2' size={20} />
+                        </a> 
+                        */}
+                        {/* 파일 아이콘 없는 버전 */}
+                        <div className="w-1/2"></div>
+                        <button
+                            className='w-1/2 z-50 border bg-GRAY_COLOR-600 text-sm'
+                            onClick={() => setEditFile(true)}
+                        >
+                            파일 수정
+                        </button>
+                    </label>
+                
+                    
                 ) : (
                     <label className='w-[20%] flex text-xs'>
                         <input
