@@ -1,9 +1,13 @@
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import { useFirestoreCollectionMutation } from "@react-query-firebase/firestore";
+import {
+    useFirestoreCollectionMutation,
+    useFirestoreDocumentMutation,
+} from "@react-query-firebase/firestore";
+import { collection, doc } from "firebase/firestore";
 import moment from "moment";
 import React, { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { storage } from "../../../firebase";
+import { db, storage } from "../../../firebase";
 import { ReportContext } from "./Report";
 
 interface Inputs {
@@ -18,14 +22,15 @@ interface Inputs {
 
 export default function ReportToggle() {
     const { register, handleSubmit } = useForm<Inputs>();
-    const { collectionRef, setIsEditing } = useContext(ReportContext);
+    const { collectionRef, setIsEditing, selectedDocId, selectedResearch } =
+        useContext(ReportContext);
     const addMutation = useFirestoreCollectionMutation(collectionRef);
+    const updateMutation = useFirestoreDocumentMutation(
+        doc(collection(db, "researchReport"), `${selectedDocId}`),
+        { merge: true }
+    );
 
     const onAddReport: SubmitHandler<Inputs> = (data) => {
-        uploadFileAndAddDoc(data, addMutation);
-    };
-
-    function uploadFileAndAddDoc(data: Inputs, mutation: any) {
         const file = data.fileUrl[0];
         const img = data.imgUrl[0];
 
@@ -99,7 +104,7 @@ export default function ReportToggle() {
             () => {
                 getDownloadURL(imgUpload.snapshot.ref).then((img) => {
                     getDownloadURL(fileUpload.snapshot.ref).then((file) => {
-                        mutation.mutate({
+                        addMutation.mutate({
                             createdAt: moment().format("YYYYMMDDHHmmss"),
                             fileUrl: file,
                             imgUrl: img,
@@ -113,12 +118,108 @@ export default function ReportToggle() {
                 });
             }
         );
-    }
+    };
+
+    const onUpdateReport: SubmitHandler<Inputs> = (data) => {
+        const file = data.fileUrl[0];
+        const img = data.imgUrl[0];
+
+        const fileStorageRef = ref(
+            storage,
+            `documents/researchReport/${file.name}`
+        );
+        const imgStorageRef = ref(storage, `images/researchReport/${img.name}`);
+
+        const imgUpdate = uploadBytesResumable(imgStorageRef, img);
+        const fileUpdate = uploadBytesResumable(fileStorageRef, file);
+
+        fileUpdate.on(
+            "state_changed",
+            (snapshot) => {
+                const progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log("Upload is " + progress + "% now");
+                switch (snapshot.state) {
+                    case "paused":
+                        console.log("Upload is paused");
+                        break;
+                    case "running":
+                        console.log("Uploading");
+                        break;
+                }
+            },
+            (error) => {
+                switch (error.code) {
+                    case "storage/unauthorized":
+                        console.log(error);
+                        break;
+                    case "storage/canceled":
+                        console.log(error);
+                        break;
+                    case "storage/unknown":
+                        console.log(error);
+                        break;
+                }
+            }
+        );
+
+        imgUpdate.on(
+            "state_changed",
+            (snapshot) => {
+                const progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log("Upload is " + progress + "% now");
+                switch (snapshot.state) {
+                    case "paused":
+                        console.log("Upload is paused");
+                        break;
+                    case "running":
+                        console.log("Uploading");
+                        break;
+                }
+            },
+            (error) => {
+                switch (error.code) {
+                    case "storage/unauthorized":
+                        console.log(error);
+                        break;
+                    case "storage/canceled":
+                        console.log(error);
+                        break;
+                    case "storage/unknown":
+                        console.log(error);
+                        break;
+                }
+            },
+            () => {
+                getDownloadURL(imgUpdate.snapshot.ref).then((img) => {
+                    getDownloadURL(fileUpdate.snapshot.ref).then((file) => {
+                        updateMutation.mutate({
+                            fileUrl: file,
+                            imgUrl: img,
+                            researcher: data.researcher,
+                            title: data.title,
+                            type: data.type,
+                            year: data.year,
+                        });
+                    });
+                });
+            }
+        );
+        setIsEditing(false);
+    };
 
     return (
         <React.Fragment>
             <div className='flex h-[250px] w-[800px] flex-col justify-between border-4 border-gray-200  hover:border-4 '>
-                <form onSubmit={handleSubmit(onAddReport)} className='flex '>
+                <form
+                    onSubmit={
+                        selectedResearch
+                            ? handleSubmit(onUpdateReport)
+                            : handleSubmit(onAddReport)
+                    }
+                    className='flex '
+                >
                     <div className=' flex flex-col justify-around p-2'>
                         <div className='p-1'>
                             제목 :
