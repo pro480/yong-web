@@ -25,7 +25,7 @@ interface Props {
 }
 
 function GalleryToggle({ card }: Props) {
-    const moment = require('moment');
+    const moment = require("moment");
     const today = moment();
     const { collectionRef, selectedDocId, selectedCard, setIsEditing } =
         useContext(GalleryContext);
@@ -109,10 +109,7 @@ function GalleryToggle({ card }: Props) {
     const onUpdateCard: SubmitHandler<Inputs> = (data) => {
         if (editFile) {
             let file = data.imgFile[0];
-            const storageRef = ref(
-                storage,
-                "images/gallery/" + file.name
-            );
+            const storageRef = ref(storage, "images/gallery/" + file.name);
             const uploadFile = uploadBytesResumable(storageRef, file);
 
             uploadFile.on(
@@ -158,7 +155,7 @@ function GalleryToggle({ card }: Props) {
                             updateMutation.mutate({
                                 title: data.title,
                                 isBanner: data.isBanner,
-                                imgUrl:downloadURL,
+                                imgUrl: downloadURL,
                                 card: card,
                             });
                         }
@@ -222,18 +219,19 @@ function GalleryToggle({ card }: Props) {
                             />
                         </div>
 
-                        {selectedCard?(
+                        {selectedCard ? (
                             <label className='w-full border border-gray-700 text-center'>
                                 {selectedCard.createdAt}
                             </label>
-
-                        ):(
+                        ) : (
                             <label>
                                 <input
                                     className=' w-full border border-gray-700 text-center'
                                     type='date'
-                                    defaultValue={today.format('YYYY-MM-DD')}
-                                    {...register("createdAt", {required: selectedCard ? false : true})}
+                                    defaultValue={today.format("YYYY-MM-DD")}
+                                    {...register("createdAt", {
+                                        required: selectedCard ? false : true,
+                                    })}
                                 />
                             </label>
                         )}

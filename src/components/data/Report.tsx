@@ -59,19 +59,8 @@ export default function Report() {
     return (
         <ReportContext.Provider value={value}>
             <main>
-                {/* 검색 */}
-                <div className='mt-5 flex h-9 items-center justify-end'>
-                    <select className='h-full border pl-2 pr-7'>
-                        <option>전체</option>
-                        <option value='title '>제목</option>
-                        <option value='content'>내용</option>
-                    </select>
-
-                    <input className='ml-6 h-full w-32 border' />
-                    <MagnifyingGlassIcon className='h-full bg-PRIMARY_COLOR-500 p-1 text-white' />
-                </div>
                 {/* 전체 몇건 */}
-                <h1 className='my-4'>
+                <h1 className='pb-5 pt-14'>
                     전체{" "}
                     <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR-500'>
                         {researchList?.length}

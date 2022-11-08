@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import useAuth from "../../hooks/useAuth";
 import { ReportContext } from "./Report";
-import { ReportDeleteButton } from "./ReportButtons";
+import { ReportDeleteButton, ReportUpdateButton } from "./ReportButtons";
 import Image from "next/image";
 
 export default function ReportItem() {
@@ -63,12 +63,18 @@ export default function ReportItem() {
                                         >
                                             <span>pdf</span>
                                         </a>
-                                        {user ? (
+                                    </div>
+                                    {user && (
+                                        <div className='flex py-2'>
+                                            <ReportUpdateButton
+                                                docId={docSnapshot.id}
+                                                data={docSnapshot.data()}
+                                            />
                                             <ReportDeleteButton
                                                 docId={docSnapshot.id}
                                             />
-                                        ) : null}
-                                    </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         );
