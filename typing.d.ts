@@ -63,9 +63,7 @@ export interface GraduateMember {
     history: string[]; // 약력
 }
 
-export type Material = 
-    | "논문" 
-    | "학습 자료";
+export type Material = "논문" | "학습 자료";
 
 export interface StudyMaterial {
     title: string; // 자료명
@@ -83,9 +81,7 @@ export interface PaperMaterial {
     material: Material;
 }
 
-export type News = 
-| "센터 소식" 
-| "행사 소식";
+export type News = "센터 소식" | "행사 소식";
 
 export interface CenterNews {
     title: string; // 제목
@@ -117,21 +113,21 @@ export interface QNA {
     content: string; // 내용
     createAt: string; // 생성일
     title: string; // 제목
+    answerAt: string; // 답변 날짜
 }
 
 export interface GalleryCard {
     title: string;
     createdAt: string;
     imgUrl: string;
-    isBanner:boolean;
+    isBanner: boolean;
     card: Card;
 }
 
-
-export type Card = "갤러리 게시물"
+export type Card = "갤러리 게시물";
 export type Material = "논문 및 연구 보고서" | "학습 자료";
 
-export interface Research {
+export interface ResearchReport {
     createdAt: string; // 파일 올린 날짜
     fileUrl: string;
     imgUrl: string;
@@ -140,4 +136,3 @@ export interface Research {
     type: string;
     year: string; //발행년도
 }
-                                                       

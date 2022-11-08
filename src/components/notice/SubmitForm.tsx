@@ -12,8 +12,9 @@ export default function SubmitForm() {
     const onValid = async (data: QNA) => {
         const docData = {
             answer: "",
+            answerAt: "",
             content: data.content,
-            createAt: moment().format(),
+            createAt: moment().format("YYYYMMDDHHmmss"),
             title: data.title,
         };
         await addDoc(collectionRef, docData);
@@ -30,7 +31,7 @@ export default function SubmitForm() {
                                     maxLength: 20,
                                 })}
                                 placeholder='제목을 입력해 주세요.(최대 20자)'
-                                className=' h-[30px] w-[50%] resize-none pl-2'
+                                className=' h-[30px] w-full resize-none pl-2'
                             ></textarea>
                         </div>
                         <textarea
