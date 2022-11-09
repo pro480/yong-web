@@ -8,9 +8,9 @@ function Index() {
     return (
         <div>
             {/*카테고리*/}
-            <div className='flex'>
+            <div className='flex pb-10 text-sm md:text-base'>
                 <div
-                    className='w-24 cursor-pointer border px-4 py-3 text-center  hover:border-t-2 hover:border-b-0 hover:border-t-black'
+                    className='w-24 cursor-pointer border px-4 py-3 text-center  hover:border-t-2 hover:border-b-0 hover:border-t-black '
                     onClick={(e) => {
                         setTab("thesis");
                     }}
@@ -31,7 +31,7 @@ function Index() {
             <div>
                 {/* 논문 */}
                 {tab === "thesis" ? (
-                    <MaterialTable material="논문" />
+                    <MaterialTable material='논문' />
                 ) : (
                     <Report />
                 )}
@@ -42,10 +42,9 @@ function Index() {
 
 export default Index;
 
-
 /* 논문
     create ✓
     read   ✓
     update ✓
     delete ✓
-*/ 
+*/
