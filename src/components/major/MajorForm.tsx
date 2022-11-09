@@ -24,7 +24,7 @@ function MajorForm({
     return (
         <div>
             {/*배너*/}
-            <div className=' aspect-[5/2] w-[100%] '>
+            <div className=' h-[144px] w-[100%]  xs:h-[200px] md:h-[300px] lg:h-[400px] desktop:h-[550px] '>
                 <div className='relative flex h-2/3 items-center justify-center  '>
                     {/*배너사진*/}
                     <Image src={image} layout='fill' />
@@ -45,7 +45,7 @@ function MajorForm({
             {/*내용*/}
             <main className='flex flex-col'>
                 {/*소개*/}
-                <div className='flex h-16 border-[0.5px] xs:h-24 xs:border-[1px] md:h-36 md:border-2 lg:h-44 lg:border-[3px] desktop:h-52 desktop:border-4'>
+                <div className='flex h-16 border-[0.5px] xs:h-24 xs:border-[1px] md:h-36 md:border-2 lg:h-44 lg:border-[3px] lg:mb-6 md:mb-5 xs:mb-3 desktop:mb-8 desktop:h-52 desktop:border-4'>
                     <DocumentDuplicateIcon className='invisible mx-2 my-1 w-4 self-start rounded-full bg-gray-100 xs:visible xs:mx-4 xs:my-1 xs:w-8 md:mx-7 md:my-2 md:w-16 lg:mx-10 lg:my-3 lg:w-20 desktop:mx-12 desktop:my-4 desktop:w-28' />
                     <div className='py-1 xs:py-2 md:py-4 lg:py-5 desktop:py-6'>
                         <h1 className='mb-1 text-[10px] font-bold xs:mb-2 xs:text-base md:mb-3 md:text-xl lg:mb-4 lg:text-2xl desktop:mb-5 desktop:text-3xl'>

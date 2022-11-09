@@ -9,7 +9,7 @@ function MemberTableAddButton() {
 
     return (
         <button
-            className='invisible lg:visible lg:absolute lg:right-3 lg:top-1/2 lg:-translate-y-1/2 lg:border lg:p-1'
+            className='hidden  lg:absolute lg:right-3 lg:top-1/2 lg:flex lg:-translate-y-1/2 lg:border lg:p-1'
             onClick={() => {
                 setIsEditing((prev) => !prev);
                 isEditing ? setSelectedMember(null) : null;
