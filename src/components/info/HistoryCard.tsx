@@ -8,7 +8,7 @@ interface Props {
 
 function HistoryCard({ year, contents }: Props) {
     return (
-        <section className='my-8 flex-nowrap sm:flex '>
+        <section className='my-8 flex-nowrap sm:flex'>
             <h1 className='my-8 pr-4 text-xl font-bold text-PRIMARY_COLOR-500 sm:my-0 sm:pl-10 sm:pr-16 sm:text-2xl lg:pr-32'>
                 {year}
             </h1>
