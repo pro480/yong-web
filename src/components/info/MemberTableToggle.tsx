@@ -116,7 +116,7 @@ function MemberTableToggle({ organization }: Props) {
                     })}
                 />
             </label>
-            <div className='absolute right-2 flex gap-x-3 text-sm'>
+            <div className='gapx-1 absolute right-0 flex text-xs desktop:right-2 desktop:gap-x-3 desktop:text-sm'>
                 <input type='submit' className=' border p-1' />
                 <MemberTableCancelButton />
             </div>
