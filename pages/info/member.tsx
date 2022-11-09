@@ -14,7 +14,7 @@ function Member() {
     const { user } = useAuth();
 
     return (
-        <div className='relative'>
+        <div className=''>
             
             {team.map((team) => {
                 const memberList = collectionQuery.data?.docs.filter(

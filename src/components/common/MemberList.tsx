@@ -70,9 +70,9 @@ function MemberList<T extends InternalMember | GraduateMember>({
     return (
         <MemberListContext.Provider value={value}>
             {user && <MemberAddButton />}
-            <div className='relative mt-5 mb-10 w-full'>
+            <div className='mt-5 mb-10 w-full'>
                 <section
-                    className={`flex w-full flex-wrap ${
+                    className={`xs:w-full ${
                         isBig
                             ? ""
                             : "grid grid-cols-1 gap-y-6 gap-x-4 px-2 md:px-7 lg:grid-cols-2 xl:gap-x-10"
@@ -86,9 +86,9 @@ function MemberList<T extends InternalMember | GraduateMember>({
                                 key={docSnapshot.id}
                                 className={`${
                                     isBig
-                                        ? "h-fit w-full py-10"
-                                        : "h-fit"
-                                } h-80 p-2`}
+                                        ? "py-10"
+                                        : ""
+                                } h-fit xs:p-2`}
                             >
                                 <NameCard
                                     isEditable={true}

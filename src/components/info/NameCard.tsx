@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
 import useAuth from "../../hooks/useAuth";
@@ -19,36 +20,36 @@ function NameCard<T extends InternalMember | GraduateMember>({
     const { user } = useAuth();
 
     return (
-        <section className='pb-1 flex h-full w-full flex-wrap justify-between'>
+        <section className='pb-1 xs:w-full flex us:flex-col xs:flex-row xs:justify-between'>
             {/*이미지 사이즈*/}
-            <div className='xs:w-[40%] relative sm:w-[25%] '>
-                <Image
+            <div className='m-auto xs:relative us:w-[70%] xs:w-[40%] sm:w-[25%]'>
+
+                <img
                     src={member.imageUrl}
-                    layout='fill'
-                    objectFit='contain'
                     alt='멤버사진'
-                    priority={true}
-                    quality={50}
+                    className='object-fill pb-5'
                 />
+
             </div>
             {/*오른쪽 설명*/}
-            <main className='xs:w-[50%] sm:w-[70%] xs:flex-col self-center text-PRIMARY_COLOR-500 sx:text-xs sm:text-sm md:text-base'>
+            <main className='xs:w-[50%] sm:w-[70%] xs:self-center text-PRIMARY_COLOR-500 sx:text-xs sm:text-sm md:text-base'>
                 {/*이름, 관심분야, 이메일*/}
-                <header className='md:flex-wrap w-full pb-1 items-center gap-x-5'>
-                    <h1 className='md:pb-1 whitespace-nowrap text-lg font-semibold text-PRIMARY_COLOR-800 sm:text-xl md:text-2xl'>
+                <header className='xs:flex-wrap w-full pb-1 xs:items-center'>
+                    <h1 className='pb-1 font-semibold text-PRIMARY_COLOR-800 sm:text-xl md:text-2xl'>
                         {member.name}
                     </h1>
-                    <div className='whitespace-nowrap '>{member.major}</div>
+                    <div className=''>{member.major}</div>
 
                     <a
                         href={`mailto:${member.email}`}
-                        className='text-PRIMARY_COLOR-800 hover:underline '
+                        className='text-PRIMARY_COLOR-800 hover:underline'
                     >
                         {member.email}
                     </a>
                 </header>
 
-                <div className={ (document.body.offsetWidth < 440) ? 'hidden' : ''}> {/* 모바일 사이즈 약력 삭제 */}
+                {/* <div className={ (document.body.offsetWidth < 440) ? 'hidden' : ''}> 모바일 사이즈 약력 삭제 */}
+                <div className='us:hidden xs:contents'>
                     <div className='flex pb-1 justify-between text-base md:text-lg xl:text-xl '>
                         약력{" "}
                         {isEditable && user && (
