@@ -10,6 +10,10 @@ import {
 import SubmitForm from "../../src/components/notice/SubmitForm";
 import QnaRow from "../../src/components/notice/QnaRow";
 import { UseQueryResult } from "react-query";
+import {
+    ChevronDoubleLeftIcon,
+    ChevronDoubleRightIcon,
+} from "@heroicons/react/24/outline";
 
 interface QnaContextProps {
     qnaList: QueryDocumentSnapshot<QNA>[] | undefined;
@@ -30,7 +34,6 @@ function Qna() {
         ["qna"]
     );
     const qnaList = collectionQuery.data?.docs;
-    //const asc = qnaList?.sort((a, b) => a.data().createAt - b.data().createAt);
     const [isEditing, setIsEditing] = useState(false);
     const [selectedQna, setSelectedQna] = useState<QNA | null>(null);
 
@@ -65,7 +68,7 @@ function Qna() {
             </div>
 
             {/*페이지 수*/}
-            {/* <div className=' m-5 flex items-center justify-center'>
+            <div className=' m-5 flex items-center justify-center'>
                 <ul className='inline-flex items-center -space-x-px '>
                     <li>
                         <a
@@ -93,7 +96,7 @@ function Qna() {
                         </a>
                     </li>
                 </ul>
-            </div> */}
+            </div>
         </QnaContext.Provider>
     );
 }
