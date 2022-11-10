@@ -8,7 +8,7 @@ function MainPageBanner() {
     return (
         <div className='relative'>
             <Carousel
-                className='relative aspect-2/1 w-full'
+                className='relative w-full'
                 showArrows={true}
                 showIndicators={false}
                 infiniteLoop={true}
@@ -62,12 +62,12 @@ function MainPageBanner() {
                 {/*<img src='/images/dummy/banner2.jpg' />*/}
             </Carousel>
             <div className='absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 transform flex-col whitespace-nowrap text-center text-white'>
-                <h1 className='text-6xl font-bold leading-snug'>
+                <h1 className=' text-lg font-bold leading-snug xs:text-xl md:text-2xl lg:text-4xl desktop:text-6xl'>
                     Education Big Data Application
                     <br />
                     Research Center
                 </h1>
-                <span className='mt-16 text-4xl font-medium'>
+                <span className='mt-3 text-xs font-medium xs:mt-6 xs:text-base md:mt-10 md:text-xl lg:mt-14 lg:text-2xl desktop:mt-16 desktop:text-4xl'>
                     Maximizing the Value of Education Big Data
                 </span>
             </div>
