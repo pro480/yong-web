@@ -1,5 +1,5 @@
 import React from "react";
-import bannerImage from "../../public/images/major/indexbanner.png";
+import bannerImage from "../../public/images/major/indexbanner.jpg";
 import MajorForm from "../../src/components/major/MajorForm";
 
 function Index() {

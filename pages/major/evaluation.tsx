@@ -1,5 +1,5 @@
 import React from "react";
-import bannerImage from "../../public/images/major/evaluationbanner.png";
+import bannerImage from "../../public/images/major/evaluationbanner.jpg";
 import MajorForm from "../../src/components/major/MajorForm";
 
 function Evaluation() {
