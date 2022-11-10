@@ -211,16 +211,16 @@ export default function ReportToggle() {
 
     return (
         <React.Fragment>
-            <div className='flex h-[250px] w-[800px] flex-col justify-between border-4 border-gray-200  hover:border-4 '>
+            <div className='flex flex-col justify-between border-4 border-gray-200 px-1 text-sm hover:border-4 sm:h-[290px] sm:w-[500px] md:text-base lg:h-[220px] lg:w-[750px]'>
                 <form
                     onSubmit={
                         selectedResearch
                             ? handleSubmit(onUpdateReport)
                             : handleSubmit(onAddReport)
                     }
-                    className='flex '
+                    className='lg:flex'
                 >
-                    <div className=' flex flex-col justify-around p-2'>
+                    <div className=' flex flex-col justify-around lg:w-[45%] lg:p-2'>
                         <div className='p-1'>
                             제목 :
                             <input
@@ -228,7 +228,7 @@ export default function ReportToggle() {
                                     required: true,
                                 })}
                                 placeholder='제목을 입력해 주세요.'
-                                className='h-[30px] p-2'
+                                className='h-[25px] p-2 lg:h-[30px]'
                             />
                         </div>
                         <div className='p-1'>
@@ -238,7 +238,7 @@ export default function ReportToggle() {
                                     required: true,
                                 })}
                                 placeholder='보고서의 종류를 입력해 주세요.'
-                                className='h-[30px] p-2'
+                                className='h-[25px] p-2 lg:h-[30px]'
                             />
                         </div>
                         <div className='p-1'>
@@ -248,7 +248,7 @@ export default function ReportToggle() {
                                     required: true,
                                 })}
                                 placeholder='연구자를 입력해 주세요'
-                                className='h-[30px] p-2'
+                                className='h-[25px] p-2 lg:h-[30px]'
                             />
                         </div>
                         <div className='p-1'>
@@ -258,10 +258,12 @@ export default function ReportToggle() {
                                     required: true,
                                 })}
                                 placeholder='발행 년도를 입력해 주세요'
-                                className='h-[30px] p-2'
+                                className='h-[25px] p-2 lg:h-[30px]'
                             />
                         </div>
-                        <div className='p-1'>
+                    </div>
+                    <div className='flex flex-col'>
+                        <div className='px-1 lg:py-1'>
                             pdf :
                             <input
                                 type='file'
@@ -271,9 +273,7 @@ export default function ReportToggle() {
                                 className=' p-2'
                             />
                         </div>
-                    </div>
-                    <div className='flex flex-col'>
-                        <div className='p-1'>
+                        <div className='px-1 lg:py-1'>
                             이미지 :
                             <input
                                 type='file'
@@ -284,7 +284,7 @@ export default function ReportToggle() {
                             />
                         </div>
                         <button
-                            className=' my-2 h-[30px] w-[50px] rounded-md bg-gray-400 font-bold text-white hover:bg-gray-500'
+                            className='m-2 h-[30px] w-[50px] rounded-md bg-gray-400 font-bold text-white hover:bg-gray-500 lg:my-2'
                             type='submit'
                         >
                             저장

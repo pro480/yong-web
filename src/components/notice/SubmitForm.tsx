@@ -23,7 +23,7 @@ export default function SubmitForm() {
         <React.Fragment>
             <form onSubmit={handleSubmit(onValid)}>
                 <div className='mt-8 flex border border-GRAY_COLOR-400 p-2'>
-                    <div className='w-full flex-col'>
+                    <div className='w-full flex-col text-[14px] lg:text-base'>
                         <div className='border-b border-gray-400'>
                             <textarea
                                 {...register("title", {
@@ -31,7 +31,7 @@ export default function SubmitForm() {
                                     maxLength: 20,
                                 })}
                                 placeholder='제목을 입력해 주세요.(최대 20자)'
-                                className=' h-[30px] w-full resize-none pl-2'
+                                className='h-[23px] w-full resize-none pl-2 lg:h-[30px]'
                             ></textarea>
                         </div>
                         <textarea
@@ -40,7 +40,7 @@ export default function SubmitForm() {
                                 maxLength: 100,
                             })}
                             placeholder='질문 사항을 입력해 주세요.(최대 100자)'
-                            className='h-[60px] w-full resize-none pl-2'
+                            className='h-[50px] w-full resize-none pl-2 lg:h-[60px]'
                         ></textarea>
                     </div>
                     <button

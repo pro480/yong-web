@@ -22,7 +22,7 @@ export default function QnaAnswerSubmit({ docId }: { docId: string }) {
     return (
         <React.Fragment>
             <form onSubmit={handleSubmit(onValid)}>
-                <div className='flex border-GRAY_COLOR-400 '>
+                <div className='flex border-GRAY_COLOR-400 text-[14px] lg:text-base'>
                     <div className='w-full'>
                         <div className='border-2 border-gray-400'>
                             <textarea
