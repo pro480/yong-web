@@ -1,107 +1,125 @@
-import React from "react";
+import React, { createContext, Dispatch, useState } from "react";
 import PageTitle from "../../src/components/common/Layout/PageTitle";
 import { ForwardIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
-import ResearchCard from "../../src/components/research/ResearchCard";
+import ProgressResearchCard from "../../src/components/research/ProgressResearchCard";
+import useFirebase from "../../src/hooks/useFirebase";
+import { GraduateMember, InternalMember, Project } from "../../typing";
+import CompletedResearchCard from "../../src/components/research/CompletedResearchCard";
+import { useRouter } from "next/router";
+import useAuth from "../../src/hooks/useAuth";
+import { UseQueryResult } from "react-query";
+import {
+    CollectionReference,
+    FirestoreError,
+    QuerySnapshot,
+} from "@firebase/firestore";
+import ProjectToggle from "../../src/components/research/ProjectToggle";
+
+interface ProjectContextProps {
+    modalOpen: boolean;
+    setModalOpen: Dispatch<React.SetStateAction<boolean>>;
+    selectedProject: Project | null;
+    setSelectedProject: Dispatch<React.SetStateAction<Project | null>>;
+    selectedDocId: string | null;
+    setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
+    collectionQuery: UseQueryResult<QuerySnapshot<Project>, FirestoreError>;
+    collectionRef: CollectionReference<Project>;
+    deleteDocument: (docID: string) => void;
+}
+
+export const ProjectContext = createContext<ProjectContextProps>(
+    {} as ProjectContextProps
+);
 
 function Index() {
-    type projectInProgress = {
-        imageUrl: string;
-        title: string;
-        summary: string;
-        consignment: string;
-        startedAt: string;
-        endedAt: string;
-        description: string;
-    };
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(
+        null
+    );
+    const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
+    const { user } = useAuth();
+    const { collectionRef, collectionQuery, deleteDocument } =
+        useFirebase<Project>("projects", ["projects"]);
+    const router = useRouter();
 
-    type completedProject = {
-        imageUrl: string;
-        title: string;
-        summary: string;
-        consignment: string;
-        startedAt: string;
-        endedAt: string;
-        description: string;
-    };
+    const completed = router.query.completed || "false";
 
-    const projects = [
-        {
-            url: "이미지를 넣어주세요",
-            title_KO: "연구 프로젝트 1",
-            summary: "프로젝트1 요약 내용입니다",
-            description:
-                "프로젝트에 관련한 내용 본문입니다. 내용을 입력해주세요.",
-            center: "교육빅데이터 응용 연구센터",
-            startedAt: "2022-10-01",
-            endedAt: "2022-10-10",
-            completed: false,
-        },
-        {
-            url: "이미지를 넣어주세요",
-            title_KO: "연구 프로젝트 2",
-            summary: "프로젝트2 요약 내용입니다",
-            description:
-                "프로젝트에 관련한 내용 본문입니다. 내용을 입력해주세요.",
-            center: "교육빅데이터 응용 연구센터",
-            startedAt: "2022-10-01",
-            endedAt: "2022-10-10",
-            completed: false,
-        },
-        {
-            url: "이미지를 넣어주세요",
-            title_KO: "연구 프로젝트 3",
-            summary: "프로젝트3 요약 내용입니다",
-            description:
-                "프로젝트에 관련한 내용 본문입니다. 내용을 입력해주세요.",
-            center: "교육빅데이터 응용 연구센터",
-            startedAt: "2022-10-01",
-            endedAt: "2022-10-10",
-            completed: true,
-        },
-    ];
+    const value = {
+        modalOpen,
+        setModalOpen,
+        selectedProject,
+        setSelectedProject,
+        selectedDocId,
+        setSelectedDocId,
+        collectionQuery,
+        collectionRef,
+        deleteDocument,
+    };
 
     return (
-        <div>
-            <div className='flex flex-col gap-y-10'>
+        <ProjectContext.Provider value={value}>
+            <div className='flex flex-col'>
                 {/* 필터 */}
-                <div className='border-b-2 border-PRIMARY_COLOR-500 p-3'>
-                    {/* 필터 카테고리 */}
-                    <div className='pb-5'>
-                        <h1 className='h-full whitespace-nowrap text-2xl font-semibold text-PRIMARY_COLOR-500'>
-                            Filter
-                        </h1>
+                <div className='flex pb-10 text-sm md:text-base'>
+                    <div
+                        className='w-32 cursor-pointer border px-4 py-3 text-center  hover:border-t-2 hover:border-b-0 hover:border-t-black '
+                        onClick={(e) => {
+                            router.replace({ query: { completed: false } });
+                        }}
+                    >
+                        진행 중
                     </div>
-
-                    {/* 진행여부 */}
-                    <div className='flex gap-x-5'>
-                        <button className='h-[50px] w-[100px] rounded-[70px] border-[3px] border-PRIMARY_COLOR-500 bg-PRIMARY_COLOR-500/20 font-semibold hover:bg-PRIMARY_COLOR-500'>
-                            진행 중
-                        </button>
-
-                        <button className='h-[50px] w-[100px] rounded-[70px] border-[3px] border-gray-400 bg-gray-100 font-semibold hover:bg-gray-400'>
-                            완료
-                        </button>
+                    <div
+                        className='w-32 cursor-pointer border px-4 py-3 text-center hover:border-t-2 hover:border-b-0 hover:border-t-black'
+                        onClick={(e) => {
+                            router.replace({ query: { completed: true } });
+                        }}
+                    >
+                        완료
                     </div>
+                    <span className='w-full border-b'></span>
                 </div>
+
+                {user && (
+                    <button
+                        className='w-16 border bg-PRIMARY_COLOR-100 text-white'
+                        onClick={() => setModalOpen((prev) => !prev)}
+                    >
+                        {modalOpen ? "취소" : "추가"}
+                    </button>
+                )}
 
                 {/* 프로젝트 집합 */}
-
-                <div className='flex flex-col gap-y-8'>
-                    {projects.map((project) => (
-                        <ResearchCard
-                            key={project.title_KO}
-                            title={project.title_KO}
-                            url={project.url}
-                            summary={project.summary}
-                            center={project.center}
-                            startedAt={project.startedAt}
-                            endedAt={project.endedAt}
-                            completed={project.completed}
-                        />
-                    ))}
+                <div className='flex flex-col'>
+                    {completed === "false"
+                        ? collectionQuery.data?.docs.map((snapshot) => {
+                              const project = snapshot.data();
+                              if (!project.completed) {
+                                  return (
+                                      <ProgressResearchCard
+                                          key={snapshot.id}
+                                          docID={snapshot.id}
+                                          project={project}
+                                      />
+                                  );
+                              }
+                          })
+                        : collectionQuery.data?.docs.map((snapshot) => {
+                              const project = snapshot.data();
+                              if (project.completed) {
+                                  return (
+                                      <CompletedResearchCard
+                                          key={snapshot.id}
+                                          docID={snapshot.id}
+                                          project={project}
+                                      />
+                                  );
+                              }
+                          })}
                 </div>
+                {modalOpen && <ProjectToggle />}
             </div>
-        </div>
+        </ProjectContext.Provider>
     );
 }
 

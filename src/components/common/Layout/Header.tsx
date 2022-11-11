@@ -8,10 +8,7 @@ import useAuth from "../../../hooks/useAuth";
 import { ImGithub } from "react-icons/im";
 import { useRecoilValue } from "recoil";
 import { siteMapState } from "../../../atoms/sitemapAtom";
-
-interface Props {
-    siteMap: SiteMap;
-}
+import logo_EN from "../../../../public/images/logo/logo_EN.png";
 
 function Header() {
     const siteMap = useRecoilValue(siteMapState);
@@ -23,11 +20,11 @@ function Header() {
             <div className='flex flex-col-reverse justify-center md:h-[100px] md:flex-row md:items-center md:justify-between'>
                 <Link href='/'>
                     {/* 아래는 로고 컨테이너*/}
-                    <div className='h-20 border-t md:h-full md:w-96 md:border-none desktop:w-[500px]'>
+                    <div className='h-20 border-t p-3 md:h-full md:w-96 md:border-none desktop:w-[500px]'>
                         {/*아래는 로고 사이즈*/}
                         <div className='relative block h-full cursor-pointer'>
                             <Image
-                                src='/images/logo/logo_mini.png'
+                                src={logo_EN}
                                 layout='fill'
                                 objectFit='contain'
                                 objectPosition='center'
