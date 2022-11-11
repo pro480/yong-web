@@ -11,7 +11,7 @@ import {
     QuerySnapshot,
 } from "firebase/firestore";
 import useAuth from "../../hooks/useAuth";
-import { ReportAddButton } from "./ReportButtons";
+import { ReportAddButton, ReportPageButton } from "./ReportButtons";
 import ReportToggle from "./ReportToggle";
 
 interface ReportContextProps {
@@ -28,6 +28,8 @@ interface ReportContextProps {
     setSelectedResearch: Dispatch<React.SetStateAction<ResearchReport | null>>;
     selectedDocId: string | null;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
+    pageNumber: number | null;
+    setPageNumber: Dispatch<React.SetStateAction<number | null>>;
 }
 
 export const ReportContext = createContext({} as ReportContextProps);
@@ -42,6 +44,7 @@ export default function Report() {
     const [selectedResearch, setSelectedResearch] =
         useState<ResearchReport | null>(null);
     const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
+    const [pageNumber, setPageNumber] = useState<number | null>(1);
 
     const value = {
         researchList,
@@ -54,6 +57,8 @@ export default function Report() {
         setSelectedResearch,
         selectedDocId,
         setSelectedDocId,
+        pageNumber,
+        setPageNumber,
     };
 
     return (
@@ -75,6 +80,7 @@ export default function Report() {
                 {isEditing ? <ReportToggle /> : null}
                 {/* 게시물 */}
                 <ReportItem />
+                <ReportPageButton />
             </main>
         </ReportContext.Provider>
     );
