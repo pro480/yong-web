@@ -10,7 +10,7 @@ interface Props {
 function OrganizationCard({ title, color, href }: Props) {
     return (
         <Link href={href}>
-            <div className={`organizationNode bg-${color}`}>{title}</div>
+            <div className={`h-fit py-3 mx-2 text-center rounded-lg bg-${color}`}>{title}</div>
         </Link>
     );
 }
