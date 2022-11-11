@@ -1,3 +1,5 @@
+import { content } from "@material-tailwind/react/types/components/popover";
+
 export interface SubMenu {
     title_KO: string;
     title_EN: string;
@@ -25,6 +27,7 @@ export interface SiteMap {
     major: SubMap;
     data: SubMap;
     notice: SubMap;
+    location: SubMap;
 }
 
 export interface InternalMember {
@@ -60,7 +63,76 @@ export interface GraduateMember {
     history: string[]; // 약력
 }
 
+export type Material = "논문" | "학습 자료";
+
+export interface StudyMaterial {
+    title: string; // 자료명
+    writer: string; // 작성자
+    date: string; // 등록일
+    fileUrl: string; // 첨부파일 주소
+    material: Material;
+}
+
+export interface PaperMaterial {
+    title: string; // 논문명
+    writer: string; // 저자
+    date: string; // 작성일자
+    fileUrl: string; // 논문파일 주소
+    material: Material;
+}
+
+export type News = "센터 소식" | "행사 소식";
+
+export interface CenterNews {
+    title: string; // 제목
+    writer: string; // 작성자
+    date: string; // 등록일
+    content: string; // 내용
+    imgUrl: string; // 이미지
+    fileUrl: string; // 파일
+    news: News;
+}
+
+export interface EventNews {
+    title: string; // 제목
+    writer: string; // 저자
+    date: string; // 작성일자
+    content: string; // 내용
+    imgUrl: string; // 이미지
+    fileUrl: string; // 파일
+    news: News;
+}
+
 export type Organization =
     | "연구협력 네트워크"
     | "연구 자문단"
     | "연구 윤리 자문단";
+
+export interface QNA {
+    answer: string; // 답변
+    content: string; // 내용
+    createAt: string; // 생성일
+    title: string; // 제목
+    answerAt: string; // 답변 날짜
+}
+
+export interface GalleryCard {
+    title: string;
+    createdAt: string;
+    imgUrl: string;
+    isBanner: boolean;
+    card: Card;
+}
+
+export type Card = "갤러리 게시물";
+export type Material = "논문 및 연구 보고서" | "학습 자료";
+
+export interface ResearchReport {
+    createdAt: string; // 파일 올린 날짜
+    fileUrl: string;
+    imgUrl: string;
+    researcher: string; // 연구자
+    title: string; // 제목
+    type: string;
+    year: string; //발행년도
+}

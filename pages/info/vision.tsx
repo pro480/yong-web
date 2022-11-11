@@ -1,16 +1,14 @@
 import React from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
-import dummyImage from "../../public/dummy.png";
+
+import visionImage from "../../public/images/visionImage.png";
 import Image from "next/image";
 
 function Vision() {
     return (
         <div>
-
-
             {/* 비전 이미지 */}
-            <div className='relative h-[500px] w-full'>
-                <Image src={dummyImage} layout='fill' />
+            <div className='relative aspect-[1/1.414] w-[100%] -top-10'>
+                <Image src={visionImage} layout='fill' />
             </div>
         </div>
     );

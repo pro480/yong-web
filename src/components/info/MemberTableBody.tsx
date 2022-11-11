@@ -32,18 +32,23 @@ function MemberTableBody({ organization, memberList }: Props) {
                         <td className='py-3 text-center'>{index + 1}</td>
                         <td className='text-center'>{data.name}</td>
                         <td className='text-center'>{data.department}</td>
-                        <td className='relative flex items-center text-center'>
-                            <div className='flex h-12 w-full items-center justify-center'>
+                        <td className='relative flex justify-center text-center xs:flex xs:items-center'>
+                            <div className='flex h-12 w-fit items-center justify-center'>
                                 <a
-                                    className='flex w-fit justify-center self-center self-center hover:underline hover:underline-offset-2'
+                                    className='w-fit justify-center self-center hover:underline hover:underline-offset-2 xs:flex'
                                     href={`mailto:${data.email}`}
                                 >
-                                    <div>{data.email}</div>
-                                    <ImMail4 className='ml-2' size={20} />
+                                    <div className='hidden xs:flex'>
+                                        {data.email}
+                                    </div>
+                                    <ImMail4
+                                        className='mx-1 xs:mx-0 xs:ml-2'
+                                        size={20}
+                                    />
                                 </a>
                             </div>
                             {user && (
-                                <div className='absolute right-2 flex gap-x-2 text-sm'>
+                                <div className='hidden lg:absolute lg:right-0 lg:flex lg:gap-x-2 lg:text-sm'>
                                     <MemberTableUpdateButton
                                         index={index + 1}
                                         data={data}

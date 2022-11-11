@@ -67,6 +67,10 @@ function MemberToggle({ team }: Props) {
         { merge: true }
     );
 
+    const onAddMember: SubmitHandler<Inputs> = (data) => {
+        uploadImageAndAddDoc(data, addMutation);
+    };
+
     function uploadImageAndAddDoc(data: Inputs, mutation: any) {
         let file = data.imageFile[0];
         const storageRef = ref(
@@ -144,10 +148,6 @@ function MemberToggle({ team }: Props) {
             });
             setModalOpen(false);
         }
-    };
-
-    const onAddMember: SubmitHandler<Inputs> = (data) => {
-        uploadImageAndAddDoc(data, addMutation);
     };
 
     // 약력 입력란 추가
