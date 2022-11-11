@@ -39,7 +39,7 @@ function CenterLeaderInfo() {
                         </ul>
                     </div>
                     <div className='absolute bottom-2 right-1/3 z-10 mx-auto flex h-48 w-48 '>
-                        <Image src={symbolImage} layout='fill' />
+                        <Image src={symbolImage} layout='fill' alt='센터장님 사진'/>
                     </div>
                     <div className=' relative border-b-[250px] border-r-[200px] border-b-PRIMARY_COLOR-500 border-r-transparent '></div>
                 </div>

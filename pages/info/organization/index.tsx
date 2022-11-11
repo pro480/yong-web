@@ -6,6 +6,7 @@ import { Tree, TreeNode } from "react-organizational-chart";
 import { BuildingOffice2Icon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import OrganizationCard from "../../../src/components/info/OrganizatinoCard";
+import logoImage from "../../../public/images/logo/logo_mini_nobg.png";
 
 function Index() {
     const router = useRouter();
@@ -16,16 +17,18 @@ function Index() {
         <div>
 
 
-            <div className='relative flex flex-col h-96 text-white items-center '>
-                
-                <div className=' w-1/3'>
-                    <OrganizationCard
-                        title='로고 들어갈 자리'
-                        color='[#00579a]'
-                        href='/info'
+            <div className='relative flex flex-col text-white items-center '>
+                <div className='rounded-lg border-solid border-3 border-PRIMARY_COLOR-600' >
+                    <Image
+                        className='rounded-lg border-solid border-3 border-PRIMARY_COLOR-600'
+                        src={logoImage}
+                        width={screen.width}
+                        objectFit='contain'
+                        alt='로고'
+                        priority={true}
                     />
                 </div>
-                <div className="w-px border-l-2 border-l-PRIMARY_COLOR-500">?</div>
+                <div className="w-px border-l-2 border-l-PRIMARY_COLOR-500">1</div>
                 
                 <div className='w-1/3'>
                     <OrganizationCard
@@ -34,12 +37,13 @@ function Index() {
                         href='/info'
                     />
                 </div>
-                <div className="w-px border-l-2 border-l-PRIMARY_COLOR-500">?</div>
+                {/* 선 반응형 용 */}
+                <div className="w-px border-l-2 border-l-PRIMARY_COLOR-500">1</div>
                 <div className="w-[68%] border-b-2 border-b-PRIMARY_COLOR-500"></div>
                 <div className="w-[68%] flex justify-between ">
-                    <div className="w-px border-l-2 border-l-PRIMARY_COLOR-500">?</div>
-                    <div className="w-px border-l-2 border-l-PRIMARY_COLOR-500">?</div>
-                    <div className="w-px border-l-2 border-l-PRIMARY_COLOR-500">?</div>
+                    <div className="w-px border-l-2 border-l-PRIMARY_COLOR-500">1</div>
+                    <div className="w-px border-r-2 border-r-PRIMARY_COLOR-500">1</div>
+                    <div className="w-px border-l-2 border-l-PRIMARY_COLOR-500">1</div>
                 </div>
                 
                 
@@ -81,7 +85,7 @@ function Index() {
                         <div className="h-1/6"></div>
                         <OrganizationCard
                             title='연구 자문단'
-                            color='white border-solid border-2 border-PRIMARY_COLOR-200'
+                            color='white -my-1 border-solid border-2 border-PRIMARY_COLOR-200'
                             href='/info/organization/research'
                         />
                     </div>
