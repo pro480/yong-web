@@ -39,6 +39,7 @@ module.exports = {
             },
         },
         screens: {
+            us: "1px",
             xs: "480px",
             sm: "640px",
             md: "768px",
@@ -62,6 +63,8 @@ module.exports = {
             large: "12px",
             "3xl": "40px",
         },
+        important: '#tteesstt',
+        
     },
     plugins: [],
 };

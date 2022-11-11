@@ -59,6 +59,7 @@ function CenterLeaderInfo() {
                     {/*사다리꼴 내부 로고*/}
                     <div className='absolute bottom-2 z-30 flex aspect-1/1 xs:right-1/3 xs:h-1/3'>
                         <Image src={symbolImage} layout='fill' />
+
                     </div>
 
                     {/*사다리꼴의 삼각형부분*/}
