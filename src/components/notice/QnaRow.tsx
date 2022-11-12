@@ -16,7 +16,7 @@ export default function QnaRow() {
                     (a, b) =>
                         Number(b.data().createAt) - Number(a.data().createAt)
                 )
-                // 한 페이지에 표현될 갯수만큼 자르기
+                // <-- 한 페이지에 표현될 갯수만큼 자르기 ex) 8개씩 나타내고 싶으면 *8 + 8 이런식으로
                 .slice(
                     (Number(pageNumber) - 1) * 10,
                     (Number(pageNumber) - 1) * 10 + 10
