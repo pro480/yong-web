@@ -103,59 +103,96 @@ export function ReportPageButton() {
                 </li>
                 <li>
                     <button
-                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         onClick={() => {
                             setPageNumber(buttonOffset);
                         }}
                     >
-                        {buttonOffset}
+                        {pageNumber == buttonOffset ? (
+                            <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 py-2 px-3 text-sm text-PRIMARY_COLOR-500'>
+                                {buttonOffset}
+                            </span>
+                        ) : (
+                            <span className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500'>
+                                {buttonOffset}
+                            </span>
+                        )}
                     </button>
                 </li>
                 <li>
                     <button
-                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         onClick={() => {
                             setPageNumber(buttonOffset + 1);
                         }}
                     >
-                        {buttonOffset + 1}
+                        {pageNumber == buttonOffset + 1 ? (
+                            <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 py-2 px-3 text-sm text-PRIMARY_COLOR-500'>
+                                {buttonOffset + 1}
+                            </span>
+                        ) : (
+                            <span className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500'>
+                                {buttonOffset + 1}
+                            </span>
+                        )}
                     </button>
                 </li>
                 <li>
                     <button
-                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         onClick={() => {
                             setPageNumber(buttonOffset + 2);
                         }}
                     >
-                        {buttonOffset + 2}
+                        {pageNumber == buttonOffset + 2 ? (
+                            <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 py-2 px-3 text-sm text-PRIMARY_COLOR-500'>
+                                {buttonOffset + 2}
+                            </span>
+                        ) : (
+                            <span className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500'>
+                                {buttonOffset + 2}
+                            </span>
+                        )}
                     </button>
                 </li>
                 <li>
                     <button
-                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         onClick={() => {
                             setPageNumber(buttonOffset + 3);
                         }}
                     >
-                        {buttonOffset + 3}
+                        {pageNumber == buttonOffset + 3 ? (
+                            <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 py-2 px-3 text-sm text-PRIMARY_COLOR-500'>
+                                {buttonOffset + 3}
+                            </span>
+                        ) : (
+                            <span className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500'>
+                                {buttonOffset + 3}
+                            </span>
+                        )}
                     </button>
                 </li>
                 <li>
                     <button
-                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         onClick={() => {
                             setPageNumber(buttonOffset + 4);
                         }}
                     >
-                        {buttonOffset + 4}
+                        {pageNumber == buttonOffset + 4 ? (
+                            <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 py-2 px-3 text-sm text-PRIMARY_COLOR-500'>
+                                {buttonOffset + 4}
+                            </span>
+                        ) : (
+                            <span className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500'>
+                                {buttonOffset + 4}
+                            </span>
+                        )}
                     </button>
                 </li>
                 <li>
                     <button
                         className='m-1 border border-PRIMARY_COLOR-500 bg-white py-3 px-2 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         onClick={() => {
-                            buttonOffset = buttonOffset + 5;
+                            buttonOffset < maxOffset
+                                ? (buttonOffset = buttonOffset + 5)
+                                : (buttonOffset = maxOffset);
                             setPageNumber(buttonOffset);
                         }}
                     >

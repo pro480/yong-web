@@ -145,7 +145,9 @@ export function QnaPageButton() {
                     <button
                         className='m-1 border border-PRIMARY_COLOR-500 bg-white py-3 px-2 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
                         onClick={() => {
-                            buttonOffset = buttonOffset + 5;
+                            buttonOffset < maxOffset
+                                ? (buttonOffset = buttonOffset + 5)
+                                : (buttonOffset = maxOffset);
                             setPageNumber(buttonOffset);
                         }}
                     >
