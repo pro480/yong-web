@@ -5,7 +5,7 @@ import { ReportDeleteButton, ReportUpdateButton } from "./ReportButtons";
 import Image from "next/image";
 
 export default function ReportItem() {
-    const { researchList } = useContext(ReportContext);
+    const { researchList, pageNumber } = useContext(ReportContext);
     const { user } = useAuth();
 
     return (
@@ -16,6 +16,11 @@ export default function ReportItem() {
                         (a, b) =>
                             Number(b.data().createdAt) -
                             Number(a.data().createdAt)
+                    )
+                    // 한 페이지당 원하는 자료 수 만큼 자르기
+                    .slice(
+                        (Number(pageNumber) - 1) * 8,
+                        (Number(pageNumber) - 1) * 8 + 8
                     )
                     .map((docSnapshot) => {
                         const items = docSnapshot.data();
