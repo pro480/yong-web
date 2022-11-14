@@ -41,8 +41,8 @@ export interface InternalMember {
     team: Team; // 소속 조직
 }
 
-export type Course = "학부연구생" | "석사 과정" | "박사 과정" | "교수";
-export type Team = "센터장" | "연구팀1" | "연구팀2" | "연구팀3" | "동문";
+export type Course = "학부연구생" | "학석사 연계 과정" | "석사 과정" | "박사 과정" | "교수";
+export type Team = "센터장" | "데이터 분석 연구팀" | "인공지능(AI) 개발팀" | "데이터 실무 교육 팀" | "동문";
 export type Classification = "교수" | "졸업생";
 
 export interface ExternalMember {

@@ -8,7 +8,7 @@ import { MemberAddButton } from "../../src/components/info/MemberButton";
 import useAuth from "../../src/hooks/useAuth";
 
 function Member() {
-    const team: Team[] = ["센터장", "연구팀1", "연구팀2", "연구팀3"];
+    const team: Team[] = ["센터장", "데이터 분석 연구팀", "인공지능(AI) 개발팀", "데이터 실무 교육 팀"];
     const { collectionRef, collectionQuery, deleteDocument } =
         useFirebase<InternalMember>("internalMembers", ["internalMembers"]);
     const { user } = useAuth();
