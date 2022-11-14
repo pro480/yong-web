@@ -54,12 +54,12 @@ function Qna() {
         <QnaContext.Provider value={value}>
             <div>
                 {/*개수*/}
-                <h1 className='mt-4 mb-10'>
-                    {"전체 "}
-                    <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR-500'>
+                <h1 className='pb-10 pt-4 text-sm md:text-base'>
+                    전체{" "}
+                    <span className='ml-3 text-lg font-bold text-PRIMARY_COLOR-500 md:text-2xl'>
                         {qnaList?.length}
-                    </span>
-                    {" 건"}
+                    </span>{" "}
+                    건
                 </h1>
                 {/*질문 리스트*/}
                 <QnaRow />

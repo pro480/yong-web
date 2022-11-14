@@ -63,15 +63,15 @@ export default function Report() {
 
     return (
         <ReportContext.Provider value={value}>
-            <main>
+            <main className='pb-10'>
                 {/* 전체 몇건 */}
-                {/* <h1 className='pb-5 pt-14'>
+                <h1 className='pb-5 pt-4 text-sm md:text-base'>
                     전체{" "}
-                    <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR-500'>
+                    <span className='ml-3 text-lg font-bold text-PRIMARY_COLOR-500 md:text-2xl'>
                         {researchList?.length}
                     </span>{" "}
                     건
-                </h1> */}
+                </h1>
                 {user &&
                     `연구 보고서 이미지는 1 : 1.41 정도 비율(A4용지 비율)의 이미지를 삽입하시는걸
                 추천 드립니다.`}
@@ -80,8 +80,8 @@ export default function Report() {
                 {isEditing ? <ReportToggle /> : null}
                 {/* 게시물 */}
                 <ReportItem />
-                <ReportPageButton />
             </main>
+            <ReportPageButton />
         </ReportContext.Provider>
     );
 }

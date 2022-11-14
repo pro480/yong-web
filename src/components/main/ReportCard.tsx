@@ -18,7 +18,7 @@ export default function ReportCard() {
                     const items = snapshot.data();
                     return (
                         <div
-                            className='mb-3 flex w-full items-center border p-1 xs:mb-5 xs:p-2  md:mb-3 md:w-[32%] md:items-start md:p-3 lg:p-4 desktop:w-[30%] desktop:p-5'
+                            className='mb-3 flex w-full items-center border-2 border-gray-300 p-1 xs:mb-5  xs:p-2 md:mb-3 md:w-[32%] md:items-start md:p-3 lg:p-4 desktop:w-[30%] desktop:p-5'
                             key={snapshot.id}
                         >
                             <div className=' flex aspect-1/1 h-[25px] items-center justify-center  rounded-full bg-yellow-500 xs:h-[30px] md:h-[25px] lg:h-[30px] desktop:h-[50px]'>
