@@ -14,7 +14,7 @@ import {
 } from "@firebase/firestore";
 import useAuth from "../../hooks/useAuth";
 import useFirebase from "../../hooks/useFirebase";
-import { GalleryAddButton } from "./GalleryButton";
+import { GallaryPageButton, GalleryAddButton } from "./GalleryButton";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import GalleryToggle from "./GalleryToggle";
 import GalleryCardGrid from "./GalleryCardGrid";
@@ -35,6 +35,9 @@ interface GalleryContextProps {
     setSelectedIndex: Dispatch<React.SetStateAction<number>>;
     selectedCard: GalleryCard | null;
     setSelectedCard: Dispatch<React.SetStateAction<GalleryCard | null>>;
+    galleryList: QueryDocumentSnapshot<GalleryCard>[] | undefined;
+    pageNumber: number | null;
+    setPageNumber: Dispatch<React.SetStateAction<number | null>>;
 }
 
 export const GalleryContext = createContext({} as GalleryContextProps);
@@ -58,6 +61,8 @@ function GalleryMain({ card }: Props) {
         setGalleryList(newGalleryList);
     }, [collectionQuery.isSuccess]);
 
+    const [pageNumber, setPageNumber] = useState<number | null>(1);
+
     const value = {
         isEditing,
         setIsEditing,
@@ -70,6 +75,9 @@ function GalleryMain({ card }: Props) {
         setSelectedIndex,
         selectedCard,
         setSelectedCard,
+        galleryList,
+        pageNumber,
+        setPageNumber,
     };
 
     if (collectionQuery.isLoading) {
@@ -78,7 +86,16 @@ function GalleryMain({ card }: Props) {
 
     return (
         <GalleryContext.Provider value={value}>
-            <div className='flex w-full flex-col space-y-8'>
+            <main className='flex w-full flex-col space-y-8'>
+                {/* 전체 몇건 */}
+                <h1 className='pb-5 pt-4 text-sm md:text-base'>
+                    전체{" "}
+                    <span className='ml-3 text-lg font-bold text-PRIMARY_COLOR-500 md:text-2xl'>
+                        {galleryList?.length}
+                    </span>{" "}
+                    건
+                </h1>
+
                 {/* 헤더 (검색창 + 추가 버튼) */}
                 <div className='relative mt-5 flex h-9 items-center justify-end space-x-5'>
                     {/*추가 버튼*/}
@@ -94,9 +111,10 @@ function GalleryMain({ card }: Props) {
                 </div>
                 {isEditing && <GalleryToggle card={card} />}
                 <div>
-                    <GalleryCardGrid card={card} galleryList={galleryList} />
+                    <GalleryCardGrid card={card} />
                 </div>
-            </div>
+            </main>
+            <GallaryPageButton />
         </GalleryContext.Provider>
     );
 }

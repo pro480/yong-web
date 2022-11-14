@@ -25,7 +25,6 @@ interface Props {
 }
 
 function GalleryToggle({ card }: Props) {
-    const moment = require("moment");
     const today = moment();
     const { collectionRef, selectedDocId, selectedCard, setIsEditing } =
         useContext(GalleryContext);
@@ -96,7 +95,7 @@ function GalleryToggle({ card }: Props) {
                     addMutation.mutate({
                         title: data.title,
                         isBanner: data.isBanner,
-                        createdAt: data.createdAt,
+                        createdAt: moment().format("YYYYMMDDHHmmss"),
                         imgUrl: downloadURL,
                         card: card,
                     });
@@ -221,7 +220,13 @@ function GalleryToggle({ card }: Props) {
 
                         {selectedCard ? (
                             <label className='w-full border border-gray-700 text-center'>
-                                {selectedCard.createdAt}
+                                {`${selectedCard.createdAt.slice(
+                                    0,
+                                    4
+                                )}-${selectedCard.createdAt.slice(
+                                    4,
+                                    6
+                                )}-${selectedCard.createdAt.slice(6, 8)}`}
                             </label>
                         ) : (
                             <label>
