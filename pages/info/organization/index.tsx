@@ -56,6 +56,11 @@ function Index() {
                             color='PRIMARY_COLOR-200'
                             href='/info/organization/network'
                         />
+                        <OrganizationCard
+                        title='연구 협력 네트워크'
+                        color='PRIMARY_COLOR-200'
+                        href='/info/member#연구팀1'
+                    />
                     </div>
 
                     <div className="flex-col w-1/3">

@@ -185,6 +185,7 @@ function MemberToggle({ team }: Props) {
                         src={selectedMember.imageUrl}
                         layout='fill'
                         objectFit='cover'
+                        alt="이미지입력"
                     />
                     <button
                         className='absolute right-2 bottom-2 z-50 border bg-GRAY_COLOR-600 text-sm'

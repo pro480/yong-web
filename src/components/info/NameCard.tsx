@@ -21,18 +21,17 @@ function NameCard<T extends InternalMember | GraduateMember>({
     const { user } = useAuth();
 
     return (
-        <section className='pb-1 xs:w-full flex us:flex-col xs:flex-row xs:justify-between'>
+        <section className='pb-1 w-full flex us:flex-col xs:flex-row xs:justify-between'>
             {/*이미지 사이즈*/}
-            <div className='relative us:mt-7 xs:my-auto xs:relative us:w-[70%] xs:w-[40%] sm:w-[25%]'>
+            {/* <div className='relative us:mt-7 xs:my-auto xs:relative us:w-[70%] xs:w-[40%] sm:w-[25%]'> */}
+            <div className='relative xs:mt-7 us:w-[50%] xs:w-[40%] sm:w-[25%]  '>
                 <Image
-                    className=''
                     src={member.imageUrl}
                     alt='멤버사진'
-                    layout="fill"
+                    layout='fill'
                     objectFit='contain'
                     priority={true}
                 />
-
             </div>
             {/*오른쪽 설명*/}
             <main className='xs:w-[45%] sm:w-[65%] xs:self-center text-PRIMARY_COLOR-500 sx:text-xs sm:text-sm md:text-base'>
