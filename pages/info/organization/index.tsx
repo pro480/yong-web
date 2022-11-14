@@ -56,30 +56,25 @@ function Index() {
                             color='PRIMARY_COLOR-200'
                             href='/info/organization/network'
                         />
-                        <OrganizationCard
-                        title='연구 협력 네트워크'
-                        color='PRIMARY_COLOR-200'
-                        href='/info/member#연구팀1'
-                    />
                     </div>
 
                     <div className="flex-col w-1/3">
                         <OrganizationCard
                             title='데이터 분석 연구팀'
                             color='PRIMARY_COLOR-100'
-                            href='/info/organization/engineer'
+                            href='/info/member#데이터 분석 연구팀'
                         />
                         <div className="h-1/6"></div>
                         <OrganizationCard
                             title='인공지능(AI) 개발팀'
                             color='PRIMARY_COLOR-100'
-                            href='/info/organization/engineer'
+                            href='/info/member#데이터 분석 연구팀'
                         />
                         <div className="h-1/6"></div>
                         <OrganizationCard
                             title='데이터 실무 교육 팀'
                             color='PRIMARY_COLOR-100'
-                            href='/info/organization/engineer'
+                            href='/info/member#데이터 분석 연구팀'
                         />
                     </div>
 
