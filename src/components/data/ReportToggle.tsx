@@ -257,6 +257,7 @@ export default function ReportToggle() {
                                 {...register("year", {
                                     required: true,
                                 })}
+                                type='month'
                                 placeholder='발행 년도를 입력해 주세요'
                                 className='h-[25px] p-2 lg:h-[30px]'
                             />

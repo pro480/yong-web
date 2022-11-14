@@ -29,7 +29,7 @@ export default function ReportItem() {
                                 key={docSnapshot.id}
                                 className='flex h-[340px] w-[170px] flex-col justify-between sm:h-[440px] sm:w-[220px] md:h-[480px] md:w-[240px] xl:h-[500px] xl:w-[250px]'
                             >
-                                <div className=' relative h-full  xl:h-[352px] '>
+                                <div className='relative h-full border border-gray-400 xl:h-[340px]'>
                                     <Image
                                         src={items.imgUrl}
                                         layout='fill'
