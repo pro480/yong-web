@@ -3,7 +3,7 @@ import React from "react";
 import PageTitle from "../../src/components/common/Layout/PageTitle";
 import Image from "next/image";
 
-function Open() {
+function Open_data() {
     const opens = [
         {
             imgUrl: "https://www.nia.or.kr/img/nia_kor/ci_03.png",
@@ -86,4 +86,4 @@ function Open() {
     );
 }
 
-export default Open;
+export default Open_data;

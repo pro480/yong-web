@@ -6,11 +6,11 @@ import { Tree, TreeNode } from "react-organizational-chart";
 import { BuildingOffice2Icon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import OrganizationCard from "../../../src/components/info/OrganizatinoCard";
-import logoImage from "../../../public/images/logo/logo_mini_nobg.png";
+import logoImage from "../../../public/images/logo/logo_EN.png";
 import symbolImage from "../../../public/images/logo/symbol_outline.png";
 
 
-function Index() {
+function Org_chart() {
     const router = useRouter();
     // const innerWidth = window.innerWidth
     // window.onresize = function(event){
@@ -54,7 +54,6 @@ function Index() {
                 <div className='w-1/3'>
                     <OrganizationCard
                         title='센터장'
-                        color='PRIMARY_COLOR-600'
                         href='/info'
                     />
                 </div>
@@ -122,4 +121,4 @@ function Index() {
     );
 }
 
-export default Index;
+export default Org_chart;

@@ -1,7 +1,7 @@
 import React from "react";
 import NewsTable from "../../src/components/notice/NewsTable";
 
-function Event() {
+function Event_news() {
     return (
         <div>
             <NewsTable news="행사 소식" />
@@ -9,7 +9,7 @@ function Event() {
     );
 }
 
-export default Event;
+export default Event_news;
 
 /* 행사소식
     create ✓

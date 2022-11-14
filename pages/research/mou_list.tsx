@@ -2,7 +2,7 @@ import React from "react";
 import PageTitle from "../../src/components/common/Layout/PageTitle";
 import Image from "next/image";
 
-function Mou() {
+function Mou_list() {
     // next.config.js에 MOU기관 리스트 URL 추가 작성했습니다.
     const mous = [
         {
@@ -65,4 +65,4 @@ function Mou() {
     );
 }
 
-export default Mou;
+export default Mou_list;

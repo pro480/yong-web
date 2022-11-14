@@ -2,7 +2,7 @@ import React from "react";
 import bannerImage from "../../public/images/major/evaluationbanner.jpg";
 import MajorForm from "../../src/components/major/MajorForm";
 
-function Evaluation() {
+function Edu_evaluation() {
     return (
         <div>
             <div>
@@ -18,4 +18,4 @@ function Evaluation() {
     );
 }
 
-export default Evaluation;
+export default Edu_evaluation;

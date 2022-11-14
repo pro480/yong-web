@@ -7,7 +7,7 @@ import ClassificationTitle from "../../src/components/common/ClassificationTitle
 import { MemberAddButton } from "../../src/components/info/MemberButton";
 import useAuth from "../../src/hooks/useAuth";
 
-function Member() {
+function Center_member() {
     const team: Team[] = ["센터장", "연구팀1", "연구팀2", "연구팀3"];
     const { collectionRef, collectionQuery, deleteDocument } =
         useFirebase<InternalMember>("internalMembers", ["internalMembers"]);
@@ -43,4 +43,4 @@ function Member() {
     );
 }
 
-export default Member;
+export default Center_member;

@@ -4,7 +4,7 @@ import HistoryPost from "../../src/components/info/HistoryPost";
 import HistoryCard from "../../src/components/info/HistoryCard";
 import HorizontalRule from "../../src/components/common/HorizontalRule";
 
-function History() {
+function Center_history() {
     return (
         <div>
 
@@ -37,4 +37,4 @@ function History() {
     );
 }
 
-export default History;
+export default Center_history;
