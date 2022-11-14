@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import symbolImage from "../../../public/images/logo/symbol_outline.png";
-import logoImage from "../../../public/images/logo/logo_mini_nobg.png";
+import logo_EN from "../../../public/images/logo/logo_EN.png";
 import centerLeaderImage from "../../../public/images/centerLeader.png";
 import triangle from "../../../public/images/triangle.png";
 
@@ -10,13 +10,13 @@ function CenterLeaderInfo() {
         <>
             {/* 협회이름 및 센터장 신상 정보 */}
             <div className=' relative flex aspect-[2/1] w-full flex-col justify-end'>
-                <div className='absolute top-[25%] z-50 aspect-[4/1] h-[32%]'>
+                <div className='absolute bottom-[55%] z-50 h-full w-1/2'>
                     {/*eba 로고*/}
                     <Image
-                        className=''
-                        src={logoImage}
+                        src={logo_EN}
                         layout='fill'
                         objectFit='contain'
+                        objectPosition='bottom'
                         alt='로고'
                         priority={true}
                     />

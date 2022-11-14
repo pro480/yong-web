@@ -14,7 +14,7 @@ import { UseMutationResult } from "react-query";
 import moment from "moment";
 import { fill } from "lodash";
 import { ImFileText2 } from "react-icons/im";
-import data from "../../../pages/data";
+import data from "../../../pages/data/paper";
 
 interface Inputs {
     title: string; // 자료명

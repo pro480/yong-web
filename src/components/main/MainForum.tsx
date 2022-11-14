@@ -4,8 +4,8 @@ import Image from "next/image";
 
 function MainForum() {
     return (
-        <div className='flex h-[300px] w-full  flex-col items-center justify-around border p-2 xs:h-[400px]  md:h-[500px]  md:flex-row  md:p-14 lg:h-[600px] lg:p-16 desktop:h-[700px] desktop:p-20'>
-            <div className='relative aspect-2/1 h-[150px] xs:h-[200px] lg:h-[300px] desktop:h-[500px]  '>
+        <div className='flex w-full flex-col items-center justify-around border p-2     md:flex-row  md:p-14  lg:p-16 desktop:p-20'>
+            <div className='relative aspect-2/1 h-[150px] xs:h-[200px] lg:h-[400px] desktop:h-[1200px]  '>
                 <Image
                     src='/images/dummy/forum.jpg'
                     layout='fill'
@@ -20,7 +20,7 @@ function MainForum() {
                     <div className=' my-2 overflow-hidden text-ellipsis whitespace-pre pb-4 text-sm font-semibold xs:pb-3 md:my-2 lg:my-3  lg:pb-2 lg:text-base desktop:my-4 desktop:text-lg'>
                         2022 미래형 교수·학습모델 개발지원사업 선정
                     </div>
-                    <p className='hidden h-full overflow-hidden text-ellipsis break-all text-xs md:flex md:h-[200px] md:text-sm lg:h-[300px] lg:text-base desktop:h-[500px] desktop:text-lg'>
+                    <p className='hidden h-full overflow-hidden text-ellipsis break-all text-xs md:flex md:h-[200px] md:text-sm lg:h-[300px] lg:text-base desktop:h-[500px] desktop:text-lg '>
                         본교 사범대학이 교육부와 한국과학창의재단에서 지원하는
                         ‘2022 미래형 교수·학습모델 개발지원사업’에 전국에서
                         유일하게 선정됐다. 이번 사업에는 사범대학 6개 학과 교수

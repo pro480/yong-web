@@ -6,7 +6,7 @@ import MajorBanner from "../../src/components/major/MajorBanner";
 import graduateCourseImage from "../../public/images/major/course.jpg"
 
 
-function Vision() {
+function Career() {
     return (
         <div className="relative pt-12">
             <main className='relative flex flex-col gap-y-12'>
@@ -125,7 +125,7 @@ function Vision() {
     );
 }
 
-export default Vision;
+export default Career;
 
 
 // 글자 수: 공백포함 120자 제한 권고 요청

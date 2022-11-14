@@ -2,7 +2,7 @@ import React from "react";
 import bannerImage from "../../public/images/major/measurebanner.jpg";
 import MajorForm from "../../src/components/major/MajorForm";
 
-function Measurement() {
+function Edu_measurement() {
     return (
         <div>
             <div>
@@ -18,4 +18,4 @@ function Measurement() {
     );
 }
 
-export default Measurement;
+export default Edu_measurement;
