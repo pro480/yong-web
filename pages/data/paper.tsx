@@ -4,7 +4,7 @@ import MaterialTable from "../../src/components/data/MaterialTable";
 import { useRouter } from "next/router";
 import useFirebase from "../../src/hooks/useFirebase";
 
-function Index() {
+function Paper() {
     const [tab, setTab] = useState("thesis");
 
 
@@ -44,7 +44,7 @@ function Index() {
     );
 }
 
-export default Index;
+export default Paper;
 
 /* 논문
     create ✓

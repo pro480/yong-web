@@ -4,7 +4,7 @@ import HorizontalRule from "../../src/components/common/HorizontalRule";
 import TaskCard from "../../src/components/info/TaskCard";
 import dummyImage from "../../public/dummy.png";
 
-function Task() {
+function Main_task() {
     return (
         <div>
 
@@ -32,4 +32,4 @@ function Task() {
     );
 }
 
-export default Task;
+export default Main_task;

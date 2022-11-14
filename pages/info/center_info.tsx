@@ -7,7 +7,7 @@ import CenterLeaderCareer from "../../src/components/info/CenterLeaderCareer";
 import HorizontalRule from "../../src/components/common/HorizontalRule";
 import CenterLeaderEducation from "../../src/components/info/CenterLeaderEducation";
 
-function Index() {
+function Center_info() {
     return (
         <div>
             <CenterLeaderInfo />
@@ -22,4 +22,4 @@ function Index() {
     );
 }
 
-export default Index;
+export default Center_info;

@@ -12,7 +12,40 @@ function Banner() {
     const path = useRouter().pathname.split("/");
     const [a, firstDepth, secondDepth, thirdDepth] = path;
 
+
     let subMenu: SubMenu[];
+
+    function getFirstDepthTitle_KO(path:string){
+        switch (path){
+            case "info":
+                return "센터소개"
+            case "research":
+                return "연구 및 사업"
+            case "major":
+                return "전공소개"
+            case "data":
+                return "자료실"
+            case "notice":
+                return "공지사항"
+        }
+    }
+
+    function getSecondDepthTitle_EN(path:string){
+        switch (path){
+            case "info":
+                return "센터소개"
+            case "research":
+                return "연구 및 사업"
+            case "major":
+                return "전공소개"
+            case "data":
+                return "자료실"
+            case "notice":
+                return "공지사항"
+        }
+    }
+
+
 
     useEffect(() => {
         switch (path.length) {

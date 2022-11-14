@@ -3,7 +3,7 @@ import React from "react";
 import visionImage from "../../public/images/visionImage.png";
 import Image from "next/image";
 
-function Vision() {
+function Center_vision() {
     return (
         <div>
             {/* 비전 이미지 */}
@@ -14,4 +14,4 @@ function Vision() {
     );
 }
 
-export default Vision;
+export default Center_vision;

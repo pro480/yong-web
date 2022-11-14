@@ -4,7 +4,7 @@ import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import moment from "moment";
 import { Project } from "../../../typing";
 import useAuth from "../../hooks/useAuth";
-import { ProjectContext } from "../../../pages/research";
+import { ProjectContext } from "../../../pages/research/business";
 import { useForm } from "react-hook-form";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { db, storage } from "../../../firebase";

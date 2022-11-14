@@ -31,7 +31,7 @@ export const ProjectContext = createContext<ProjectContextProps>(
     {} as ProjectContextProps
 );
 
-function Index() {
+function Business() {
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState<Project | null>(
         null
@@ -123,4 +123,4 @@ function Index() {
     );
 }
 
-export default Index;
+export default Business;

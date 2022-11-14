@@ -5,7 +5,7 @@ import moment from "moment";
 import { Project } from "../../../typing";
 import Image from "next/image";
 import useAuth from "../../hooks/useAuth";
-import { ProjectContext } from "../../../pages/research";
+import { ProjectContext } from "../../../pages/research/business";
 
 interface Props {
     project: Project;

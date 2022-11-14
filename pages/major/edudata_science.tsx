@@ -2,7 +2,7 @@ import React from "react";
 import bannerImage from "../../public/images/major/indexbanner.jpg";
 import MajorForm from "../../src/components/major/MajorForm";
 
-function Index() {
+function Edudata_science() {
     return (
         <div>
             <MajorForm
@@ -16,4 +16,4 @@ function Index() {
     );
 }
 
-export default Index;
+export default Edudata_science;

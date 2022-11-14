@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ProjectContext } from "../../../pages/research";
+import { ProjectContext } from "../../../pages/research/business";
 import { Course, Team } from "../../../typing";
 import {
     useFirestoreCollectionMutation,
