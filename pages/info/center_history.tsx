@@ -1,6 +1,4 @@
 import React from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
-import HistoryPost from "../../src/components/info/HistoryPost";
 import HistoryCard from "../../src/components/info/HistoryCard";
 import HorizontalRule from "../../src/components/common/HorizontalRule";
 

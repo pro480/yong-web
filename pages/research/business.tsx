@@ -1,9 +1,7 @@
 import React, { createContext, Dispatch, useState } from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
-import { ForwardIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import ProgressResearchCard from "../../src/components/research/ProgressResearchCard";
 import useFirebase from "../../src/hooks/useFirebase";
-import { GraduateMember, InternalMember, Project } from "../../typing";
+import {  Project } from "../../typing";
 import CompletedResearchCard from "../../src/components/research/CompletedResearchCard";
 import { useRouter } from "next/router";
 import useAuth from "../../src/hooks/useAuth";

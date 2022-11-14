@@ -1,20 +1,16 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Material, PaperMaterial, StudyMaterial } from "../../../typing";
+import { Material } from "../../../typing";
 import {
     useFirestoreCollectionMutation,
     useFirestoreDocumentMutation,
 } from "@react-query-firebase/firestore";
-import { collection, doc, } from "@firebase/firestore";
+import { collection, doc } from "@firebase/firestore";
 import { db, storage } from "../../../firebase";
 import { MaterialTableContext } from "./MaterialTable";
 import { MaterialTableCancelButton } from "./MaterialTableButton";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import { UseMutationResult } from "react-query";
 import moment from "moment";
-import { fill } from "lodash";
-import { ImFileText2 } from "react-icons/im";
-import data from "../../../pages/data/paper";
 
 interface Inputs {
     title: string; // 자료명
@@ -29,9 +25,20 @@ interface Props {
 
 function MaterialTableToggle({ material }: Props) {
     const today = moment();
-    const { selectedMaterial, collectionRef, selectedDocId, selectedIndex, setIsEditing } = useContext(MaterialTableContext);
+    const {
+        selectedMaterial,
+        collectionRef,
+        selectedDocId,
+        selectedIndex,
+        setIsEditing,
+    } = useContext(MaterialTableContext);
     const [editFile, setEditFile] = useState(false);
-    const { register, reset, handleSubmit, formState: {errors} } = useForm<Inputs>({
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<Inputs>({
         defaultValues: useMemo(() => {
             if (selectedMaterial) {
                 return selectedMaterial;
@@ -47,13 +54,7 @@ function MaterialTableToggle({ material }: Props) {
 
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
-        doc(
-            collection(
-                db, 
-                material
-            ), 
-            `${selectedDocId}`
-        ),
+        doc(collection(db, material), `${selectedDocId}`),
         { merge: true }
     );
 
@@ -64,8 +65,10 @@ function MaterialTableToggle({ material }: Props) {
     function uploadFileAndAddDoc(data: Inputs, mutation: any) {
         let file = data.materialFile[0];
         const storageRef = ref(
-            storage, 
-            (material === "학습 자료") ? "documents/studyMaterials/" + file.name : "documents/paperMaterials/" + file.name
+            storage,
+            material === "학습 자료"
+                ? "documents/studyMaterials/" + file.name
+                : "documents/paperMaterials/" + file.name
         );
         const uploadFile = uploadBytesResumable(storageRef, file);
 
@@ -112,7 +115,7 @@ function MaterialTableToggle({ material }: Props) {
                 setIsEditing(false);
             }
         );
-    };
+    }
 
     const onUpdateMaterial: SubmitHandler<Inputs> = (data) => {
         if (editFile) {
@@ -128,7 +131,7 @@ function MaterialTableToggle({ material }: Props) {
 
     return (
         <form
-            className='relative flex-col w-full items-center justify-around border-b border-gray-200 bg-GRAY_COLOR-200 '
+            className='relative w-full flex-col items-center justify-around border-b border-gray-200 bg-GRAY_COLOR-200 '
             onSubmit={
                 selectedMaterial
                     ? handleSubmit(onUpdateMaterial)
@@ -136,7 +139,7 @@ function MaterialTableToggle({ material }: Props) {
             }
         >
             {/* input */}
-            <div className="flex items-center justify-around h-10">
+            <div className='flex h-10 items-center justify-around'>
                 <div className='w-[5%] text-center'>{selectedIndex + 1}</div>
                 <label className='w-[30%]'>
                     <input
@@ -157,9 +160,9 @@ function MaterialTableToggle({ material }: Props) {
                     />
                 </label>
 
-                {selectedMaterial?(
+                {selectedMaterial ? (
                     <label className='w-[15%] text-center'>
-                        {selectedMaterial.date.substring(0,10)}
+                        {selectedMaterial.date.substring(0, 10)}
                     </label>
                 ) : (
                     /*  input type:data로 받는 방법
@@ -174,14 +177,14 @@ function MaterialTableToggle({ material }: Props) {
                             />
                         </label>
                     */
-                    
+
                     <label className='w-[15%] text-center'>
                         {today.format("YYYY-MM-DD")}
                     </label>
                 )}
 
-                {selectedMaterial && !editFile? (     
-                    <label className='w-[20%] flex text-center text-xs'>
+                {selectedMaterial && !editFile ? (
+                    <label className='flex w-[20%] text-center text-xs'>
                         {/* 파일 아이콘 있는 버전
                         <a 
                             className='w-1/2 hover:underline hover:underline-offset-2'
@@ -191,23 +194,21 @@ function MaterialTableToggle({ material }: Props) {
                         </a> 
                         */}
                         {/* 파일 아이콘 없는 버전 */}
-                        <div className="w-1/2"></div>
+                        <div className='w-1/2'></div>
                         <button
-                            className='w-1/2 z-50 border bg-GRAY_COLOR-600 text-sm'
+                            className='z-50 w-1/2 border bg-GRAY_COLOR-600 text-sm'
                             onClick={() => setEditFile(true)}
                         >
                             파일 수정
                         </button>
                     </label>
-                
-                    
                 ) : (
-                    <label className='w-[20%] flex text-xs'>
+                    <label className='flex w-[20%] text-xs'>
                         <input
                             className='w-full'
                             type='file'
-                            {...register("materialFile", { 
-                                required: selectedMaterial ? false : true 
+                            {...register("materialFile", {
+                                required: !selectedMaterial,
                             })}
                         />
                     </label>
@@ -216,7 +217,7 @@ function MaterialTableToggle({ material }: Props) {
                 <label className='w-15 flex text-xs'>
                     <input type='submit' className=' border p-1' />
                     <MaterialTableCancelButton />
-                </label> 
+                </label>
             </div>
         </form>
     );

@@ -1,5 +1,4 @@
 import React, { createContext, Dispatch, useState } from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import useFirebase from "../../hooks/useFirebase";
 import ReportItem from "./ReportItem";
 import { ResearchReport } from "../../../typing";

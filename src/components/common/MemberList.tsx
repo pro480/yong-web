@@ -9,10 +9,8 @@ import {
 } from "@firebase/firestore";
 import { UseQueryResult } from "react-query";
 import { GraduateMember, InternalMember, Team } from "../../../typing";
-import { UNSUPPORTED_FEATURES } from "pdfjs-dist";
-import unknown = UNSUPPORTED_FEATURES.unknown;
+
 import MemberToggle from "../info/MemberToggle";
-import useFirebase from "../../hooks/useFirebase";
 import { MemberAddButton } from "../info/MemberButton";
 
 interface Props<T> {

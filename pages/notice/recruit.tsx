@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
 import { Document, Page, pdfjs } from "react-pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
