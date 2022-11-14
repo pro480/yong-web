@@ -23,17 +23,19 @@ function NameCard<T extends InternalMember | GraduateMember>({
     return (
         <section className='pb-1 xs:w-full flex us:flex-col xs:flex-row xs:justify-between'>
             {/*이미지 사이즈*/}
-            <div className='us:mt-7 xs:my-auto xs:relative us:w-[70%] xs:w-[40%] sm:w-[25%]'>
-
-                <img
+            <div className='relative us:mt-7 xs:my-auto xs:relative us:w-[70%] xs:w-[40%] sm:w-[25%]'>
+                <Image
+                    className=''
                     src={member.imageUrl}
                     alt='멤버사진'
-                    className='object-fill pb-5'
+                    layout="fill"
+                    objectFit='contain'
+                    priority={true}
                 />
 
             </div>
             {/*오른쪽 설명*/}
-            <main className='xs:w-[50%] sm:w-[70%] xs:self-center text-PRIMARY_COLOR-500 sx:text-xs sm:text-sm md:text-base'>
+            <main className='xs:w-[45%] sm:w-[65%] xs:self-center text-PRIMARY_COLOR-500 sx:text-xs sm:text-sm md:text-base'>
                 {/*이름, 관심분야, 이메일*/}
                 <header className='xs:flex-wrap w-full pb-1 xs:items-center'>
                     <h1 className={`${
