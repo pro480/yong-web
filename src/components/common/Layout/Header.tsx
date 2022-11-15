@@ -8,10 +8,16 @@ import { ImGithub } from "react-icons/im";
 import logo_EN from "../../../../public/images/logo/logo_EN.png";
 import { data, info, major, notice, research } from "../../../utils/Utils";
 import MobileHeader from "./MobileHeader";
+import i18next from "../../../../public/locales/i18n";
 
 function Header() {
     const { user, logout } = useAuth();
     const [openHeader, setOpenHeader] = useState(false);
+    const [isEnglish, setLanguage] = useState(false);
+    const changeLanguage = (lang: string) => {
+        i18next.changeLanguage(lang);
+        setLanguage(!isEnglish);
+    };
 
     return (
         <>
@@ -55,7 +61,25 @@ function Header() {
                                 {/*noopener noreferred은 보안 위협을 피하기 위함*/}
                                 <ImGithub size='24' />
                             </a>
-                            <button className='fonts mr-5 '>영문(EN)</button>
+                            {isEnglish ? (
+                                <button
+                                    className='fonts mr-5'
+                                    onClick={() => {
+                                        changeLanguage("ko");
+                                    }}
+                                >
+                                    한글(KO)
+                                </button>
+                            ) : (
+                                <button
+                                    className='fonts mr-5'
+                                    onClick={() => {
+                                        changeLanguage("en");
+                                    }}
+                                >
+                                    영문(EN)
+                                </button>
+                            )}
 
                             {user ? (
                                 <button
@@ -78,7 +102,10 @@ function Header() {
                 </div>
             </header>
 
-                <MobileHeader openHeader={openHeader} setOpenHeader={setOpenHeader}/>
+            <MobileHeader
+                openHeader={openHeader}
+                setOpenHeader={setOpenHeader}
+            />
         </>
     );
 }

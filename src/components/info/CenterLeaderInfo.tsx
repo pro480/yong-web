@@ -4,8 +4,10 @@ import symbolImage from "../../../public/images/logo/symbol_outline.png";
 import logo_EN from "../../../public/images/logo/logo_EN.png";
 import centerLeaderImage from "../../../public/images/centerLeader.png";
 import triangle from "../../../public/images/triangle.png";
+import { useTranslation } from "next-i18next";
 
 function CenterLeaderInfo() {
+    const { t } = useTranslation();
     return (
         <>
             {/* 협회이름 및 센터장 신상 정보 */}
@@ -28,18 +30,18 @@ function CenterLeaderInfo() {
                         <ul className='flex flex-col  gap-y-[1px] xs:gap-y-1 md:gap-y-2 lg:gap-y-4 desktop:gap-y-6'>
                             <li className='flex flex-col md:flex-row '>
                                 <span className="md:w-42 mx-0.5 before:mr-2 before:content-['\2022'] md:mx-1 md:before:mr-3 lg:w-48 desktop:mx-4 desktop:w-60  ">
-                                    교육빅데이터 센터장
+                                    {t(`centerLeaderInfo.centerLeader`)}
                                 </span>
                                 <span className=' md:ml- ml-3.5 lg:ml-0'>
-                                    이용상(Yongsang Lee)
+                                    {t(`centerLeaderInfo.name`)}
                                 </span>
                             </li>
                             <li className='flex flex-col lg:flex-row'>
                                 <span className="mx-0.5 before:mr-2 before:content-['\2022'] md:mx-1 md:w-40 lg:w-48 lg:before:mr-3 desktop:mx-4 desktop:w-60 ">
-                                    소속 및 직함
+                                    {t(`centerLeaderInfo.affiliation`)}
                                 </span>
                                 <span className=' ml-3.5 md:ml-4 lg:ml-0'>
-                                    인하대학교 교육학과 교수
+                                    {t(`centerLeaderInfo.affiliation_now`)}
                                 </span>
                             </li>
                             <li className='flex flex-col lg:flex-row'>
@@ -57,9 +59,8 @@ function CenterLeaderInfo() {
                     </div>
 
                     {/*사다리꼴 내부 로고*/}
-                    <div className='absolute bottom-2 flex z-10 aspect-1/1 xs:right-1/3 xs:h-1/3'>
+                    <div className='absolute bottom-2 z-10 flex aspect-1/1 xs:right-1/3 xs:h-1/3'>
                         <Image src={symbolImage} layout='fill' />
-
                     </div>
 
                     {/*사다리꼴의 삼각형부분*/}
