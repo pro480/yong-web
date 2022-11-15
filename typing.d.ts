@@ -40,7 +40,7 @@ export interface InternalMember {
 }
 
 export type Course = "학부연구생" | "석사 과정" | "박사 과정" | "교수";
-export type Team = "센터장" | "연구팀1" | "연구팀2" | "연구팀3" | "동문";
+export type Team = "센터장" | "데이터 분석팀" | "인공지능팀" | "실무교육팀" | "동문";
 export type Classification = "교수" | "졸업생";
 
 export interface ExternalMember {
