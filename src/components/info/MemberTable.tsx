@@ -32,7 +32,7 @@ interface MemberTableContextProps {
     selectedMember: ExternalMember | null;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
     selectedDocId: string | null;
-    collectionRef: CollectionReference<ExternalMember> | Query<ExternalMember>;
+    collectionRef: CollectionReference<ExternalMember>;
     deleteDocument: (docID: string) => void;
     selectedIndex: number;
     setSelectedIndex: Dispatch<React.SetStateAction<number>>;

@@ -23,7 +23,7 @@ interface ProjectContextProps {
     selectedDocId: string | null;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
     collectionQuery: UseQueryResult<QuerySnapshot<Project>, FirestoreError>;
-    collectionRef: Query<Project> | CollectionReference<Project>;
+    collectionRef: CollectionReference<Project>;
     deleteDocument: (docID: string) => void;
 }
 

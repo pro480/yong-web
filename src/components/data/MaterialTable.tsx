@@ -26,7 +26,7 @@ interface MaterialTableContextProps<M> {
     isEditing: boolean;
     setIsEditing: Dispatch<React.SetStateAction<boolean>>;
     selectedMaterial: M | null;
-    collectionRef: CollectionReference<M> | Query<M>;
+    collectionRef: CollectionReference<M>;
     collectionQuery: UseQueryResult<QuerySnapshot<M>, FirestoreError>;
     selectedDocId: string | null;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;

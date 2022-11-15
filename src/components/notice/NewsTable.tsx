@@ -26,7 +26,7 @@ interface NewsTableContextProps<N> {
     isEditing: boolean;
     setIsEditing: Dispatch<React.SetStateAction<boolean>>;
     selectedNews: N | null;
-    collectionRef: CollectionReference<N> | Query<N>;
+    collectionRef: CollectionReference<N>;
     collectionQuery: UseQueryResult<QuerySnapshot<N>, FirestoreError>;
     selectedDocId: string | null;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;

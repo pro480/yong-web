@@ -28,7 +28,7 @@ function GalleryToggle({ card }: Props) {
     const today = moment();
     const { collectionRef, selectedDocId, selectedCard, setIsEditing } =
         useContext(GalleryContext);
-    // @ts-ignore
+
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
         doc(collection(db, "갤러리 데이터"), `${selectedDocId}`),

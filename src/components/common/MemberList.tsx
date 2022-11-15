@@ -3,7 +3,7 @@ import NameCard from "../info/NameCard";
 import useAuth from "../../hooks/useAuth";
 import {
     CollectionReference,
-    FirestoreError, Query,
+    FirestoreError,
     QueryDocumentSnapshot,
     QuerySnapshot,
 } from "@firebase/firestore";
@@ -15,7 +15,7 @@ import { MemberAddButton } from "../info/MemberButton";
 
 interface Props<T> {
     memberList: QueryDocumentSnapshot<T>[] | undefined;
-    collectionRef: CollectionReference<T> | Query<T>;
+    collectionRef: CollectionReference<T>;
     collectionQuery: UseQueryResult<QuerySnapshot<T>, FirestoreError>;
     isBig: boolean;
     deleteDocument: (docID: string) => void;
@@ -26,7 +26,7 @@ interface MemberListContextProps<T> {
     modalOpen: boolean;
     setModalOpen: Dispatch<React.SetStateAction<boolean>>;
     selectedMember: T | null;
-    collectionRef: CollectionReference<T> | Query<T>;
+    collectionRef: CollectionReference<T>;
     collectionQuery: UseQueryResult<QuerySnapshot<T>, FirestoreError>;
     selectedDocId: string | null;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
@@ -83,9 +83,7 @@ function MemberList<T extends InternalMember | GraduateMember>({
                             <div
                                 key={docSnapshot.id}
                                 className={`${
-                                    isBig
-                                        ? "py-10"
-                                        : ""
+                                    isBig ? "py-10" : ""
                                 } h-fit xs:p-2`}
                             >
                                 <NameCard

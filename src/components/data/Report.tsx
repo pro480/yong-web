@@ -16,7 +16,7 @@ import {Query} from "@firebase/firestore";
 
 interface ReportContextProps {
     researchList: QueryDocumentSnapshot<ResearchReport>[] | undefined;
-    collectionRef: CollectionReference<ResearchReport> | Query<ResearchReport>;
+    collectionRef: CollectionReference<ResearchReport>;
     collectionQuery: UseQueryResult<
         QuerySnapshot<ResearchReport>,
         FirestoreError

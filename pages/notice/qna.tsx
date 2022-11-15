@@ -15,7 +15,7 @@ import {Query} from "@firebase/firestore";
 
 interface QnaContextProps {
     qnaList: QueryDocumentSnapshot<QNA>[] | undefined;
-    collectionRef: CollectionReference<QNA> | Query<QNA>;
+    collectionRef: CollectionReference<QNA>;
     collectionQuery: UseQueryResult<QuerySnapshot<QNA>, FirestoreError>;
     deleteDocument: (docID: string) => void;
     isEditing: boolean;
