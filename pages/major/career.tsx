@@ -1,9 +1,6 @@
 import React from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import styles from "../../src/styles/styles.module.css";
-import MajorBanner from "../../src/components/major/MajorBanner";
-import graduateCourseImage from "../../public/images/major/course.jpg"
 
 
 function Career() {

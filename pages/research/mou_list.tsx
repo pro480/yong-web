@@ -1,5 +1,4 @@
 import React from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
 import Image from "next/image";
 
 function Mou_list() {

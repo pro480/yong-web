@@ -16,7 +16,6 @@ import {
     QueryDocumentSnapshot,
     QuerySnapshot,
 } from "@firebase/firestore";
-import useAuth from "../../hooks/useAuth";
 
 interface Props<N> {
     news: News;
