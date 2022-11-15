@@ -9,13 +9,14 @@ import {
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { siteMapState } from "../../../atoms/sitemapAtom";
+import {data, info, major, notice, research} from "../../../utils/Utils";
 
 interface Props {}
 
 function Sidebar() {
-    const siteMap = useRecoilValue(siteMapState);
     const [currentMenu, setCurrentMenu] = useState<SubMap>();
-    const pathName = useRouter().pathname.split("/")[1];
+    const path = useRouter().pathname.split("/");
+    const [a, firstDepth, secondDepth, thirdDepth] = path;
     const [menuOpen, setMenuOpen] = useState(false);
     const [isWide, setIsWide] = useState(false);
 
@@ -43,18 +44,18 @@ function Sidebar() {
     }, []);
 
     useLayoutEffect(() => {
-        if (pathName === "info") {
-            setCurrentMenu(siteMap.info);
-        } else if (pathName === "research") {
-            setCurrentMenu(siteMap.research);
-        } else if (pathName === "major") {
-            setCurrentMenu(siteMap.major);
-        } else if (pathName === "data") {
-            setCurrentMenu(siteMap.data);
-        } else if (pathName === "notice") {
-            setCurrentMenu(siteMap.notice);
+        if (firstDepth === "info") {
+            setCurrentMenu(info);
+        } else if (firstDepth === "research") {
+            setCurrentMenu(research);
+        } else if (firstDepth === "major") {
+            setCurrentMenu(major);
+        } else if (firstDepth === "data") {
+            setCurrentMenu(data);
+        } else if (firstDepth === "notice") {
+            setCurrentMenu(notice);
         }
-    }, [pathName]);
+    }, [firstDepth]);
 
     console.log(currentMenu);
 

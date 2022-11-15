@@ -19,7 +19,7 @@ export const siteMapState = atom<SiteMap>({
                 },
                 {
                     title_KO: "센터 비전",
-                    title_EN: "Center Vision",
+                    title_EN: "Center Career",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/info/vision",
@@ -33,7 +33,7 @@ export const siteMapState = atom<SiteMap>({
                 },
                 {
                     title_KO: "센터 연혁",
-                    title_EN: "Center History",
+                    title_EN: "Center Center_history",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/info/history",
@@ -78,7 +78,7 @@ export const siteMapState = atom<SiteMap>({
                 },
                 {
                     title_KO: "센터 구성원",
-                    title_EN: "Center Member",
+                    title_EN: "Center Center_member",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/info/member",
@@ -124,14 +124,14 @@ export const siteMapState = atom<SiteMap>({
                 },
                 {
                     title_KO: "교육 측정",
-                    title_EN: "Education Measurement",
+                    title_EN: "Education Edu_measurement",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/major/measurement",
                 },
                 {
                     title_KO: "교육 평가",
-                    title_EN: "Education Evaluation",
+                    title_EN: "Education Edu_evaluation",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/major/evaluation",
@@ -167,7 +167,7 @@ export const siteMapState = atom<SiteMap>({
                 },
                 {
                     title_KO: "오픈 데이터",
-                    title_EN: "Open Data",
+                    title_EN: "Open_data Data",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/data/open",
@@ -203,7 +203,7 @@ export const siteMapState = atom<SiteMap>({
                 },
                 {
                     title_KO: "행사 소식",
-                    title_EN: "Event News",
+                    title_EN: "Event_news News",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/notice/event",
