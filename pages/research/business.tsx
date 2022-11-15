@@ -1,7 +1,7 @@
 import React, { createContext, Dispatch, useState } from "react";
 import ProgressResearchCard from "../../src/components/research/ProgressResearchCard";
 import useFirebase from "../../src/hooks/useFirebase";
-import {  Project } from "../../typing";
+import { Project } from "../../typing";
 import CompletedResearchCard from "../../src/components/research/CompletedResearchCard";
 import { useRouter } from "next/router";
 import useAuth from "../../src/hooks/useAuth";
@@ -106,7 +106,7 @@ function Business() {
                               const project = snapshot.data();
                               if (project.completed) {
                                   return (
-                                      <CompletedResearchCard
+                                      <ProgressResearchCard
                                           key={snapshot.id}
                                           docID={snapshot.id}
                                           project={project}
