@@ -5,32 +5,28 @@ import HorizontalRule from "../../src/components/common/HorizontalRule";
 function Center_history() {
     return (
         <div>
-
-
             {/*2022년*/}
             <HistoryCard
                 year={2022}
                 contents={[
-                    { month: 10, history: "연혁을 입력해주세요" },
-                    { month: 8, history: "연혁을 입력해주세요" },
+                    {
+                        month: 10,
+                        history:
+                            "소프트웨어중심대학사업 지원 사범대학 “인공지능 활용 교육 활성화 프로그램” 운영 연구소 선정",
+                    },
+                    {
+                        month: 5,
+                        history:
+                            "사범대생을 위한 빅데이터 현장 전문가 특강 개최(GMAC 임황규 박사)",
+                    },
+                    {
+                        month: 3,
+                        history:
+                            "사범대학 교육연구소 부설 “교육빅데이터응용연구센터” 설립",
+                    },
                 ]}
             />
             <HorizontalRule />
-            <HistoryCard
-                year={2021}
-                contents={[
-                    { month: 8, history: "연혁을 입력해주세요" },
-                    { month: 6, history: "연혁을 입력해주세요" },
-                ]}
-            />
-            <HorizontalRule />
-            <HistoryCard
-                year={2021}
-                contents={[
-                    { month: 12, history: "연혁을 입력해주세요" },
-                    { month: 3, history: "연혁을 입력해주세요" },
-                ]}
-            />
         </div>
     );
 }

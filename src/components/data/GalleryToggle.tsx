@@ -11,6 +11,7 @@ import { Card } from "../../../typing";
 import Image from "next/image";
 import { GalleryCancelButton } from "./GalleryButton";
 import { GalleryContext } from "./GalleryMain";
+import moment from "moment";
 
 interface Inputs {
     title: string; // 자료명
@@ -24,7 +25,6 @@ interface Props {
 }
 
 function GalleryToggle({ card }: Props) {
-    const moment = require("moment");
     const today = moment();
     const { collectionRef, selectedDocId, selectedCard, setIsEditing } =
         useContext(GalleryContext);
@@ -95,7 +95,7 @@ function GalleryToggle({ card }: Props) {
                     addMutation.mutate({
                         title: data.title,
                         isBanner: data.isBanner,
-                        createdAt: data.createdAt,
+                        createdAt: today.format("YYYYMMDDHHmmss"),
                         imgUrl: downloadURL,
                         card: card,
                     });
@@ -217,23 +217,6 @@ function GalleryToggle({ card }: Props) {
                                 {...register("title", { required: true })}
                             />
                         </div>
-
-                        {selectedCard ? (
-                            <label className='w-full border border-gray-700 text-center'>
-                                {selectedCard.createdAt}
-                            </label>
-                        ) : (
-                            <label>
-                                <input
-                                    className=' w-full border border-gray-700 text-center'
-                                    type='date'
-                                    defaultValue={today.format("YYYY-MM-DD")}
-                                    {...register("createdAt", {
-                                        required: !selectedCard,
-                                    })}
-                                />
-                            </label>
-                        )}
 
                         <label className='flex space-x-2'>
                             <a>메인페이지 배너</a>
