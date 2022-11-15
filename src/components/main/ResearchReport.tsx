@@ -1,4 +1,3 @@
-
 import React, { createContext } from "react";
 
 import { PlusIcon } from "@heroicons/react/24/outline";
@@ -40,9 +39,9 @@ function ResearchReport() {
 
     return (
         <ReportContext.Provider value={value}>
-            <div className='-mt-[5.5%] flex h-[250px]  w-[100%] flex-col items-center justify-center xs:h-[300px] md:h-[600px] lg:h-[650px] desktop:h-[700px]'>
-                <div className='relative  flex h-full w-4/5 flex-col bg-white px-4 pt-1 pb-4 md:px-6 md:pt-1.5 md:pb-7 lg:px-8 lg:pt-3 lg:pb-12 desktop:px-16 desktop:pt-6 desktop:pb-20'>
-                    <h1 className='mb-2 flex h-[20%] items-center text-lg font-semibold xs:text-xl md:text-2xl lg:text-3xl desktop:text-4xl'>
+            <div className=' -mt-[5.5%] flex h-[250px]  w-[100%] flex-col items-center justify-center xs:h-[300px] md:h-[500px] lg:h-[650px] desktop:h-[800px]'>
+                <div className=' relative flex  h-full w-4/5 flex-col gap-y-0 bg-white px-4 pt-1 pb-4 md:gap-y-8 md:px-6 md:pt-1.5 md:pb-7 lg:px-8 lg:pt-3 lg:pb-12 desktop:px-16 desktop:pt-6 desktop:pb-20'>
+                    <h1 className='mb-2 flex h-[50px] items-center text-lg font-semibold xs:h-[60px] xs:text-xl md:h-[5%] md:text-2xl lg:text-3xl  desktop:text-4xl'>
                         <span className='text-PRIMARY_COLOR-600'>
                             최신 연구
                         </span>
@@ -54,7 +53,7 @@ function ResearchReport() {
                             </div>
                         </Link>
                     </h1>
-                    <div className='flex flex-1 flex-col justify-start md:flex-row md:justify-around '>
+                    <div className='flex h-[200px] flex-1 flex-col justify-around  xs:h-[24opx] md:h-[400px] md:flex-row desktop:h-[640px] '>
                         <ReportCard />
                     </div>
                 </div>
