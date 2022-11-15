@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Bars3CenterLeftIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,15 +9,35 @@ import logo_EN from "../../../../public/images/logo/logo_EN.png";
 import { data, info, major, notice, research } from "../../../utils/Utils";
 import MobileHeader from "./MobileHeader";
 import i18next from "../../../../public/locales/i18n";
+import {useRecoilState} from "recoil";
+import {languageState} from "../../../atoms/languageAtom";
 
 function Header() {
     const { user, logout } = useAuth();
     const [openHeader, setOpenHeader] = useState(false);
-    const [isEnglish, setLanguage] = useState(false);
+    const [isEnglish, setIsEnglish] = useRecoilState(languageState);
     const changeLanguage = (lang: string) => {
         i18next.changeLanguage(lang);
-        setLanguage(!isEnglish);
+        // sessionStorage.clear()
+// x        sessionStorage.setItem("isEnglish", isEnglish.toString())
     };
+
+    useEffect(() => {
+        sessionStorage.setItem("isEnglish", isEnglish.toString());
+    }, [isEnglish]);
+
+    useEffect(() => {
+        if (sessionStorage.getItem("isEnglish") === "true") {
+            // setIsEnglish(true);
+            i18next.changeLanguage("en");
+        } else if (sessionStorage.getItem("isEnglish") === "false") {
+            i18next.changeLanguage("ko");
+            // setIsEnglish(false);
+        }
+        
+        console.log("너 출력되지마")
+        
+    }, []);
 
     return (
         <>
@@ -63,18 +83,20 @@ function Header() {
                             </a>
                             {isEnglish ? (
                                 <button
-                                    className='fonts mr-5'
+                                    className='fonts mr-5 hover:scale-110'
                                     onClick={() => {
                                         changeLanguage("ko");
+                                        setIsEnglish(false);
                                     }}
                                 >
                                     한글(KO)
                                 </button>
                             ) : (
                                 <button
-                                    className='fonts mr-5'
+                                    className='fonts mr-5 hover:scale-110'
                                     onClick={() => {
                                         changeLanguage("en");
+                                        setIsEnglish(true);
                                     }}
                                 >
                                     영문(EN)

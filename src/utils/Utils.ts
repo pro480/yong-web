@@ -1,5 +1,6 @@
 
 export function getFirstDepthTitle_KO(path:string){
+
     switch (path){
         case "info":
             return "센터소개"
@@ -191,6 +192,7 @@ export function getThirdDepthTitle_KO(path:string){
 
 
 export const info = {
+
     title_KO: "센터 소개",
     title_EN: "Center Info",
     description: "메뉴에 대한 설명을 써주세요",

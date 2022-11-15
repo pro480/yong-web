@@ -52,7 +52,7 @@ function CenterLeaderInfo() {
                                     href='mailto:yong21c@gmail.com'
                                     className='ml-3.5 hover:underline hover:underline-offset-[1px] xs:hover:underline-offset-2 md:ml-4  md:hover:underline-offset-4 lg:ml-0'
                                 >
-                                    yong21c@gmail.com
+                                    yong21c @ gmail.com
                                 </a>
                             </li>
                         </ul>
