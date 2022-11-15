@@ -43,7 +43,7 @@ function SideBarMenu({ subMenu }: Props) {
                     </div>
                 </Link>
             )}
-            <span className='flex w-full border-b'></span>
+            <span className='flex w-full border-t'></span>
 
             {/*사이트 바 메뉴 하위*/}
             {isOpen && (
