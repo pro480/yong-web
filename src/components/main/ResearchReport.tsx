@@ -12,6 +12,7 @@ import {
     QuerySnapshot,
 } from "firebase/firestore";
 import { UseQueryResult } from "react-query";
+import {Query} from "@firebase/firestore";
 
 interface ReportContextProps {
     researchList: QueryDocumentSnapshot<ResearchReport>[] | undefined;

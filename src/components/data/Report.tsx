@@ -12,6 +12,7 @@ import {
 import useAuth from "../../hooks/useAuth";
 import { ReportAddButton, ReportPageButton } from "./ReportButtons";
 import ReportToggle from "./ReportToggle";
+import {Query} from "@firebase/firestore";
 
 interface ReportContextProps {
     researchList: QueryDocumentSnapshot<ResearchReport>[] | undefined;

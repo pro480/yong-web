@@ -2,7 +2,7 @@ import {
     collection,
     deleteDoc,
     doc,
-    DocumentData, query,
+    DocumentData,
     QueryDocumentSnapshot,
     SnapshotOptions,
     WithFieldValue,
@@ -10,7 +10,10 @@ import {
 import { db } from "../../firebase";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 
-export default function useFirebase<T>(path: string, queryKey: (string | boolean)[]) {
+export default function useFirebase<T>(
+    path: string,
+    queryKey: (string | boolean)[]
+) {
     const converter = {
         toFirestore(data: WithFieldValue<T>): DocumentData {
             return data as DocumentData;
@@ -21,7 +24,7 @@ export default function useFirebase<T>(path: string, queryKey: (string | boolean
         ) => snap.data(options) as T,
     };
 
-    const collectionRef = query(collection(db, path).withConverter<T>(converter));
+    const collectionRef = collection(db, path).withConverter<T>(converter);
 
     const collectionQuery = useFirestoreQuery<T>([...queryKey], collectionRef, {
         subscribe: true,

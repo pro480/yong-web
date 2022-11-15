@@ -46,7 +46,7 @@ function ProjectToggle() {
     });
 
     // firebase members 컬렉션에 문서 추가하기 위한 작업
-    // @ts-ignore
+
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     // firebase members 컬렉션에 있는 특정 문서를 수정하기 위한 작업
     const updateMutation = useFirestoreDocumentMutation(

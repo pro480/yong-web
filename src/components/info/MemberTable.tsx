@@ -12,7 +12,7 @@ import MemberTableBody from "./MemberTableBody";
 import { UseQueryResult } from "react-query";
 import {
     CollectionReference,
-    FirestoreError,
+    FirestoreError, Query,
     QueryDocumentSnapshot,
     QuerySnapshot,
 } from "@firebase/firestore";

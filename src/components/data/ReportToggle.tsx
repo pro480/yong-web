@@ -23,6 +23,7 @@ export default function ReportToggle() {
     const { register, handleSubmit } = useForm<Inputs>();
     const { collectionRef, setIsEditing, selectedDocId, selectedResearch } =
         useContext(ReportContext);
+
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
         doc(collection(db, "researchReport"), `${selectedDocId}`),

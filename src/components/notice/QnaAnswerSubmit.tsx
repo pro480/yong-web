@@ -10,6 +10,7 @@ export default function QnaAnswerSubmit({ docId }: { docId: string }) {
     const { collectionRef } = useContext(QnaContext);
 
     const onValid = async (data: { answer: string }) => {
+
         const submitRef = doc(collectionRef, docId);
         const docData = {
             answer: data.answer,

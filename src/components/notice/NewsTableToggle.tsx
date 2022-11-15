@@ -54,6 +54,7 @@ function NewsTableToggle({ news }: Props) {
         }
     }, [selectedNews]);
 
+
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
         doc(collection(db, news), `${selectedDocId}`),
