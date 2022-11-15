@@ -12,7 +12,7 @@ import useFirebase from "../../hooks/useFirebase";
 import { UseQueryResult } from "react-query";
 import {
     CollectionReference,
-    FirestoreError,
+    FirestoreError, Query,
     QueryDocumentSnapshot,
     QuerySnapshot,
 } from "@firebase/firestore";
@@ -26,7 +26,7 @@ interface MaterialTableContextProps<M> {
     isEditing: boolean;
     setIsEditing: Dispatch<React.SetStateAction<boolean>>;
     selectedMaterial: M | null;
-    collectionRef: CollectionReference<M>;
+    collectionRef: CollectionReference<M> | Query<M>;
     collectionQuery: UseQueryResult<QuerySnapshot<M>, FirestoreError>;
     selectedDocId: string | null;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
@@ -34,7 +34,6 @@ interface MaterialTableContextProps<M> {
     deleteDocument: (docID: string) => void;
     selectedIndex: number;
     setSelectedIndex: Dispatch<React.SetStateAction<number>>;
-
     pageNumber: number | null;
     setPageNumber: Dispatch<React.SetStateAction<number | null>>;
     materialList:

@@ -56,6 +56,7 @@ function MaterialTableToggle({ material }: Props) {
         }
     }, [selectedMaterial]);
 
+    // @ts-ignore
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
         doc(collection(db, material), `${selectedDocId}`),

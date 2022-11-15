@@ -12,7 +12,7 @@ import MemberTableBody from "./MemberTableBody";
 import { UseQueryResult } from "react-query";
 import {
     CollectionReference,
-    FirestoreError,
+    FirestoreError, Query,
     QueryDocumentSnapshot,
     QuerySnapshot,
 } from "@firebase/firestore";
@@ -32,7 +32,7 @@ interface MemberTableContextProps {
     selectedMember: ExternalMember | null;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
     selectedDocId: string | null;
-    collectionRef: CollectionReference<ExternalMember>;
+    collectionRef: CollectionReference<ExternalMember> | Query<ExternalMember>;
     deleteDocument: (docID: string) => void;
     selectedIndex: number;
     setSelectedIndex: Dispatch<React.SetStateAction<number>>;

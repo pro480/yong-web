@@ -8,7 +8,7 @@ import { Card, GalleryCard } from "../../../typing";
 import { UseQueryResult } from "react-query";
 import {
     CollectionReference,
-    FirestoreError,
+    FirestoreError, Query,
     QueryDocumentSnapshot,
     QuerySnapshot,
 } from "@firebase/firestore";
@@ -29,7 +29,7 @@ interface GalleryContextProps {
     collectionQuery: UseQueryResult<QuerySnapshot<GalleryCard>, FirestoreError>;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>; //게시물의 document ID
     selectedDocId: string | null;
-    collectionRef: CollectionReference<GalleryCard>;
+    collectionRef: CollectionReference<GalleryCard> | Query<GalleryCard>;
     deleteDocument: (docID: string) => void;
     selectedIndex: number;
     setSelectedIndex: Dispatch<React.SetStateAction<number>>;
