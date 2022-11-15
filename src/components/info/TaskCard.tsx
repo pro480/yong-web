@@ -1,6 +1,5 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import HorizontalRule from "../common/HorizontalRule";
 
 interface Props {
     image: StaticImageData;

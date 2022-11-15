@@ -1,5 +1,4 @@
 import React from "react";
-import PageTitle from "../../../src/components/common/Layout/PageTitle";
 import NameCard from "../../../src/components/info/NameCard";
 import { InternalMember } from "../../../typing";
 import useFirebase from "../../../src/hooks/useFirebase";

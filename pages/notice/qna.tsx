@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, useEffect, useState } from "react";
+import React, { createContext, Dispatch, useState } from "react";
 import useFirebase from "../../src/hooks/useFirebase";
 import { QNA } from "../../typing";
 import {

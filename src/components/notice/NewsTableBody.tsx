@@ -1,7 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { ImMail4, ImFileText2 } from "react-icons/im";
+import React from "react";
 import { News, CenterNews, EventNews } from "../../../typing";
-import { NewsTableContext } from "./NewsTable";
 import useAuth from "../../hooks/useAuth";
 import {
     NewsTableDeleteButton,

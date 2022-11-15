@@ -1,5 +1,4 @@
 import React from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
 import HorizontalRule from "../../src/components/common/HorizontalRule";
 import TaskCard from "../../src/components/info/TaskCard";
 import dummyImage from "../../public/dummy.png";

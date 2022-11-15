@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Material, PaperMaterial, StudyMaterial } from "../../../typing";
+import { Material } from "../../../typing";
 import {
     useFirestoreCollectionMutation,
     useFirestoreDocumentMutation,
@@ -10,11 +10,7 @@ import { db, storage } from "../../../firebase";
 import { MaterialTableContext } from "./MaterialTable";
 import { MaterialTableCancelButton } from "./MaterialTableButton";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import { UseMutationResult } from "react-query";
 import moment from "moment";
-import { fill } from "lodash";
-import { ImFileText2 } from "react-icons/im";
-import data from "../../../pages/data/paper";
 
 interface Inputs {
     title: string; // 자료명

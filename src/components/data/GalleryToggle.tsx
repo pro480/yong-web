@@ -11,7 +11,6 @@ import { Card } from "../../../typing";
 import Image from "next/image";
 import { GalleryCancelButton } from "./GalleryButton";
 import { GalleryContext } from "./GalleryMain";
-import moment from "moment";
 
 interface Inputs {
     title: string; // 자료명
@@ -235,7 +234,7 @@ function GalleryToggle({ card }: Props) {
                                     type='date'
                                     defaultValue={today.format("YYYY-MM-DD")}
                                     {...register("createdAt", {
-                                        required: selectedCard ? false : true,
+                                        required: !selectedCard,
                                     })}
                                 />
                             </label>
