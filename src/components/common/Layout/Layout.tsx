@@ -32,6 +32,7 @@ function Layout({ children }: Props) {
                 </div>
             </main>
             <Footer />
+
         </div>
     );
 }
