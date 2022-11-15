@@ -62,6 +62,8 @@ export function getSecondDepthTitle_EN(path:string){
             return "research and business"
         case "mou_list":
             return "MOU institution"
+        case "location":
+            return "Location"
         default:
             return "목록에 없는 케이스입니다"
     }
@@ -111,6 +113,8 @@ export function getSecondDepthTitle_KO(path:string){
             return "연구 및 사업"
         case "mou_list":
             return "MOU 기관"
+        case "location":
+            return "오시는 길"
         default:
             return "목록에 없는 케이스입니다"
     }
@@ -159,6 +163,8 @@ export function getSecondDepthDescription_KO(path:string){
         case "business":
             return "메뉴에 대한 설명을 입력해주세요"
         case "mou_list":
+            return "메뉴에 대한 설명을 입력해주세요"
+        case "location":
             return "메뉴에 대한 설명을 입력해주세요"
         default:
             return "목록에 없는 케이스입니다"
@@ -405,4 +411,20 @@ export const notice = {
             href: "/notice/recruit",
         },
     ],
+}
+
+export const location = {
+    title_KO: "오시는 길",
+    title_EN: "Location",
+    description: "메뉴에 대한 설명을 써주세요",
+    href: "/location/location",
+    subMenu: [
+        {
+            title_KO: "센터 소식",
+            title_EN: "Center News",
+            description: "메뉴에 대한 설명을 써주세요",
+            subMenu: [],
+            href: "/notice/center_news",
+        },
+        ]
 }

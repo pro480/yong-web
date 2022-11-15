@@ -2,36 +2,40 @@ import React from "react";
 import Image from "next/image";
 import { BuildingOfficeIcon } from "@heroicons/react/24/solid";
 import { TruckIcon } from "@heroicons/react/24/solid";
-import LocationBox from "../src/components/location/location_box";
+import LocationBox from "../../src/components/location/location_box";
 
 function Location() {
     return (
-        <div>
-            <div className='flex flex-col space-y-16 md:space-y-28'>
-                <div className='relative h-96 w-full'>
-                    <Image
-                        src='https://bit.ly/3X0hGgF'
-                        alt='센터 오시는 길'
-                        layout='fill'
-                        objectFit='contain'
-                    />
-                </div>
-                <div className='flex flex-col space-y-5 font-bold'>
-                    <div className='mb-5 flex space-x-5 border-b-8 pb-3 text-PRIMARY_COLOR-700'>
-                        <BuildingOfficeIcon className='bg h-full w-10' />
-                        <a className='text-3xl md:text-4xl'>상세 주소</a>
+            <div className='flex flex-col gap-y-12 md:space-y-8'>
+                <div className='flex flex-col gap-y-6 md:flex-row  items-center'>
+                    <div className='relative h-64 sm:h-96 sm:flex w-4/5'>
+                        <Image
+                            src='https://bit.ly/3X0hGgF'
+                            alt='센터 오시는 길'
+                            layout='fill'
+                            objectFit='contain'
+                        />
                     </div>
 
-                    <div className='flex flex-col space-y-5 text-xl md:text-2xl'>
-                        <span>인천광역시 남구 인하로 100 </span>
-                        <span>
+                    <div className='flex flex-col space-y-5 font-bold w-72 sm:w-3/5'>
+                        <div className='mb-5 flex space-x-5 border-b-8 pb-3 text-PRIMARY_COLOR-700'>
+                            <BuildingOfficeIcon className='bg h-full w-10' />
+                            <a className='text-3xl md:text-4xl'>상세 주소</a>
+                        </div>
+
+                        <div className='flex flex-col space-y-5 text-xl md:text-2xl'>
+                            <span>인천광역시 남구 인하로 100 </span>
+                            <span>
                             INHA UNIVERSITY, 100 Inha-ro, Michuhol-gu, Incheon
                             22212, KOREA
                         </span>
+                        </div>
                     </div>
                 </div>
 
-                <div className='flex flex-col space-y-16 font-bold'>
+
+
+                <div className='flex flex-col sm:space-y-8 font-bold'>
                     <div className='mb-5 flex space-x-5 border-b-8 pb-3 text-PRIMARY_COLOR-700'>
                         <TruckIcon className='bg h-full w-10' />
                         <a className='mb-5 text-3xl md:text-4xl'>
@@ -102,7 +106,6 @@ function Location() {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 
