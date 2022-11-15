@@ -130,6 +130,7 @@ export interface ResearchReport {
     imgUrl: string;
     researcher: string; // 연구자
     title: string; // 제목
+    type: string;
     year: string; //발행년도
 }
 

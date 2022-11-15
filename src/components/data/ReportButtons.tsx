@@ -76,7 +76,7 @@ export function ReportPageButton() {
     let buttonOffset = Math.floor((Number(pageNumber) - 1) / 5) * 5 + 1;
 
     return (
-        <div className=' m-5 flex items-center justify-center p-10'>
+        <div className=' m-5 flex items-center justify-center'>
             <ul className='inline-flex items-center -space-x-px '>
                 <li>
                     <button
