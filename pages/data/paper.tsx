@@ -5,8 +5,6 @@ import MaterialTable from "../../src/components/data/MaterialTable";
 function Paper() {
     const [tab, setTab] = useState("thesis");
 
-
-
     return (
         <div>
             {/*카테고리*/}
