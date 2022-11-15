@@ -45,7 +45,7 @@ function HeaderMenu({ subMap }: Props) {
                 onMouseOver={showMenu}
                 onMouseOut={closeMenu}
                 className={`absolute left-0 z-10 flex overflow-hidden w-full justify-between border-b-PRIMARY_COLOR-500 ${
-                    dropdownOpen ? "max-h-screen min-h-[300px] border-b-2" : "max-h-0"
+                    dropdownOpen ? "max-h-screen min-h-[350px] border-b-2" : "max-h-0"
                 }`}
             >
                 {/* 드랍다운 좌측 설명 wrap*/}

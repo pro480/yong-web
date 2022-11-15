@@ -96,29 +96,34 @@ function ProgressResearchCard({ project, docID }: Props) {
     }
 
     return (
-        <div className='relative flex h-52 cursor-pointer border-b  border-PRIMARY_COLOR-500  py-8 pr-8 first:border-t hover:bg-gray-200'>
-            <div className='flex h-full w-40 flex-col items-center justify-evenly'>
-                <div className='text-5xl font-bold'>
+        <div className='relative flex h-32 cursor-pointer items-center border-b border-PRIMARY_COLOR-500 py-4 pr-8 first:border-t hover:bg-gray-200 sm:h-40 sm:py-6 md:h-44 xl:h-48 xl:py-7 desktop:h-52 desktop:py-8'>
+            <div className='flex h-full w-16 flex-col items-center justify-center gap-y-2 xs:w-24 md:w-32 xl:gap-y-4 desktop:w-40'>
+                <div className='text-base font-bold sm:text-2xl desktop:text-4xl'>
                     {moment(project.startedAt).format("DD")}
                 </div>
-                <div className='text-xl'>
+                <div className='text-sm sm:text-base desktop:text-xl'>
                     {moment(project.startedAt).format("YYYY.MM")}
                 </div>
             </div>
-            <div className='flex flex-1 flex-col gap-y-2'>
-                <div className='flex items-center gap-x-2'>
+            <div className='flex h-full flex-1 flex-col gap-y-1 desktop:gap-y-2'>
+                <div className='flex items-center text-xs sm:text-base xl:text-lg'>
                     <span className='flex items-center text-PRIMARY_COLOR-500'>
                         수탁 기관
                     </span>
-                    <div className='h-4 border-r-2 border-PRIMARY_COLOR-500'></div>
+                    <div className='mx-2 h-3 border-r-2 border-PRIMARY_COLOR-500'></div>
                     {project.consignment.map((consignment, index) => (
                         <div key={index} className='flex items-center'>
+                            {index > 0 && <span>,&nbsp;</span>}
                             {consignment}
                         </div>
                     ))}
                 </div>
-                <div className='text-2xl'>{project.title_KO}</div>
-                <div className='overflow-hidden'>{project.description}</div>
+                <div className='text-base sm:text-xl desktop:text-2xl'>
+                    {project.title_KO}
+                </div>
+                <div className='overflow-hidden text-sm'>
+                    {project.description}
+                </div>
             </div>
             {user && (
                 <div className='flex flex-col gap-y-2'>
