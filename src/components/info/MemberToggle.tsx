@@ -54,6 +54,7 @@ function MemberToggle({ team }: Props) {
     });
 
     // firebase members 컬렉션에 문서 추가하기 위한 작업
+    // @ts-ignore
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     // firebase members 컬렉션에 있는 특정 문서를 수정하기 위한 작업
     const updateMutation = useFirestoreDocumentMutation(
@@ -75,7 +76,7 @@ function MemberToggle({ team }: Props) {
         let file = data.imageFile[0];
         const storageRef = ref(
             storage,
-            data.team ? "images/internalMembers/" : "images/alumni/" + file.name
+            data.team ? "images/internalMembers/"+ file.name : "images/alumni/" + file.name
         );
         const uploadImage = uploadBytesResumable(storageRef, file);
 

@@ -16,7 +16,6 @@ interface Props {
 }
 
 interface Inputs {
-    endedAt: string;
     imageFile?: File[];
 }
 
@@ -96,18 +95,12 @@ function ProgressResearchCard({ project, docID }: Props) {
 
     return (
         <div className='relative flex h-32 cursor-pointer items-center border-b border-PRIMARY_COLOR-500 py-4 pr-8 first:border-t hover:bg-gray-200 sm:h-40 sm:py-6 md:h-44 xl:h-48 xl:py-7 desktop:h-52 desktop:py-8'>
-            <div className='flex h-full w-32 flex-col items-center justify-evenly'>
-                <div className='text-3xl font-bold'>
-                    {moment(project.startedAt).format("DD")}
-                </div>
-                <div className='text-base'>
+            <div className='flex h-full w-32 flex-col items-center justify-center gap-y-1'>
+                <div className='text-xl font-bold'>
                     {moment(project.startedAt).format("YYYY.MM")}
                 </div>
-                <span className='rotate-90'>~</span>
-                <div className='text-3xl font-bold'>
-                    {moment(project.endedAt).format("DD")}
-                </div>
-                <div className='text-base'>
+                <span className='text-3sxl rotate-90'>~</span>
+                <div className='text-xl font-bold'>
                     {moment(project.endedAt).format("YYYY.MM")}
                 </div>
             </div>
