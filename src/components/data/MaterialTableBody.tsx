@@ -1,14 +1,14 @@
-import React, { useContext, useEffect } from "react";
-import { ImMail4, ImFileText2 } from "react-icons/im";
+import React from "react";
+import { ImFileText2 } from "react-icons/im";
 import { Material, PaperMaterial, StudyMaterial } from "../../../typing";
-import { MaterialTableContext } from "./MaterialTable";
 import useAuth from "../../hooks/useAuth";
 import {
     MaterialTableDeleteButton,
     MaterialTableUpdateButton,
 } from "./MaterialTableButton";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
-import MoreInfo from "./xStudyMaterialTooltips"; // using tooltips
+
+// using tooltips
 
 interface Props<M> {
     material: Material;

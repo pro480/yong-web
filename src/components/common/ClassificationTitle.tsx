@@ -1,5 +1,4 @@
 import React from "react";
-import HorizontalRule from "./HorizontalRule";
 
 interface Props {
     title: string;

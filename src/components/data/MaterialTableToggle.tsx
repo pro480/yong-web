@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Material, PaperMaterial, StudyMaterial } from "../../../typing";
+import { Material } from "../../../typing";
 import {
     useFirestoreCollectionMutation,
     useFirestoreDocumentMutation,
 } from "@react-query-firebase/firestore";
-import { collection, doc, } from "@firebase/firestore";
+import { collection, doc } from "@firebase/firestore";
 import { db, storage } from "../../../firebase";
 import { MaterialTableContext } from "./MaterialTable";
 import { MaterialTableCancelButton } from "./MaterialTableButton";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import { UseMutationResult } from "react-query";
 import moment from "moment";
 import { fill } from "lodash";
 import { ImFileText2 } from "react-icons/im";
 import data from "../../../pages/data/paper";
 import { IconButton } from "@material-tailwind/react";
+
 
 interface Inputs {
     title: string; // 자료명
@@ -30,9 +30,20 @@ interface Props {
 
 function MaterialTableToggle({ material }: Props) {
     const today = moment();
-    const { selectedMaterial, collectionRef, selectedDocId, selectedIndex, setIsEditing } = useContext(MaterialTableContext);
+    const {
+        selectedMaterial,
+        collectionRef,
+        selectedDocId,
+        selectedIndex,
+        setIsEditing,
+    } = useContext(MaterialTableContext);
     const [editFile, setEditFile] = useState(false);
-    const { register, reset, handleSubmit, formState: {errors} } = useForm<Inputs>({
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<Inputs>({
         defaultValues: useMemo(() => {
             if (selectedMaterial) {
                 return selectedMaterial;
@@ -48,13 +59,7 @@ function MaterialTableToggle({ material }: Props) {
 
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
-        doc(
-            collection(
-                db, 
-                material
-            ), 
-            `${selectedDocId}`
-        ),
+        doc(collection(db, material), `${selectedDocId}`),
         { merge: true }
     );
 
@@ -65,8 +70,10 @@ function MaterialTableToggle({ material }: Props) {
     function uploadFileAndAddDoc(data: Inputs, mutation: any) {
         let file = data.materialFile[0];
         const storageRef = ref(
-            storage, 
-            (material === "학습 자료") ? "documents/studyMaterials/" + file.name : "documents/paperMaterials/" + file.name
+            storage,
+            material === "학습 자료"
+                ? "documents/studyMaterials/" + file.name
+                : "documents/paperMaterials/" + file.name
         );
         const uploadFile = uploadBytesResumable(storageRef, file);
 
@@ -113,7 +120,7 @@ function MaterialTableToggle({ material }: Props) {
                 setIsEditing(false);
             }
         );
-    };
+    }
 
     const onUpdateMaterial: SubmitHandler<Inputs> = (data) => {
         if (editFile) {
@@ -137,7 +144,7 @@ function MaterialTableToggle({ material }: Props) {
             }
         >
             {/* input */}
-            <div className="flex items-center justify-around h-10">
+            <div className='flex h-10 items-center justify-around'>
                 <div className='w-[5%] text-center'>{selectedIndex + 1}</div>
                 <label className='w-[45%] p-1'>
                     <input
@@ -157,17 +164,16 @@ function MaterialTableToggle({ material }: Props) {
                         })}
                     />
                 </label>
-
                 {selectedMaterial?(
                     <label className='w-[15%] text-right'>
                         {selectedMaterial.date.substring(0,10)}
                     </label>
                 ) : (
                     <label className='w-[15%] text-right'>
+
                         {today.format("YYYY-MM-DD")}
                     </label>
                 )}
-
                 {selectedMaterial && !editFile? (     
                     <div className='w-[20%] flex items-center'>
                         <label className='flex h-12 w-full items-left justify-center self-center'>
@@ -209,3 +215,4 @@ export default MaterialTableToggle;
 // 파일 추가할때 첨부파일이랑 제출/취소버튼 겹침
 // 취소버튼은 헤더에도 포함된 기능이므로 중복된 기능 => 제거
 // 제출버튼은 조건이 모두 만족되면 visible하게 설정해보기!
+

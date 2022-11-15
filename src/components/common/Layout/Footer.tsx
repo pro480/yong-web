@@ -31,7 +31,7 @@ function Footer() {
                         {/*로고 사이즈*/}
                         <div className='relative block h-full w-32'>
                             <Image
-                                src='/images/logo/logo_mini.png'
+                                src='/images/logo/logo_EN.png'
                                 layout='fill'
                                 objectFit='contain'
                                 objectPosition='center'

@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import {  SubMenu } from "../../../../typing";
-import business from "../../../../pages/research/business";
 import {getSecondDepthTitle_EN} from "../../../utils/Utils";
 
 function Banner() {

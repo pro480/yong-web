@@ -6,9 +6,6 @@ import {
     ArrowDownCircleIcon,
     ArrowUpCircleIcon,
 } from "@heroicons/react/24/outline";
-import Image from "next/image";
-import { useRecoilValue } from "recoil";
-import { siteMapState } from "../../../atoms/sitemapAtom";
 import {data, info, major, notice, research} from "../../../utils/Utils";
 
 interface Props {}

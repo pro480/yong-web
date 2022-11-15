@@ -1,8 +1,5 @@
 import React, { useContext } from "react";
-import useAuth from "../../hooks/useAuth";
-import { MemberTableContext } from "./MemberTable";
 import {
-    ExternalMember,
     GraduateMember,
     InternalMember,
 } from "../../../typing";
