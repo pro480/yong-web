@@ -11,6 +11,8 @@ export function getFirstDepthTitle_KO(path:string){
             return "자료실"
         case "notice":
             return "공지사항"
+        case "location":
+            return "오시는 길"
         default :
             return "목록에 없는 케이스입니다"
     }
