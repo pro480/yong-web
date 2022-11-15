@@ -1,17 +1,12 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ProjectContext } from "../../../pages/research/business";
-import { Course, Team } from "../../../typing";
 import {
     useFirestoreCollectionMutation,
     useFirestoreDocumentMutation,
 } from "@react-query-firebase/firestore";
 import { collection, doc } from "@firebase/firestore";
-import { db, storage } from "../../../firebase";
-import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import Image from "next/image";
-import { MemberCancelButton } from "../info/MemberButton";
-import moment from "moment/moment";
+import { db } from "../../../firebase";
 
 interface Inputs {
     title_KO: string;

@@ -1,10 +1,8 @@
 import React from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
 import MemberList from "../../src/components/common/MemberList";
 import { InternalMember, Team } from "../../typing";
 import useFirebase from "../../src/hooks/useFirebase";
 import ClassificationTitle from "../../src/components/common/ClassificationTitle";
-import { MemberAddButton } from "../../src/components/info/MemberButton";
 import useAuth from "../../src/hooks/useAuth";
 
 function Center_member() {

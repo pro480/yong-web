@@ -1,5 +1,4 @@
 import React from "react";
-import { ClockIcon } from "@heroicons/react/24/outline";
 import NewsCard from "./NewsCard";
 
 function MainNews() {

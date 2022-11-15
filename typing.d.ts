@@ -1,5 +1,3 @@
-import { content } from "@material-tailwind/react/types/components/popover";
-
 export interface SubMenu {
     title_KO: string;
     title_EN: string;
