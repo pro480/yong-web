@@ -210,14 +210,7 @@ export const info = {
             href: "/info/main_task",
         },
         {
-            title_KO: "센터 연혁",
-            title_EN: "Center Center_history",
-            description: "메뉴에 대한 설명을 써주세요",
-            subMenu: [],
-            href: "/info/center_history",
-        },
-        {
-            title_KO: "센터 조직(조직도)",
+            title_KO: "센터 조직",
             title_EN: "Center Organization",
             description: "메뉴에 대한 설명을 써주세요",
             href: "/info/organization/org_chart",
@@ -253,6 +246,13 @@ export const info = {
                     href: "/info/organization/engineer",
                 },
             ],
+        },
+        {
+            title_KO: "센터 연혁",
+            title_EN: "Center Center_history",
+            description: "메뉴에 대한 설명을 써주세요",
+            subMenu: [],
+            href: "/info/center_history",
         },
         {
             title_KO: "센터 구성원",

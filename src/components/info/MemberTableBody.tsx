@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { ImMail4 } from "react-icons/im";
 import { ExternalMember, Organization } from "../../../typing";
-import { MemberTableContext } from "./MemberTable";
 import useAuth from "../../hooks/useAuth";
 import {
     MemberTableDeleteButton,

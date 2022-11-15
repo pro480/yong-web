@@ -1,20 +1,21 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Material, PaperMaterial, StudyMaterial } from "../../../typing";
+import { Material } from "../../../typing";
 import {
     useFirestoreCollectionMutation,
     useFirestoreDocumentMutation,
 } from "@react-query-firebase/firestore";
-import { collection, doc, } from "@firebase/firestore";
+import { collection, doc } from "@firebase/firestore";
 import { db, storage } from "../../../firebase";
 import { MaterialTableContext } from "./MaterialTable";
 import { MaterialTableCancelButton } from "./MaterialTableButton";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import { UseMutationResult } from "react-query";
 import moment from "moment";
 import { fill } from "lodash";
 import { ImFileText2 } from "react-icons/im";
 import data from "../../../pages/data/paper";
+import { IconButton } from "@material-tailwind/react";
+
 
 interface Inputs {
     title: string; // 자료명
@@ -29,9 +30,20 @@ interface Props {
 
 function MaterialTableToggle({ material }: Props) {
     const today = moment();
-    const { selectedMaterial, collectionRef, selectedDocId, selectedIndex, setIsEditing } = useContext(MaterialTableContext);
+    const {
+        selectedMaterial,
+        collectionRef,
+        selectedDocId,
+        selectedIndex,
+        setIsEditing,
+    } = useContext(MaterialTableContext);
     const [editFile, setEditFile] = useState(false);
-    const { register, reset, handleSubmit, formState: {errors} } = useForm<Inputs>({
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<Inputs>({
         defaultValues: useMemo(() => {
             if (selectedMaterial) {
                 return selectedMaterial;
@@ -47,13 +59,7 @@ function MaterialTableToggle({ material }: Props) {
 
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
-        doc(
-            collection(
-                db, 
-                material
-            ), 
-            `${selectedDocId}`
-        ),
+        doc(collection(db, material), `${selectedDocId}`),
         { merge: true }
     );
 
@@ -64,8 +70,10 @@ function MaterialTableToggle({ material }: Props) {
     function uploadFileAndAddDoc(data: Inputs, mutation: any) {
         let file = data.materialFile[0];
         const storageRef = ref(
-            storage, 
-            (material === "학습 자료") ? "documents/studyMaterials/" + file.name : "documents/paperMaterials/" + file.name
+            storage,
+            material === "학습 자료"
+                ? "documents/studyMaterials/" + file.name
+                : "documents/paperMaterials/" + file.name
         );
         const uploadFile = uploadBytesResumable(storageRef, file);
 
@@ -112,7 +120,7 @@ function MaterialTableToggle({ material }: Props) {
                 setIsEditing(false);
             }
         );
-    };
+    }
 
     const onUpdateMaterial: SubmitHandler<Inputs> = (data) => {
         if (editFile) {
@@ -128,7 +136,7 @@ function MaterialTableToggle({ material }: Props) {
 
     return (
         <form
-            className='relative flex-col w-full items-center justify-around border-b border-gray-200 bg-GRAY_COLOR-200 '
+            className='relative text-xs sm:text-sm flex-col w-full items-center justify-around border-b border-gray-200 bg-GRAY_COLOR-200 '
             onSubmit={
                 selectedMaterial
                     ? handleSubmit(onUpdateMaterial)
@@ -136,9 +144,9 @@ function MaterialTableToggle({ material }: Props) {
             }
         >
             {/* input */}
-            <div className="flex items-center justify-around h-10">
+            <div className='flex h-10 items-center justify-around'>
                 <div className='w-[5%] text-center'>{selectedIndex + 1}</div>
-                <label className='w-[30%]'>
+                <label className='w-[45%] p-1'>
                     <input
                         className=' w-full border border-gray-700 text-center'
                         placeholder='자료명'
@@ -147,7 +155,7 @@ function MaterialTableToggle({ material }: Props) {
                         })}
                     />
                 </label>
-                <label className='w-[15%]'>
+                <label className='w-[15%] p-1'>
                     <input
                         className='w-full border border-gray-700 text-center'
                         placeholder='작성자'
@@ -156,70 +164,55 @@ function MaterialTableToggle({ material }: Props) {
                         })}
                     />
                 </label>
-
                 {selectedMaterial?(
-                    <label className='w-[15%] text-center'>
+                    <label className='w-[15%] text-right'>
                         {selectedMaterial.date.substring(0,10)}
                     </label>
                 ) : (
-                    /*  input type:data로 받는 방법
-                        <label className='w-[15%]'>
-                            <input
-                                className='w-full'
-                                type='date'
-                                defaultValue={today.format('YYYY-MM-DD')}
-                                {...register("date", { 
-                                    required: selectedMaterial ? false : true 
-                                })}
-                            />
-                        </label>
-                    */
-                    
-                    <label className='w-[15%] text-center'>
+                    <label className='w-[15%] text-right'>
+
                         {today.format("YYYY-MM-DD")}
                     </label>
                 )}
-
                 {selectedMaterial && !editFile? (     
-                    <label className='w-[20%] flex text-center text-xs'>
-                        {/* 파일 아이콘 있는 버전
-                        <a 
-                            className='w-1/2 hover:underline hover:underline-offset-2'
-                            href={selectedMaterial.fileUrl}
-                        >
-                            <ImFileText2 className='ml-2' size={20} />
-                        </a> 
-                        */}
-                        {/* 파일 아이콘 없는 버전 */}
-                        <div className="w-1/2"></div>
-                        <button
-                            className='w-1/2 z-50 border bg-GRAY_COLOR-600 text-sm'
-                            onClick={() => setEditFile(true)}
-                        >
-                            파일 수정
-                        </button>
-                    </label>
-                
-                    
-                ) : (
-                    <label className='w-[20%] flex text-xs'>
-                        <input
-                            className='w-full'
-                            type='file'
-                            {...register("materialFile", { 
-                                required: selectedMaterial ? false : true 
-                            })}
-                        />
-                    </label>
-                )}
+                    <div className='w-[20%] flex items-center'>
+                        <label className='flex h-12 w-full items-left justify-center self-center'>
+                            <IconButton
+                                className='flex self-center hover:underline hover:underline-offset-2 text-black'
+                                onClick={() => setEditFile(true)}>
 
-                <label className='w-15 flex text-xs'>
-                    <input type='submit' className=' border p-1' />
-                    <MaterialTableCancelButton />
-                </label> 
+                                <ImFileText2 className='ml-2' size={20} />
+                            </IconButton>
+                        </label>
+                        <label className='absolute w-15 z-50 hidden lg:flex right-2 text-sm bg-gray-100'>
+                            <input type='submit' className=' border p-1' />
+                            <MaterialTableCancelButton />
+                        </label> 
+                    </div>
+                ) : (
+                    <>
+                        <label className='w-[20%] flex items-center text-right'>
+                            <input
+                                className='w-full text-xs pl-5'
+                                type='file'
+                                {...register("materialFile", { 
+                                    required: selectedMaterial ? false : true 
+                                })}
+                            />
+                            <label className='absolute w-15 hidden lg:flex right-2 text-sm bg-gray-100'>
+                                <input type='submit' className=' border p-1' />
+                            </label> 
+                        </label>
+                    </>                   
+                )}  
             </div>
         </form>
     );
 }
 
 export default MaterialTableToggle;
+
+// 파일 추가할때 첨부파일이랑 제출/취소버튼 겹침
+// 취소버튼은 헤더에도 포함된 기능이므로 중복된 기능 => 제거
+// 제출버튼은 조건이 모두 만족되면 visible하게 설정해보기!
+

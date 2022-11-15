@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React from "react";
 
 import { HomeIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import {
-    data,
     getFirstDepthTitle_KO,
     getSecondDepthDescription_KO,
     getSecondDepthTitle_KO,

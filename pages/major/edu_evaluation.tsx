@@ -7,11 +7,11 @@ function Edu_evaluation() {
         <div>
             <div>
                 <MajorForm
-                    bannertitle='교육 평가'
-                    bannercontex='교육 평가 학과에 대해 소개합니다.'
+                    bannerTitle='교육 평가'
+                    bannerContent='교육 평가 학과에 대해 소개합니다.'
                     image={bannerImage}
-                    introcontex='교육 평가 학과에 대한 설명을 적어주세요'
-                    prospectcontex='교육 평가 학과에 대한 전망을 적어주세요'
+                    introContent='교육 평가 학과에 대한 설명을 적어주세요'
+                    prospectContent='교육 평가 학과에 대한 전망을 적어주세요'
                 />
             </div>
         </div>

@@ -1,14 +1,14 @@
-import React, { useContext, useEffect } from "react";
-import { ImMail4, ImFileText2 } from "react-icons/im";
+import React from "react";
+import { ImFileText2 } from "react-icons/im";
 import { Material, PaperMaterial, StudyMaterial } from "../../../typing";
-import { MaterialTableContext } from "./MaterialTable";
 import useAuth from "../../hooks/useAuth";
 import {
     MaterialTableDeleteButton,
     MaterialTableUpdateButton,
 } from "./MaterialTableButton";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
-import MoreInfo from "./xStudyMaterialTooltips"; // using tooltips
+
+// using tooltips
 
 interface Props<M> {
     material: Material;
@@ -25,25 +25,25 @@ function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({ material, 
                 return (
                     <tr
                         key={docSnapshot.id}
-                        className='border-b text-xs sm:text-sm md:text-base border-gray-200 hover:bg-gray-100'
+                        className='border-b text-xs sm:text-sm border-gray-200 hover:bg-gray-100'
                     >
-                        <td className='py-3 text-center'>{index + 1}</td>
+                        <td className='text-center'>{index + 1}</td>
                         <td className='text-center'>
                             {data.title}
                         </td> 
                         <td className='text-center'>{data.writer}</td>
-                        <td className='text-center'>{data.date.substring(0,10)}</td>
+                        <td className='text-right'>{data.date.substring(0,10)}</td>
                         <td className='relative flex items-center text-center'>
                             <div className='flex h-12 w-full items-center justify-center'>
                                 <a
-                                    className='flex w-fit justify-center self-center hover:underline hover:underline-offset-2'
+                                    className='flex hover:underline hover:underline-offset-2'
                                     href={data.fileUrl}
                                 >
                                     <ImFileText2 className='ml-2' size={20} />
                                 </a>
                             </div>
                             {user && (
-                                <div className='absolute hidden md:flex right-2 gap-x-2 text-sm'>
+                                <div className='absolute w-15 hidden lg:flex right-2 text-sm'>
                                     <MaterialTableUpdateButton
                                         index={index + 1}
                                         data={data}

@@ -1,6 +1,4 @@
 import React from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
-import Banner from "../../src/components/common/Layout/Banner";
 import MaterialTable from "../../src/components/data/MaterialTable";
 
 function Research() {
@@ -12,11 +10,3 @@ function Research() {
 }
 
 export default Research;
-
-/* 학습자료
-    create ✓
-    read   ✓
-    update ✓
-    delete ✓
-    파일 수정관련해서 수정시(no file change)? 일단 현재파일로 설정
-*/ 
