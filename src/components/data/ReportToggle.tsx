@@ -12,7 +12,6 @@ import { ReportContext } from "./Report";
 
 interface Inputs {
     title: string; // 자료명
-    type: string;
     researcher: string;
     year: string;
     createdAt: string;
@@ -110,7 +109,6 @@ export default function ReportToggle() {
                             imgUrl: img,
                             researcher: data.researcher, // 연구자
                             title: data.title, // 제목
-                            type: data.type,
                             year: data.year, //발행년도
                         });
                         setIsEditing(false);
@@ -199,7 +197,6 @@ export default function ReportToggle() {
                             imgUrl: img,
                             researcher: data.researcher,
                             title: data.title,
-                            type: data.type,
                             year: data.year,
                         });
                     });
@@ -228,16 +225,6 @@ export default function ReportToggle() {
                                     required: true,
                                 })}
                                 placeholder='제목을 입력해 주세요.'
-                                className='h-[25px] p-2 lg:h-[30px]'
-                            />
-                        </div>
-                        <div className='p-1'>
-                            종류 :
-                            <input
-                                {...register("type", {
-                                    required: true,
-                                })}
-                                placeholder='보고서의 종류를 입력해 주세요.'
                                 className='h-[25px] p-2 lg:h-[30px]'
                             />
                         </div>
