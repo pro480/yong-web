@@ -6,7 +6,7 @@ import {
     ArrowDownCircleIcon,
     ArrowUpCircleIcon,
 } from "@heroicons/react/24/outline";
-import {data, info, major, notice, research} from "../../../utils/Utils";
+import {data, info, major, notice, research, location} from "../../../utils/Utils";
 
 interface Props {}
 
@@ -51,8 +51,10 @@ function Sidebar() {
             setCurrentMenu(data);
         } else if (firstDepth === "notice") {
             setCurrentMenu(notice);
+        } else if (firstDepth === "location"){
+            setCurrentMenu(location)
         }
-    }, [firstDepth]);
+        }, [firstDepth]);
 
     console.log(currentMenu);
 
