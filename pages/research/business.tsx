@@ -9,9 +9,11 @@ import { UseQueryResult } from "react-query";
 import {
     CollectionReference,
     FirestoreError,
+    Query,
     QuerySnapshot,
 } from "@firebase/firestore";
 import ProjectToggle from "../../src/components/research/ProjectToggle";
+import moment from "moment";
 
 interface ProjectContextProps {
     modalOpen: boolean;
@@ -21,7 +23,7 @@ interface ProjectContextProps {
     selectedDocId: string | null;
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
     collectionQuery: UseQueryResult<QuerySnapshot<Project>, FirestoreError>;
-    collectionRef: CollectionReference<Project>;
+    collectionRef: Query<Project> | CollectionReference<Project>;
     deleteDocument: (docID: string) => void;
 }
 
@@ -90,30 +92,58 @@ function Business() {
                 {/* 프로젝트 집합 */}
                 <div className='flex flex-col'>
                     {completed === "false"
-                        ? collectionQuery.data?.docs.map((snapshot) => {
-                              const project = snapshot.data();
-                              if (!project.completed) {
-                                  return (
-                                      <ProgressResearchCard
-                                          key={snapshot.id}
-                                          docID={snapshot.id}
-                                          project={project}
-                                      />
-                                  );
-                              }
-                          })
-                        : collectionQuery.data?.docs.map((snapshot) => {
-                              const project = snapshot.data();
-                              if (project.completed) {
-                                  return (
-                                      <ProgressResearchCard
-                                          key={snapshot.id}
-                                          docID={snapshot.id}
-                                          project={project}
-                                      />
-                                  );
-                              }
-                          })}
+                        ? collectionQuery.data?.docs
+                              .sort(
+                                  (a, b) =>
+                                      Number(
+                                          moment(a.data().startedAt).format(
+                                              "YYYYMMDD"
+                                          )
+                                      ) -
+                                      Number(
+                                          moment(b.data().startedAt).format(
+                                              "YYYYMMDD"
+                                          )
+                                      )
+                              )
+                              .map((snapshot) => {
+                                  const project = snapshot.data();
+                                  if (!project.completed) {
+                                      return (
+                                          <ProgressResearchCard
+                                              key={snapshot.id}
+                                              docID={snapshot.id}
+                                              project={project}
+                                          />
+                                      );
+                                  }
+                              })
+                        : collectionQuery.data?.docs
+                              .sort(
+                                  (a, b) =>
+                                      Number(
+                                          moment(a.data().startedAt).format(
+                                              "YYYYMMDD"
+                                          )
+                                      ) -
+                                      Number(
+                                          moment(b.data().startedAt).format(
+                                              "YYYYMMDD"
+                                          )
+                                      )
+                              )
+                              .map((snapshot) => {
+                                  const project = snapshot.data();
+                                  if (project.completed) {
+                                      return (
+                                          <ProgressResearchCard
+                                              key={snapshot.id}
+                                              docID={snapshot.id}
+                                              project={project}
+                                          />
+                                      );
+                                  }
+                              })}
                 </div>
                 {modalOpen && <ProjectToggle />}
             </div>

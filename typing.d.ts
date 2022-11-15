@@ -139,6 +139,6 @@ export interface Project {
     consignment: string[];
     startedAt: string;
     completed: boolean;
-    endedAt?: string;
+    endedAt: string;
     imageUrl?: string;
 }
