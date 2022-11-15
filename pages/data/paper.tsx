@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Report from "../../src/components/data/Report";
 import MaterialTable from "../../src/components/data/MaterialTable";
-import { useRouter } from "next/router";
-import useFirebase from "../../src/hooks/useFirebase";
 
 function Paper() {
     const [tab, setTab] = useState("thesis");

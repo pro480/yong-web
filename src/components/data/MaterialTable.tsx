@@ -19,6 +19,7 @@ import {
 import useAuth from "../../hooks/useAuth";
 import { MaterialPageButton } from "./MaterialTableButton";
 
+
 interface Props<M> {
     material: Material;
 }

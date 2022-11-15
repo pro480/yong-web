@@ -1,10 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import PageTitle from "../../../src/components/common/Layout/PageTitle";
-import { Tree, TreeNode } from "react-organizational-chart";
-import { BuildingOffice2Icon } from "@heroicons/react/24/outline";
-import Link from "next/link";
 import OrganizationCard from "../../../src/components/info/OrganizatinoCard";
 import logoImage from "../../../public/images/logo/logo_EN.png";
 import symbolImage from "../../../public/images/logo/symbol_outline.png";

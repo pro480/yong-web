@@ -1,10 +1,5 @@
-import React, { createContext, Dispatch } from "react";
-import {
-    ArrowRightIcon,
-    ChevronLeftIcon,
-    ChevronRightIcon,
-} from "@heroicons/react/24/solid";
-import { NewspaperIcon, PlusIcon } from "@heroicons/react/24/outline";
+import React, { createContext } from "react";
+import { PlusIcon } from "@heroicons/react/24/outline";
 import ReportCard from "./ReportCard";
 import Link from "next/link";
 import useFirebase from "../../hooks/useFirebase";

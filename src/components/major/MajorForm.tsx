@@ -2,24 +2,24 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import {
     DocumentDuplicateIcon,
-    PresentationChartBarIcon,
-    PresentationChartLineIcon,
+
+
 } from "@heroicons/react/24/outline";
 
 interface Props {
-    bannertitle: string;
-    bannercontex: string;
+    bannerTitle: string;
+    bannerContent: string;
     image: StaticImageData;
-    introcontex: string;
-    prospectcontex: string;
+    introContent: string;
+    prospectContent: string;
 }
 
 function MajorForm({
-    bannertitle,
-    bannercontex,
+    bannerTitle,
+    bannerContent,
     image,
-    introcontex,
-    prospectcontex,
+    introContent,
+    prospectContent,
 }: Props) {
     return (
         <div>
@@ -47,10 +47,10 @@ function MajorForm({
                         -bottom-1/4 left-[10%] flex aspect-[4/1] h-1/2 flex-col items-center justify-center gap-y-1 bg-PRIMARY_COLOR-500  xs:gap-y-2   md:gap-y-4   lg:gap-y-6  desktop:gap-y-8'
                     >
                         <h1 className='text-[5px]   font-semibold text-white xs:text-sm md:text-lg lg:text-xl desktop:text-2xl'>
-                            {bannertitle}
+                            {bannerTitle}
                         </h1>
                         <p className='hidden text-white xs:flex xs:text-[10px] md:text-[12px] lg:text-sm xl:desktop:text-base desktop:text-base'>
-                            {bannercontex}
+                            {bannerContent}
                         </p>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ function MajorForm({
                             소개
                         </h1>
                         <p className='text-[5px] xs:text-[10px] md:text-[12px] lg:text-[14px] desktop:text-base'>
-                            {introcontex}
+                            {introContent}
                         </p>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ function MajorForm({
                             전망
                         </h1>
                         <p className='text-[5px] xs:text-[8px] md:text-[12px] lg:text-[14px] desktop:text-base'>
-                            {prospectcontex}
+                            {prospectContent}
                         </p>
                     </div>
                 </div>
