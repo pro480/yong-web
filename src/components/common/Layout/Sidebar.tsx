@@ -6,9 +6,10 @@ import {
     ArrowDownCircleIcon,
     ArrowUpCircleIcon,
 } from "@heroicons/react/24/outline";
-import { data, info, major, notice, research } from "../../../utils/Utils";
+import { data, info, major, notice, research, location } from "../../../utils/Utils";
 import symbol_outline_quarter from "../../../../public/images/logo/symbol_outline_quarter.png";
 import Image from "next/image";
+
 
 interface Props {}
 
@@ -53,8 +54,10 @@ function Sidebar() {
             setCurrentMenu(data);
         } else if (firstDepth === "notice") {
             setCurrentMenu(notice);
+        } else if (firstDepth === "location"){
+            setCurrentMenu(location)
         }
-    }, [firstDepth]);
+        }, [firstDepth]);
 
     console.log(currentMenu);
 

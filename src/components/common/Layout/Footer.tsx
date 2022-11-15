@@ -19,7 +19,7 @@ function Footer() {
                         <div className='flex w-1/2 items-center justify-center border-r border-gray-500 py-2 text-center sm:border-none'>
                             연구원 모집
                         </div>
-                        <Link href='/location'>
+                        <Link href='/location/location'>
                             <a className='flex w-1/2 items-center justify-center  border-gray-500 py-2 text-center sm:border-none'>
                                 찾아오는 길
                             </a>
