@@ -45,7 +45,7 @@ function MobileHeaderMenu({ subMap }: Props) {
                 }`}
             >
                 {subMap.subMenu.map((item, index) => (
-                    <Link href={item.href}>
+                    <Link key={index} href={item.href}>
                         <h1 className='flex w-full cursor-pointer justify-between p-3 hover:font-semibold hover:text-PRIMARY_COLOR-500'>
                             <span className=''>{item.title_KO}</span>
                         </h1>
