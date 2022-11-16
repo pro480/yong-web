@@ -84,7 +84,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
                         {member.history.map((history, index) => (
                             <div
                                 key={index}
-                                className='break-keep h-fit min-w-[50%] border-l-2 border-l-PRIMARY_COLOR-200 pl-2'
+                                className='break-keep h-fit min-w-[47%] border-l-2 border-l-PRIMARY_COLOR-200 ml-2 pl-2'
                             >
                                 {history}
                             </div>
