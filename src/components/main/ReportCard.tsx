@@ -13,8 +13,8 @@ export default function ReportCard({ report, index }: Props) {
 
     return (
         <div
-            className={`hidden flex-col text-xs xs:text-sm lg:text-base ${
-                index < 2 && "flex"
+            className={`flex flex-col text-xs xs:text-sm lg:text-base${
+                index > 2 && "hidden"
             } ${index < 3 && "md:flex"}
             2xl:flex`}
         >
