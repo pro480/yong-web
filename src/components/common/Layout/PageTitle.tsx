@@ -6,10 +6,15 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import {
+    data,
     getFirstDepthTitle_KO,
     getSecondDepthDescription_KO,
     getSecondDepthTitle_KO,
     getThirdDepthTitle_KO,
+    info,
+    major,
+    notice,
+    research,
 } from "../../../utils/Utils";
 import PageTitleComponent from "./PageTitleComponent";
 
@@ -18,6 +23,13 @@ interface Props {}
 function PageTitle() {
     const path = useRouter().pathname.split("/");
     const [a, firstDepth, secondDepth, thirdDepth] = path;
+    const converter = {
+        info: info,
+        data: data,
+        research: research,
+        major: major,
+        notice: notice,
+    };
 
     return (
         <div className='mb-10 flex h-40 flex-col justify-between'>
@@ -39,10 +51,21 @@ function PageTitle() {
 
                 {path.map((item, index) => {
                     if (index === 1) {
+                        // @ts-ignore
+                        // @ts-ignore
                         return (
                             <PageTitleComponent
                                 key={index}
-                                href={`/${firstDepth}`}
+                                href={
+                                    converter[
+                                        firstDepth as
+                                            | "info"
+                                            | "data"
+                                            | "research"
+                                            | "major"
+                                            | "notice"
+                                    ].href
+                                }
                                 active={path.length - 1 === index}
                                 title={getFirstDepthTitle_KO(item)}
                             />
