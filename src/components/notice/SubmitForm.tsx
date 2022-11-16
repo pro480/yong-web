@@ -17,6 +17,7 @@ export default function SubmitForm() {
             createAt: moment().format("YYYYMMDDHHmmss"),
             title: data.title,
         };
+
         await addDoc(collectionRef, docData);
     };
     return (

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { ImMail4, ImFileText2 } from "react-icons/im";
+import { ImMail4, ImFileText2, ImFilePlay } from "react-icons/im";
 import { Material, PaperMaterial, StudyMaterial } from "../../../typing";
 import { MaterialTableContext } from "./MaterialTable";
 import useAuth from "../../hooks/useAuth";
@@ -9,6 +9,8 @@ import {
 } from "./MaterialTableButton";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
 import MoreInfo from "./xStudyMaterialTooltips"; // using tooltips
+import Link from "next/link";
+import { IconBase } from "react-icons";
 
 interface Props<M> {
     material: Material;
@@ -17,33 +19,67 @@ interface Props<M> {
 
 function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({ material, materialList }: Props<M>) {
     const { user } = useAuth();
+    const { pageNumber } = useContext(MaterialTableContext);
 
     return (
         <tbody className='text-sm font-light text-gray-600'>
-            {materialList?.map((docSnapshot, index) => {
-                const data = docSnapshot.data();
-                return (
+            {materialList
+                ?.sort((a, b) => Number(b.data().createdAt) - Number(a.data().createdAt))
+                .slice(
+                    (Number(pageNumber) - 1) * 5,
+                    (Number(pageNumber) - 1) * 5 + 5
+                )
+                .map((docSnapshot, index) => {
+                    const data = docSnapshot.data();
+                    const year = data.createdAt.slice(0, 4);
+                    const month = data.createdAt.slice(4, 6);
+                    const day = data.createdAt.slice(6, 8);
+                    return (
                     <tr
                         key={docSnapshot.id}
-                        className='border-b text-xs sm:text-sm md:text-base border-gray-200 hover:bg-gray-100'
+                        className='border-b text-xs sm:text-sm border-gray-200 hover:bg-gray-100'
                     >
-                        <td className='py-3 text-center'>{index + 1}</td>
-                        <td className='text-center'>
-                            {data.title}
-                        </td> 
+                        <td className='text-center'>{index + 1}</td>
+
+                        {data.content == "작성할 내용이 있다면 작성해주세요. 없다면 바로 제출해주세요."? (
+                            <td className="text-center">{data.title}</td>
+                        ) : (
+                            <td className="text-center cursor-pointer hover:scale-105">
+                                <Link 
+                                    href={{
+                                        pathname: `/notice/${material}${index+1}`,
+                                        query: {
+                                            title: data.title,
+                                            type: data.material,
+                                            writer: data.writer,
+                                            createAt: data.createdAt.substring(0,10),
+                                            fileUrl: data.fileUrl,
+                                            content: data.content,
+                                        },
+                                    
+                                    }}
+                                    as={`/notice/${material}${index+1}`}
+                                >
+                                    <a className="font-bold">{data.title}</a>
+                                </Link>   
+                            </td>
+                        )}
+                        
+                                         
+                       
                         <td className='text-center'>{data.writer}</td>
-                        <td className='text-center'>{data.date.substring(0,10)}</td>
+                        <td className='text-right'>{`${year}-${month}-${day}`}</td>
                         <td className='relative flex items-center text-center'>
                             <div className='flex h-12 w-full items-center justify-center'>
                                 <a
-                                    className='flex w-fit justify-center self-center hover:underline hover:underline-offset-2'
+                                    className='flex hover:underline hover:underline-offset-2'
                                     href={data.fileUrl}
                                 >
                                     <ImFileText2 className='ml-2' size={20} />
                                 </a>
                             </div>
                             {user && (
-                                <div className='absolute hidden md:flex right-2 gap-x-2 text-sm'>
+                                <div className='absolute w-15 hidden lg:flex right-2 text-sm'>
                                     <MaterialTableUpdateButton
                                         index={index + 1}
                                         data={data}

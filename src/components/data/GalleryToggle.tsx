@@ -25,10 +25,10 @@ interface Props {
 }
 
 function GalleryToggle({ card }: Props) {
-    const moment = require("moment");
     const today = moment();
     const { collectionRef, selectedDocId, selectedCard, setIsEditing } =
         useContext(GalleryContext);
+
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
         doc(collection(db, "갤러리 데이터"), `${selectedDocId}`),
@@ -96,7 +96,7 @@ function GalleryToggle({ card }: Props) {
                     addMutation.mutate({
                         title: data.title,
                         isBanner: data.isBanner,
-                        createdAt: data.createdAt,
+                        createdAt: today.format("YYYYMMDDHHmmss"),
                         imgUrl: downloadURL,
                         card: card,
                     });
@@ -218,23 +218,6 @@ function GalleryToggle({ card }: Props) {
                                 {...register("title", { required: true })}
                             />
                         </div>
-
-                        {selectedCard ? (
-                            <label className='w-full border border-gray-700 text-center'>
-                                {selectedCard.createdAt}
-                            </label>
-                        ) : (
-                            <label>
-                                <input
-                                    className=' w-full border border-gray-700 text-center'
-                                    type='date'
-                                    defaultValue={today.format("YYYY-MM-DD")}
-                                    {...register("createdAt", {
-                                        required: selectedCard ? false : true,
-                                    })}
-                                />
-                            </label>
-                        )}
 
                         <label className='flex space-x-2'>
                             <a>메인페이지 배너</a>

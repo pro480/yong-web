@@ -5,7 +5,7 @@ import { ReportDeleteButton, ReportUpdateButton } from "./ReportButtons";
 import Image from "next/image";
 
 export default function ReportItem() {
-    const { researchList } = useContext(ReportContext);
+    const { researchList, pageNumber } = useContext(ReportContext);
     const { user } = useAuth();
 
     return (
@@ -17,6 +17,11 @@ export default function ReportItem() {
                             Number(b.data().createdAt) -
                             Number(a.data().createdAt)
                     )
+                    // 한 페이지당 원하는 자료 수 만큼 자르기
+                    .slice(
+                        (Number(pageNumber) - 1) * 8,
+                        (Number(pageNumber) - 1) * 8 + 8
+                    )
                     .map((docSnapshot) => {
                         const items = docSnapshot.data();
                         return (
@@ -24,7 +29,7 @@ export default function ReportItem() {
                                 key={docSnapshot.id}
                                 className='flex h-[340px] w-[170px] flex-col justify-between sm:h-[440px] sm:w-[220px] md:h-[480px] md:w-[240px] xl:h-[500px] xl:w-[250px]'
                             >
-                                <div className=' relative h-full  xl:h-[352px] '>
+                                <div className=' relative h-full border border-gray-300 xl:h-[352px] '>
                                     <Image
                                         src={items.imgUrl}
                                         layout='fill'
@@ -38,9 +43,6 @@ export default function ReportItem() {
                                     <div className='py-1'>
                                         <div className='sm:text-lg xl:text-xl'>
                                             {items.title}
-                                        </div>
-                                        <div className='text-sm sm:text-base xl:text-lg'>
-                                            {items.type}
                                         </div>
                                     </div>
                                     <div className='flex justify-between'>

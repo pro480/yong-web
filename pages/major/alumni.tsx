@@ -1,5 +1,4 @@
 import React from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
 import MemberList from "../../src/components/common/MemberList";
 import useFirebase from "../../src/hooks/useFirebase";
 import { GraduateMember } from "../../typing";
@@ -12,8 +11,6 @@ function Alumni() {
 
     return (
         <div className='relative'>
-
-
             <MemberList<GraduateMember>
                 team='동문'
                 memberList={memberList}

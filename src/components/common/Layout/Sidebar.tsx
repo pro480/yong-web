@@ -6,16 +6,17 @@ import {
     ArrowDownCircleIcon,
     ArrowUpCircleIcon,
 } from "@heroicons/react/24/outline";
+import { data, info, major, notice, research, location } from "../../../utils/Utils";
+import symbol_outline_quarter from "../../../../public/images/logo/symbol_outline_quarter.png";
 import Image from "next/image";
-import { useRecoilValue } from "recoil";
-import { siteMapState } from "../../../atoms/sitemapAtom";
+
 
 interface Props {}
 
 function Sidebar() {
-    const siteMap = useRecoilValue(siteMapState);
     const [currentMenu, setCurrentMenu] = useState<SubMap>();
-    const pathName = useRouter().pathname.split("/")[1];
+    const path = useRouter().pathname.split("/");
+    const [a, firstDepth, secondDepth, thirdDepth] = path;
     const [menuOpen, setMenuOpen] = useState(false);
     const [isWide, setIsWide] = useState(false);
 
@@ -43,18 +44,20 @@ function Sidebar() {
     }, []);
 
     useLayoutEffect(() => {
-        if (pathName === "info") {
-            setCurrentMenu(siteMap.info);
-        } else if (pathName === "research") {
-            setCurrentMenu(siteMap.research);
-        } else if (pathName === "major") {
-            setCurrentMenu(siteMap.major);
-        } else if (pathName === "data") {
-            setCurrentMenu(siteMap.data);
-        } else if (pathName === "notice") {
-            setCurrentMenu(siteMap.notice);
+        if (firstDepth === "info") {
+            setCurrentMenu(info);
+        } else if (firstDepth === "research") {
+            setCurrentMenu(research);
+        } else if (firstDepth === "major") {
+            setCurrentMenu(major);
+        } else if (firstDepth === "data") {
+            setCurrentMenu(data);
+        } else if (firstDepth === "notice") {
+            setCurrentMenu(notice);
+        } else if (firstDepth === "location"){
+            setCurrentMenu(location)
         }
-    }, [pathName]);
+        }, [firstDepth]);
 
     console.log(currentMenu);
 
@@ -66,6 +69,9 @@ function Sidebar() {
                 className='relative flex w-full items-center justify-center bg-gradient-to-tl from-PRIMARY_COLOR-500 to-PRIMARY_COLOR-400 py-3 text-2xl text-white 2xl:h-36 '
             >
                 {currentMenu?.title_KO}
+                <div className='absolute bottom-0 right-0 h-20 w-20'>
+                    <Image src={symbol_outline_quarter} />
+                </div>
             </div>
 
             {isWide ? null : menuOpen ? (
