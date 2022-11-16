@@ -35,8 +35,6 @@ function Header() {
             // setIsEnglish(false);
         }
         
-        console.log("너 출력되지마")
-        
     }, []);
 
     return (
