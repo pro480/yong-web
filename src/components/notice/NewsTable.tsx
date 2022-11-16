@@ -17,6 +17,7 @@ import {
     QuerySnapshot,
 } from "@firebase/firestore";
 import useAuth from "../../hooks/useAuth";
+import { NewsTablePageButton } from "./NewsTableButton";
 
 interface Props<N> {
     news: News;
@@ -34,6 +35,10 @@ interface NewsTableContextProps<N> {
     deleteDocument: (docID: string) => void;
     selectedIndex: number;
     setSelectedIndex: Dispatch<React.SetStateAction<number>>;
+
+    newsList: QueryDocumentSnapshot<CenterNews | EventNews>[] | undefined;
+    pageNumber: number | null;
+    setPageNumber: Dispatch<React.SetStateAction<number | null>>;
 }
 
 export const NewsTableContext = createContext<
@@ -41,8 +46,9 @@ export const NewsTableContext = createContext<
 >({} as NewsTableContextProps<CenterNews | EventNews>);
 
 function NewsTable<N extends CenterNews | EventNews>({ news }: Props<N>) {
-    const { collectionRef, collectionQuery, deleteDocument } =
-        useFirebase<CenterNews | EventNews>(news, [news]);
+    const { collectionRef, collectionQuery, deleteDocument } = useFirebase<
+        CenterNews | EventNews
+    >(news, [news]);
     const [isEditing, setIsEditing] = useState(false);
     const [selectedNews, setSelectedNews] = useState<
         CenterNews | EventNews | null
@@ -55,10 +61,12 @@ function NewsTable<N extends CenterNews | EventNews>({ news }: Props<N>) {
 
     useLayoutEffect(() => {
         const newnewsList = collectionQuery.data?.docs.filter(
-            (docSnapshot) => docSnapshot.data().news = news
+            (docSnapshot) => (docSnapshot.data().news = news)
         );
         setNewsList(newnewsList);
     }, [collectionQuery.isSuccess]);
+
+    const [pageNumber, setPageNumber] = useState<number | null>(1);
 
     const value = {
         isEditing,
@@ -72,18 +80,20 @@ function NewsTable<N extends CenterNews | EventNews>({ news }: Props<N>) {
         deleteDocument,
         selectedIndex,
         setSelectedIndex,
+
+        pageNumber,
+        setPageNumber,
+        newsList,
     };
 
     return (
         <NewsTableContext.Provider value={value}>
             <table className='w-full table-auto border-t border-t-black'>
                 <NewsTableHeader news={news} />
-                <NewsTableBody
-                    news={news}
-                    newsList={newsList}
-                />
+                <NewsTableBody news={news} newsList={newsList} />
             </table>
             {isEditing && <NewsTableToggle news={news} />}
+            <NewsTablePageButton />
         </NewsTableContext.Provider>
     );
 }

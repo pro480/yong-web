@@ -15,7 +15,8 @@ export function ThesisTableUpdateButton({
     data: Thesis;
     docId: string;
 }) {
-    const { setIsEditing, setSelectedDocId } = useContext(ThesisContext);
+    const { setIsEditing, setSelectedDocId, setSelectedThesis } =
+        useContext(ThesisContext);
 
     return (
         <button
@@ -23,6 +24,7 @@ export function ThesisTableUpdateButton({
             onClick={() => {
                 setIsEditing(false);
                 setSelectedDocId(docId);
+                setSelectedThesis(data);
                 setIsEditing(true);
             }}
         >
@@ -46,7 +48,7 @@ export function ThesisTableDeleteButton({ docId }: { docId: string }) {
 }
 
 export function ThesisTableAddButton() {
-    const { setIsEditing, isEditing, setSelectedDocId } =
+    const { setIsEditing, isEditing, setSelectedDocId, setSelectedThesis } =
         useContext(ThesisContext);
 
     return (
@@ -55,6 +57,7 @@ export function ThesisTableAddButton() {
             onClick={() => {
                 setIsEditing((prev) => !prev);
                 setSelectedDocId("");
+                setSelectedThesis(null);
             }}
         >
             {isEditing ? "취소" : "추가"}

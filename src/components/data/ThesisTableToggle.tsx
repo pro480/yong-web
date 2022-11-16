@@ -20,13 +20,8 @@ import { addDoc, updateDoc, doc } from "firebase/firestore";
 export default function ThesisTableToggle() {
     const today = moment();
     const { register, handleSubmit } = useForm<Thesis>();
-    const { collectionRef, selectedDocId } = useContext(ThesisContext);
-
-    // const addMutation = useFirestoreCollectionMutation(collectionRef);
-    // const updateMutation = useFirestoreDocumentMutation(
-    //     doc(collection(db, "thesis"), `${selectedDocId}`),
-    //     { merge: true }
-    // );
+    const { collectionRef, selectedDocId, selectedThesis } =
+        useContext(ThesisContext);
 
     const onAddMaterial: SubmitHandler<Thesis> = async (data: Thesis) => {
         const docData = {
@@ -40,7 +35,6 @@ export default function ThesisTableToggle() {
         await addDoc(collectionRef, docData);
     };
 
-    console.log(selectedDocId);
     const onUpdateMaterial: SubmitHandler<Thesis> = async (data: Thesis) => {
         const dataRef = doc(collectionRef, selectedDocId);
 

@@ -63,7 +63,6 @@ module.exports = {
             large: "12px",
             "3xl": "40px",
         },
-        important: '#tteesstt',
         
     },
     plugins: [],
