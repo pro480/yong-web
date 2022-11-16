@@ -46,6 +46,7 @@ export type Team =
     | "인공지능팀"
     | "실무교육팀"
     | "동문";
+    
 export type Classification = "교수" | "졸업생";
 
 export interface ExternalMember {
