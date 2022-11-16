@@ -39,4 +39,16 @@ html {
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    @media (min-width: 1024px) {
+        .main_info_item_content {
+            -webkit-line-clamp: 9;
+        }
+    }
+
+    @media (min-width: 1240px) {
+        .main_info_item_content {
+            -webkit-line-clamp: 10;
+        }
+    }
 }

@@ -6,7 +6,7 @@ import { db } from "../../../firebase";
 import { useFirestoreQueryData } from "@react-query-firebase/firestore";
 import { CenterNews, EventNews } from "../../../typing";
 import MainNewsRecruit from "./MainNewsRecruit";
-import { Document, Page } from "react-pdf";
+import { Document, Page, pdfjs } from "react-pdf";
 
 function MainNews() {
     const centerNewsCollectionRef = query(
@@ -28,70 +28,41 @@ function MainNews() {
         eventNewsCollectionRef
     );
 
-    console.log("centerNews",centerNewsCollectionQuery);
+    const centerNewsData =
+        centerNewsCollectionQuery.data &&
+        centerNewsCollectionQuery.data?.length > 0 &&
+        (centerNewsCollectionQuery.data[0] as CenterNews);
+    const eventNewsData =
+        eventNewsCollectionQuery.data &&
+        eventNewsCollectionQuery.data?.length > 0 &&
+        (eventNewsCollectionQuery.data[0] as EventNews);
 
-    // const centerNewsData = centerNewsCollectionQuery.data![0] as CenterNews;
-    // const eventNewsData = eventNewsCollectionQuery.data![0] as EventNews;
-
-    // 연구원 모집
-    const [numPages, setNumPages] = useState(0);
-    const [pageNumber, setPageNumber] = useState(1);
-    const [width, setWidth] = useState(0);
-    useEffect(() => {
-        if (window.innerWidth > 1020) {
-            setWidth(1000);
-        } else if (window.innerWidth > 820) {
-            setWidth(800);
-        } else {
-            setWidth(450);
-        }
-
-        const handleScreen = () => {
-            if (window.innerWidth > 1020) {
-                setWidth(1000);
-            } else if (window.innerWidth > 820) {
-                setWidth(800);
-            } else {
-                setWidth(450);
-            }
-        };
-        window.addEventListener("resize", handleScreen);
-        return () => {
-            window.removeEventListener("resize", handleScreen);
-        };
-    }, []);
-
-    function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
-        setNumPages(numPages);
-        setPageNumber(1);
+    if (
+        eventNewsCollectionQuery.isLoading ||
+        centerNewsCollectionQuery.isLoading
+    ) {
+        return <div>로딩중</div>;
     }
 
     return (
-        <div className='main_news_bg flex w-full flex-col py-5 px-5'>
+        <div className='main_news_bg flex w-full flex-col py-5 px-6 lg:px-10 lg:py-12'>
             {/*타이틀 입니다*/}
-            <div className='h-[20%] py-5 text-xl font-bold text-white'>
+            <div className='h-[20%] py-5 text-xl font-bold text-white lg:text-2xl xl:text-3xl'>
                 교육 빅데이터 응용 연구센터 소식
             </div>
             {/*뉴스카드 컨테이너 입니다*/}
-            <div className='flex h-full w-full flex-wrap justify-center gap-y-6 gap-x-16'>
-                {/*<NewsCard data={centerNewsData} title='센터 소식' />*/}
-                {/*<NewsCard data={eventNewsData} title='행사 소식' />*/}
-                <div>
-                    <div className='flex w-full justify-center '>
-                        <Document
-                            className='border'
-                            file='/recruit.pdf' // 여기는 가지고 계신 pdf 주소
-                            onLoadSuccess={onDocumentLoadSuccess}
-                        >
-                            {/* height, width는 number 타입으로 vh, %는 먹지 않습니다. */}
-                            <Page
-                                pageNumber={pageNumber}
-                                className='w-full'
-                                width={width}
-                            />
-                        </Document>
-                    </div>
-                </div>
+            <div className='flex h-full w-full flex-wrap justify-center gap-y-6 gap-x-16 md:justify-around lg:grid lg:grid-cols-3 lg:gap-x-6 xl:gap-x-12'>
+                <NewsCard
+                    href='/notice/center_news'
+                    data={centerNewsData as CenterNews}
+                    title='센터 소식'
+                />
+                <NewsCard
+                    href='/notice/event_news'
+                    data={eventNewsData as EventNews}
+                    title='행사 소식'
+                />
+                <MainNewsRecruit href='/notice/recruit' title='연구원 모집' />
             </div>
         </div>
     );

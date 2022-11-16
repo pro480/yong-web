@@ -40,7 +40,6 @@ export default function ThesisTableToggle() {
         await addDoc(collectionRef, docData);
     };
 
-    console.log(selectedDocId);
     const onUpdateMaterial: SubmitHandler<Thesis> = async (data: Thesis) => {
         const dataRef = doc(collectionRef, selectedDocId);
 

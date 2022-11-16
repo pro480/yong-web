@@ -29,7 +29,7 @@ function MainForum() {
             <div className='flex h-[10%] w-full items-center justify-center text-lg font-bold  xs:text-xl  md:text-2xl lg:text-3xl  desktop:text-4xl'>
                 빅데이터 연구센터 갤러리
                 <Link href='/data/gallery'>
-                    <div className='invisible absolute right-[6%] float-right flex cursor-pointer md:visible md:gap-x-2 md:text-base lg:gap-x-3 lg:text-lg desktop:gap-x-4 desktop:text-xl'>
+                    <div className='invisible absolute right-[6%] float-right flex cursor-pointer hover:scale-105 md:visible md:gap-x-2 md:text-base lg:gap-x-3 lg:text-lg desktop:gap-x-4 desktop:text-xl'>
                         자세히 보러 가기
                         <PlusIcon className='visible aspect-1/1 w-[18px] self-center rounded-full border border-PRIMARY_COLOR-500 p-1 xs:w-[20px] md:w-[22px] lg:w-[24px] desktop:w-[26px]' />
                     </div>
