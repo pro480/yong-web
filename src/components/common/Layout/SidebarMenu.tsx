@@ -4,6 +4,8 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { SubMenu } from "../../../../typing";
 import { useRouter } from "next/router";
 import { ChevronUpIcon } from "@heroicons/react/24/solid";
+import {useRecoilValue} from "recoil";
+import {languageState} from "../../../atoms/languageAtom";
 
 interface Props {
     subMenu: SubMenu;
@@ -12,6 +14,7 @@ interface Props {
 function SideBarMenu({ subMenu }: Props) {
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
+    const language = useRecoilValue(languageState)
 
     const handleClickInside = () => {
         setIsOpen(!isOpen);
@@ -29,7 +32,12 @@ function SideBarMenu({ subMenu }: Props) {
                     className='group flex h-14 cursor-pointer items-center justify-between px-3 font-semibold transition transition-colors delay-75 ease-in-out hover:bg-PRIMARY_COLOR-50'
                     onClick={handleClickInside}
                 >
-                    <div>{subMenu.title_KO}</div>
+                    {language ? (
+                        <div>{subMenu.title_EN}</div>
+                    ):(
+                        <div>{subMenu.title_KO}</div>
+                    )}
+
                     {isOpen ? (
                         <ChevronUpIcon className='h-5 text-PRIMARY_COLOR-500 transition' />
                     ) : (
@@ -38,9 +46,16 @@ function SideBarMenu({ subMenu }: Props) {
                 </div>
             ) : (
                 <Link href={subMenu.href}>
-                    <div className='flex h-14 cursor-pointer items-center justify-between px-3 font-semibold transition transition-colors hover:bg-PRIMARY_COLOR-50'>
-                        {subMenu.title_KO}
-                    </div>
+                    {language ? (
+                        <div className='flex h-14 cursor-pointer items-center justify-between px-3 font-semibold transition transition-colors hover:bg-PRIMARY_COLOR-50'>
+                            {subMenu.title_EN}
+                        </div>
+                    ):(
+                        <div className='flex h-14 cursor-pointer items-center justify-between px-3 font-semibold transition transition-colors hover:bg-PRIMARY_COLOR-50'>
+                            {subMenu.title_KO}
+                        </div>
+                    )}
+
                 </Link>
             )}
             <span className='flex w-full border-t'></span>
@@ -51,9 +66,16 @@ function SideBarMenu({ subMenu }: Props) {
                     <ul className='flex flex-col gap-y-2 bg-white p-5 text-sm font-semibold text-GRAY_COLOR-500'>
                         {subMenu.subMenu.map((subMenu, index) => (
                             <Link key={index} href={subMenu.href}>
-                                <li className="cursor-pointer before:mr-2 before:content-['\2022'] hover:text-PRIMARY_COLOR-500">
-                                    {subMenu.title_KO}
-                                </li>
+                                {language ? (
+                                    <li className="cursor-pointer before:mr-2 before:content-['\2022'] hover:text-PRIMARY_COLOR-500">
+                                        {subMenu.title_EN}
+                                    </li>
+                                ):(
+                                    <li className="cursor-pointer before:mr-2 before:content-['\2022'] hover:text-PRIMARY_COLOR-500">
+                                        {subMenu.title_KO}
+                                    </li>
+                                )}
+
                             </Link>
                         ))}
                     </ul>

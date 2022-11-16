@@ -5,6 +5,8 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { SubMap } from "../../../../typing";
 import Image from "next/image";
 import logo_white from "../../../../public/images/logo/logo_white.png";
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import {languageState} from "../../../atoms/languageAtom";
 
 interface Props {
     subMap: SubMap;
@@ -24,19 +26,35 @@ function HeaderMenu({ subMap }: Props) {
         document.removeEventListener("click", closeMenu);
     };
 
+    const language = useRecoilValue(languageState)
+
     return (
         <div className='h-full'>
             {/*1st depth*/}
             <div className='flex h-full items-center text-lg font-semibold hover:text-PRIMARY_COLOR-500 xl:text-xl'>
                 <Link href={subMap.subMenu[0].href}>
-                    <div
-                        onMouseOver={showMenu}
-                        onMouseOut={closeMenu}
-                        className='group relative flex h-full w-full cursor-pointer items-center justify-center px-8 xl:px-12'
-                    >
-                        {subMap.title_KO}
-                        <span className='absolute bottom-0 left-1/2 -z-50 flex h-1.5 w-0 -translate-x-1/2 content-center justify-center bg-PRIMARY_COLOR-500 group-hover:w-12 group-hover:transition-all'></span>
-                    </div>
+                    {language ? (
+                        <div
+                            onMouseOver={showMenu}
+                            onMouseOut={closeMenu}
+                            className='group relative flex h-full w-full cursor-pointer items-center justify-center px-8 xl:px-12'
+                        >
+                            {subMap.title_EN}
+
+                            <span className='absolute bottom-0 left-1/2 -z-50 flex h-1.5 w-0 -translate-x-1/2 content-center justify-center bg-PRIMARY_COLOR-500 group-hover:w-12 group-hover:transition-all'></span>
+                        </div>
+                    ):(
+                        <div
+                            onMouseOver={showMenu}
+                            onMouseOut={closeMenu}
+                            className='group relative flex h-full w-full cursor-pointer items-center justify-center px-8 xl:px-12'
+                        >
+                            {subMap.title_KO}
+
+                            <span className='absolute bottom-0 left-1/2 -z-50 flex h-1.5 w-0 -translate-x-1/2 content-center justify-center bg-PRIMARY_COLOR-500 group-hover:w-12 group-hover:transition-all'></span>
+                        </div>
+                    )}
+
                 </Link>
             </div>
             {/*아래부터 드랍다운  메뉴*/}
@@ -59,9 +77,16 @@ function HeaderMenu({ subMap }: Props) {
                             <MinusIcon className='h-10 text-white/70 xl:h-12 ' />
                             <MinusIcon className='h-10 text-white/20 xl:h-12' />
                         </div>
-                        <h1 className='text-2xl font-bold 2xl:text-3xl'>
-                            {subMap.title_KO}
-                        </h1>
+                        {language ? (
+                            <h1 className='text-2xl font-bold 2xl:text-3xl'>
+                                {subMap.title_EN}
+                            </h1>
+                        ):(
+                            <h1 className='text-2xl font-bold 2xl:text-3xl'>
+                                {subMap.title_KO}
+                            </h1>
+                        )}
+
                     </div>
                 </section>
                 {/*드랍다운 우측 메뉴*/}
@@ -74,9 +99,17 @@ function HeaderMenu({ subMap }: Props) {
                         >
                             <Link href={item.href}>
                                 <h1 className='z-20 flex w-full cursor-pointer justify-between border p-3 shadow-lg hover:scale-105 hover:font-semibold hover:text-PRIMARY_COLOR-500'>
-                                    <span onClick={closeMenu} className=''>
-                                        {item.title_KO}
-                                    </span>
+                                    {language ? (
+                                        <span onClick={closeMenu} className=''>
+                                            {item.title_EN}
+                                        </span>
+                                    ):(
+                                        <span onClick={closeMenu} className=''>
+                                            {item.title_KO}
+                                        </span>
+                                    )}
+
+
                                     {item.subMenu.length > 0 && (
                                         <ChevronDownIcon className='h-6 text-PRIMARY_COLOR-500' />
                                     )}
@@ -90,14 +123,26 @@ function HeaderMenu({ subMap }: Props) {
                                         key={index}
                                     >
                                         <Link href={subMenu.href}>
-                                            <span
-                                                className='cursor-pointer hover:font-semibold hover:text-PRIMARY_COLOR-500'
-                                                onClick={() =>
-                                                    setDropdownOpen(false)
-                                                }
-                                            >
+                                            {language ? (
+                                                <span
+                                                    className='cursor-pointer hover:font-semibold hover:text-PRIMARY_COLOR-500'
+                                                    onClick={() =>
+                                                        setDropdownOpen(false)
+                                                    }
+                                                >
+                                                {subMenu.title_EN}
+                                            </span>
+                                            ):(
+                                                <span
+                                                    className='cursor-pointer hover:font-semibold hover:text-PRIMARY_COLOR-500'
+                                                    onClick={() =>
+                                                        setDropdownOpen(false)
+                                                    }
+                                                >
                                                 {subMenu.title_KO}
                                             </span>
+                                            )}
+
                                         </Link>
                                     </li>
                                 ))}
