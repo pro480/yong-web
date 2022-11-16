@@ -12,10 +12,11 @@ import useFirebase from "../../hooks/useFirebase";
 import { UseQueryResult } from "react-query";
 import {
     CollectionReference,
-    FirestoreError, Query,
+    FirestoreError,
     QueryDocumentSnapshot,
     QuerySnapshot,
 } from "@firebase/firestore";
+import useAuth from "../../hooks/useAuth";
 import { MaterialPageButton } from "./MaterialTableButton";
 
 interface Props<M> {
@@ -45,12 +46,10 @@ export const MaterialTableContext = createContext<
     MaterialTableContextProps<StudyMaterial | PaperMaterial>
 >({} as MaterialTableContextProps<StudyMaterial | PaperMaterial>);
 
-function MaterialTable<M extends StudyMaterial | PaperMaterial>({
-    material,
-}: Props<M>) {
-    const { collectionRef, collectionQuery, deleteDocument } = useFirebase<
-        StudyMaterial | PaperMaterial
-    >(material, [material]);
+
+function MaterialTable<M extends StudyMaterial | PaperMaterial>({ material }: Props<M>) {
+    const { collectionRef, collectionQuery, deleteDocument } =
+        useFirebase<StudyMaterial | PaperMaterial>(material, [material]);
     const [isEditing, setIsEditing] = useState(false);
     const [selectedMaterial, setSelectedMaterial] = useState<
         StudyMaterial | PaperMaterial | null
@@ -81,7 +80,6 @@ function MaterialTable<M extends StudyMaterial | PaperMaterial>({
         deleteDocument,
         selectedIndex,
         setSelectedIndex,
-
         materialList,
         pageNumber,
         setPageNumber,
