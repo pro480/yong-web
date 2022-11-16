@@ -26,7 +26,7 @@ function MainForum() {
     );
     const collectionQuery = useFirestoreQuery(["gallery_createdAt"], ref);
     return (
-        <div className='flex  h-[500px] flex-col gap-y-10 p-10  xs:h-[400px] md:h-[500px] lg:h-[600px] desktop:h-[700px]'>
+        <div className='flex flex-col gap-y-12 p-10'>
             <div className='flex h-[10%] w-full items-center justify-center text-lg font-bold  xs:text-xl  md:text-2xl lg:text-3xl  desktop:text-4xl'>
                 빅데이터 연구센터 갤러리
                 <Link href='/data/gallery'>
@@ -36,16 +36,15 @@ function MainForum() {
                     </div>
                 </Link>
             </div>
-            <div className='flex flex-col  justify-center gap-y-4 xs:flex-row xs:gap-y-0 xs:gap-x-4 md:gap-x-8'>
+            <div className='grid grid-cols-1  justify-center gap-y-12 xs:grid-cols-2 xs:gap-y-0 xs:gap-x-4 md:gap-x-8'>
                 {collectionQuery.data?.docs.map((snapshot) => {
                     const data = snapshot.data();
                     return (
                         <div
-                            className=' flex h-[160px] w-[100%] flex-col gap-y-4  xs:h-[200px] border-2 border-PRIMARY_COLOR-600 p-3 shadow-md shadow-PRIMARY_COLOR-600  xs:w-[47%] md:h-[300px]  lg:h-[400px] desktop:h-[500px]  '
+                            className='relative flex flex-col gap-y-4  border-2 border-PRIMARY_COLOR-600 p-3 shadow-md shadow-PRIMARY_COLOR-600'
                             key={snapshot.id}
-                            
                         >
-                            <div className='   relative aspect-[4/3] h-[100%] '>
+                            <div className='relative aspect-[4/3]  '>
                                 <Image
                                     className=''
                                     src={data.imgUrl}
@@ -57,18 +56,15 @@ function MainForum() {
                                     quality={50}
                                 />
                             </div>
-                            <div className='  flex justify-between     '>
-                                <p className=' w-full overflow-hidden text-ellipsis whitespace-pre border-b-2 border-PRIMARY_COLOR-300 px-2 text-sm  font-semibold md:w-1/2  md:text-sm desktop:text-lg'>
-                                    {data.title}
-                                </p>
-                                <div className=' hidden items-center text-GRAY_COLOR-700 md:flex md:text-xs lg:text-sm desktop:text-base'>
-                                    <ClockIcon className=' md:h-4 lg:h-6 ' />
-                                    {moment(data.createdAt.slice(0, 8)).format(
-                                        "YYYY-MM-DD"
-                                    )}
-                                </div>
+                            <div className='hidden items-center self-end text-GRAY_COLOR-700 md:flex md:text-xs lg:text-sm desktop:text-base'>
+                                <ClockIcon className=' md:h-4 lg:h-6 ' />
+                                {moment(data.createdAt.slice(0, 8)).format(
+                                    "YYYY-MM-DD"
+                                )}
                             </div>
-                            
+                            <p className='absolute -top-8 left-1/2 w-fit max-w-[90%] -translate-x-1/2 overflow-hidden text-ellipsis whitespace-nowrap border-b-2 border-PRIMARY_COLOR-300 px-2 text-sm  font-semibold  md:text-base md:-top-10 desktop:text-lg'>
+                                {data.title}
+                            </p>
                         </div>
                     );
                 })}
