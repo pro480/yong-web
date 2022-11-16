@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { ImMail4, ImFileText2 } from "react-icons/im";
+import { ImMail4, ImFileText2, ImFilePlay } from "react-icons/im";
 import { Material, PaperMaterial, StudyMaterial } from "../../../typing";
 import { MaterialTableContext } from "./MaterialTable";
 import useAuth from "../../hooks/useAuth";
@@ -9,6 +9,8 @@ import {
 } from "./MaterialTableButton";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
 import MoreInfo from "./xStudyMaterialTooltips"; // using tooltips
+import Link from "next/link";
+import { IconBase } from "react-icons";
 
 interface Props<M> {
     material: Material;
@@ -28,9 +30,33 @@ function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({ material, 
                         className='border-b text-xs sm:text-sm border-gray-200 hover:bg-gray-100'
                     >
                         <td className='text-center'>{index + 1}</td>
-                        <td className='text-center'>
-                            {data.title}
-                        </td> 
+
+                        {data.content == "작성할 내용이 있다면 작성해주세요. 없다면 바로 제출해주세요."? (
+                            <td className="text-center">{data.title}</td>
+                        ) : (
+                            <td className="text-center cursor-pointer hover:scale-105">
+                                <Link 
+                                    href={{
+                                        pathname: `/notice/${material}${index+1}`,
+                                        query: {
+                                            title: data.title,
+                                            type: data.material,
+                                            writer: data.writer,
+                                            createAt: data.date.substring(0,10),
+                                            fileUrl: data.fileUrl,
+                                            content: data.content,
+                                        },
+                                    
+                                    }}
+                                    as={`/notice/${material}${index+1}`}
+                                >
+                                    <a className="font-bold">{data.title}</a>
+                                </Link>   
+                            </td>
+                        )}
+                        
+                                         
+                       
                         <td className='text-center'>{data.writer}</td>
                         <td className='text-right'>{data.date.substring(0,10)}</td>
                         <td className='relative flex items-center text-center'>

@@ -70,6 +70,7 @@ export interface StudyMaterial {
     writer: string; // 작성자
     date: string; // 등록일
     fileUrl: string; // 첨부파일 주소
+    content: string;
     material: Material;
 }
 
@@ -77,7 +78,8 @@ export interface PaperMaterial {
     title: string; // 논문명
     writer: string; // 저자
     date: string; // 작성일자
-    fileUrl: string; // 논문파일 주소
+    fileUrl: string; // 첨부파일 주소
+    content: string;
     material: Material;
 }
 
@@ -88,8 +90,7 @@ export interface CenterNews {
     writer: string; // 작성자
     date: string; // 등록일
     content: string; // 내용
-    imgUrl: string; // 이미지
-    fileUrl: string; // 파일
+    fileUrl: string; // 첨부파일
     news: News;
 }
 
@@ -98,8 +99,7 @@ export interface EventNews {
     writer: string; // 저자
     date: string; // 작성일자
     content: string; // 내용
-    imgUrl: string; // 이미지
-    fileUrl: string; // 파일
+    fileUrl: string; // 첨부파일
     news: News;
 }
 

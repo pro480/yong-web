@@ -83,7 +83,7 @@ function MaterialTable<M extends StudyMaterial | PaperMaterial>({ material }: Pr
                     materialList={materialList}
                 />
             </table>
-            {isEditing && <MaterialTableToggle material={material} />}
+            {isEditing && <MaterialTableToggle material={material}/>}
         </MaterialTableContext.Provider>
     );
 }

@@ -21,6 +21,7 @@ interface Inputs {
     title: string; // 자료명
     writer: string; // 작성자
     date: string; // 등록일
+    content: string;
     materialFile: File[]; // 첨부파일
 }
 
@@ -104,9 +105,9 @@ function MaterialTableToggle({ material }: Props) {
                     addMutation.mutate({
                         title: data.title, // 제목
                         writer: data.writer, // 작성자
-                        // date: data.date, // 등록일
                         date: today.format(),
                         fileUrl: downloadURL, // 첨부파일 주소
+                        content: data.content,
                         material: material, // 학습 자료 | 논문
                     });
                 });
@@ -122,6 +123,7 @@ function MaterialTableToggle({ material }: Props) {
             updateMutation.mutate({
                 title: data.title, // 제목
                 writer: data.writer, // 작성자
+                contetn: data.content, // 내용
             });
         }
         setIsEditing(false);
@@ -200,6 +202,15 @@ function MaterialTableToggle({ material }: Props) {
                     </>                   
                 )}  
             </div>
+            <label>
+                <textarea
+                    defaultValue={"작성할 내용이 있다면 작성해주세요. 없다면 바로 제출해주세요."}
+                    className='w-full text-sm pl-5 border-gray-700'
+                    {...register("content", { 
+                        required: true,
+                    })}
+                />
+            </label>
         </form>
     );
 }

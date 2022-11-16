@@ -12,7 +12,7 @@ export function getFirstDepthTitle_KO(path:string){
         case "notice":
             return "공지사항"
         default :
-            return "목록에 없는 케이스입니다"
+            return "상세 게시판"
     }
 }
 
@@ -61,7 +61,7 @@ export function getSecondDepthTitle_EN(path:string){
         case "mou_list":
             return "MOU institution"
         default:
-            return "목록에 없는 케이스입니다"
+            return "General Forum"
     }
 }
 
@@ -110,7 +110,7 @@ export function getSecondDepthTitle_KO(path:string){
         case "mou_list":
             return "MOU 기관"
         default:
-            return "목록에 없는 케이스입니다"
+            return "상세 게시판"
     }
 }
 
@@ -159,7 +159,7 @@ export function getSecondDepthDescription_KO(path:string){
         case "mou_list":
             return "메뉴에 대한 설명을 입력해주세요"
         default:
-            return "목록에 없는 케이스입니다"
+            return "메뉴에 대한 설명을 입력해주세요"
     }
 }
 
@@ -176,7 +176,7 @@ export function getThirdDepthTitle_KO(path:string){
         case "research":
            return "연구 자문단"
         default:
-            return "목록에 없는 케이스입니다"
+            return "상세 게시판"
     }
 }
 
@@ -401,6 +401,13 @@ export const notice = {
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/notice/recruit",
+        },
+        {
+            title_KO: "상세 게시판",
+            title_EN: "General Forum",
+            description: "메뉴에 대한 설명을 써주세요",
+            subMenu: [],
+            href: "/notice/center_news",
         },
     ],
 }
