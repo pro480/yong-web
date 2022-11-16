@@ -28,7 +28,7 @@ function MainForum() {
     return (
         <div className='flex flex-col gap-y-12 p-10'>
             <div className='flex h-[10%] w-full items-center justify-center text-lg font-bold  xs:text-xl  md:text-2xl lg:text-3xl  desktop:text-4xl'>
-                빅데이터 연구센터 갤러리
+                갤러리
                 <Link href='/data/gallery'>
                     <div className='invisible absolute right-[6%] float-right flex cursor-pointer hover:scale-105 md:visible md:gap-x-2 md:text-base lg:gap-x-3 lg:text-lg desktop:gap-x-4 desktop:text-xl'>
                         자세히 보러 가기
@@ -62,7 +62,7 @@ function MainForum() {
                                     "YYYY-MM-DD"
                                 )}
                             </div>
-                            <p className='absolute -top-8 left-1/2 w-fit max-w-[90%] -translate-x-1/2 overflow-hidden text-ellipsis whitespace-nowrap border-b-2 border-PRIMARY_COLOR-300 px-2 text-sm  font-semibold  md:text-base md:-top-10 desktop:text-lg'>
+                            <p className='absolute -top-8 left-1/2 w-fit max-w-[90%] -translate-x-1/2 overflow-hidden text-ellipsis whitespace-nowrap border-b-2 border-PRIMARY_COLOR-300 px-2 text-sm  font-semibold  md:-top-10 md:text-base desktop:text-lg'>
                                 {data.title}
                             </p>
                         </div>

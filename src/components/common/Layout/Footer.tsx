@@ -6,7 +6,7 @@ import logo_symbol_text_KR from "../../../../public/images/logo/logo_symbol_text
 
 function Footer() {
     return (
-        <div className='flex w-full flex-col items-center bg-GRAY_COLOR-900 text-GRAY_COLOR-200 xl:flex-row xl:flex-wrap xl:justify-between xl:px-20 '>
+        <div className='flex w-full flex-col items-center bg-GRAY_COLOR-900 text-GRAY_COLOR-200 xl:flex-row xl:flex-wrap xl:justify-center xl:px-20 '>
             {/*로고 사이즈*/}
             <div className='relative flex h-16 w-80 items-center justify-center sm:w-96 xl:hidden '>
                 <Image
@@ -28,16 +28,15 @@ function Footer() {
                 {/*로고*/}
             </div>
             {/*두번쨰 줄*/}
-            <div className='flex max-w-5xl flex-wrap gap-y-2 gap-x-14 py-4 px-2 text-sm font-medium text-white xl:w-full xl:gap-y-4 xl:py-6 2xl:max-w-7xl 2xl:gap-y-8 2xl:py-10'>
+            <div className='flex max-w-5xl flex-wrap gap-y-2 gap-x-14 py-4 px-2 text-sm font-medium text-white xl:w-full xl:gap-y-4 xl:py-6 2xl:max-w-7xl 2xl:gap-y-8 2xl:py-10 xl:justify-center'>
                 <span>
                     INHA UNIVERSITY, 100 Inha-ro, Michuhol-gu, Incheno 22212,
                     KOREA
                 </span>
-                <span>Tel: +82-32-860-7114</span>
-                <span>Fax: +82-32-863-1333</span>
-                <span>Mail: yong21c@inha.ac.kr</span>
-                <div className='basis-full text-GRAY_COLOR-300'>
-                    Copyright(C) 2021 by INHA UNIVERSITY.ALL RIGHTS RESERVED
+                <span>Tel: +82-32-860-7873</span>
+                <span>Mail: yong21c@gmail.com</span>
+                <div className='basis-full text-GRAY_COLOR-300 justify-center flex w-full'>
+                    Copyright(C) 2022 by EBA Center. ALL RIGHTS RESERVED
                 </div>
             </div>
             <div className='absolute right-24 flex hidden h-16 w-32 items-center justify-center xl:flex  '>
