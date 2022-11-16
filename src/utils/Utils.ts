@@ -15,7 +15,7 @@ export function getFirstDepthTitle_KO(path:string){
         case "location":
             return "오시는 길"
         default :
-            return "목록에 없는 케이스입니다"
+            return "상세 게시판"
     }
 }
 
@@ -66,7 +66,7 @@ export function getSecondDepthTitle_EN(path:string){
         case "location":
             return "Location"
         default:
-            return "목록에 없는 케이스입니다"
+            return "General Forum"
     }
 }
 
@@ -117,7 +117,7 @@ export function getSecondDepthTitle_KO(path:string){
         case "location":
             return "오시는 길"
         default:
-            return "목록에 없는 케이스입니다"
+            return "상세 게시판"
     }
 }
 
@@ -168,7 +168,7 @@ export function getSecondDepthDescription_KO(path:string){
         case "location":
             return "메뉴에 대한 설명을 입력해주세요"
         default:
-            return "목록에 없는 케이스입니다"
+            return "메뉴에 대한 설명을 입력해주세요"
     }
 }
 

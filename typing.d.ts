@@ -40,7 +40,12 @@ export interface InternalMember {
 }
 
 export type Course = "학부연구생" | "석사 과정" | "박사 과정" | "교수";
-export type Team = "센터장" | "데이터 분석팀" | "인공지능팀" | "실무교육팀" | "동문";
+export type Team =
+    | "센터장"
+    | "데이터 분석팀"
+    | "인공지능팀"
+    | "실무교육팀"
+    | "동문";
 export type Classification = "교수" | "졸업생";
 
 export interface ExternalMember {
@@ -66,16 +71,18 @@ export type Material = "논문" | "학습 자료";
 export interface StudyMaterial {
     title: string; // 자료명
     writer: string; // 작성자
-    date: string; // 등록일
+    createdAt: string; // 등록일
     fileUrl: string; // 첨부파일 주소
+    content: string;
     material: Material;
 }
 
 export interface PaperMaterial {
     title: string; // 논문명
     writer: string; // 저자
-    date: string; // 작성일자
-    fileUrl: string; // 논문파일 주소
+    createdAt: string; // 작성일자
+    fileUrl: string; // 첨부파일 주소
+    content: string;
     material: Material;
 }
 
@@ -84,20 +91,18 @@ export type News = "센터 소식" | "행사 소식";
 export interface CenterNews {
     title: string; // 제목
     writer: string; // 작성자
-    date: string; // 등록일
+    createdAt: string; // 등록일
     content: string; // 내용
-    imgUrl: string; // 이미지
-    fileUrl: string; // 파일
+    fileUrl: string; // 첨부파일
     news: News;
 }
 
 export interface EventNews {
     title: string; // 제목
     writer: string; // 저자
-    date: string; // 작성일자
+    createdAt: string; // 작성일자
     content: string; // 내용
-    imgUrl: string; // 이미지
-    fileUrl: string; // 파일
+    fileUrl: string; // 첨부파일
     news: News;
 }
 
@@ -130,7 +135,6 @@ export interface ResearchReport {
     imgUrl: string;
     researcher: string; // 연구자
     title: string; // 제목
-    type: string;
     year: string; //발행년도
 }
 
@@ -140,6 +144,14 @@ export interface Project {
     consignment: string[];
     startedAt: string;
     completed: boolean;
-    endedAt?: string;
+    endedAt: string;
     imageUrl?: string;
+}
+
+export interface Thesis {
+    createdAt: string; // 파일 올린 날짜
+    type: string; // 학회지
+    researcher: string; // 연구자
+    title: string; // 제목
+    year: string; //발행년도
 }

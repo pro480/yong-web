@@ -83,9 +83,7 @@ function MemberList<T extends InternalMember | GraduateMember>({
                             <div
                                 key={docSnapshot.id}
                                 className={`${
-                                    isBig
-                                        ? "py-10"
-                                        : ""
+                                    isBig ? "py-10" : ""
                                 } h-fit xs:p-2`}
                             >
                                 <NameCard

@@ -12,7 +12,7 @@ import MemberTableBody from "./MemberTableBody";
 import { UseQueryResult } from "react-query";
 import {
     CollectionReference,
-    FirestoreError,
+    FirestoreError, Query,
     QueryDocumentSnapshot,
     QuerySnapshot,
 } from "@firebase/firestore";
@@ -80,7 +80,7 @@ function MemberTable({ organization }: Props) {
 
     return (
         <MemberTableContext.Provider value={value}>
-            <table className='w-full table-auto border-t border-t-black'>
+            <table className='w-full table-auto  border-t border-t-black'>
                 <MemberTableHeader organization={organization} />
                 <MemberTableBody
                     organization={organization}

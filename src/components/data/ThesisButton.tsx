@@ -1,82 +1,75 @@
+import { useContext } from "react";
+import { Thesis } from "../../../typing";
+import { ThesisContext } from "./ThesisTable";
 import {
     ChevronDoubleLeftIcon,
     ChevronDoubleRightIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
 } from "@heroicons/react/24/outline";
-import React, { useContext } from "react";
-import { ResearchReport } from "../../../typing";
-import { ReportContext } from "./Report";
 
-export function ReportAddButton() {
-    const { isEditing, setIsEditing, setSelectedResearch, setSelectedDocId } =
-        useContext(ReportContext);
-
-    return (
-        <div>
-            <button
-                className='mx-3 my-3 h-[22px] w-[38px] cursor-pointer rounded-md bg-gray-400 text-center text-sm text-white hover:bg-gray-500 xl:h-[28px] xl:w-[50px] xl:text-base'
-                onClick={() => {
-                    setIsEditing((prev) => !prev);
-                    setSelectedResearch(null);
-                    setSelectedDocId(null);
-                }}
-            >
-                {isEditing ? "취소" : "추가"}
-            </button>
-        </div>
-    );
-}
-
-export function ReportDeleteButton({ docId }: { docId: string }) {
-    const { deleteDocument } = useContext(ReportContext);
-    return (
-        <div
-            className='h-[22px] w-[38px] cursor-pointer rounded-md bg-gray-400 text-center text-sm text-white hover:bg-gray-600 xl:h-[30px] xl:w-[40px] xl:text-base'
-            onClick={() => {
-                confirm("보고서를 삭제하시겠습니까?")
-                    ? deleteDocument(docId)
-                    : null;
-            }}
-        >
-            삭제
-        </div>
-    );
-}
-
-export function ReportUpdateButton({
-    docId,
+export function ThesisTableUpdateButton({
     data,
+    docId,
 }: {
+    data: Thesis;
     docId: string;
-    data: ResearchReport;
 }) {
-    const { setIsEditing, setSelectedDocId, setSelectedResearch } =
-        useContext(ReportContext);
+    const { setIsEditing, setSelectedDocId } = useContext(ThesisContext);
 
     return (
-        <div
-            className='mx-1 h-[22px] w-[38px] cursor-pointer rounded-md bg-gray-400 text-center text-sm text-white hover:bg-gray-600 xl:h-[30px] xl:w-[40px] xl:text-base'
+        <button
+            className='mr-1 border border-gray-300 bg-white p-1'
             onClick={() => {
-                setIsEditing(true);
+                setIsEditing(false);
                 setSelectedDocId(docId);
-                setSelectedResearch(data);
+                setIsEditing(true);
             }}
         >
             수정
-        </div>
+        </button>
     );
 }
 
-export function ReportPageButton() {
-    const { pageNumber, setPageNumber, researchList } =
-        useContext(ReportContext);
-    const researchLength = Math.floor(Number(researchList?.length) / 8) + 1; // 한 페이지당 원하는 자료 수에 따라 달라지는 부분 /(원하는 자료 수)
+export function ThesisTableDeleteButton({ docId }: { docId: string }) {
+    const { deleteDocument } = useContext(ThesisContext);
+    return (
+        <button
+            className='border border-gray-300 bg-white p-0.5'
+            onClick={() => {
+                confirm("삭제하시겠습니까?") ? deleteDocument(docId) : null;
+            }}
+        >
+            삭제
+        </button>
+    );
+}
+
+export function ThesisTableAddButton() {
+    const { setIsEditing, isEditing, setSelectedDocId } =
+        useContext(ThesisContext);
+
+    return (
+        <button
+            className='absolute right-3 top-1/2 hidden -translate-y-1/2 border bg-gray-100 p-1 lg:flex'
+            onClick={() => {
+                setIsEditing((prev) => !prev);
+                setSelectedDocId("");
+            }}
+        >
+            {isEditing ? "취소" : "추가"}
+        </button>
+    );
+}
+
+export function ThesisPageButton() {
+    const { pageNumber, setPageNumber, thesisList } = useContext(ThesisContext);
+    const researchLength = Math.floor(Number(thesisList?.length) / 5) + 1; // 한 페이지당 원하는 자료 수에 따라 달라지는 부분 /(원하는 자료 수)
     const maxOffset = Math.floor(researchLength / 5) * 5 + 1;
     let buttonOffset = Math.floor((Number(pageNumber) - 1) / 5) * 5 + 1;
 
     return (
-        <div className=' m-5 flex items-center justify-center p-10'>
+        <div className=' m-5 flex items-center justify-center pt-4'>
             <ul className='inline-flex items-center -space-x-px '>
                 <li>
                     <button

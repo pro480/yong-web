@@ -74,7 +74,7 @@ function Header() {
                                 target='_blank'
                                 href='https://github.com/pro480/yong-web'
                                 rel='noopener noreferrer'
-                                className='mr-5'
+                                className='mr-5 hover:scale-110'
                             >
                                 {/*noopener noreferred은 보안 위협을 피하기 위함*/}
                                 <ImGithub size='24' />
@@ -104,17 +104,19 @@ function Header() {
                             {user ? (
                                 <button
                                     onClick={logout}
-                                    className='mr-5 hidden md:flex'
+                                    className='mr-5 hidden hover:scale-110 md:flex'
                                 >
                                     Logout
                                 </button>
                             ) : (
                                 <Link href='/adminLogin'>
-                                    <a className='mr-5 hidden md:flex'>ADMIN</a>
+                                    <a className='mr-5 hidden hover:scale-110 md:flex'>
+                                        ADMIN
+                                    </a>
                                 </Link>
                             )}
                             <Bars3CenterLeftIcon
-                                className='ml-auto h-8 cursor-pointer desktop:ml-0'
+                                className='ml-auto h-8 cursor-pointer hover:scale-110 desktop:ml-0'
                                 onClick={() => setOpenHeader((prev) => !prev)}
                             />
                         </div>

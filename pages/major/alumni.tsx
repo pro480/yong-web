@@ -11,8 +11,6 @@ function Alumni() {
 
     return (
         <div className='relative'>
-
-
             <MemberList<GraduateMember>
                 team='동문'
                 memberList={memberList}

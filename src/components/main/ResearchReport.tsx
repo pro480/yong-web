@@ -1,63 +1,62 @@
 import React, { createContext } from "react";
-import { PlusIcon } from "@heroicons/react/24/outline";
+
+import {
+    ArrowRightIcon,
+    ChevronLeftIcon,
+    ChevronRightIcon,
+    NewspaperIcon,
+    PlusIcon,
+} from "@heroicons/react/24/outline";
 import ReportCard from "./ReportCard";
 import Link from "next/link";
-import useFirebase from "../../hooks/useFirebase";
+import { limit, orderBy, query } from "firebase/firestore";
+import { collection } from "@firebase/firestore";
+import { db } from "../../../firebase";
+import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import { ResearchReport } from "../../../typing";
-import {
-    CollectionReference,
-    FirestoreError,
-    QueryDocumentSnapshot,
-    QuerySnapshot,
-} from "firebase/firestore";
-import { UseQueryResult } from "react-query";
-
-interface ReportContextProps {
-    researchList: QueryDocumentSnapshot<ResearchReport>[] | undefined;
-    collectionRef: CollectionReference<ResearchReport>;
-    collectionQuery: UseQueryResult<
-        QuerySnapshot<ResearchReport>,
-        FirestoreError
-    >;
-    deleteDocument: (docID: string) => void;
-}
-
-export const ReportContext = createContext({} as ReportContextProps);
 
 function ResearchReport() {
-    const { collectionRef, collectionQuery, deleteDocument } =
-        useFirebase<ResearchReport>("researchReport", ["researchReport"]);
-    const researchList = collectionQuery.data?.docs;
+    const collectionRef = query(
+        collection(db, "researchReport"),
+        limit(4),
+        orderBy("createdAt", "desc")
+    );
 
-    const value = {
-        researchList,
-        collectionRef,
-        collectionQuery,
-        deleteDocument,
-    };
+    const collectionQuery = useFirestoreQuery(["mainReport"], collectionRef);
 
     return (
-        <ReportContext.Provider value={value}>
-            <div className='-mt-[5.5%] flex h-[250px]  w-[100%] flex-col items-center justify-center xs:h-[300px] md:h-[600px] lg:h-[650px] desktop:h-[700px]'>
-                <div className='relative  flex h-full w-4/5 flex-col bg-white px-4 pt-1 pb-4 md:px-6 md:pt-1.5 md:pb-7 lg:px-8 lg:pt-3 lg:pb-12 desktop:px-16 desktop:pt-6 desktop:pb-20'>
-                    <h1 className='mb-2 flex h-[20%] items-center text-lg font-semibold xs:text-xl md:text-2xl lg:text-3xl desktop:text-4xl'>
+        <div className='-mt-16 flex w-full flex-col items-center justify-center xl:-mt-32'>
+            <div className='relative flex h-full w-4/5 flex-col gap-y-4 bg-white px-6 py-5 md:gap-y-6 md:px-9 md:pt-9 xl:gap-y-8 xl:px-12 xl:py-10'>
+                <h1 className='flex h-[20%] items-center justify-between text-sm font-semibold xs:text-base sm:text-lg md:text-2xl xl:text-3xl '>
+                    <div className='flex gap-x-1 xl:gap-x-3'>
                         <span className='text-PRIMARY_COLOR-600'>
                             최신 연구
                         </span>
-                        &nbsp;&nbsp;보고서
-                        <Link href='/data/paper'>
-                            <div className='invisible absolute right-[6%] float-right flex cursor-pointer md:visible md:gap-x-2 md:text-base lg:gap-x-3 lg:text-lg desktop:gap-x-4 desktop:text-xl'>
-                                자세히 보러 가기
-                                <PlusIcon className='visible aspect-1/1 w-[18px] self-center rounded-full border border-PRIMARY_COLOR-500 p-1 xs:w-[20px] md:w-[22px] lg:w-[24px] desktop:w-[26px]' />
-                            </div>
-                        </Link>
-                    </h1>
-                    <div className='flex flex-1 flex-col justify-start md:flex-row md:justify-between'>
-                        <ReportCard />
+                        보고서
                     </div>
+
+                    <Link href='/data/paper'>
+                        <div className='flex cursor-pointer gap-x-1 text-xs xs:text-sm xl:gap-x-4 xl:text-lg'>
+                            자세히 보러 가기
+                            <PlusIcon className='h-4 self-center rounded-full  border border-PRIMARY_COLOR-500 p-0.5 xl:h-6 xl:p-1' />
+                        </div>
+                    </Link>
+                </h1>
+                <div className='grid h-fit grid-cols-2 justify-between gap-x-8 px-3 md:grid-cols-3 xl:gap-x-16 xl:px-6 2xl:grid-cols-4 2xl:px-10'>
+                    {collectionQuery.data?.docs.map((snapshot, index) => {
+                        const data = snapshot.data() as ResearchReport;
+
+                        return (
+                            <ReportCard
+                                key={snapshot.id}
+                                report={data}
+                                index={index}
+                            />
+                        );
+                    })}
                 </div>
             </div>
-        </ReportContext.Provider>
+        </div>
     );
 }
 
