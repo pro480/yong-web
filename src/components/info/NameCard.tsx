@@ -56,10 +56,10 @@ function NameCard<T extends InternalMember | GraduateMember>({
 
                 {/* <div className={ (document.body.offsetWidth < 440) ? 'hidden' : ''}> 모바일 사이즈 약력 삭제 */}
                 <div className='us:hidden xs:contents'>
-                    <div className={`${
+                    <div className={`flex pb-1 justify-between text-base md:text-lg xl:text-xl ${
                                     isBig
-                                        ? "flex pb-1 justify-between text-base md:text-lg xl:text-xl pt-3"
-                                        : "flex pb-1 justify-between text-base md:text-lg xl:text-xl pt-1"
+                                        ? "pt-3"
+                                        : "pt-1"
                     }`}>
                         약력{" "}
                         {isEditable && user && (
@@ -73,10 +73,10 @@ function NameCard<T extends InternalMember | GraduateMember>({
                         )}
                     </div>
 
-                    <article className={`${
+                    <article className={`flex flex-wrap w-full xs:gap-x-10 sm:gap-x-0 ${
                                     isBig
-                                        ? "flex flex-wrap w-full xs:gap-x-10 sm:gap-x-0 gap-y-3"
-                                        : "flex flex-wrap w-full xs:gap-x-10 sm:gap-x-0 gap-y-2"
+                                        ? "gap-y-3"
+                                        : "gap-y-2"
                     }`}>
                         {/* 'flex flex-wrap w-full xs:gap-x-10 sm:gap-x-0 gap-y-2' > */}
                         {/* 줄바꿈 단어별로 되게 break, white-space 안됨..., 아랫줄 침범하는것 
