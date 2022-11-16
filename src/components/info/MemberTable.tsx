@@ -80,7 +80,7 @@ function MemberTable({ organization }: Props) {
 
     return (
         <MemberTableContext.Provider value={value}>
-            <table className='w-full table-auto border-t border-t-black'>
+            <table className='w-full table-auto  border-t border-t-black'>
                 <MemberTableHeader organization={organization} />
                 <MemberTableBody
                     organization={organization}
