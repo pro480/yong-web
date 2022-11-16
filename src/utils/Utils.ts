@@ -1,5 +1,6 @@
 
 export function getFirstDepthTitle_KO(path:string){
+
     switch (path){
         case "info":
             return "센터소개"
@@ -59,7 +60,7 @@ export function getSecondDepthTitle_EN(path:string){
         case "recruit":
             return "Researcher Recruitment"
         case "business":
-            return "research and business"
+            return "Research & business"
         case "mou_list":
             return "MOU institution"
         case "location":
@@ -191,6 +192,7 @@ export function getThirdDepthTitle_KO(path:string){
 
 
 export const info = {
+
     title_KO: "센터 소개",
     title_EN: "Center Info",
     description: "메뉴에 대한 설명을 써주세요",
@@ -257,14 +259,14 @@ export const info = {
         },
         {
             title_KO: "센터 연혁",
-            title_EN: "Center Center_history",
+            title_EN: "Center History",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/info/center_history",
         },
         {
             title_KO: "센터 구성원",
-            title_EN: "Center Center_member",
+            title_EN: "Center Member",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/info/center_member",
@@ -274,13 +276,13 @@ export const info = {
 
 export const research = {
     title_KO: "연구 및 사업",
-    title_EN: "Research And Business",
+    title_EN: "Research & Business",
     description: "메뉴에 대한 설명을 써주세요",
     href: "/research/business",
     subMenu: [
         {
             title_KO: "연구 및 사업",
-            title_EN: "Research And Business",
+            title_EN: "Research & Business",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/research/business",
@@ -420,11 +422,11 @@ export const location = {
     href: "/location/location",
     subMenu: [
         {
-            title_KO: "센터 소식",
-            title_EN: "Center News",
+            title_KO: "오시는 길",
+            title_EN: "Location",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
-            href: "/notice/center_news",
+            href: "/location/location",
         },
         ]
 }

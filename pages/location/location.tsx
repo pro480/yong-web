@@ -3,8 +3,10 @@ import Image from "next/image";
 import { BuildingOfficeIcon } from "@heroicons/react/24/solid";
 import { TruckIcon } from "@heroicons/react/24/solid";
 import LocationBox from "../../src/components/location/location_box";
+import {useTranslation} from "next-i18next";
 
 function Location() {
+    const { t } = useTranslation();
     return (
             <div className='flex flex-col gap-y-12 md:space-y-8'>
                 <div className='flex flex-col gap-y-6 md:flex-row  items-center'>
