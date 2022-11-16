@@ -30,8 +30,8 @@ function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({
             {materialList
                 ?.sort((a, b) => Number(b.data().date) - Number(a.data().date))
                 .slice(
-                    (Number(pageNumber) - 1) * 8,
-                    (Number(pageNumber) - 1) * 8 + 8
+                    (Number(pageNumber) - 1) * 10,
+                    (Number(pageNumber) - 1) * 10 + 10
                 )
                 .map((docSnapshot, index) => {
                     const data = docSnapshot.data();
