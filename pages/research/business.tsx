@@ -41,7 +41,6 @@ function Business() {
     const { collectionRef, collectionQuery, deleteDocument } =
         useFirebase<Project>("projects", ["projects"]);
     const router = useRouter();
-
     const completed = router.query.completed || "false";
 
     const value = {

@@ -13,12 +13,12 @@ export default function ReportCard({ report, index }: Props) {
 
     return (
         <div
-            className={`flex flex-col text-xs xs:text-sm lg:text-base${
+            className={`flex flex-col gap-y-1 text-xs xs:text-sm lg:text-base${
                 index > 2 && "hidden"
             } ${index < 3 && "md:flex"}
             2xl:flex`}
         >
-            <div className='relative aspect-[1/1.414] w-full border bg-gray-300'>
+            <div className='relative aspect-[1/1.414] w-full  cursor-pointer border bg-gray-300 shadow-lg hover:scale-105'>
                 <Image src={report.imgUrl} layout='fill' />
             </div>
             <div className='overflow-hidden text-ellipsis whitespace-nowrap text-center '>
