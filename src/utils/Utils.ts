@@ -3,11 +3,11 @@ export function getFirstDepthTitle_KO(path:string){
 
     switch (path){
         case "info":
-            return "센터소개"
+            return "센터 소개"
         case "research":
             return "연구 및 사업"
         case "major":
-            return "전공소개"
+            return "전공 소개"
         case "data":
             return "자료실"
         case "notice":
@@ -97,11 +97,11 @@ export function getSecondDepthTitle_KO(path:string){
         case "career":
             return "졸업 후 진로"
         case "edu_evaluation":
-            return "교육 평가"
+            return "교육평가"
         case "edu_measurement":
-            return "교육 측정"
+            return "교육측정"
         case "edudata_science":
-            return "에듀데이터 사이언스"
+            return "에듀데이터사이언스"
         case "center_news":
             return "센터 소식"
         case "event_news":
@@ -304,21 +304,21 @@ export const major = {
     href: "/major/edudata_science",
     subMenu: [
         {
-            title_KO: "에듀 데이터 사이언스",
+            title_KO: "에듀데이터사이언스",
             title_EN: "EduData Science",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/major/edudata_science",
         },
         {
-            title_KO: "교육 측정",
+            title_KO: "교육측정",
             title_EN: "Education Edu_measurement",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/major/edu_measurement",
         },
         {
-            title_KO: "교육 평가",
+            title_KO: "교육평가",
             title_EN: "Education Edu_evaluation",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],

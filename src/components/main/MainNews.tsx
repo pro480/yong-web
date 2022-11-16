@@ -48,7 +48,7 @@ function MainNews() {
         <div className='main_news_bg flex w-full flex-col py-5 px-6 lg:px-10 lg:py-12'>
             {/*타이틀 입니다*/}
             <div className='h-[20%] py-5 text-xl font-bold text-white lg:text-2xl xl:text-3xl'>
-                교육 빅데이터 응용 연구센터 소식
+                교육빅데이터응용연구센터 소식
             </div>
             {/*뉴스카드 컨테이너 입니다*/}
             <div className='flex h-full w-full flex-wrap justify-center gap-y-6 gap-x-16 md:justify-around lg:grid lg:grid-cols-3 lg:gap-x-6 xl:gap-x-12'>

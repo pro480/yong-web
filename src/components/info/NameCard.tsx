@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import Image from "next/image";
 import useAuth from "../../hooks/useAuth";
 import { GraduateMember, InternalMember } from "../../../typing";
 import { MemberDeleteButton, MemberUpdateButton } from "./MemberButton";
@@ -20,25 +21,26 @@ function NameCard<T extends InternalMember | GraduateMember>({
     const { user } = useAuth();
 
     return (
-        <section className='pb-1 xs:w-full flex us:flex-col xs:flex-row xs:justify-between'>
+        <section className='pb-1 w-full flex us:flex-col xs:flex-row xs:justify-between'>
             {/*이미지 사이즈*/}
-            <div className='us:mt-7 xs:my-auto xs:relative us:w-[70%] xs:w-[40%] sm:w-[25%]'>
-
-                <img
+            {/* <div className='relative us:mt-7 xs:my-auto xs:relative us:w-[70%] xs:w-[40%] sm:w-[25%]'> */}
+            <div className='relative xs:mt-7 us:w-[50%] xs:w-[40%] sm:w-[25%]'>
+                <Image
                     src={member.imageUrl}
                     alt='멤버사진'
-                    className='object-fill pb-5'
+                    layout='fill'
+                    objectFit='contain'
+                    priority={true}
                 />
-
             </div>
             {/*오른쪽 설명*/}
-            <main className='xs:w-[50%] sm:w-[70%] xs:self-center text-PRIMARY_COLOR-500 sx:text-xs sm:text-sm md:text-base'>
+            <main className='xs:w-[45%] sm:w-[65%] xs:self-center text-PRIMARY_COLOR-500 sx:text-xs sm:text-sm md:text-base'>
                 {/*이름, 관심분야, 이메일*/}
                 <header className='xs:flex-wrap w-full pb-1 xs:items-center'>
-                    <h1 className={`${
+                    <h1 className={`pb-1 font-semibold text-PRIMARY_COLOR-800 ${
                                     isBig
-                                        ? "pb-1 font-semibold text-PRIMARY_COLOR-800 us:text-xl md:text-2xl lg:text-3xl"
-                                        : "pb-1 font-semibold text-PRIMARY_COLOR-800 sm:text-xl lg:text-2xl"
+                                        ? "us:text-xl md:text-2xl lg:text-3xl"
+                                        : "sm:text-xl             lg:text-2xl"
                     }`}>
                         {member.name}
                     </h1>
@@ -54,10 +56,10 @@ function NameCard<T extends InternalMember | GraduateMember>({
 
                 {/* <div className={ (document.body.offsetWidth < 440) ? 'hidden' : ''}> 모바일 사이즈 약력 삭제 */}
                 <div className='us:hidden xs:contents'>
-                    <div className={`${
+                    <div className={`flex pb-1 justify-between text-base md:text-lg xl:text-xl ${
                                     isBig
-                                        ? "flex pb-1 justify-between text-base md:text-lg xl:text-xl pt-3"
-                                        : "flex pb-1 justify-between text-base md:text-lg xl:text-xl pt-1"
+                                        ? "pt-3"
+                                        : "pt-1"
                     }`}>
                         약력{" "}
                         {isEditable && user && (
@@ -71,10 +73,10 @@ function NameCard<T extends InternalMember | GraduateMember>({
                         )}
                     </div>
 
-                    <article className={`${
+                    <article className={`flex flex-wrap w-full xs:gap-x-10 sm:gap-x-0 ${
                                     isBig
-                                        ? "flex flex-wrap w-full xs:gap-x-10 sm:gap-x-0 gap-y-3"
-                                        : "flex flex-wrap w-full xs:gap-x-10 sm:gap-x-0 gap-y-2"
+                                        ? "gap-y-3"
+                                        : "gap-y-2"
                     }`}>
                         {/* 'flex flex-wrap w-full xs:gap-x-10 sm:gap-x-0 gap-y-2' > */}
                         {/* 줄바꿈 단어별로 되게 break, white-space 안됨..., 아랫줄 침범하는것 
@@ -82,7 +84,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
                         {member.history.map((history, index) => (
                             <div
                                 key={index}
-                                className='break-keep h-fit min-w-[50%] border-l-2 border-l-PRIMARY_COLOR-200 pl-2'
+                                className='break-keep h-fit min-w-[47%] border-l-2 border-l-PRIMARY_COLOR-200 ml-2 pl-2'
                             >
                                 {history}
                             </div>

@@ -64,12 +64,12 @@ function MainPageBanner() {
             </Carousel>
             <div className='absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 transform flex-col whitespace-nowrap text-center text-white'>
                 <h1 className='text-base font-bold leading-snug xs:text-xl sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug xl:text-6xl xl:leading-snug'>
-                    Edu-Big Data Application
+                    Edu-Bigdata Application
                     <br />
                     Research Center
                 </h1>
                 <span className='mt-2 text-xs font-medium xs:text-sm sm:mt-3 sm:text-base md:mt-4 md:text-2xl lg:text-4xl xl:text-5xl xl:mt-5'>
-                    Maximizing the Value of Education Big Data
+                    Maximizing the Value of Educational Bigdata
                 </span>
             </div>
         </div>
