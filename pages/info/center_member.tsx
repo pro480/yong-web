@@ -6,7 +6,7 @@ import ClassificationTitle from "../../src/components/common/ClassificationTitle
 import useAuth from "../../src/hooks/useAuth";
 
 function Center_member() {
-    const team: Team[] = ["센터장"];
+    const team: Team[] = ["센터장", "데이터 분석팀", "인공지능팀", "실무교육팀"];
     const { collectionRef, collectionQuery, deleteDocument } =
         useFirebase<InternalMember>("internalMembers", ["internalMembers"]);
 
