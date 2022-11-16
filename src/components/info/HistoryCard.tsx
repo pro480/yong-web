@@ -8,11 +8,11 @@ interface Props {
 
 function HistoryCard({ year, contents }: Props) {
     return (
-        <section className='my-8 flex-nowrap sm:flex'>
-            <h1 className='my-8 pr-4 text-xl font-bold text-PRIMARY_COLOR-500 sm:my-0 sm:pl-10 sm:pr-16 sm:text-2xl lg:pr-32'>
+        <section className='my-6 flex-nowrap lg:flex xl:pl-8'>
+            <h1 className='my-8 pr-4 text-xl font-bold text-PRIMARY_COLOR-500 sm:text-2xl lg:my-0 lg:mr-5'>
                 {year}
             </h1>
-            <div>
+            <div className='lg:flex-1'>
                 {contents.map((content, index) => (
                     <HistoryPost
                         key={index}

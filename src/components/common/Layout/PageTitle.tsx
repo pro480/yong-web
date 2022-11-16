@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React from "react";
 
 import { HomeIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import {
-    data,
     getFirstDepthTitle_KO,
     getSecondDepthDescription_KO,
     getSecondDepthTitle_KO,
@@ -30,22 +29,21 @@ function PageTitle() {
                     {getSecondDepthDescription_KO(secondDepth)}
                 </h3>
             </div>
-            <div className='flex gap-x-4 border-y py-3'>
+            <div className='flex items-center gap-x-1 border-y py-3 text-xs xs:text-sm sm:gap-x-2 sm:text-base md:gap-x-3 md:text-lg '>
                 <Link href='/'>
-                    <HomeIcon className='h-6 cursor-pointer text-PRIMARY_COLOR-500' />
+                    <HomeIcon className='h-4 cursor-pointer text-PRIMARY_COLOR-500' />
                 </Link>
                 <Link href='/'>
                     <span className='cursor-pointer'>HOME</span>
                 </Link>
 
                 {path.map((item, index) => {
-
                     if (index === 1) {
                         return (
                             <PageTitleComponent
                                 key={index}
                                 href={`/${firstDepth}`}
-                                active={path.length -1 === index}
+                                active={path.length - 1 === index}
                                 title={getFirstDepthTitle_KO(item)}
                             />
                         );

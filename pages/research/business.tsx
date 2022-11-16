@@ -1,9 +1,7 @@
 import React, { createContext, Dispatch, useState } from "react";
-import PageTitle from "../../src/components/common/Layout/PageTitle";
-import { ForwardIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import ProgressResearchCard from "../../src/components/research/ProgressResearchCard";
 import useFirebase from "../../src/hooks/useFirebase";
-import { GraduateMember, InternalMember, Project } from "../../typing";
+import { Project } from "../../typing";
 import CompletedResearchCard from "../../src/components/research/CompletedResearchCard";
 import { useRouter } from "next/router";
 import useAuth from "../../src/hooks/useAuth";
@@ -11,9 +9,11 @@ import { UseQueryResult } from "react-query";
 import {
     CollectionReference,
     FirestoreError,
+    Query,
     QuerySnapshot,
 } from "@firebase/firestore";
 import ProjectToggle from "../../src/components/research/ProjectToggle";
+import moment from "moment";
 
 interface ProjectContextProps {
     modalOpen: boolean;
@@ -92,30 +92,58 @@ function Business() {
                 {/* 프로젝트 집합 */}
                 <div className='flex flex-col'>
                     {completed === "false"
-                        ? collectionQuery.data?.docs.map((snapshot) => {
-                              const project = snapshot.data();
-                              if (!project.completed) {
-                                  return (
-                                      <ProgressResearchCard
-                                          key={snapshot.id}
-                                          docID={snapshot.id}
-                                          project={project}
-                                      />
-                                  );
-                              }
-                          })
-                        : collectionQuery.data?.docs.map((snapshot) => {
-                              const project = snapshot.data();
-                              if (project.completed) {
-                                  return (
-                                      <CompletedResearchCard
-                                          key={snapshot.id}
-                                          docID={snapshot.id}
-                                          project={project}
-                                      />
-                                  );
-                              }
-                          })}
+                        ? collectionQuery.data?.docs
+                              .sort(
+                                  (a, b) =>
+                                      Number(
+                                          moment(a.data().startedAt).format(
+                                              "YYYYMMDD"
+                                          )
+                                      ) -
+                                      Number(
+                                          moment(b.data().startedAt).format(
+                                              "YYYYMMDD"
+                                          )
+                                      )
+                              )
+                              .map((snapshot) => {
+                                  const project = snapshot.data();
+                                  if (!project.completed) {
+                                      return (
+                                          <ProgressResearchCard
+                                              key={snapshot.id}
+                                              docID={snapshot.id}
+                                              project={project}
+                                          />
+                                      );
+                                  }
+                              })
+                        : collectionQuery.data?.docs
+                              .sort(
+                                  (a, b) =>
+                                      Number(
+                                          moment(a.data().startedAt).format(
+                                              "YYYYMMDD"
+                                          )
+                                      ) -
+                                      Number(
+                                          moment(b.data().startedAt).format(
+                                              "YYYYMMDD"
+                                          )
+                                      )
+                              )
+                              .map((snapshot) => {
+                                  const project = snapshot.data();
+                                  if (project.completed) {
+                                      return (
+                                          <ProgressResearchCard
+                                              key={snapshot.id}
+                                              docID={snapshot.id}
+                                              project={project}
+                                          />
+                                      );
+                                  }
+                              })}
                 </div>
                 {modalOpen && <ProjectToggle />}
             </div>

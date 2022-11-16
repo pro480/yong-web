@@ -13,10 +13,10 @@ import { UseQueryResult } from "react-query";
 import {
     CollectionReference,
     FirestoreError,
+    Query,
     QueryDocumentSnapshot,
     QuerySnapshot,
 } from "@firebase/firestore";
-import useAuth from "../../hooks/useAuth";
 
 interface Props<N> {
     news: News;
@@ -41,8 +41,9 @@ export const NewsTableContext = createContext<
 >({} as NewsTableContextProps<CenterNews | EventNews>);
 
 function NewsTable<N extends CenterNews | EventNews>({ news }: Props<N>) {
-    const { collectionRef, collectionQuery, deleteDocument } =
-        useFirebase<CenterNews | EventNews>(news, [news]);
+    const { collectionRef, collectionQuery, deleteDocument } = useFirebase<
+        CenterNews | EventNews
+    >(news, [news]);
     const [isEditing, setIsEditing] = useState(false);
     const [selectedNews, setSelectedNews] = useState<
         CenterNews | EventNews | null
@@ -55,7 +56,7 @@ function NewsTable<N extends CenterNews | EventNews>({ news }: Props<N>) {
 
     useLayoutEffect(() => {
         const newnewsList = collectionQuery.data?.docs.filter(
-            (docSnapshot) => docSnapshot.data().news = news
+            (docSnapshot) => (docSnapshot.data().news = news)
         );
         setNewsList(newnewsList);
     }, [collectionQuery.isSuccess]);
@@ -78,10 +79,7 @@ function NewsTable<N extends CenterNews | EventNews>({ news }: Props<N>) {
         <NewsTableContext.Provider value={value}>
             <table className='w-full table-auto border-t border-t-black'>
                 <NewsTableHeader news={news} />
-                <NewsTableBody
-                    news={news}
-                    newsList={newsList}
-                />
+                <NewsTableBody news={news} newsList={newsList} />
             </table>
             {isEditing && <NewsTableToggle news={news} />}
         </NewsTableContext.Provider>

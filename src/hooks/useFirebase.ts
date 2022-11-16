@@ -10,7 +10,10 @@ import {
 import { db } from "../../firebase";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 
-export default function useFirebase<T>(path: string, queryKey: (string | boolean)[]) {
+export default function useFirebase<T>(
+    path: string,
+    queryKey: (string | boolean)[]
+) {
     const converter = {
         toFirestore(data: WithFieldValue<T>): DocumentData {
             return data as DocumentData;

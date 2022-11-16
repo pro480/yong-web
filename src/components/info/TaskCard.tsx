@@ -1,25 +1,24 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Image, { StaticImageData } from "next/image";
-import HorizontalRule from "../common/HorizontalRule";
 
 interface Props {
     image: StaticImageData;
-    title: string;
     content: string;
 }
 
-function TaskCard({ title, content, image }: Props) {
+function TaskCard({ image, content }: Props) {
     return (
-        <section className='flex w-full py-10 '>
-            <Image src={image} height={200} width={200} />
-            <article className='ml-10'>
-                <h1 className='text-3xl font-bold text-PRIMARY_COLOR-700'>
-                    {title}
-                </h1>
-                <div className='mt-10 text-lg font-semibold text-PRIMARY_COLOR-500 '>
-                    {content}
-                </div>
-            </article>
+        <section className='flex h-48 w-32 flex-col items-center justify-center rounded-md border  shadow-sm shadow-PRIMARY_COLOR-100 sm:h-60 sm:w-1/3 md:w-1/4 xl:w-56'>
+            <div className='flex h-2/3 w-16 items-center justify-center'>
+                <Image
+                    src={image}
+                    objectFit='contain'
+                    objectPosition='center'
+                />
+            </div>
+            <h1 className='flex flex-1 px-2 text-center text-xs font-bold text-PRIMARY_COLOR-700 sm:text-base'>
+                {content}
+            </h1>
         </section>
     );
 }

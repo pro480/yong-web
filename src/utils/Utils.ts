@@ -11,6 +11,8 @@ export function getFirstDepthTitle_KO(path:string){
             return "자료실"
         case "notice":
             return "공지사항"
+        case "location":
+            return "오시는 길"
         default :
             return "상세 게시판"
     }
@@ -60,6 +62,8 @@ export function getSecondDepthTitle_EN(path:string){
             return "research and business"
         case "mou_list":
             return "MOU institution"
+        case "location":
+            return "Location"
         default:
             return "General Forum"
     }
@@ -109,6 +113,8 @@ export function getSecondDepthTitle_KO(path:string){
             return "연구 및 사업"
         case "mou_list":
             return "MOU 기관"
+        case "location":
+            return "오시는 길"
         default:
             return "상세 게시판"
     }
@@ -157,6 +163,8 @@ export function getSecondDepthDescription_KO(path:string){
         case "business":
             return "메뉴에 대한 설명을 입력해주세요"
         case "mou_list":
+            return "메뉴에 대한 설명을 입력해주세요"
+        case "location":
             return "메뉴에 대한 설명을 입력해주세요"
         default:
             return "메뉴에 대한 설명을 입력해주세요"
@@ -210,14 +218,7 @@ export const info = {
             href: "/info/main_task",
         },
         {
-            title_KO: "센터 연혁",
-            title_EN: "Center Center_history",
-            description: "메뉴에 대한 설명을 써주세요",
-            subMenu: [],
-            href: "/info/center_history",
-        },
-        {
-            title_KO: "센터 조직(조직도)",
+            title_KO: "센터 조직",
             title_EN: "Center Organization",
             description: "메뉴에 대한 설명을 써주세요",
             href: "/info/organization/org_chart",
@@ -253,6 +254,13 @@ export const info = {
                     href: "/info/organization/engineer",
                 },
             ],
+        },
+        {
+            title_KO: "센터 연혁",
+            title_EN: "Center Center_history",
+            description: "메뉴에 대한 설명을 써주세요",
+            subMenu: [],
+            href: "/info/center_history",
         },
         {
             title_KO: "센터 구성원",
@@ -410,4 +418,20 @@ export const notice = {
             href: "/notice/center_news",
         },
     ],
+}
+
+export const location = {
+    title_KO: "오시는 길",
+    title_EN: "Location",
+    description: "메뉴에 대한 설명을 써주세요",
+    href: "/location/location",
+    subMenu: [
+        {
+            title_KO: "센터 소식",
+            title_EN: "Center News",
+            description: "메뉴에 대한 설명을 써주세요",
+            subMenu: [],
+            href: "/notice/center_news",
+        },
+        ]
 }

@@ -3,9 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
 import Sidebar from "./Sidebar";
-import networkImage from "../../../../public/images/banner/infoBanner.jpg";
 import Banner from "./Banner";
-import { useRecoilValue } from "recoil";
 import PageTitle from "./PageTitle";
 
 interface Props {
@@ -34,6 +32,7 @@ function Layout({ children }: Props) {
                 </div>
             </main>
             <Footer />
+
         </div>
     );
 }

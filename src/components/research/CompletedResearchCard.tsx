@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import { ForwardIcon } from "@heroicons/react/24/outline";
-import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import moment from "moment";
 import { Project } from "../../../typing";
 import Image from "next/image";

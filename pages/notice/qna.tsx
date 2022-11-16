@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, useEffect, useState } from "react";
+import React, { createContext, Dispatch, useState } from "react";
 import useFirebase from "../../src/hooks/useFirebase";
 import { QNA } from "../../typing";
 import {
@@ -11,6 +11,7 @@ import SubmitForm from "../../src/components/notice/SubmitForm";
 import QnaRow from "../../src/components/notice/QnaRow";
 import { UseQueryResult } from "react-query";
 import { QnaPageButton } from "../../src/components/notice/QnaButton";
+import {Query} from "@firebase/firestore";
 
 interface QnaContextProps {
     qnaList: QueryDocumentSnapshot<QNA>[] | undefined;

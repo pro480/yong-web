@@ -40,6 +40,7 @@ function MemberTableToggle({ organization }: Props) {
         }
     }, [selectedMember]);
 
+
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
         doc(collection(db, "externalMembers"), `${selectedDocId}`),

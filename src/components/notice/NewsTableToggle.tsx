@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { News, CenterNews, EventNews } from "../../../typing";
+import { News } from "../../../typing";
 import {
     useFirestoreCollectionMutation,
     useFirestoreDocumentMutation,
 } from "@react-query-firebase/firestore";
-import { collection, doc, } from "@firebase/firestore";
+import { collection, doc } from "@firebase/firestore";
 import { db, storage } from "../../../firebase";
 import { NewsTableContext } from "./NewsTable";
 import { NewsTableCancelButton } from "./NewsTableButton";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
-import { UseMutationResult } from "react-query";
 import moment from "moment";
 import { fill } from "lodash";
 import { ImFileText2 } from "react-icons/im";
 import data from "../../../pages/data/paper";
 import { IconButton } from "@material-tailwind/react";
+
 
 interface Inputs {
     title: string; // 자료명
@@ -31,9 +31,20 @@ interface Props {
 
 function NewsTableToggle({ news }: Props) {
     const today = moment();
-    const { selectedNews ,collectionRef, selectedDocId, selectedIndex, setIsEditing } = useContext(NewsTableContext);
+    const {
+        selectedNews,
+        collectionRef,
+        selectedDocId,
+        selectedIndex,
+        setIsEditing,
+    } = useContext(NewsTableContext);
     const [editFile, setEditFile] = useState(false);
-    const { register, reset, handleSubmit, formState: {errors} } = useForm<Inputs>({
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<Inputs>({
         defaultValues: useMemo(() => {
             if (selectedNews) {
                 return selectedNews;
@@ -46,15 +57,10 @@ function NewsTableToggle({ news }: Props) {
         }
     }, [selectedNews]);
 
+
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
-        doc(
-            collection(
-                db, 
-                news
-            ), 
-            `${selectedDocId}`
-        ),
+        doc(collection(db, news), `${selectedDocId}`),
         { merge: true }
     );
 
@@ -66,8 +72,10 @@ function NewsTableToggle({ news }: Props) {
 
         let file = data.newsFile[0];
         const storageRef = ref(
-            storage, 
-            (news === "센터 소식") ? "documents/centerNews/" + file.name : "documents/eventNews/" + file.name
+            storage,
+            news === "센터 소식"
+                ? "documents/centerNews/" + file.name
+                : "documents/eventNews/" + file.name
         );
         const uploadFile = uploadBytesResumable(storageRef, file);
 
@@ -114,7 +122,7 @@ function NewsTableToggle({ news }: Props) {
                 setIsEditing(false);
             }
         );
-    };
+    }
 
     const onUpdateNews: SubmitHandler<Inputs> = (data) => {
         if (editFile) {
@@ -132,6 +140,7 @@ function NewsTableToggle({ news }: Props) {
     return (
         <form
             className='relative text-xs sm:text-sm flex-col w-full items-center justify-around border-b border-gray-200 bg-GRAY_COLOR-200 '
+
             onSubmit={
                 selectedNews
                     ? handleSubmit(onUpdateNews)
@@ -139,7 +148,7 @@ function NewsTableToggle({ news }: Props) {
             }
         >
             {/* input */}
-            <div className="flex items-center justify-around h-10">
+            <div className='flex h-10 items-center justify-around'>
                 <div className='w-[5%] text-center'>{selectedIndex + 1}</div>
                 <label className='w-[45%] p-1'>
                     <input
@@ -160,13 +169,21 @@ function NewsTableToggle({ news }: Props) {
                     />
                 </label>
 
-                {selectedNews?(
-                    <label className='w-[15%] text-right'>
-                        {selectedNews.date.substring(0,10)}
+
+                {selectedNews ? (
+                    <label className='w-[25%] text-right'>
+                        {selectedNews.date}
                     </label>
                 ) : (
                     <label className='w-[15%] text-right'>
-                        {today.format("YYYY-MM-DD")}
+                        <input
+                            className='w-full'
+                            type='date'
+                            defaultValue={today.format("YYYY-MM-DD")}
+                            {...register("date", {
+                                required: !selectedNews,
+                            })}
+                        />
                     </label>
                 )}
 

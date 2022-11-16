@@ -1,5 +1,4 @@
 import React from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -63,7 +62,7 @@ function MainPageBanner() {
             </Carousel>
             <div className='absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 transform flex-col whitespace-nowrap text-center text-white'>
                 <h1 className=' text-lg font-bold leading-snug xs:text-xl md:text-2xl lg:text-4xl desktop:text-6xl'>
-                    Education Big Data Application
+                    Edu-Big Data Application
                     <br />
                     Research Center
                 </h1>

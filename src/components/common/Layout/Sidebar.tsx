@@ -6,10 +6,10 @@ import {
     ArrowDownCircleIcon,
     ArrowUpCircleIcon,
 } from "@heroicons/react/24/outline";
+import { data, info, major, notice, research, location } from "../../../utils/Utils";
+import symbol_outline_quarter from "../../../../public/images/logo/symbol_outline_quarter.png";
 import Image from "next/image";
-import { useRecoilValue } from "recoil";
-import { siteMapState } from "../../../atoms/sitemapAtom";
-import {data, info, major, notice, research} from "../../../utils/Utils";
+
 
 interface Props {}
 
@@ -54,8 +54,10 @@ function Sidebar() {
             setCurrentMenu(data);
         } else if (firstDepth === "notice") {
             setCurrentMenu(notice);
+        } else if (firstDepth === "location"){
+            setCurrentMenu(location)
         }
-    }, [firstDepth]);
+        }, [firstDepth]);
 
     console.log(currentMenu);
 
@@ -67,6 +69,9 @@ function Sidebar() {
                 className='relative flex w-full items-center justify-center bg-gradient-to-tl from-PRIMARY_COLOR-500 to-PRIMARY_COLOR-400 py-3 text-2xl text-white 2xl:h-36 '
             >
                 {currentMenu?.title_KO}
+                <div className='absolute bottom-0 right-0 h-20 w-20'>
+                    <Image src={symbol_outline_quarter} />
+                </div>
             </div>
 
             {isWide ? null : menuOpen ? (

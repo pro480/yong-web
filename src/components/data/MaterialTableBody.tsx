@@ -1,28 +1,48 @@
-import React, { useContext, useEffect } from "react";
-import { ImMail4, ImFileText2, ImFilePlay } from "react-icons/im";
+
+import React, { useContext } from "react";
+import { ImFileText2 } from "react-icons/im";
+
 import { Material, PaperMaterial, StudyMaterial } from "../../../typing";
-import { MaterialTableContext } from "./MaterialTable";
 import useAuth from "../../hooks/useAuth";
 import {
     MaterialTableDeleteButton,
     MaterialTableUpdateButton,
 } from "./MaterialTableButton";
 import { QueryDocumentSnapshot } from "@firebase/firestore";
-import MoreInfo from "./xStudyMaterialTooltips"; // using tooltips
+
+
 import Link from "next/link";
-import { IconBase } from "react-icons";
+
+import { MaterialTableContext } from "./MaterialTable";
+
 
 interface Props<M> {
     material: Material;
-    materialList: QueryDocumentSnapshot<StudyMaterial | PaperMaterial>[] | undefined;
+    materialList:
+        | QueryDocumentSnapshot<StudyMaterial | PaperMaterial>[]
+        | undefined;
 }
 
-function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({ material, materialList }: Props<M>) {
+function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({
+    material,
+    materialList,
+}: Props<M>) {
     const { user } = useAuth();
+    const { pageNumber } = useContext(MaterialTableContext);
 
     return (
         <tbody className='text-sm font-light text-gray-600'>
-            {materialList?.map((docSnapshot, index) => {
+            {materialList
+                ?.sort((a, b) => Number(b.data().date) - Number(a.data().date))
+                .slice(
+                    (Number(pageNumber) - 1) * 10,
+                    (Number(pageNumber) - 1) * 10 + 10
+                )
+                .map((docSnapshot, index) => {
+                    const data = docSnapshot.data();
+                    const year = data.date.slice(0, 4);
+                    const month = data.date.slice(4, 6);
+                    const day = data.date.slice(6, 8);
                 const data = docSnapshot.data();
                 return (
                     <tr
@@ -53,10 +73,7 @@ function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({ material, 
                                     <a className="font-bold">{data.title}</a>
                                 </Link>   
                             </td>
-                        )}
-                        
-                                         
-                       
+                        )}                       
                         <td className='text-center'>{data.writer}</td>
                         <td className='text-right'>{data.date.substring(0,10)}</td>
                         <td className='relative flex items-center text-center'>
@@ -78,12 +95,24 @@ function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({ material, 
                                     <MaterialTableDeleteButton
                                         docID={docSnapshot.id}
                                     />
+
                                 </div>
-                            )}
-                        </td>
-                    </tr>
-                );
-            })}
+                                {user && (
+                                    <div className='w-15 absolute right-2 hidden text-sm lg:flex'>
+                                        <MaterialTableUpdateButton
+                                            index={index + 1}
+                                            data={data}
+                                            docID={docSnapshot.id}
+                                        />
+                                        <MaterialTableDeleteButton
+                                            docID={docSnapshot.id}
+                                        />
+                                    </div>
+                                )}
+                            </td>
+                        </tr>
+                    );
+                })}
         </tbody>
     );
 }

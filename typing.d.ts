@@ -1,5 +1,3 @@
-import { content } from "@material-tailwind/react/types/components/popover";
-
 export interface SubMenu {
     title_KO: string;
     title_EN: string;
@@ -42,7 +40,12 @@ export interface InternalMember {
 }
 
 export type Course = "학부연구생" | "석사 과정" | "박사 과정" | "교수";
-export type Team = "센터장" | "연구팀1" | "연구팀2" | "연구팀3" | "동문";
+export type Team =
+    | "센터장"
+    | "데이터 분석팀"
+    | "인공지능팀"
+    | "실무교육팀"
+    | "동문";
 export type Classification = "교수" | "졸업생";
 
 export interface ExternalMember {
@@ -132,7 +135,6 @@ export interface ResearchReport {
     imgUrl: string;
     researcher: string; // 연구자
     title: string; // 제목
-    type: string;
     year: string; //발행년도
 }
 
@@ -142,6 +144,14 @@ export interface Project {
     consignment: string[];
     startedAt: string;
     completed: boolean;
-    endedAt?: string;
+    endedAt: string;
     imageUrl?: string;
+}
+
+export interface Thesis {
+    createdAt: string; // 파일 올린 날짜
+    type: string; // 학회지
+    researcher: string; // 연구자
+    title: string; // 제목
+    year: string; //발행년도
 }

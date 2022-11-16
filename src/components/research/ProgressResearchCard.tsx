@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ForwardIcon } from "@heroicons/react/24/outline";
-import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import moment from "moment";
 import { Project } from "../../../typing";
 import useAuth from "../../hooks/useAuth";
@@ -10,6 +8,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { db, storage } from "../../../firebase";
 import { useFirestoreDocumentMutation } from "@react-query-firebase/firestore";
 import { collection, doc } from "@firebase/firestore";
+import Image from "next/image";
 
 interface Props {
     docID: string;
@@ -17,7 +16,6 @@ interface Props {
 }
 
 interface Inputs {
-    endedAt: string;
     imageFile?: File[];
 }
 
@@ -35,7 +33,7 @@ function ProgressResearchCard({ project, docID }: Props) {
     );
 
     function uploadImageAndAddDoc(data: Inputs) {
-        if (data.imageFile) {
+        if (data.imageFile && data.imageFile?.length > 0) {
             let file = data.imageFile[0];
             const storageRef = ref(storage, "images/projects/" + file.name);
             const uploadImage = uploadBytesResumable(storageRef, file);
@@ -80,7 +78,6 @@ function ProgressResearchCard({ project, docID }: Props) {
                     getDownloadURL(uploadImage.snapshot.ref).then(
                         (downloadURL) => {
                             updateMutation.mutate({
-                                endedAt: data.endedAt,
                                 imageUrl: downloadURL,
                                 completed: true,
                             });
@@ -91,36 +88,52 @@ function ProgressResearchCard({ project, docID }: Props) {
             );
         } else {
             updateMutation.mutate({
-                endedAt: data.endedAt,
                 completed: true,
             });
         }
     }
 
     return (
-        <div className='relative flex h-52 cursor-pointer border-b  border-PRIMARY_COLOR-500  py-8 pr-8 first:border-t hover:bg-gray-200'>
-            <div className='flex h-full w-40 flex-col items-center justify-evenly'>
-                <div className='text-5xl font-bold'>
-                    {moment(project.startedAt).format("DD")}
-                </div>
-                <div className='text-xl'>
+        <div className='relative flex h-32 cursor-pointer items-center border-b border-PRIMARY_COLOR-500 py-4 pr-8 first:border-t hover:bg-gray-200 sm:h-40 sm:py-6 md:h-44 xl:h-48 xl:py-7 desktop:h-52 desktop:py-8'>
+            <div className='flex h-full w-32 flex-col items-center justify-center gap-y-1'>
+                <div className='text-xl font-bold'>
                     {moment(project.startedAt).format("YYYY.MM")}
                 </div>
+                <span className='text-3sxl rotate-90'>~</span>
+                <div className='text-xl font-bold'>
+                    {moment(project.endedAt).format("YYYY.MM")}
+                </div>
             </div>
-            <div className='flex flex-1 flex-col gap-y-2'>
-                <div className='flex items-center gap-x-2'>
+            {project.imageUrl && (
+                <div className='relative h-32 w-32 self-center'>
+                    <Image
+                        src={project.imageUrl}
+                        layout='fill'
+                        objectFit='contain'
+                        objectPosition='center'
+                    />
+                </div>
+            )}
+
+            <div className='flex h-full flex-1 flex-col gap-y-1 desktop:gap-y-2'>
+                <div className='flex items-center text-xs sm:text-base xl:text-lg'>
                     <span className='flex items-center text-PRIMARY_COLOR-500'>
                         수탁 기관
                     </span>
-                    <div className='h-4 border-r-2 border-PRIMARY_COLOR-500'></div>
+                    <div className='mx-2 h-3 border-r-2 border-PRIMARY_COLOR-500'></div>
                     {project.consignment.map((consignment, index) => (
                         <div key={index} className='flex items-center'>
+                            {index > 0 && <span>,&nbsp;</span>}
                             {consignment}
                         </div>
                     ))}
                 </div>
-                <div className='text-2xl'>{project.title_KO}</div>
-                <div className='overflow-hidden'>{project.description}</div>
+                <div className='text-base sm:text-xl desktop:text-2xl'>
+                    {project.title_KO}
+                </div>
+                <div className='overflow-hidden text-sm'>
+                    {project.description}
+                </div>
             </div>
             {user && (
                 <div className='flex flex-col gap-y-2'>
@@ -143,13 +156,6 @@ function ProgressResearchCard({ project, docID }: Props) {
                     className='absolute right-32  z-50 flex flex flex-col items-center justify-center gap-y-4 bg-gray-300 py-5'
                     onSubmit={handleSubmit(uploadImageAndAddDoc)}
                 >
-                    <label>
-                        완료일
-                        <input
-                            type='date'
-                            {...register("endedAt", { required: true })}
-                        />
-                    </label>
                     <label>
                         이미지
                         <input type='file' {...register("imageFile")} />

@@ -10,7 +10,7 @@ function CenterLeaderInfo() {
         <>
             {/* 협회이름 및 센터장 신상 정보 */}
             <div className=' relative flex aspect-[2/1] w-full flex-col justify-end'>
-                <div className='absolute bottom-[55%] z-50 h-full w-1/2'>
+                <div className='absolute bottom-[55%] h-32 w-1/2'>
                     {/*eba 로고*/}
                     <Image
                         src={logo_EN}
@@ -57,13 +57,13 @@ function CenterLeaderInfo() {
                     </div>
 
                     {/*사다리꼴 내부 로고*/}
-                    <div className='absolute bottom-2 z-30 flex aspect-1/1 xs:right-1/3 xs:h-1/3'>
+                    <div className='absolute bottom-2 flex z-10 aspect-1/1 xs:right-1/3 xs:h-1/3'>
                         <Image src={symbolImage} layout='fill' />
 
                     </div>
 
                     {/*사다리꼴의 삼각형부분*/}
-                    <div className='absolute bottom-0 right-[27.5%] z-10 flex aspect-[1/2] h-1/2'>
+                    <div className='absolute bottom-0 right-[27.5%] flex aspect-[1/2] h-1/2'>
                         <Image src={triangle} layout='fill' />
                     </div>
                 </div>
@@ -71,7 +71,7 @@ function CenterLeaderInfo() {
                 {/*교수님이미지*/}
                 <div className=' absolute right-0  h-full w-1/3'>
                     <Image
-                        className='relative z-50'
+                        className='relative z-10'
                         src={centerLeaderImage}
                         layout='fill'
                         objectFit='contain'
