@@ -29,6 +29,7 @@ function PageTitle() {
         research: research,
         major: major,
         notice: notice,
+        location: location,
     };
 
     return (
@@ -64,6 +65,7 @@ function PageTitle() {
                                             | "research"
                                             | "major"
                                             | "notice"
+                                            | "location"
                                     ].href
                                 }
                                 active={path.length - 1 === index}
