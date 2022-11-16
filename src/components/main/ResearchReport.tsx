@@ -46,7 +46,13 @@ function ResearchReport() {
                     {collectionQuery.data?.docs.map((snapshot, index) => {
                         const data = snapshot.data() as ResearchReport;
 
-                        return <ReportCard report={data} index={index} />;
+                        return (
+                            <ReportCard
+                                key={snapshot.id}
+                                report={data}
+                                index={index}
+                            />
+                        );
                     })}
                 </div>
             </div>
