@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Report from "../../src/components/data/Report";
-import MaterialTable from "../../src/components/data/MaterialTable";
+import ThesisTable from "../../src/components/data/ThesisTable";
 
 function Paper() {
     const [tab, setTab] = useState("thesis");
@@ -30,11 +30,7 @@ function Paper() {
 
             <div>
                 {/* 논문 */}
-                {tab === "thesis" ? (
-                    <MaterialTable material='논문' />
-                ) : (
-                    <Report />
-                )}
+                {tab === "thesis" ? <ThesisTable /> : <Report />}
             </div>
         </div>
     );
