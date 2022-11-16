@@ -12,7 +12,6 @@ function MaterialTableHeader<M extends StudyMaterial | PaperMaterial>({ material
     return (
         <thead>
             <tr className='bg-PRIMARY_COLOR-500/40 h-12 text-sm uppercase leading-normal text-gray-600'>
-
                 <th className='w-[5%] text-center'>NO</th>
                 <th className='w-[45%] text-center'>제목</th>
                 <th className='w-[15%] text-center'>작성자</th>
@@ -21,6 +20,7 @@ function MaterialTableHeader<M extends StudyMaterial | PaperMaterial>({ material
                     첨부파일
                     {user && <MaterialTableAddButton />}
                 </th>
+
             </tr>
         </thead>
     );

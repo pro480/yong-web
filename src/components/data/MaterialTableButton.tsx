@@ -12,9 +12,10 @@ function MaterialTableAddButton() {
     const { setIsEditing, isEditing, setSelectedMaterial } =
         useContext(MaterialTableContext);
 
+
     return (
         <button
-            className='absolute right-3 top-1/2 hidden -translate-y-1/2 border bg-gray-100 p-1 lg:flex'
+            className='absolute right-3 top-1/2 hidden lg:flex -translate-y-1/2 border p-1 bg-gray-100'
             onClick={() => {
                 setIsEditing((prev) => !prev);
                 isEditing ? setSelectedMaterial(null) : null;
@@ -43,7 +44,7 @@ function MaterialTableUpdateButton<M extends StudyMaterial | PaperMaterial>({
 
     return (
         <button
-            className='border bg-white p-1'
+            className='border p-1 bg-white'
             onClick={() => {
                 setIsEditing(false);
                 setSelectedMaterial({
@@ -62,11 +63,10 @@ function MaterialTableUpdateButton<M extends StudyMaterial | PaperMaterial>({
 function MaterialTableDeleteButton({ docID }: { docID: string }) {
     const { deleteDocument } = useContext(MaterialTableContext);
     return (
-        <button
-            className='border bg-white p-0.5'
-            onClick={() => deleteDocument(docID)}
-        >
-            삭제
+        <button 
+            className="border p-0.5 bg-white"
+            onClick={() => deleteDocument(docID)}>
+                삭제
         </button>
     );
 }
@@ -88,10 +88,11 @@ function MaterialTableCancelButton() {
         </button>
     );
 }
+
 function MaterialPageButton() {
     const { pageNumber, setPageNumber, materialList } =
         useContext(MaterialTableContext);
-    const researchLength = Math.floor(Number(materialList?.length) / 10) + 1; // 한 페이지당 원하는 자료 수에 따라 달라지는 부분 /(원하는 자료 수)
+    const researchLength = Math.floor(Number(materialList?.length) / 5) + 1; // 한 페이지당 원하는 자료 수에 따라 달라지는 부분 /(원하는 자료 수)
     const maxOffset = Math.floor(researchLength / 5) * 5 + 1;
     let buttonOffset = Math.floor((Number(pageNumber) - 1) / 5) * 5 + 1;
 
