@@ -2,11 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import OrganizationCard from "../../../src/components/info/OrganizatinoCard";
-<<<<<<< HEAD:pages/info/organization/index.tsx
 import symlogoImage from "../../../public/images/logo/sym-logo.png";
-=======
-import logoImage from "../../../public/images/logo/logo_EN.png";
->>>>>>> 5ca70c842ff32e95b5463c5462b427d8d145bf59:pages/info/organization/org_chart.tsx
 import symbolImage from "../../../public/images/logo/symbol_outline.png";
 
 
@@ -61,19 +57,19 @@ function Org_chart() {
                         <OrganizationCard
                             title='데이터 분석 연구팀'
                             color='PRIMARY_COLOR-100'
-                            href='/info/member#데이터 분석 연구팀'
+                            href='/info/center_member#데이터 분석팀'
                         />
                         <div className="h-1/6"></div>
                         <OrganizationCard
                             title='인공지능(AI) 개발팀'
                             color='PRIMARY_COLOR-100'
-                            href='/info/member#데이터 분석 연구팀'
+                            href='/info/center_member#인공지능팀'
                         />
                         <div className="h-1/6"></div>
                         <OrganizationCard
                             title='데이터 실무 교육 팀'
                             color='PRIMARY_COLOR-100'
-                            href='/info/member#데이터 분석 연구팀'
+                            href='/info/center_member#실무교육팀'
                         />
                     </div>
 

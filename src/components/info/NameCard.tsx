@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import Image from "next/image";
 import useAuth from "../../hooks/useAuth";
 import { GraduateMember, InternalMember } from "../../../typing";
 import { MemberDeleteButton, MemberUpdateButton } from "./MemberButton";
@@ -23,7 +24,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
         <section className='pb-1 w-full flex us:flex-col xs:flex-row xs:justify-between'>
             {/*이미지 사이즈*/}
             {/* <div className='relative us:mt-7 xs:my-auto xs:relative us:w-[70%] xs:w-[40%] sm:w-[25%]'> */}
-            <div className='relative xs:mt-7 us:w-[50%] xs:w-[40%] sm:w-[25%]  '>
+            <div className='relative xs:mt-7 us:w-[50%] xs:w-[40%] sm:w-[25%]'>
                 <Image
                     src={member.imageUrl}
                     alt='멤버사진'
