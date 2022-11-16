@@ -16,7 +16,7 @@ export default function ReportCard({ report, index }: Props) {
             className={`hidden flex-col text-xs xs:text-sm lg:text-base ${
                 index < 2 && "flex"
             } ${index < 3 && "md:flex"}
-            ${index < 4 && "2xl:flex"}`}
+            2xl:flex`}
         >
             <div className='relative aspect-[1/1.414] w-full border bg-gray-300'>
                 <Image src={report.imgUrl} layout='fill' />
