@@ -422,11 +422,11 @@ export const location = {
     href: "/location/location",
     subMenu: [
         {
-            title_KO: "센터 소식",
-            title_EN: "Center News",
+            title_KO: "오시는 길",
+            title_EN: "Location",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
-            href: "/notice/center_news",
+            href: "/location/location",
         },
         ]
 }
