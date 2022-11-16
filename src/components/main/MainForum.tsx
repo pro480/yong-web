@@ -25,7 +25,7 @@ function MainForum() {
     );
     const collectionQuery = useFirestoreQuery(["gallery_createdAt"], ref);
     return (
-        <div className='flex h-[300px] flex-col gap-y-10  p-10 xs:h-[350px] md:h-[500px] lg:h-[600px] desktop:h-[700px]'>
+        <div className='flex  h-[500px] flex-col  gap-y-10 p-10 lg:h-[600px] desktop:h-[700px]'>
             <div className='flex h-[10%] w-full items-center justify-center text-lg font-bold  xs:text-xl  md:text-2xl lg:text-3xl  desktop:text-4xl'>
                 빅데이터 연구센터 갤러리
                 <Link href='/data/gallery'>
@@ -35,20 +35,20 @@ function MainForum() {
                     </div>
                 </Link>
             </div>
-            <div className='flex flex-col  xs:flex-row justify-center xs:gap-y-0 gap-y-2 xs:gap-x-8'>
+            <div className='flex flex-col  justify-center gap-y-4 md:flex-row md:gap-y-0 md:gap-x-8'>
                 {collectionQuery.data?.docs.map((snapshot) => {
                     const data = snapshot.data();
                     return (
                         <div
-                            className=' flex w-[100%] xs:w-[47%] flex-col gap-y-4  border-2 border-PRIMARY_COLOR-600 p-3 shadow-md shadow-PRIMARY_COLOR-600  h-[80px] xs:h-[200px] md:h-[300px]  lg:h-[400px] desktop:h-[500px]  '
+                            className=' flex h-[160px] w-[100%] flex-col gap-y-4  border-2 border-PRIMARY_COLOR-600 p-3 shadow-md shadow-PRIMARY_COLOR-600  md:h-[300px] md:w-[47%]  lg:h-[400px] desktop:h-[500px]  '
                             key={snapshot.id}
                         >
-                            <div className=' invisible hidden md:visible xs:flex justify-between    '>
-                                <div className=' w-2/3 overflow-hidden text-ellipsis whitespace-pre border-b-2 border-PRIMARY_COLOR-300  text-sm font-semibold  md:text-sm desktop:text-lg'>
+                            <div className='  hidden justify-between md:flex     '>
+                                <p className='overflow-hidden text-ellipsis whitespace-pre border-b-2 border-PRIMARY_COLOR-300 px-2  text-sm font-semibold  md:text-sm desktop:text-lg'>
                                     {data.title}
-                                </div>
-                                <div className=' flex items-center text-GRAY_COLOR-700 text-xs'>
-                                    <ClockIcon className=' md:h-4 h-6 ' />
+                                </p>
+                                <div className=' flex items-center text-xs text-GRAY_COLOR-700'>
+                                    <ClockIcon className=' h-6 md:h-4 ' />
                                     {data.createdAt}
                                 </div>
                             </div>
