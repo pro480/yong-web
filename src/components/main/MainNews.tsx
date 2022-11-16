@@ -1,18 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NewsCard from "./NewsCard";
+import { limit, orderBy, query } from "firebase/firestore";
+import { collection } from "@firebase/firestore";
+import { db } from "../../../firebase";
+import { useFirestoreQueryData } from "@react-query-firebase/firestore";
+import { CenterNews, EventNews } from "../../../typing";
+import MainNewsRecruit from "./MainNewsRecruit";
+import { Document, Page, pdfjs } from "react-pdf";
 
 function MainNews() {
+    const centerNewsCollectionRef = query(
+        collection(db, "센터 소식"),
+        limit(1),
+        orderBy("createdAt", "desc")
+    );
+    const centerNewsCollectionQuery = useFirestoreQueryData(
+        ["mainCenterNews"],
+        centerNewsCollectionRef
+    );
+    const eventNewsCollectionRef = query(
+        collection(db, "행사 소식"),
+        limit(1),
+        orderBy("createdAt", "desc")
+    );
+    const eventNewsCollectionQuery = useFirestoreQueryData(
+        ["mainEventNews"],
+        eventNewsCollectionRef
+    );
+
+    const centerNewsData =
+        centerNewsCollectionQuery.data &&
+        centerNewsCollectionQuery.data?.length > 0 &&
+        (centerNewsCollectionQuery.data[0] as CenterNews);
+    const eventNewsData =
+        eventNewsCollectionQuery.data &&
+        eventNewsCollectionQuery.data?.length > 0 &&
+        (eventNewsCollectionQuery.data[0] as EventNews);
+
+    if (
+        eventNewsCollectionQuery.isLoading ||
+        centerNewsCollectionQuery.isLoading
+    ) {
+        return <div>로딩중</div>;
+    }
+
     return (
-        <div className='main_news_bg flex h-[300px] w-full flex-col items-center pt-[4%] pb-[7%] xs:h-[350px] md:h-[500px] lg:h-[600px] desktop:h-[700px] '>
+        <div className='main_news_bg flex w-full flex-col py-5 px-6 lg:px-10 lg:py-12'>
             {/*타이틀 입니다*/}
-            <div className='mb-2 h-[20%] text-lg font-bold text-white xs:text-xl md:mb-4 md:text-2xl lg:text-3xl desktop:mb-8 desktop:text-4xl'>
+            <div className='h-[20%] py-5 text-xl font-bold text-white lg:text-2xl xl:text-3xl'>
                 교육 빅데이터 응용 연구센터 소식
             </div>
             {/*뉴스카드 컨테이너 입니다*/}
-            <div className='flex h-fit w-full flex-col items-center justify-center gap-y-2 xs:gap-y-4 md:h-full md:flex-row md:items-start md:gap-y-0 md:gap-x-12 lg:gap-x-14 desktop:gap-x-16'>
-                <NewsCard title='센터소식' />
-                <NewsCard title='행사소식' />
-                <NewsCard title='QNA' />
+            <div className='flex h-full w-full flex-wrap justify-center gap-y-6 gap-x-16 md:justify-around lg:grid lg:grid-cols-3 lg:gap-x-6 xl:gap-x-12'>
+                <NewsCard
+                    href='/notice/center_news'
+                    data={centerNewsData as CenterNews}
+                    title='센터 소식'
+                />
+                <NewsCard
+                    href='/notice/event_news'
+                    data={eventNewsData as EventNews}
+                    title='행사 소식'
+                />
+                <MainNewsRecruit href='/notice/recruit' title='연구원 모집' />
             </div>
         </div>
     );
