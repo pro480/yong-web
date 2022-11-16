@@ -8,7 +8,7 @@ function NewsTableAddButton() {
 
     return (
         <button
-            className='absolute hidden md:flex right-3 top-1/2 -translate-y-1/2 border p-1'
+            className='absolute right-3 top-1/2 hidden lg:flex -translate-y-1/2 border p-1 bg-gray-100'
             onClick={() => {
                 setIsEditing((prev) => !prev);
                 isEditing ? setSelectedNews(null) : null;
@@ -37,7 +37,7 @@ function NewsTableUpdateButton<N extends CenterNews | EventNews>({
 
     return (
         <button
-            className='border p-1'
+            className='border p-1 bg-white'
             onClick={() => {
                 setIsEditing(false);
                 setSelectedNews({
@@ -55,7 +55,13 @@ function NewsTableUpdateButton<N extends CenterNews | EventNews>({
 
 function NewsTableDeleteButton({ docID }: { docID: string }) {
     const { deleteDocument } = useContext(NewsTableContext);
-    return <button onClick={() => deleteDocument(docID)}>삭제</button>;
+    return (
+        <button 
+            className="border p-0.5 bg-white"
+            onClick={() => deleteDocument(docID)}>
+                삭제
+        </button>
+    );
 }
 
 function NewsTableCancelButton() {
@@ -63,7 +69,7 @@ function NewsTableCancelButton() {
         useContext(NewsTableContext);
     return (
         <button
-            className='border p-1'
+            className='border p-0.5'
             onClick={() => {
                 setIsEditing(false);
                 setSelectedNews(null);
