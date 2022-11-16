@@ -37,10 +37,10 @@ function NameCard<T extends InternalMember | GraduateMember>({
             <main className='xs:w-[45%] sm:w-[65%] xs:self-center text-PRIMARY_COLOR-500 sx:text-xs sm:text-sm md:text-base'>
                 {/*이름, 관심분야, 이메일*/}
                 <header className='xs:flex-wrap w-full pb-1 xs:items-center'>
-                    <h1 className={`${
+                    <h1 className={`pb-1 font-semibold text-PRIMARY_COLOR-800 ${
                                     isBig
-                                        ? "pb-1 font-semibold text-PRIMARY_COLOR-800 us:text-xl md:text-2xl lg:text-3xl"
-                                        : "pb-1 font-semibold text-PRIMARY_COLOR-800 sm:text-xl lg:text-2xl"
+                                        ? "us:text-xl md:text-2xl lg:text-3xl"
+                                        : "sm:text-xl             lg:text-2xl"
                     }`}>
                         {member.name}
                     </h1>

@@ -2,11 +2,11 @@
 export function getFirstDepthTitle_KO(path:string){
     switch (path){
         case "info":
-            return "센터소개"
+            return "센터 소개"
         case "research":
             return "연구 및 사업"
         case "major":
-            return "전공소개"
+            return "전공 소개"
         case "data":
             return "자료실"
         case "notice":
