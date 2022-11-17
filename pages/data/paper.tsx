@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Report from "../../src/components/data/Report";
-import ThesisTable from "../../src/components/data/ThesisTable";
+import ThesisMain from "../../src/components/data/ThesisMain";
 
 function Paper() {
     // const [tab, setTab] = useState("thesis");
@@ -33,7 +33,7 @@ function Paper() {
 
             <div>
                 {/* 논문 */}
-                {tab === "thesis" ? <ThesisTable /> : <Report />}
+                {tab === "thesis" ? <ThesisMain /> : <Report />}
             </div>
         </div>
     );
