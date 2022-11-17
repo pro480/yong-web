@@ -19,11 +19,11 @@ export default function ReportCard({ report, index }: Props) {
             } ${index < 3 && "md:flex"}
             2xl:flex`}
         >
-            <div className='relative aspect-[1/1.414] w-full  cursor-pointer border bg-gray-300 shadow-lg hover:scale-105'>
-                <Link href='/data/paper?tab=report'>
+            <Link href='/data/paper?tab=report'>
+                <div className='relative aspect-[1/1.414] w-full  cursor-pointer border bg-gray-300 shadow-lg hover:scale-105'>
                     <Image src={report.imgUrl} layout='fill' />
-                </Link>
-            </div>
+                </div>
+            </Link>
             <div className='overflow-hidden text-ellipsis whitespace-nowrap text-center '>
                 {report.title}
             </div>
