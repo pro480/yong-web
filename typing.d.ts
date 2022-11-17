@@ -46,7 +46,7 @@ export type Team =
     | "인공지능팀"
     | "실무교육팀"
     | "동문";
-    
+
 export type Classification = "교수" | "졸업생";
 
 export interface ExternalMember {
@@ -150,9 +150,11 @@ export interface Project {
 }
 
 export interface Thesis {
-    createdAt: string; // 파일 올린 날짜
-    type: string; // 학회지
-    researcher: string; // 연구자
     title: string; // 제목
+    createdAt: string; // 파일 올린 날짜
+    writer: string; // 작성자
+
+    type: string; // 학회지
+    researcher: string; //연구자
     year: string; //발행년도
 }
