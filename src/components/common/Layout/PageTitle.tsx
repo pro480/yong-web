@@ -9,6 +9,7 @@ import {
     data,
     getFirstDepthTitle_KO,
     getSecondDepthDescription_KO,
+    getSecondDepthTitle_EN,
     getSecondDepthTitle_KO,
     getThirdDepthTitle_KO,
     info,
@@ -17,10 +18,13 @@ import {
     research,
 } from "../../../utils/Utils";
 import PageTitleComponent from "./PageTitleComponent";
+import {useRecoilValue} from "recoil";
+import {languageState} from "../../../atoms/languageAtom";
 
 interface Props {}
 
 function PageTitle() {
+    const language = useRecoilValue(languageState)
     const path = useRouter().pathname.split("/");
     const [a, firstDepth, secondDepth, thirdDepth] = path;
     const converter = {
@@ -35,9 +39,15 @@ function PageTitle() {
     return (
         <div className='mb-10 flex h-40 flex-col justify-between'>
             <div className='flex flex-col'>
-                <h1 className='text-3xl font-bold text-PRIMARY_COLOR-500'>
-                    {getSecondDepthTitle_KO(secondDepth)}
-                </h1>
+                {language?(
+                    <h1 className='text-3xl font-bold text-PRIMARY_COLOR-500'>
+                        {getSecondDepthTitle_EN(secondDepth)}
+                    </h1>
+                ):(
+                    <h1 className='text-3xl font-bold text-PRIMARY_COLOR-500'>
+                        {getSecondDepthTitle_KO(secondDepth)}
+                    </h1>
+                )}
                 <h3 className='text-SUBFONT_COLOR mt-2 text-sm font-light'>
                     {getSecondDepthDescription_KO(secondDepth)}
                 </h3>
