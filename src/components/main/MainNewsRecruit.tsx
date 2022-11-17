@@ -54,7 +54,7 @@ function MainNewsRecruit({ title, href }: Props) {
                     {title}
                 </div>
 
-                <div className='relative w-full border-b before:absolute before:-bottom-[4px] before:w-24 before:-translate-y-1/2 before:border-b-[4px] before:border-PRIMARY_COLOR-500 group-hover:before:border-white'></div>
+                <div className='relative w-full border-b before:absolute before:-bottom-[4px] before:w-20 before:-translate-y-1/2 before:border-b-[4px] before:border-PRIMARY_COLOR-500 group-hover:before:border-white'></div>
 
                 <div className=''>
                     <div className='flex w-full justify-center '>

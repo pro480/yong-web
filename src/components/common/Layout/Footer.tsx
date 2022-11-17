@@ -5,10 +5,9 @@ import logo_text_KR from "../../../../public/images/logo/logo_text_KR.png";
 import logo_symbol_text_KR from "../../../../public/images/logo/logo_symbol_text_KR.png";
 import logo_inha_symbol_blue from "../../../../public/images/logo/logo_inha_symbol_blue.png";
 
-
 function Footer() {
     return (
-        <div className='flex w-full h-44 flex-col items-center bg-GRAY_COLOR-900 text-GRAY_COLOR-200  xl:flex-wrap xl:text-center'>
+        <div className='flex h-44 w-full flex-col items-center bg-GRAY_COLOR-900 text-GRAY_COLOR-200  xl:flex-wrap xl:text-center'>
             {/*로고 사이즈*/}
             <div className='relative flex h-16 w-80 items-center justify-center sm:w-96 xl:hidden '>
                 <Image
@@ -20,7 +19,7 @@ function Footer() {
             </div>
 
             {/*첫번쨰 줄*/}
-            <div className='flex w-full border border-gray-500 xl:w-1/3 xl:border-b-1  xl:border-l-0 xl:border-r-0 xl:border-t-0'>
+            <div className='xl:border-b-1 flex w-full border border-gray-500 xl:w-1/3  xl:border-l-0 xl:border-r-0 xl:border-t-0'>
                 <div className='flex flex-1 justify-center border-r border-gray-500 py-3  xl:border-r-0 xl:py-6'>
                     <Link href='/notice/recruit'>연구원 모집</Link>
                 </div>
@@ -30,8 +29,11 @@ function Footer() {
                 {/*로고*/}
             </div>
             {/*두번쨰 줄*/}
-            <div className='flex justify-center flex-wrap gap-y-2 gap-x-14 py-4 text-sm font-medium text-white xl:w-full xl:gap-y-4'>
-                <span>INHA UNIVERSITY, 100 Inha-ro, Michuhol-gu, Incheno 22212, KOREA</span>
+            <div className='flex flex-wrap justify-center gap-y-2 gap-x-14 py-4 text-sm font-medium text-white xl:w-full xl:gap-y-4'>
+                <span>
+                    INHA UNIVERSITY, 100 Inha-ro, Michuhol-gu, Incheon 22212,
+                    KOREA
+                </span>
                 <span>Tel: +82-32-860-7873</span>
                 <span>Mail: yong21c@gmail.com</span>
                 <div className='basis-full text-center text-GRAY_COLOR-300'>
