@@ -12,9 +12,9 @@ import { MemberTableCancelButton } from "./MemberTableButton";
 
 interface Inputs {
     name: string; // 이름
-    email: string; // 개인 이메일
     department: string; // 소속 (ex.인하대학교 교육학과 교수)
     organization: Organization;
+    email?: string | null; // 개인 이메일
     division?: string | null; // 구분 (대학 or 연구 기관)
 }
 
@@ -40,7 +40,6 @@ function MemberTableToggle({ organization }: Props) {
         }
     }, [selectedMember]);
 
-
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
         doc(collection(db, "externalMembers"), `${selectedDocId}`),
@@ -50,9 +49,9 @@ function MemberTableToggle({ organization }: Props) {
     const onAddMember: SubmitHandler<Inputs> = (data) => {
         addMutation.mutate({
             name: data.name, // 이름
-            email: data.email, // 개인 이메일
             department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
             organization: organization,
+            email: data.email ? data.email : null, // 개인 이메일
             division: data.division ? data.division : null, // 구분 (대학 or 연구 기관)
         });
     };
@@ -60,10 +59,10 @@ function MemberTableToggle({ organization }: Props) {
     const onUpdateMember: SubmitHandler<Inputs> = (data) => {
         updateMutation.mutate({
             name: data.name, // 이름
-            email: data.email, // 개인 이메일
             department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
             organization: organization,
-            division: data?.division, // 구분 (대학 or 연구 기관)
+            email: data.email ? data.email : null, // 개인 이메일
+            division: data?.division ? data.division : null, // 구분 (대학 or 연구 기관)
         });
     };
 
@@ -112,9 +111,7 @@ function MemberTableToggle({ organization }: Props) {
                     className=' mx-2 h-7 w-44 border border-gray-700   pl-3'
                     type='email'
                     placeholder='이메일'
-                    {...register("email", {
-                        required: true,
-                    })}
+                    {...register("email")}
                 />
             </label>
             <div className='gapx-1 absolute right-0 flex text-xs desktop:right-2 desktop:gap-x-3 desktop:text-sm'>
