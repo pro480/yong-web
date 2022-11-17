@@ -29,9 +29,9 @@ function CenterLeaderInfo() {
             <div className='flex'>
                 <div className='relative flex flex-1 bg-PRIMARY_COLOR-500'>
                     {/*사다리꼴의 직사각형 부분 및 내용 */}
-                    <ul className='flex flex-col  justify-around py-3 px-2 text-xs text-white xs:px-4 xs:text-sm sm:py-5 md:text-base '>
+                    <ul className='flex flex-col  justify-around py-3 px-2 text-xs text-white xs:px-4 xs:text-sm sm:py-5 md:px-6 md:text-base xl:px-9'>
                         <li className='flex'>
-                            <div className='w-20 xs:w-24'>
+                            <div className='w-20 xs:w-24 xl:w-32'>
                                 {t(`centerLeaderInfo.centerLeader`)}
                             </div>
                             <div className='whitespace-nowrap'>
@@ -39,7 +39,7 @@ function CenterLeaderInfo() {
                             </div>
                         </li>
                         <li className='flex'>
-                            <div className='w-20 xs:w-24'>
+                            <div className='w-20 xs:w-24 xl:w-32'>
                                 {t(`centerLeaderInfo.affiliation`)}
                             </div>
                             <div className='whitespace-nowrap'>
@@ -47,7 +47,7 @@ function CenterLeaderInfo() {
                             </div>
                         </li>
                         <li className='flex'>
-                            <div className='w-20 xs:w-24'>E-mail</div>
+                            <div className='w-20 xs:w-24 xl:w-32'>E-mail</div>
                             <a
                                 className='whitespace-nowrap'
                                 href='mailto:yong21c@gmail.com'
