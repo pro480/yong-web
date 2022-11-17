@@ -47,12 +47,20 @@ function Post({ router: { query } }: any) {
                         <div className='w-[90%] p-2'>{query.title}</div>
                     </div>
 
+                    {/* 유형 */}
+                    <div className='col-span-2 flex border-b border-gray-300 '>
+                        <div className='w-[20%] border-b border-gray-300 bg-gray-200 p-2 text-center text-black'>
+                            유형
+                        </div>
+                        <div className='w-[80%] p-2'>논문</div>
+                    </div>
+
                     {/* 학회지 */}
-                    <div className='col-span-4 flex border-b border-gray-300 '>
-                        <div className='w-[10%] border-b border-gray-300 bg-gray-200 p-2 text-center text-black'>
+                    <div className='col-span-2 flex border-b border-gray-300 '>
+                        <div className='w-[20%] border-b border-gray-300 bg-gray-200 p-2 text-center text-black'>
                             학회지
                         </div>
-                        <div className='w-[90%] p-2'>{query.type}</div>
+                        <div className='w-[80%] p-2'>{query.type}</div>
                     </div>
 
                     {/* 연구자 */}
