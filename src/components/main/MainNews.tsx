@@ -62,7 +62,7 @@ function MainNews() {
                     data={eventNewsData as EventNews}
                     title='행사 소식'
                 />
-                <MainNewsRecruit href='/notice/recruit' title='연구원 모집' />
+                <MainNewsRecruit href='/notice/recruit' title='채용 소식' />
             </div>
         </div>
     );

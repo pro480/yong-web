@@ -1,198 +1,193 @@
-
-export function getFirstDepthTitle_KO(path:string){
-
-    switch (path){
+export function getFirstDepthTitle_KO(path: string) {
+    switch (path) {
         case "info":
-            return "센터 소개"
+            return "센터 소개";
         case "research":
-            return "연구 및 사업"
+            return "연구 및 사업";
         case "major":
-            return "전공 소개"
+            return "전공 소개";
         case "data":
-            return "자료실"
+            return "자료실";
         case "notice":
-            return "공지사항"
+            return "공지사항";
         case "location":
-            return "오시는 길"
-        default :
-            return "상세 게시판"
-    }
-}
-
-export function getSecondDepthTitle_EN(path:string){
-    switch (path){
-        case "gallery":
-            return "Gallery"
-        case "open_data":
-            return "Open Data"
-        case "paper":
-            return "Papers and Research Reports"
-        case "study_material":
-            return "Study Material"
-        case "organization":
-            return "Organization"
-        case "center_history":
-            return "Center History"
-        case "center_info":
-            return "Center Info"
-        case "center_member":
-            return "Center Member"
-        case "center_vision":
-            return "Center Vision"
-        case "main_task":
-            return "Main Task"
-        case "alumni":
-            return "Alumni Member"
-        case "career":
-            return "Career After Graduation"
-        case "edu_evaluation":
-            return "Education Evaluation"
-        case "edu_measurement":
-            return "Education Measurement"
-        case "edudata_science":
-            return "Edu-Data Science"
-        case "center_news":
-            return "Center News"
-        case "event_news":
-            return "Event News"
-        case "qna":
-            return "Q & A"
-        case "recruit":
-            return "Researcher Recruitment"
-        case "business":
-            return "Research & business"
-        case "mou_list":
-            return "MOU institution"
-        case "location":
-            return "Location"
+            return "오시는 길";
         default:
-            return "General Forum"
+            return "상세 게시판";
     }
 }
 
-export function getSecondDepthTitle_KO(path:string){
-    switch (path){
+export function getSecondDepthTitle_EN(path: string) {
+    switch (path) {
         case "gallery":
-            return "갤러리"
+            return "Gallery";
         case "open_data":
-            return "오픈 데이터"
+            return "Open Data";
         case "paper":
-            return "논문 및 연구보고서"
+            return "Paper & Report";
         case "study_material":
-            return "학습 자료"
+            return "Learning materials";
         case "organization":
-            return "조직도"
+            return "Organization";
         case "center_history":
-            return "센터 연혁"
+            return "Center History";
         case "center_info":
-            return "센터장 소개"
+            return "Center Info";
         case "center_member":
-            return "센터 멤버"
+            return "Center Member";
         case "center_vision":
-            return "센터 비전"
+            return "Center Vision";
         case "main_task":
-            return "주요 업무"
+            return "Main Task";
         case "alumni":
-            return "동문"
+            return "Alumni Member";
         case "career":
-            return "졸업 후 진로"
+            return "Career After Graduation";
         case "edu_evaluation":
-            return "교육평가"
+            return "Education Evaluation";
         case "edu_measurement":
-            return "교육측정"
+            return "Education Measurement";
         case "edudata_science":
-            return "에듀데이터사이언스"
+            return "Edudata Science";
         case "center_news":
-            return "센터 소식"
+            return "Center News";
         case "event_news":
-            return "행사 소식"
+            return "Event News";
         case "qna":
-            return "Q & A"
+            return "Q & A";
         case "recruit":
-            return "연구원 모집"
+            return "Researcher Recruitment";
         case "business":
-            return "연구 및 사업"
+            return "Research & Projects";
         case "mou_list":
-            return "MOU 기관"
+            return "MOU Institution";
         case "location":
-            return "오시는 길"
+            return "Location";
         default:
-            return "상세 게시판"
+            return "General Forum";
     }
 }
 
-export function getSecondDepthDescription_KO(path:string){
-    switch (path){
+export function getSecondDepthTitle_KO(path: string) {
+    switch (path) {
         case "gallery":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "갤러리";
         case "open_data":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "오픈 데이터";
         case "paper":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "논문 및 연구보고서";
         case "study_material":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "학습 자료";
         case "organization":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "조직도";
         case "center_history":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "센터 연혁";
         case "center_info":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "센터장 소개";
         case "center_member":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "센터 멤버";
         case "center_vision":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "센터 비전";
         case "main_task":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "주요 업무";
         case "alumni":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "동문";
         case "career":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "졸업 후 진로";
         case "edu_evaluation":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "교육평가";
         case "edu_measurement":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "교육측정";
         case "edudata_science":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "에듀데이터사이언스";
         case "center_news":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "센터 소식";
         case "event_news":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "행사 소식";
         case "qna":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "Q & A";
         case "recruit":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "연구원 모집";
         case "business":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "연구 및 사업";
         case "mou_list":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "MOU 기관";
         case "location":
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "오시는 길";
         default:
-            return "메뉴에 대한 설명을 입력해주세요"
+            return "상세 게시판";
     }
 }
 
-export function getThirdDepthTitle_KO(path:string){
-    switch (path){
+export function getSecondDepthDescription_KO(path: string) {
+    switch (path) {
+        case "gallery":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "open_data":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "paper":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "study_material":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "organization":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "center_history":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "center_info":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "center_member":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "center_vision":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "main_task":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "alumni":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "career":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "edu_evaluation":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "edu_measurement":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "edudata_science":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "center_news":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "event_news":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "qna":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "recruit":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "business":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "mou_list":
+            return "메뉴에 대한 설명을 입력해주세요";
+        case "location":
+            return "메뉴에 대한 설명을 입력해주세요";
+        default:
+            return "메뉴에 대한 설명을 입력해주세요";
+    }
+}
+
+export function getThirdDepthTitle_KO(path: string) {
+    switch (path) {
         case "engineer":
-            return "센터 연구원"
+            return "센터 연구원";
         case "ethics":
-            return "연구 윤리 자문단"
+            return "연구 윤리 자문단";
         case "network":
-            return "연구협력 네트워크"
+            return "연구협력 네트워크";
         case "org_chart":
-            return "조직도"
+            return "조직도";
         case "research":
-           return "연구 자문단"
+            return "연구 자문단";
         default:
-            return "목록에 없는 케이스입니다"
+            return "목록에 없는 케이스입니다";
     }
 }
-
-
 
 export const info = {
-
     title_KO: "센터 소개",
     title_EN: "Center Info",
     description: "메뉴에 대한 설명을 써주세요",
@@ -272,17 +267,17 @@ export const info = {
             href: "/info/center_member",
         },
     ],
-}
+};
 
 export const research = {
     title_KO: "연구 및 사업",
-    title_EN: "Research & Business",
+    title_EN: "Research & Projects",
     description: "메뉴에 대한 설명을 써주세요",
     href: "/research/business",
     subMenu: [
         {
             title_KO: "연구 및 사업",
-            title_EN: "Research & Business",
+            title_EN: "Research & Projects",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/research/business",
@@ -295,31 +290,32 @@ export const research = {
             href: "/research/mou_list",
         },
     ],
-}
+};
 
 export const major = {
     title_KO: "전공 소개",
-    title_EN: "EduData Science",
+    title_EN: "Major Info",
     description: "메뉴에 대한 설명을 써주세요",
     href: "/major/edudata_science",
     subMenu: [
         {
             title_KO: "에듀데이터사이언스",
-            title_EN: "EduData Science",
+            title_EN: "Edudata Science",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/major/edudata_science",
         },
         {
             title_KO: "교육측정",
-            title_EN: "Education Edu_measurement",
+            title_EN: "Educational Measurement",
+
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/major/edu_measurement",
         },
         {
             title_KO: "교육평가",
-            title_EN: "Education Edu_evaluation",
+            title_EN: "Educational Evaluation",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/major/edu_evaluation",
@@ -339,31 +335,31 @@ export const major = {
             href: "/major/alumni",
         },
     ],
-}
+};
 
 export const data = {
     title_KO: "자료실",
-    title_EN: "Reference",
+    title_EN: "Center Data",
     description: "메뉴에 대한 설명을 써주세요",
     href: "/data/paper",
     subMenu: [
         {
             title_KO: "논문 및 연구 보고서",
-            title_EN: "Papers and Research Reports",
+            title_EN: "Paper & Report",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/data/paper",
         },
         {
             title_KO: "오픈 데이터",
-            title_EN: "Open_data Data",
+            title_EN: "Open Data Source",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/data/open_data",
         },
         {
             title_KO: "학습 자료",
-            title_EN: "Study Material",
+            title_EN: "Learning materials",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/data/study_material",
@@ -376,7 +372,7 @@ export const data = {
             href: "/data/gallery",
         },
     ],
-}
+};
 
 export const notice = {
     title_KO: "공지사항",
@@ -393,7 +389,7 @@ export const notice = {
         },
         {
             title_KO: "행사 소식",
-            title_EN: "Event_news News",
+            title_EN: "Event News",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/notice/event_news",
@@ -413,7 +409,7 @@ export const notice = {
             href: "/notice/recruit",
         },
     ],
-}
+};
 
 export const location = {
     title_KO: "오시는 길",
@@ -428,5 +424,5 @@ export const location = {
             subMenu: [],
             href: "/location/location",
         },
-        ]
-}
+    ],
+};

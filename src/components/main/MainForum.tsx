@@ -26,7 +26,7 @@ function MainForum() {
     );
     const collectionQuery = useFirestoreQuery(["gallery_createdAt"], ref);
     return (
-        <div className='flex flex-col gap-y-12 p-10'>
+        <div className='flex flex-col gap-y-10 p-10'>
             <div className='flex h-[10%] w-full items-center justify-center text-lg font-bold  xs:text-xl  md:text-2xl lg:text-3xl  desktop:text-4xl'>
                 갤러리
                 <Link href='/data/gallery'>
@@ -41,7 +41,7 @@ function MainForum() {
                     const data = snapshot.data();
                     return (
                         <div
-                            className='relative flex flex-col gap-y-4  border-2 border-PRIMARY_COLOR-600 p-3 shadow-md shadow-PRIMARY_COLOR-600'
+                            className='relative flex flex-col gap-y-2  border-2 border-PRIMARY_COLOR-600 p-3 shadow-md shadow-PRIMARY_COLOR-600'
                             key={snapshot.id}
                         >
                             <div className='relative aspect-[4/3]  '>
@@ -56,15 +56,19 @@ function MainForum() {
                                     quality={50}
                                 />
                             </div>
-                            <div className='hidden items-center self-end text-GRAY_COLOR-700 md:flex md:text-xs lg:text-sm desktop:text-base'>
+                            <div className='hidden items-center md:flex md:text-md lg:text-md desktop:text-base'>
+                                <text className="self-start">{data.title}</text>
+                            </div>
+                            <div className='hidden items-center self-end text-GRAY_COLOR-700 md:flex md:text-sm lg:text-sm desktop:text-base'>
                                 <ClockIcon className=' md:h-4 lg:h-6 ' />
                                 {moment(data.createdAt.slice(0, 8)).format(
                                     "YYYY-MM-DD"
                                 )}
                             </div>
-                            <p className='absolute -top-8 left-1/2 w-fit max-w-[90%] -translate-x-1/2 overflow-hidden text-ellipsis whitespace-nowrap border-b-2 border-PRIMARY_COLOR-300 px-2 text-sm  font-semibold  md:-top-10 md:text-base desktop:text-lg'>
+                            
+                            {/* <p className='absolute -top-8 left-1/2 w-fit max-w-[90%] -translate-x-1/2 overflow-hidden text-ellipsis whitespace-nowrap border-b-2 border-PRIMARY_COLOR-300 px-2 text-sm  font-semibold  md:-top-10 md:text-base desktop:text-lg'>
                                 {data.title}
-                            </p>
+                            </p> */}
                         </div>
                     );
                 })}

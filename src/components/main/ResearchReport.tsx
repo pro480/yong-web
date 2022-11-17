@@ -35,7 +35,7 @@ function ResearchReport() {
                         보고서
                     </div>
 
-                    <Link href='/data/paper'>
+                    <Link href='/data/paper?tab=report'>
                         <div className='flex cursor-pointer gap-x-1 text-xs hover:scale-105 xs:text-sm xl:gap-x-4 xl:text-lg'>
                             자세히 보러 가기
                             <PlusIcon className='h-4 self-center rounded-full  border border-PRIMARY_COLOR-500 p-0.5 xl:h-6 xl:p-1' />

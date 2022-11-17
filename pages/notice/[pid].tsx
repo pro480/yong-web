@@ -67,13 +67,20 @@ function Post({ router: { query } }: any) {
                     />
                 </div>
             ) : (
-                <label className='relative flex h-12 w-full cursor-pointer hover:scale-105'>
+                <label className='relative flex h-12 w-full'>
                     <a
                         className='absolute right-1 flex hover:underline hover:underline-offset-2'
                         href={`${query.fileUrl}`}
                     >
-                        <text className='pr-2'>첨부파일 다운로드하기</text>
-                        <ImFileText2 size={20} />
+                        <div className="flex cursor-pointer hover:scale-105">
+                            <text className='pr-2'>
+                                첨부파일 다운로드하기
+                            </text>
+                            <ImFileText2           
+                                size={20} 
+                            />
+                        </div>
+                        
                     </a>
                 </label>
             )}

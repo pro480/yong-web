@@ -51,4 +51,8 @@ html {
             -webkit-line-clamp: 10;
         }
     }
+
+    .font-spoqa {
+        font-family: "Spoqa Han Sans Neo", "sans-serif";
+    }
 }
