@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Thesis } from "../../../typing";
-import { ThesisContext } from "./ThesisTable";
+import { ThesisContext } from "./ThesisMain";
 import {
     ChevronDoubleLeftIcon,
     ChevronDoubleRightIcon,
@@ -8,7 +8,7 @@ import {
     ChevronRightIcon,
 } from "@heroicons/react/24/outline";
 
-export function ThesisTableUpdateButton({
+export function ThesisUpdateButton({
     data,
     docId,
 }: {
@@ -19,41 +19,42 @@ export function ThesisTableUpdateButton({
         useContext(ThesisContext);
 
     return (
-        <button
-            className='mr-1 border border-gray-300 bg-white p-1'
+        <div
+            className='my-1 h-[22px] w-[38px] cursor-pointer bg-gray-400 text-center text-sm text-white hover:bg-gray-600 xl:h-[30px] xl:w-[40px] xl:text-base'
             onClick={() => {
-                setIsEditing(false);
+                setIsEditing(true);
                 setSelectedDocId(docId);
                 setSelectedThesis(data);
-                setIsEditing(true);
             }}
         >
             수정
-        </button>
+        </div>
     );
 }
 
-export function ThesisTableDeleteButton({ docId }: { docId: string }) {
+export function ThesisDeleteButton({ docId }: { docId: string }) {
     const { deleteDocument } = useContext(ThesisContext);
     return (
-        <button
-            className='border border-gray-300 bg-white p-0.5'
+        <div
+            className='m-1 h-[22px] w-[38px] cursor-pointer bg-gray-400 text-center text-sm text-white hover:bg-gray-600 xl:h-[30px] xl:w-[40px] xl:text-base'
             onClick={() => {
-                confirm("삭제하시겠습니까?") ? deleteDocument(docId) : null;
+                confirm("논문을 삭제하시겠습니까?")
+                    ? deleteDocument(docId)
+                    : null;
             }}
         >
             삭제
-        </button>
+        </div>
     );
 }
 
-export function ThesisTableAddButton() {
+export function ThesisAddButton() {
     const { setIsEditing, isEditing, setSelectedDocId, setSelectedThesis } =
         useContext(ThesisContext);
 
     return (
         <button
-            className='absolute right-3 top-1/2 hidden -translate-y-1/2 border bg-gray-100 p-1 lg:flex'
+            className='mx-3 my-3 h-[22px] w-[38px] cursor-pointer rounded-md bg-gray-400 text-center text-sm text-white hover:bg-gray-500 xl:h-[28px] xl:w-[50px] xl:text-base'
             onClick={() => {
                 setIsEditing((prev) => !prev);
                 setSelectedDocId("");

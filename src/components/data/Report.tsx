@@ -12,7 +12,7 @@ import {
 import useAuth from "../../hooks/useAuth";
 import { ReportAddButton, ReportPageButton } from "./ReportButtons";
 import ReportToggle from "./ReportToggle";
-import {Query} from "@firebase/firestore";
+import { Query } from "@firebase/firestore";
 
 interface ReportContextProps {
     researchList: QueryDocumentSnapshot<ResearchReport>[] | undefined;
@@ -65,13 +65,13 @@ export default function Report() {
         <ReportContext.Provider value={value}>
             <main>
                 {/* 전체 몇건 */}
-                {/* <h1 className='pb-5 pt-14'>
+                <h1 className='pb-5 pt-5'>
                     전체{" "}
                     <span className='ml-3 text-2xl font-bold text-PRIMARY_COLOR-500'>
                         {researchList?.length}
                     </span>{" "}
                     건
-                </h1> */}
+                </h1>
                 {user &&
                     `연구 보고서 이미지는 1 : 1.41 정도 비율(A4용지 비율)의 이미지를 삽입하시는걸
                 추천 드립니다.`}

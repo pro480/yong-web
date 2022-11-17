@@ -17,10 +17,9 @@ import {
     QuerySnapshot,
 } from "@firebase/firestore";
 import useAuth from "../../hooks/useAuth";
-import ThesisTableHeader from "./ThesisTableHeader";
-import ThesisTableBody from "./ThesisTableBody";
-import ThesisTableToggle from "./ThesisTableToggle";
-import { ThesisTableAddButton, ThesisPageButton } from "./ThesisButton";
+import { ThesisPageButton, ThesisAddButton } from "./ThesisButton";
+import ThesisToggle from "./ThesisToggle";
+import ThesisItem from "./ThesisItem";
 
 interface ThesisContextProps {
     thesisList: QueryDocumentSnapshot<Thesis>[] | undefined;
@@ -39,7 +38,7 @@ interface ThesisContextProps {
 
 export const ThesisContext = createContext({} as ThesisContextProps);
 
-export default function ThesisTable() {
+export default function ThesisMain() {
     const { collectionRef, collectionQuery, deleteDocument } =
         useFirebase<Thesis>("thesis", ["thesis"]);
     const thesisList = collectionQuery.data?.docs;
@@ -47,6 +46,7 @@ export default function ThesisTable() {
     const [selectedThesis, setSelectedThesis] = useState<Thesis | null>(null);
     const [selectedDocId, setSelectedDocId] = useState<string>("");
     const [pageNumber, setPageNumber] = useState<number | null>(1);
+    const { user } = useAuth();
 
     const value = {
         thesisList,
@@ -73,12 +73,10 @@ export default function ThesisTable() {
                 </span>{" "}
                 건
             </h1>
+            {user && <ThesisAddButton />}
+            {isEditing && <ThesisToggle />}
 
-            <table className='w-full table-auto border-t border-t-black'>
-                <ThesisTableHeader />
-                <ThesisTableBody />
-            </table>
-            {isEditing && <ThesisTableToggle />}
+            <ThesisItem />
 
             <ThesisPageButton />
         </ThesisContext.Provider>
