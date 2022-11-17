@@ -26,9 +26,9 @@ export function getSecondDepthTitle_EN(path:string){
         case "open_data":
             return "Open Data"
         case "paper":
-            return "Papers and Research Reports"
+            return "Paper & Report"
         case "study_material":
-            return "Study Material"
+            return "Study Data"
         case "organization":
             return "Organization"
         case "center_history":
@@ -50,7 +50,7 @@ export function getSecondDepthTitle_EN(path:string){
         case "edu_measurement":
             return "Education Measurement"
         case "edudata_science":
-            return "Edu-Data Science"
+            return "Edudata Science"
         case "center_news":
             return "Center News"
         case "event_news":
@@ -62,7 +62,7 @@ export function getSecondDepthTitle_EN(path:string){
         case "business":
             return "Research & business"
         case "mou_list":
-            return "MOU institution"
+            return "MOU Institution"
         case "location":
             return "Location"
         default:
@@ -299,27 +299,27 @@ export const research = {
 
 export const major = {
     title_KO: "전공 소개",
-    title_EN: "EduData Science",
+    title_EN: "Major Info",
     description: "메뉴에 대한 설명을 써주세요",
     href: "/major/edudata_science",
     subMenu: [
         {
             title_KO: "에듀데이터사이언스",
-            title_EN: "EduData Science",
+            title_EN: "Edudata Science",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/major/edudata_science",
         },
         {
             title_KO: "교육측정",
-            title_EN: "Education Edu_measurement",
+            title_EN: "Education Measurement",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/major/edu_measurement",
         },
         {
             title_KO: "교육평가",
-            title_EN: "Education Edu_evaluation",
+            title_EN: "Education evaluation",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/major/edu_evaluation",
@@ -343,27 +343,27 @@ export const major = {
 
 export const data = {
     title_KO: "자료실",
-    title_EN: "Reference",
+    title_EN: "Center Data",
     description: "메뉴에 대한 설명을 써주세요",
     href: "/data/paper",
     subMenu: [
         {
             title_KO: "논문 및 연구 보고서",
-            title_EN: "Papers and Research Reports",
+            title_EN: "Paper & Report",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/data/paper",
         },
         {
             title_KO: "오픈 데이터",
-            title_EN: "Open_data Data",
+            title_EN: "Open Data Source",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/data/open_data",
         },
         {
             title_KO: "학습 자료",
-            title_EN: "Study Material",
+            title_EN: "Study Data",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/data/study_material",
@@ -393,7 +393,7 @@ export const notice = {
         },
         {
             title_KO: "행사 소식",
-            title_EN: "Event_news News",
+            title_EN: "Event News",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/notice/event_news",
