@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ArrowDownTrayIcon, NewspaperIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { ResearchReport } from "../../../typing";
+import Link from "next/link";
 
 interface Props {
     report: ResearchReport;
@@ -19,7 +20,9 @@ export default function ReportCard({ report, index }: Props) {
             2xl:flex`}
         >
             <div className='relative aspect-[1/1.414] w-full  cursor-pointer border bg-gray-300 shadow-lg hover:scale-105'>
-                <Image src={report.imgUrl} layout='fill' />
+                <Link href='/data/paper?tab=report'>
+                    <Image src={report.imgUrl} layout='fill' />
+                </Link>
             </div>
             <div className='overflow-hidden text-ellipsis whitespace-nowrap text-center '>
                 {report.title}

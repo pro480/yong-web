@@ -28,7 +28,7 @@ export function getSecondDepthTitle_EN(path:string){
         case "paper":
             return "Papers and Research Reports"
         case "study_material":
-            return "Study Material"
+            return "Learning materials"
         case "organization":
             return "Organization"
         case "center_history":
@@ -60,7 +60,7 @@ export function getSecondDepthTitle_EN(path:string){
         case "recruit":
             return "Researcher Recruitment"
         case "business":
-            return "Research & business"
+            return "Research & Projects"
         case "mou_list":
             return "MOU institution"
         case "location":
@@ -276,13 +276,13 @@ export const info = {
 
 export const research = {
     title_KO: "연구 및 사업",
-    title_EN: "Research & Business",
+    title_EN: "Research & Projects",
     description: "메뉴에 대한 설명을 써주세요",
     href: "/research/business",
     subMenu: [
         {
             title_KO: "연구 및 사업",
-            title_EN: "Research & Business",
+            title_EN: "Research & Projects",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/research/business",
@@ -312,14 +312,14 @@ export const major = {
         },
         {
             title_KO: "교육측정",
-            title_EN: "Education Edu_measurement",
+            title_EN: "Educational Measurement",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/major/edu_measurement",
         },
         {
             title_KO: "교육평가",
-            title_EN: "Education Edu_evaluation",
+            title_EN: "Educational Evaluation",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/major/edu_evaluation",
@@ -363,7 +363,7 @@ export const data = {
         },
         {
             title_KO: "학습 자료",
-            title_EN: "Study Material",
+            title_EN: "Learning materials",
             description: "메뉴에 대한 설명을 써주세요",
             subMenu: [],
             href: "/data/study_material",

@@ -30,7 +30,7 @@ function Footer() {
             {/*두번쨰 줄*/}
             <div className='flex max-w-5xl flex-wrap gap-y-2 gap-x-14 py-4 px-2 text-sm font-medium text-white xl:w-full xl:gap-y-4 xl:py-6 2xl:max-w-7xl 2xl:gap-y-8 2xl:py-10 xl:justify-center'>
                 <span>
-                    INHA UNIVERSITY, 100 Inha-ro, Michuhol-gu, Incheno 22212,
+                    INHA UNIVERSITY, 100 Inha-ro, Michuhol-gu, Incheon 22212,
                     KOREA
                 </span>
                 <span>Tel: +82-32-860-7873</span>

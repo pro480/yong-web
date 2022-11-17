@@ -57,7 +57,7 @@ function MajorForm({
                         <h1 className='font-bold text-PRIMARY_COLOR-500 md:text-xl lg:text-2xl'>
                             소개
                         </h1>
-                        <p className='text-xs font-light xs:text-sm sm:text-base lg:text-xl'>
+                        <p className='font-spoca text-xs xs:text-sm sm:text-base lg:text-xl'>
                             {introContent}
                         </p>
                     </div>
