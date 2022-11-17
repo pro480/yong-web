@@ -65,55 +65,66 @@ function NewsTableToggle({ news }: Props) {
 
     function uploadFileAndAddDoc(data: Inputs, mutation: any) {
         let file = data.newsFile[0];
-        const storageRef = ref(
-            storage, 
-            (news === "센터 소식") ? "documents/centerNews/" + file.name : "documents/eventNews/" + file.name
-        );
-        const uploadFile = uploadBytesResumable(storageRef, file);
-
-        uploadFile.on(
-            "state_changed",
-            (snapshot) => {
-                const progress =
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log("Upload is " + progress + "% now");
-                switch (snapshot.state) {
-                    case "paused":
-                        console.log("Upload is paused");
-                        break;
-                    case "running":
-                        console.log("Uploading");
-                        break;
-                }
-            },
-
-            (error) => {
-                switch (error.code) {
-                    case "storage/unauthorized":
-                        console.log(error);
-                        break;
-                    case "storage/canceled":
-                        console.log(error);
-                        break;
-                    case "storage/unknown":
-                        console.log(error);
-                        break;
-                }
-            },
-            () => {
-                getDownloadURL(uploadFile.snapshot.ref).then((downloadURL) => {
-                    addMutation.mutate({
-                        title: data.title, // 제목
-                        writer: data.writer, // 작성자
-                        createdAt: today.format("YYYYMMDDHHmmss"), // 등록일
-                        content: data.content, // 게시글 본문
-                        fileUrl: downloadURL, // 첨부파일 주소
-                        news: news,
+        if (file) {
+            const storageRef = ref(
+                storage, 
+                (news === "센터 소식") ? "documents/centerNews/" + file.name : "documents/eventNews/" + file.name
+            );
+            const uploadFile = uploadBytesResumable(storageRef, file);
+    
+            uploadFile.on(
+                "state_changed",
+                (snapshot) => {
+                    const progress =
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log("Upload is " + progress + "% now");
+                    switch (snapshot.state) {
+                        case "paused":
+                            console.log("Upload is paused");
+                            break;
+                        case "running":
+                            console.log("Uploading");
+                            break;
+                    }
+                },
+    
+                (error) => {
+                    switch (error.code) {
+                        case "storage/unauthorized":
+                            console.log(error);
+                            break;
+                        case "storage/canceled":
+                            console.log(error);
+                            break;
+                        case "storage/unknown":
+                            console.log(error);
+                            break;
+                    }
+                },
+                () => {
+                    getDownloadURL(uploadFile.snapshot.ref).then((downloadURL) => {
+                        addMutation.mutate({
+                            title: data.title, // 제목
+                            writer: data.writer, // 작성자
+                            createdAt: today.format("YYYYMMDDHHmmss"), // 등록일
+                            content: data.content, // 게시글 본문
+                            fileUrl: downloadURL, // 첨부파일 주소
+                            news: news,
+                        });
                     });
-                });
-                setIsEditing(false);
-            }
-        );
+                }
+            );
+        } else {
+            addMutation.mutate({
+                title: data.title, // 제목
+                writer: data.writer, // 작성자
+                createdAt: today.format("YYYYMMDDHHmmss"), // 등록일
+                content: data.content, // 게시글 본문
+                fileUrl: "empty", // 첨부파일 주소
+                news: news,
+            });
+        }
+        setIsEditing(false);
     };
 
     const onUpdateNews: SubmitHandler<Inputs> = (data) => {
@@ -173,12 +184,23 @@ function NewsTableToggle({ news }: Props) {
                 {selectedNews && !editFile? (     
                     <div className='w-[20%] flex items-center'>
                         <label className='flex h-12 w-full items-left justify-center self-center'>
-                            <IconButton
-                                className='flex self-center hover:underline hover:underline-offset-2 text-black'
-                                onClick={() => setEditFile(true)}>
+                            {(selectedNews.fileUrl=="empty") ? (
+                                <input
+                                    className='w-full self-center text-xs pl-5'
+                                    type='file'
+                                    {...register("newsFile", { 
+                                        // required: selectedNews ? false : true 
+                                        required: false
+                                    })}
+                                />
+                            ) : (
+                                <IconButton
+                                    className='flex self-center hover:underline hover:underline-offset-2 text-black'
+                                    onClick={() => setEditFile(true)}>
 
-                                <ImFileText2 className='ml-2' size={20} />
-                            </IconButton>
+                                    <ImFileText2 className='ml-2' size={20} />
+                                </IconButton>
+                            )}
                         </label>
                         <label className='absolute w-15 z-50 hidden lg:flex right-2 text-sm bg-gray-100'>
                             <input type='submit' className=' border p-1' />
@@ -192,7 +214,8 @@ function NewsTableToggle({ news }: Props) {
                                 className='w-full text-xs pl-5'
                                 type='file'
                                 {...register("newsFile", { 
-                                    required: selectedNews ? false : true 
+                                    // required: selectedNews ? false : true 
+                                    required: false
                                 })}
                             />
                             <label className='absolute w-15 hidden lg:flex right-2 text-sm bg-gray-100'>
