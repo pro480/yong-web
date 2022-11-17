@@ -76,7 +76,7 @@ function NewsTableBody<N extends CenterNews | EventNews>({
                                         href={data.fileUrl}
                                     >
                                         <ImFileText2
-                                            className='ml-2'
+                                            className='ml-2 cursor-pointer hover:scale-110'
                                             size={20}
                                         />
                                     </a>

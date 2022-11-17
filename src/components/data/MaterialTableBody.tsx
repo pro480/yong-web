@@ -75,7 +75,10 @@ function MaterialTableBody<M extends StudyMaterial | PaperMaterial>({ material, 
                                     className='flex hover:underline hover:underline-offset-2'
                                     href={data.fileUrl}
                                 >
-                                    <ImFileText2 className='ml-2' size={20} />
+                                    <ImFileText2 
+                                        className='ml-2 cursor-pointer hover:scale-110' 
+                                        size={20} 
+                                    />
                                 </a>
                             </div>
                             {user && (
