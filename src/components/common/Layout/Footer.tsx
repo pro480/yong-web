@@ -7,7 +7,7 @@ import logo_inha_symbol_blue from "../../../../public/images/logo/logo_inha_symb
 
 function Footer() {
     return (
-        <div className='flex h-44 w-full flex-col items-center bg-GRAY_COLOR-900 text-GRAY_COLOR-200  xl:flex-wrap xl:text-center'>
+        <div className='flex  w-full flex-col items-center bg-GRAY_COLOR-900 text-GRAY_COLOR-200  xl:flex-wrap xl:text-center'>
             {/*로고 사이즈*/}
             <div className='relative flex h-16 w-80 items-center justify-center sm:w-96 xl:hidden '>
                 <Image
@@ -37,10 +37,10 @@ function Footer() {
                 <span>Tel: +82-32-860-7873</span>
                 <span>Mail: yong21c@gmail.com</span>
                 <div className='basis-full text-center text-GRAY_COLOR-300'>
-                    Copyright(C) 2021 by INHA UNIVERSITY.ALL RIGHTS RESERVED
+                    Copyright(C) 2022 by EBA Center.ALL RIGHTS RESERVED
                 </div>
             </div>
-            <div className='absolute right-12 hidden h-44 w-28 items-center xl:flex'>
+            <div className='absolute right-12 hidden h-40 w-28 items-center xl:flex'>
                 <Image
                     src={logo_symbol_text_KR}
                     objectFit='contain'
@@ -50,7 +50,7 @@ function Footer() {
             </div>
 
             {/* 인하대학교 엠블럼 https://www.inha.ac.kr/kr/1829/subview.do */}
-            <div className='absolute left-12 flex hidden h-44 w-32 items-center xl:flex'>
+            <div className='absolute left-12 flex hidden h-40 w-32 items-center xl:flex'>
                 <Image
                     src={logo_inha_symbol_blue}
                     objectFit='contain'

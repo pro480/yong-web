@@ -33,8 +33,6 @@ interface NewsTableContextProps<N> {
     setSelectedDocId: Dispatch<React.SetStateAction<string | null>>;
     setSelectedNews: Dispatch<React.SetStateAction<N | null>>;
     deleteDocument: (docID: string) => void;
-    selectedIndex: number;
-    setSelectedIndex: Dispatch<React.SetStateAction<number>>;
 
     newsList: QueryDocumentSnapshot<CenterNews | EventNews>[] | undefined;
     pageNumber: number | null;
@@ -54,7 +52,6 @@ function NewsTable<N extends CenterNews | EventNews>({ news }: Props<N>) {
         CenterNews | EventNews | null
     >(null);
     const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
-    const [selectedIndex, setSelectedIndex] = useState(0);
     const [newsList, setNewsList] = useState<
         QueryDocumentSnapshot<CenterNews | EventNews>[] | undefined
     >(collectionQuery.data?.docs);
@@ -78,8 +75,6 @@ function NewsTable<N extends CenterNews | EventNews>({ news }: Props<N>) {
         setSelectedNews,
         setSelectedDocId,
         deleteDocument,
-        selectedIndex,
-        setSelectedIndex,
 
         pageNumber,
         setPageNumber,
