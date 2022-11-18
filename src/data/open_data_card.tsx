@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
 
 interface Props {
-    imgUrl: string;
+    imgUrl: string | StaticImageData;
     title_KO: string;
     description: string;
     href: string;
