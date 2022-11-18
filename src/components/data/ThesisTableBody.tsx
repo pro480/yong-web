@@ -31,27 +31,28 @@ export default function ThesisTableBody() {
                             className='border-b border-gray-200 text-xs text-[11px] hover:bg-gray-100 sm:text-sm'
                         >
                             <td className='text-center'>{No}</td>
-                            <td className='cursor-pointer py-3 px-2 text-left hover:scale-105 '>
-                                <Link
-                                    href={{
-                                        pathname: `/data/${"thesis"}${No}`,
-                                        query: {
-                                            title: data.title,
-                                            type: data.type,
-                                            researcher: data.researcher,
-                                            createdAt: moment(
-                                                data.createdAt.slice(0, 8)
-                                            ).format("YYYY-MM-DD"),
-                                            year: data.year,
-                                            writer: data.writer,
-                                        },
-                                    }}
-                                    // as로 바뀌면서 새로고침하는 경우 쿼리 값이 사라지는 현상 => ssr?
-                                    as={`/data/${"thesis"}${No}`}
-                                >
+
+                            <Link
+                                href={{
+                                    pathname: `/data/${"thesis"}${No}`,
+                                    query: {
+                                        title: data.title,
+                                        type: data.type,
+                                        researcher: data.researcher,
+                                        createdAt: moment(
+                                            data.createdAt.slice(0, 8)
+                                        ).format("YYYY-MM-DD"),
+                                        year: data.year,
+                                        writer: data.writer,
+                                    },
+                                }}
+                                // as로 바뀌면서 새로고침하는 경우 쿼리 값이 사라지는 현상 => ssr?
+                                as={`/data/${"thesis"}${No}`}
+                            >
+                                <td className='cursor-pointer py-3 px-2 text-left hover:scale-105 '>
                                     <a className='font-bold'>{data.title}</a>
-                                </Link>
-                            </td>
+                                </td>
+                            </Link>
                             <td className='text-center'>{data.writer}</td>
                             <td className='text-center'>
                                 <div>
