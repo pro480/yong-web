@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import OrganizationCard from "../../../src/components/info/OrganizatinoCard";
 import sym_logo_EN from "../../../public/images/logo/sym_logo_EN.png";
 import symbolImage from "../../../public/images/logo/symbol_outline.png";
+import HeadMeta from "../../../src/components/common/Layout/HeadMeta";
 
 function Org_chart() {
     const router = useRouter();
@@ -13,6 +14,7 @@ function Org_chart() {
     }
     return (
         <div>
+            <HeadMeta title={"EBA | 조직도"} description={"EBA센터 조직도"}/>
             <div className='relative flex flex-col items-center text-white '>
                 <div className='w-5/12 rounded-lg border-4 border-solid border-PRIMARY_COLOR-500'>
                     {/* 그림 하나로 합치기 */}

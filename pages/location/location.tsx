@@ -4,11 +4,13 @@ import { BuildingOfficeIcon } from "@heroicons/react/24/solid";
 import { TruckIcon } from "@heroicons/react/24/solid";
 import LocationBox from "../../src/components/location/location_box";
 import { useTranslation } from "next-i18next";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Location() {
     const { t } = useTranslation();
     return (
         <div className='flex flex-col gap-y-12 md:space-y-8'>
+            <HeadMeta title={"EBA | 오시는 길"} description={"EBA센터 오시는 길"}/>
             <div className='flex flex-col items-center gap-y-6  md:flex-row'>
                 <div className='relative h-64 w-4/5 sm:flex sm:h-96'>
                     <Image

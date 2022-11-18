@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Mou_list() {
     // next.config.js에 MOU기관 리스트 URL 추가 작성했습니다.
@@ -29,6 +30,7 @@ function Mou_list() {
     return (
 
             <main className='grid grid-cols-1 items-center gap-y-16 gap-x-14 self-center md:grid-cols-2 xl:grid-cols-3'>
+                <HeadMeta title={"EBA | MOU 기관"} description={"EBA센터 MOU 체결 기관들"}/>
                 현재 체결된 MOU 기관이 없습니다.
                 {/*{mous.map((mou, index) => (*/}
                 {/*    <article*/}

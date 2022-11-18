@@ -4,6 +4,7 @@ import { InternalMember, Team } from "../../typing";
 import useFirebase from "../../src/hooks/useFirebase";
 import ClassificationTitle from "../../src/components/common/ClassificationTitle";
 import useAuth from "../../src/hooks/useAuth";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Center_member() {
     const team: Team[] = ["센터장", "데이터 분석팀", "인공지능팀", "실무교육팀"];
@@ -12,6 +13,7 @@ function Center_member() {
 
     return (
         <div className='relative'>
+            <HeadMeta title={"EBA | 센터 구성원"} description={"EBA센터 구성원"}/>
             {team.map((team) => {
                 const memberList = collectionQuery.data?.docs.filter(
                     (docSnapshot) => {

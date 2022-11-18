@@ -2,10 +2,12 @@ import React from "react";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import styles from "../../src/styles/styles.module.css";
 import { CareerCard } from "../../src/major/careerCard";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Career() {
     return (
         <main className='relative flex flex-col gap-y-12 pt-6'>
+            <HeadMeta title={"EBA | 졸업 후 진로"} description={"졸업 후 진로"}/>
             <CareerCard
                 title='대학교수 및 연구원'
                 content='교육학과 대학원에서 교육측정 및 평가 전공으로 박사학위를 취득한 후 대학교수가 되거나 교육 데이터를 다루는 정부 및 민간 연구소의 연구원으로 진출할 수 있다.'

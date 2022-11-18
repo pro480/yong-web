@@ -12,6 +12,7 @@ import QnaRow from "../../src/components/notice/QnaRow";
 import { UseQueryResult } from "react-query";
 import { QnaPageButton } from "../../src/components/notice/QnaButton";
 import {Query} from "@firebase/firestore";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 interface QnaContextProps {
     qnaList: QueryDocumentSnapshot<QNA>[] | undefined;
@@ -53,6 +54,7 @@ function Qna() {
 
     return (
         <QnaContext.Provider value={value}>
+            <HeadMeta title={"EBA | Q & A"} description={"EBA센터 Q&A 게시판입니다"}/>
             <div>
                 {/*개수*/}
                 <h1 className='mt-4 mb-10'>

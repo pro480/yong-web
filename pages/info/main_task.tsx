@@ -9,10 +9,12 @@ import third from "../../public/images/maintask/third.png";
 import fourth from "../../public/images/maintask/fourth.png";
 import fifth from "../../public/images/maintask/fifth.png";
 import sixth from "../../public/images/maintask/sixth.png";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Main_task() {
     return (
         <div className='flex flex-col justify-center gap-x-2 gap-y-3 px-2 pt-4 sm:gap-y-6 sm:gap-x-4 sm:pt-12'>
+            <HeadMeta title={"EBA | 주요 수행 업무"} description={"주요 수행 업무"}/>
             <TaskCard
                 image={first}
                 content='교육 빅데이터 활용 각종 연구 수행'

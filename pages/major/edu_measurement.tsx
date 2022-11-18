@@ -1,11 +1,13 @@
 import React from "react";
 import bannerImage from "../../public/images/major/measurebanner.jpg";
 import MajorForm from "../../src/components/major/MajorForm";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Edu_measurement() {
     return (
         <div>
             <div>
+                <HeadMeta title={"EBA | 교육측정"} description={"교육측정 전공에 대해 소개합니다"}/>
                 <MajorForm
                     bannerTitle='교육측정'
                     bannerContent='교육측정 전공에 대해 소개합니다.'
