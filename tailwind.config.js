@@ -63,7 +63,9 @@ module.exports = {
             large: "12px",
             "3xl": "40px",
         },
-        
     },
-    plugins: [],
+    plugins: [
+        require("tailwind-scrollbar-hide"),
+        require("tailwind-scrollbar")({ nocompatible: true }),
+    ],
 };

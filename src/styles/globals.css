@@ -7,6 +7,25 @@ html {
     font-family: "Noto Sans KR", "Open Sans", sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #c2c6d2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #0066B3;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #004980;
+}
+
 @layer components {
     .organizationNode {
         @apply flex h-1/2 w-28 cursor-pointer items-center justify-center rounded-full border text-xs font-semibold sm:w-36 md:w-44 md:text-base;

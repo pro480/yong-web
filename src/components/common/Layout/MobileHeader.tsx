@@ -6,6 +6,7 @@ import { data, info, major, notice, research } from "../../../utils/Utils";
 import Link from "next/link";
 import { MinusIcon } from "@heroicons/react/24/solid";
 import MobileHeaderMenu from "./MobileHeaderMenu";
+import { useRouter } from "next/router";
 
 interface Props {
     setOpenHeader: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,6 +15,8 @@ interface Props {
 
 function MobileHeader({ setOpenHeader, openHeader }: Props) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const router = useRouter();
+
     const showMenu = () => {
         setDropdownOpen(true);
         document.addEventListener("click", closeMenu);
@@ -24,6 +27,10 @@ function MobileHeader({ setOpenHeader, openHeader }: Props) {
 
         document.removeEventListener("click", closeMenu);
     };
+
+    useEffect(() => {
+        setOpenHeader(false);
+    }, [router.pathname]);
 
     useEffect(() => {
         document.body.style.cssText = `
@@ -39,11 +46,15 @@ function MobileHeader({ setOpenHeader, openHeader }: Props) {
     }, [openHeader]);
 
     return (
-        <div className={`absolute h-full ${openHeader ? "w-full" : "w-0 overflow-hidden"} bg-black/30`} >
+        <div
+            className={`absolute h-full ${
+                openHeader ? "w-full" : "w-0 overflow-hidden"
+            } z-50 bg-black/30`}
+        >
             <div
-                className={`absolute right-0 top-0 z-50 flex h-full ${
+                className={`absolute right-0 top-0 z-50 flex h-[calc(100vh-200px)] overflow-y-scroll scrollbar-hide desktop:h-[calc(100vh-100px)] ${
                     openHeader ? "w-96" : "w-0"
-                } flex-col bg-white transition-all overflow-y duration-300 ease-linear`}
+                } overflow-y flex-col bg-white transition-all duration-300 ease-linear`}
             >
                 <div className='relative flex h-fit justify-between'>
                     <div className='w-36 p-4'>
