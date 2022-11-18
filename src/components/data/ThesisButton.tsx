@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { Thesis } from "../../../typing";
-import { ThesisContext } from "./ThesisMain";
 import {
     ChevronDoubleLeftIcon,
     ChevronDoubleRightIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
 } from "@heroicons/react/24/outline";
+import { ThesisTableContext } from "./ThesisTable";
 
 export function ThesisUpdateButton({
     data,
@@ -16,11 +16,11 @@ export function ThesisUpdateButton({
     docId: string;
 }) {
     const { setIsEditing, setSelectedDocId, setSelectedThesis } =
-        useContext(ThesisContext);
+        useContext(ThesisTableContext);
 
     return (
-        <div
-            className='my-1 h-[22px] w-[38px] cursor-pointer bg-gray-400 text-center text-sm text-white hover:bg-gray-600 xl:h-[30px] xl:w-[40px] xl:text-base'
+        <button
+            className='m-1 border border-gray-300 bg-white p-1'
             onClick={() => {
                 setIsEditing(true);
                 setSelectedDocId(docId);
@@ -28,15 +28,15 @@ export function ThesisUpdateButton({
             }}
         >
             수정
-        </div>
+        </button>
     );
 }
 
 export function ThesisDeleteButton({ docId }: { docId: string }) {
-    const { deleteDocument } = useContext(ThesisContext);
+    const { deleteDocument } = useContext(ThesisTableContext);
     return (
-        <div
-            className='m-1 h-[22px] w-[38px] cursor-pointer bg-gray-400 text-center text-sm text-white hover:bg-gray-600 xl:h-[30px] xl:w-[40px] xl:text-base'
+        <button
+            className='border border-gray-300 bg-white p-1'
             onClick={() => {
                 confirm("논문을 삭제하시겠습니까?")
                     ? deleteDocument(docId)
@@ -44,17 +44,17 @@ export function ThesisDeleteButton({ docId }: { docId: string }) {
             }}
         >
             삭제
-        </div>
+        </button>
     );
 }
 
 export function ThesisAddButton() {
     const { setIsEditing, isEditing, setSelectedDocId, setSelectedThesis } =
-        useContext(ThesisContext);
+        useContext(ThesisTableContext);
 
     return (
         <button
-            className='mx-3 my-3 h-[22px] w-[38px] cursor-pointer rounded-md bg-gray-400 text-center text-sm text-white hover:bg-gray-500 xl:h-[28px] xl:w-[50px] xl:text-base'
+            className='absolute right-3 top-1/2 hidden -translate-y-1/2 border bg-gray-100 p-1 lg:flex'
             onClick={() => {
                 setIsEditing((prev) => !prev);
                 setSelectedDocId("");
@@ -67,8 +67,9 @@ export function ThesisAddButton() {
 }
 
 export function ThesisPageButton() {
-    const { pageNumber, setPageNumber, thesisList } = useContext(ThesisContext);
-    const researchLength = Math.floor(Number(thesisList?.length) / 5) + 1; // 한 페이지당 원하는 자료 수에 따라 달라지는 부분 /(원하는 자료 수)
+    const { pageNumber, setPageNumber, thesisList } =
+        useContext(ThesisTableContext);
+    const researchLength = Math.floor(Number(thesisList?.length) / 10) + 1; // 한 페이지당 원하는 자료 수에 따라 달라지는 부분 /(원하는 자료 수)
     const maxOffset = Math.floor(researchLength / 5) * 5 + 1;
     let buttonOffset = Math.floor((Number(pageNumber) - 1) / 5) * 5 + 1;
 

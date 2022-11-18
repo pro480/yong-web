@@ -1,6 +1,5 @@
 import React from "react";
-import { NewsTableAddButton } from "./NewsTableButton";
-import { News, CenterNews, EventNews } from "../../../typing";
+import { ThesisAddButton } from "./ThesisButton";
 import useAuth from "../../hooks/useAuth";
 
 function NewsTableHeader() {
@@ -11,11 +10,12 @@ function NewsTableHeader() {
                 <th className='w-[5%] text-center'>NO</th>
                 <th className='w-[45%] text-center'>제목</th>
                 <th className='w-[15%] text-center'>작성자</th>
-                <th className='w-[15%] pr-4 text-right'>등록일</th>
-                <th className='relative w-[20%]'>
-                    첨부파일
-                    {user && <NewsTableAddButton />}
-                </th>
+                <th className='w-[15%] pr-4 text-center'>등록일</th>
+                {user && (
+                    <th className='relative w-[7%]'>
+                        <ThesisAddButton />
+                    </th>
+                )}
             </tr>
         </thead>
     );
