@@ -55,4 +55,21 @@ html {
     .font-spoqa {
         font-family: "Spoqa Han Sans Neo", "sans-serif";
     }
+
+    @media not all and (min-resolution: 0.001dpcm) {
+        @supports (-webkit-appearance: none) {
+            /* 이 안에 Safari(10.1 이상)에서만 적용할 스타일 작성 */
+            .ios-16-9 :before {
+                float: left;
+                padding-top: 56.25%;
+                content: "";
+            }
+
+            .ios-16-9 :after {
+                display: block;
+                content: "";
+                clear: both;
+            }
+        }
+    }
 }

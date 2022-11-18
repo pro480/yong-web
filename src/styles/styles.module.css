@@ -1,4 +1,4 @@
-@media all and (min-width: 400px) and (max-width: 480px) {
+@media (min-width: 400px) {
     .outer {
         position: relative;
         display: flex;
@@ -47,7 +47,7 @@
     }
 }
 
-@media all and (min-width: 480px) {
+@media (min-width: 480px) {
     .outer {
         position: relative;
         display: flex;
@@ -97,7 +97,7 @@
     }
 }
 
-@media all and (min-width: 640px) {
+@media (min-width: 640px) {
     .outer {
         position: relative;
         display: flex;
@@ -147,7 +147,7 @@
     }
 }
 
-@media all and (min-width: 1024px) {
+@media (min-width: 1024px) {
     .outer {
         position: relative;
         display: flex;
@@ -196,3 +196,32 @@
         display: flex;
     }
 }
+
+@media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+        /* 이 안에 Safari(10.1 이상)에서만 적용할 스타일 작성 */
+        .ios-16-9 :before {
+            float: left;
+            padding-top: 56.25%;
+            content: "";
+        }
+
+        .ios-16-9 :after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+    }
+}
+
+/*:before {*/
+/*    float: left;*/
+/*    padding-top: 56.25%;*/
+/*    content: "";*/
+/*}*/
+
+/*:after {*/
+/*    display: block;*/
+/*    content: "";*/
+/*    clear: both;*/
+/*}*/

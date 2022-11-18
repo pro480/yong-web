@@ -44,7 +44,7 @@ function MainForum() {
                             className='relative flex flex-col gap-y-2  border-2 border-PRIMARY_COLOR-600 p-3 shadow-md shadow-PRIMARY_COLOR-600'
                             key={snapshot.id}
                         >
-                            <div className='relative aspect-[4/3]  '>
+                            <div className='relative aspect-[4/3] before:pt-[75%] before:float-left  '>
                                 <Image
                                     className=''
                                     src={data.imgUrl}
@@ -56,8 +56,8 @@ function MainForum() {
                                     quality={50}
                                 />
                             </div>
-                            <div className='hidden items-center md:flex md:text-md lg:text-md desktop:text-base'>
-                                <text className="self-start">{data.title}</text>
+                            <div className='md:text-md lg:text-md hidden items-center md:flex desktop:text-base'>
+                                <text className='self-start'>{data.title}</text>
                             </div>
                             <div className='hidden items-center self-end text-GRAY_COLOR-700 md:flex md:text-sm lg:text-sm desktop:text-base'>
                                 <ClockIcon className=' md:h-4 lg:h-6 ' />
@@ -65,7 +65,7 @@ function MainForum() {
                                     "YYYY-MM-DD"
                                 )}
                             </div>
-                            
+
                             {/* <p className='absolute -top-8 left-1/2 w-fit max-w-[90%] -translate-x-1/2 overflow-hidden text-ellipsis whitespace-nowrap border-b-2 border-PRIMARY_COLOR-300 px-2 text-sm  font-semibold  md:-top-10 md:text-base desktop:text-lg'>
                                 {data.title}
                             </p> */}

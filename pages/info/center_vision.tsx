@@ -5,12 +5,9 @@ import Image from "next/image";
 
 function Center_vision() {
     return (
-        <div>
-            {/* 비전 이미지 */}
-            <div className='relative aspect-[1/1.414] w-[100%] -top-10'>
-                <Image src={visionImage} layout='fill' />
+            <div className='relative -top-10 aspect-[1/1.414] w-full'>
+                <Image src={visionImage}  />
             </div>
-        </div>
     );
 }
 
