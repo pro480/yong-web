@@ -1,6 +1,6 @@
 import React from "react";
 
-import { OpenDataCard } from "../../src/data/open_data_card";
+import { OpenDataCard } from "../../src/components/data/open_data_card";
 import Kict from "../../public/images/opendatalogo/Kict.png";
 import NIA from "../../public/images/opendatalogo/NIA.png";
 import KERIS from "../../public/images/opendatalogo/KERIS.png";
