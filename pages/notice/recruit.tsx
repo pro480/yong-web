@@ -37,7 +37,6 @@ function Recruit() {
     }
     return (
         <div>
-
             <div className='flex w-full justify-center '>
                 <Document
                     className='border'

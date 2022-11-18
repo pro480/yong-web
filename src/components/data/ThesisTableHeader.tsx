@@ -1,23 +1,24 @@
 import React from "react";
-import { MaterialTableAddButton } from "./MaterialTableButton";
+import { ThesisAddButton } from "./ThesisButton";
 import useAuth from "../../hooks/useAuth";
-import { ThesisTableAddButton } from "./ThesisButton";
 
-export default function ThesisTableHeader() {
+function NewsTableHeader() {
     const { user } = useAuth();
-
     return (
         <thead>
             <tr className='h-12 bg-PRIMARY_COLOR-500/40 text-sm uppercase leading-normal text-gray-600'>
-                <th className='w-[5%]  text-center'>NO</th>
+                <th className='w-[5%] text-center'>NO</th>
                 <th className='w-[45%] text-center'>제목</th>
-                <th className='w-[20%] text-center'>학회지</th>
-                <th className='w-[15%] text-center'>연구자</th>
-                <th className='relative'>
-                    <span>발행년도</span>
-                    {user && <ThesisTableAddButton />}
-                </th>
+                <th className='w-[15%] text-center'>작성자</th>
+                <th className='w-[15%] pr-4 text-center'>등록일</th>
+                {user && (
+                    <th className='relative w-[7%]'>
+                        <ThesisAddButton />
+                    </th>
+                )}
             </tr>
         </thead>
     );
 }
+
+export default NewsTableHeader;

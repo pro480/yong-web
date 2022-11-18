@@ -116,22 +116,22 @@ export const siteMapState = atom<SiteMap>({
             href: "/major",
             subMenu: [
                 {
-                    title_KO: "에듀 데이터 사이언스",
+                    title_KO: "에듀데이터사이언스",
                     title_EN: "EduData Science",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/major",
                 },
                 {
-                    title_KO: "교육 측정",
-                    title_EN: "Education Edu_measurement",
+                    title_KO: "교육측정",
+                    title_EN: "Educational Measurement",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/major/measurement",
                 },
                 {
-                    title_KO: "교육 평가",
-                    title_EN: "Education Edu_evaluation",
+                    title_KO: "교육평가",
+                    title_EN: "Educational Evaluation",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/major/evaluation",
@@ -174,7 +174,7 @@ export const siteMapState = atom<SiteMap>({
                 },
                 {
                     title_KO: "학습 자료",
-                    title_EN: "Study Material",
+                    title_EN: "Learning materials",
                     description: "메뉴에 대한 설명을 써주세요",
                     subMenu: [],
                     href: "/data/study",
@@ -230,7 +230,7 @@ export const siteMapState = atom<SiteMap>({
             title_EN: "Location",
             description: "",
             href: "/location",
-            subMenu: []
+            subMenu: [],
         },
     },
 });

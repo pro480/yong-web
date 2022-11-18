@@ -12,7 +12,7 @@ import sixth from "../../public/images/maintask/sixth.png";
 
 function Main_task() {
     return (
-        <div className='flex flex-wrap justify-center gap-x-2 gap-y-4 px-2 pt-4 sm:gap-x-4 md:pt-12'>
+        <div className='flex flex-col justify-center gap-x-2 gap-y-3 px-2 pt-4 sm:gap-y-6 sm:gap-x-4 sm:pt-12'>
             <TaskCard
                 image={first}
                 content='교육 빅데이터 활용 각종 연구 수행'

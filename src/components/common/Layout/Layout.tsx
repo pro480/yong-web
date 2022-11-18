@@ -24,7 +24,8 @@ function Layout({ children }: Props) {
         <div className='h-full w-full'>
             <Header />
             <Banner />
-            <main className='mx-auto mb-32 flex min-h-[600px] max-w-[1536px] flex-col 2xl:flex-row 2xl:items-start'>
+            {/* min-h-[700px]에서 [800px]로 변경 */}
+            <main className='mx-auto mb-32 flex min-h-[800px] max-w-[1536px] flex-col 2xl:flex-row 2xl:items-start'>
                 <Sidebar />
                 <div className='w-full p-10 md:px-20 md:py-10'>
                     <PageTitle />

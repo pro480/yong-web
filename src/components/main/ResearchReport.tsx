@@ -25,8 +25,8 @@ function ResearchReport() {
     const collectionQuery = useFirestoreQuery(["mainReport"], collectionRef);
 
     return (
-        <div className='-mt-16 flex w-full flex-col items-center justify-center xl:-mt-32'>
-            <div className='relative flex h-full w-4/5 flex-col gap-y-4 bg-white px-6 py-5 md:gap-y-6 md:px-9 md:pt-9 xl:gap-y-8 xl:px-12 xl:py-10'>
+        <div className='-mt-12 flex w-full flex-col items-center justify-center xs:-mt-16 xl:-mt-32'>
+            <div className='relative flex h-full w-4/5 flex-col gap-y-4 bg-white px-4 py-3 md:gap-y-6 md:px-9 md:pt-9 xl:gap-y-8 xl:px-12 xl:py-10'>
                 <h1 className='flex h-[20%] items-center justify-between text-sm font-semibold xs:text-base sm:text-lg md:text-2xl xl:text-3xl '>
                     <div className='flex gap-x-1 xl:gap-x-3'>
                         <span className='text-PRIMARY_COLOR-600'>
@@ -35,8 +35,8 @@ function ResearchReport() {
                         보고서
                     </div>
 
-                    <Link href='/data/paper'>
-                        <div className='flex cursor-pointer gap-x-1 text-xs xs:text-sm xl:gap-x-4 xl:text-lg'>
+                    <Link href='/data/paper?tab=report'>
+                        <div className='flex cursor-pointer gap-x-1 text-xs hover:scale-105 xs:text-sm xl:gap-x-4 xl:text-lg'>
                             자세히 보러 가기
                             <PlusIcon className='h-4 self-center rounded-full  border border-PRIMARY_COLOR-500 p-0.5 xl:h-6 xl:p-1' />
                         </div>

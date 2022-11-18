@@ -65,55 +65,66 @@ function MaterialTableToggle({ material }: Props) {
 
     function uploadFileAndAddDoc(data: Inputs, mutation: any) {
         let file = data.materialFile[0];
-        const storageRef = ref(
-            storage, 
-            (material === "학습 자료") ? "documents/studyMaterials/" + file.name : "documents/paperMaterials/" + file.name
-        );
-        const uploadFile = uploadBytesResumable(storageRef, file);
-
-        uploadFile.on(
-            "state_changed",
-            (snapshot) => {
-                const progress =
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log("Upload is " + progress + "% now");
-                switch (snapshot.state) {
-                    case "paused":
-                        console.log("Upload is paused");
-                        break;
-                    case "running":
-                        console.log("Uploading");
-                        break;
-                }
-            },
-
-            (error) => {
-                switch (error.code) {
-                    case "storage/unauthorized":
-                        console.log(error);
-                        break;
-                    case "storage/canceled":
-                        console.log(error);
-                        break;
-                    case "storage/unknown":
-                        console.log(error);
-                        break;
-                }
-            },
-            () => {
-                getDownloadURL(uploadFile.snapshot.ref).then((downloadURL) => {
-                    addMutation.mutate({
-                        title: data.title, // 제목
-                        writer: data.writer, // 작성자
-                        createdAt: today.format("YYYYMMDDHHmmss"),
-                        fileUrl: downloadURL, // 첨부파일 주소
-                        content: data.content,
-                        material: material, // 학습 자료 | 논문
+        if (file) {
+            const storageRef = ref(
+                storage, 
+                (material === "학습 자료") ? "documents/studyMaterials/" + file.name : "documents/paperMaterials/" + file.name
+            );
+            const uploadFile = uploadBytesResumable(storageRef, file);
+    
+            uploadFile.on(
+                "state_changed",
+                (snapshot) => {
+                    const progress =
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log("Upload is " + progress + "% now");
+                    switch (snapshot.state) {
+                        case "paused":
+                            console.log("Upload is paused");
+                            break;
+                        case "running":
+                            console.log("Uploading");
+                            break;
+                    }
+                },
+    
+                (error) => {
+                    switch (error.code) {
+                        case "storage/unauthorized":
+                            console.log(error);
+                            break;
+                        case "storage/canceled":
+                            console.log(error);
+                            break;
+                        case "storage/unknown":
+                            console.log(error);
+                            break;
+                    }
+                },
+                () => {
+                    getDownloadURL(uploadFile.snapshot.ref).then((downloadURL) => {
+                        addMutation.mutate({
+                            title: data.title, // 제목
+                            writer: data.writer, // 작성자
+                            createdAt: today.format("YYYYMMDDHHmmss"),
+                            fileUrl: downloadURL, // 첨부파일 주소
+                            content: data.content,
+                            material: material, // 학습 자료 | 논문
+                        });
                     });
-                });
-                setIsEditing(false);
-            }
-        );
+                }
+            );  
+        } else {
+            addMutation.mutate({
+                title: data.title, // 제목
+                writer: data.writer, // 작성자
+                createdAt: today.format("YYYYMMDDHHmmss"), // 등록일
+                content: data.content, // 게시글 본문
+                fileUrl: "empty", // 첨부파일 주소
+                material: material,
+            });
+        }
+        setIsEditing(false);
     };
 
     const onUpdateMaterial: SubmitHandler<Inputs> = (data) => {
@@ -173,12 +184,23 @@ function MaterialTableToggle({ material }: Props) {
                 {selectedMaterial && !editFile? (     
                     <div className='w-[20%] flex items-center'>
                         <label className='flex h-12 w-full items-left justify-center self-center'>
-                            <IconButton
-                                className='flex self-center hover:underline hover:underline-offset-2 text-black'
-                                onClick={() => setEditFile(true)}>
+                            {(selectedMaterial.fileUrl=="empty") ? (
+                                <input
+                                    className='w-full self-center text-xs pl-5'
+                                    type='file'
+                                    {...register("materialFile", { 
+                                        // required: selectedNews ? false : true 
+                                        required: false
+                                    })}
+                                />
+                            ) : (
+                                <IconButton
+                                    className='flex self-center hover:underline hover:underline-offset-2 text-black'
+                                    onClick={() => setEditFile(true)}>
 
-                                <ImFileText2 className='ml-2' size={20} />
-                            </IconButton>
+                                    <ImFileText2 className='ml-2' size={20} />
+                                </IconButton>
+                            )}
                         </label>
                         <label className='absolute w-15 z-50 hidden lg:flex right-2 text-sm bg-gray-100'>
                             <input type='submit' className=' border p-1' />
@@ -192,7 +214,7 @@ function MaterialTableToggle({ material }: Props) {
                                 className='w-full text-xs pl-5'
                                 type='file'
                                 {...register("materialFile", { 
-                                    required: selectedMaterial ? false : true 
+                                    required: false
                                 })}
                             />
                             <label className='absolute w-15 hidden lg:flex right-2 text-sm bg-gray-100'>

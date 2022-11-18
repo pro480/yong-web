@@ -12,10 +12,9 @@ function MaterialTableAddButton() {
     const { setIsEditing, isEditing, setSelectedMaterial } =
         useContext(MaterialTableContext);
 
-
     return (
         <button
-            className='absolute right-3 top-1/2 hidden lg:flex -translate-y-1/2 border p-1 bg-gray-100'
+            className='absolute right-3 top-1/2 hidden -translate-y-1/2 border bg-gray-100 p-1 lg:flex'
             onClick={() => {
                 setIsEditing((prev) => !prev);
                 isEditing ? setSelectedMaterial(null) : null;
@@ -44,7 +43,7 @@ function MaterialTableUpdateButton<M extends StudyMaterial | PaperMaterial>({
 
     return (
         <button
-            className='border p-1 bg-white'
+            className='border bg-white p-1'
             onClick={() => {
                 setIsEditing(false);
                 setSelectedMaterial({
@@ -63,10 +62,13 @@ function MaterialTableUpdateButton<M extends StudyMaterial | PaperMaterial>({
 function MaterialTableDeleteButton({ docID }: { docID: string }) {
     const { deleteDocument } = useContext(MaterialTableContext);
     return (
-        <button 
-            className="border p-0.5 bg-white"
-            onClick={() => deleteDocument(docID)}>
-                삭제
+        <button
+            className='border bg-white p-0.5'
+            onClick={() => {
+                confirm("삭제하시겠습니까?") ? deleteDocument(docID) : null;
+            }}
+        >
+            삭제
         </button>
     );
 }

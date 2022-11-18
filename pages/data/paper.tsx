@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React from "react";
 import Report from "../../src/components/data/Report";
 import ThesisTable from "../../src/components/data/ThesisTable";
 
 function Paper() {
-    const [tab, setTab] = useState("thesis");
+    const router = useRouter();
+    const tab = router.query.tab || "thesis";
 
     return (
         <div>
@@ -12,7 +14,7 @@ function Paper() {
                 <div
                     className='w-24 cursor-pointer border px-4 py-3 text-center  hover:border-t-2 hover:border-b-0 hover:border-t-black '
                     onClick={() => {
-                        setTab("thesis");
+                        router.replace({ query: { tab: "thesis" } });
                     }}
                 >
                     논문
@@ -20,7 +22,7 @@ function Paper() {
                 <div
                     className='w-40 cursor-pointer border px-4 py-3 text-center hover:border-t-2 hover:border-b-0 hover:border-t-black'
                     onClick={() => {
-                        setTab("research");
+                        router.replace({ query: { tab: "report" } });
                     }}
                 >
                     연구 보고서
