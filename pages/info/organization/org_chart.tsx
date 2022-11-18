@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import OrganizationCard from "../../../src/components/info/OrganizatinoCard";
-import logo_EN from "../../../public/images/logo/logo_EN.png";
+import sym_logo_EN from "../../../public/images/logo/sym_logo_EN.png";
 import symbolImage from "../../../public/images/logo/symbol_outline.png";
 
 function Org_chart() {
@@ -18,7 +18,7 @@ function Org_chart() {
                     {/* 그림 하나로 합치기 */}
                     <div className='relative px-2'>
                         <Image
-                            src={logo_EN}
+                            src={sym_logo_EN}
                             objectFit='contain'
                             alt='로고'
                             priority={true}
