@@ -331,7 +331,6 @@ function MemberToggle({ team }: Props) {
                             {...register("course", { required: true })}
                         >
                             <option value='학부연구생'>학부연구생</option>
-                            <option value='학석사 연계 과정'>학석사 연계 과정</option>
                             <option value='석사 과정'>석사 과정</option>
                             <option value='박사 과정'>박사 과정</option>
                             <option value='교수'>교수</option>

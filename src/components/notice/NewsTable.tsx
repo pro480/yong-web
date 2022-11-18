@@ -89,7 +89,7 @@ function NewsTable<N extends CenterNews | EventNews>({ news }: Props<N>) {
     return (
         <NewsTableContext.Provider value={value}>
             <table className='w-full table-auto border-t border-t-black'>
-                <NewsTableHeader news={news} />
+                <NewsTableHeader />
                 <NewsTableBody news={news} newsList={newsList} />
             </table>
             {isEditing && <NewsTableToggle news={news} />}

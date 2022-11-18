@@ -72,9 +72,9 @@ export default function Report() {
                     </span>{" "}
                     건
                 </h1>
-                {user &&
-                    `연구 보고서 이미지는 1 : 1.41 정도 비율(A4용지 비율)의 이미지를 삽입하시는걸
-                추천 드립니다.`}
+                {/*{user &&*/}
+                {/*    `연구 보고서 이미지는 1 : 1.41 정도 비율(A4용지 비율)의 이미지를 삽입하시는걸*/}
+                {/*추천 드립니다.`}*/}
                 {/* 게시물 추가 버튼 */}
                 {user && <ReportAddButton />}
                 {isEditing ? <ReportToggle /> : null}

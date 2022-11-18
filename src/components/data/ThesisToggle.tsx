@@ -1,27 +1,15 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Material, Thesis } from "../../../typing";
-import {
-    useFirestoreCollectionMutation,
-    useFirestoreDocumentMutation,
-} from "@react-query-firebase/firestore";
-import { db, storage } from "../../../firebase";
-import { MaterialTableContext } from "./MaterialTable";
-import { MaterialTableCancelButton } from "./MaterialTableButton";
-import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
+import { Thesis } from "../../../typing";
 import moment from "moment";
-import { fill } from "lodash";
-import { ImFileText2 } from "react-icons/im";
-import data from "../../../pages/data/paper";
-import { IconButton } from "@material-tailwind/react";
-import { ThesisContext } from "./ThesisMain";
 import { addDoc, updateDoc, doc } from "firebase/firestore";
+import { ThesisTableContext } from "./ThesisTable";
 
 export default function ThesisToggle() {
     const today = moment();
     const { register, handleSubmit } = useForm<Thesis>();
-    const { collectionRef, selectedDocId, selectedThesis } =
-        useContext(ThesisContext);
+    const { collectionRef, selectedDocId, selectedThesis, setIsEditing } =
+        useContext(ThesisTableContext);
 
     const onAddThesis: SubmitHandler<Thesis> = async (data: Thesis) => {
         const docData = {
@@ -30,6 +18,7 @@ export default function ThesisToggle() {
             researcher: data.researcher,
             title: data.title,
             year: data.year,
+            writer: data.writer,
         };
 
         await addDoc(collectionRef, docData);
@@ -43,76 +32,85 @@ export default function ThesisToggle() {
             researcher: data.researcher,
             title: data.title,
             year: data.year,
+            writer: data.writer,
         };
 
         await updateDoc(dataRef, docData);
     };
 
     return (
-        <React.Fragment>
-            <div className='flex flex-col justify-between border-4 border-gray-200 px-1 text-sm hover:border-4 sm:h-[290px] sm:w-[500px] md:text-base lg:h-[220px] lg:w-[750px]'>
-                <form
-                    onSubmit={
-                        selectedDocId == ""
-                            ? handleSubmit(onAddThesis)
-                            : handleSubmit(onUpdateThesis)
-                    }
-                    className='lg:flex'
-                >
-                    <div className=' flex flex-col justify-around lg:w-full lg:p-2'>
-                        <div className='p-1'>
-                            제목 :
-                            <input
-                                {...register("title", {
-                                    required: true,
-                                })}
-                                placeholder='제목을 입력해 주세요.'
-                                className=' h-[25px] w-[90%] p-2 lg:h-[30px]'
-                            />
-                        </div>
-                        <div className='p-1'>
-                            학회지 :
-                            <input
-                                {...register("type", {
-                                    required: true,
-                                })}
-                                placeholder='학회지를 입력해 주세요'
-                                className='h-[25px] w-[80%] p-2 lg:h-[30px]'
-                            />
-                        </div>
-                        <div className='p-1'>
-                            연구자 :
-                            <input
-                                {...register("researcher", {
-                                    required: true,
-                                })}
-                                placeholder='연구자를 입력해 주세요'
-                                className='h-[25px] w-[45%] p-2 lg:h-[30px]'
-                            />
-                        </div>
-                        <div className='p-1'>
-                            발행 년도 :
-                            <input
-                                {...register("year", {
-                                    required: true,
-                                })}
-                                placeholder='발행 년도를 입력해 주세요'
-                                className='h-[25px] w-[30%] p-2 lg:h-[30px]'
-                            />
-                        </div>
-                        <button
-                            className='m-2 h-[30px] w-[50px] rounded-md bg-gray-400 font-bold text-white hover:bg-gray-500 lg:my-2'
-                            type='submit'
-                        >
-                            저장
-                        </button>
-                    </div>
-                </form>
+        <form
+            className='relative w-full flex-col items-center justify-around border-b border-gray-200 bg-GRAY_COLOR-200 text-xs sm:text-sm '
+            onSubmit={
+                selectedDocId == ""
+                    ? handleSubmit(onAddThesis)
+                    : handleSubmit(onUpdateThesis)
+            }
+        >
+            {/* input */}
+            <div className='flex h-10 items-center justify-around'>
+                <label className='w-[60%] px-1'>
+                    <input
+                        className=' w-full border border-gray-700 text-center'
+                        placeholder='논문 제목을 입력해 주세요'
+                        {...register("title", {
+                            required: true,
+                        })}
+                    />
+                </label>
+                <label className='w-[18%] px-1'>
+                    <input
+                        className='w-full border border-gray-700 text-center'
+                        placeholder='작성자를 입력해 주세요'
+                        {...register("writer", {
+                            required: true,
+                        })}
+                    />
+                </label>
+                <label className='w-[20%] px-1'>
+                    <input
+                        className='w-full border border-gray-700 text-center'
+                        placeholder='논문 발행년도를 입력해 주세요'
+                        {...register("year", {
+                            required: true,
+                        })}
+                    />
+                </label>
             </div>
-        </React.Fragment>
+            <div className='flex h-10 items-center justify-around'>
+                <label className='w-[45%] px-1'>
+                    <input
+                        className='w-full border border-gray-700 text-center'
+                        placeholder='학회지를 입력해 주세요'
+                        {...register("type", {
+                            required: true,
+                        })}
+                    />
+                </label>
+                <label className='w-[45%] px-1'>
+                    <input
+                        className='w-full border border-gray-700 text-center'
+                        placeholder='연구자를 입력해 주세요'
+                        {...register("researcher", {
+                            required: true,
+                        })}
+                    />
+                </label>
+                <button
+                    className=' border border-gray-400 bg-gray-100 p-1 lg:flex'
+                    onClick={() => {
+                        setIsEditing((prev) => !prev);
+                    }}
+                >
+                    취소
+                </button>
+                <button
+                    className=' border border-gray-400 bg-gray-100 p-1 lg:flex'
+                    type='submit'
+                >
+                    제출
+                </button>
+            </div>
+        </form>
     );
 }
-
-// 파일 추가할때 첨부파일이랑 제출/취소버튼 겹침
-// 취소버튼은 헤더에도 포함된 기능이므로 중복된 기능 => 제거
-// 제출버튼은 조건이 모두 만족되면 visible하게 설정해보기!

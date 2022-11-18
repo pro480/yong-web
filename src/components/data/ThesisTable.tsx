@@ -1,13 +1,5 @@
-import React, {
-    createContext,
-    Dispatch,
-    useLayoutEffect,
-    useState,
-} from "react";
-import { Thesis } from "../../../typing";
-import MaterialTableHeader from "./MaterialTableHeader";
-import MaterialTableBody from "./MaterialTableBody";
-import MaterialTableToggle from "./MaterialTableToggle";
+import React, { createContext, Dispatch, useState } from "react";
+import { News, CenterNews, EventNews, Thesis } from "../../../typing";
 import useFirebase from "../../hooks/useFirebase";
 import { UseQueryResult } from "react-query";
 import {
@@ -16,13 +8,13 @@ import {
     QueryDocumentSnapshot,
     QuerySnapshot,
 } from "@firebase/firestore";
-import useAuth from "../../hooks/useAuth";
-import { ThesisPageButton, ThesisAddButton } from "./ThesisButton";
-import ThesisToggle from "./ThesisToggle";
-import ThesisItem from "./ThesisItem";
 
-interface ThesisContextProps {
-    thesisList: QueryDocumentSnapshot<Thesis>[] | undefined;
+import ThesisTableHeader from "./ThesisTableHeader";
+import ThesisToggle from "./ThesisToggle";
+import { ThesisPageButton } from "./ThesisButton";
+import ThesisTableBody from "./ThesisTableBody";
+
+interface ThesisTableContextProps {
     collectionRef: CollectionReference<Thesis>;
     collectionQuery: UseQueryResult<QuerySnapshot<Thesis>, FirestoreError>;
     deleteDocument: (docID: string) => void;
@@ -32,24 +24,24 @@ interface ThesisContextProps {
     setSelectedThesis: Dispatch<React.SetStateAction<Thesis | null>>;
     selectedDocId: string;
     setSelectedDocId: Dispatch<React.SetStateAction<string>>;
+    thesisList: QueryDocumentSnapshot<Thesis>[] | undefined;
     pageNumber: number | null;
     setPageNumber: Dispatch<React.SetStateAction<number | null>>;
 }
 
-export const ThesisContext = createContext({} as ThesisContextProps);
+export const ThesisTableContext = createContext({} as ThesisTableContextProps);
 
-export default function ThesisMain() {
+export default function ThesisTable() {
     const { collectionRef, collectionQuery, deleteDocument } =
         useFirebase<Thesis>("thesis", ["thesis"]);
-    const thesisList = collectionQuery.data?.docs;
     const [isEditing, setIsEditing] = useState(false);
     const [selectedThesis, setSelectedThesis] = useState<Thesis | null>(null);
     const [selectedDocId, setSelectedDocId] = useState<string>("");
+
+    const thesisList = collectionQuery.data?.docs;
     const [pageNumber, setPageNumber] = useState<number | null>(1);
-    const { user } = useAuth();
 
     const value = {
-        thesisList,
         collectionRef,
         collectionQuery,
         deleteDocument,
@@ -61,24 +53,17 @@ export default function ThesisMain() {
         setSelectedDocId,
         pageNumber,
         setPageNumber,
+        thesisList,
     };
 
     return (
-        <ThesisContext.Provider value={value}>
-            {/* 전체 몇건 */}
-            <h1 className='pb-5 pt-4 text-sm md:text-base'>
-                전체{" "}
-                <span className='ml-3 text-lg font-bold text-PRIMARY_COLOR-500 md:text-2xl'>
-                    {thesisList?.length}
-                </span>{" "}
-                건
-            </h1>
-            {user && <ThesisAddButton />}
+        <ThesisTableContext.Provider value={value}>
+            <table className='w-full table-auto border-t border-t-black'>
+                <ThesisTableHeader />
+                <ThesisTableBody />
+            </table>
             {isEditing && <ThesisToggle />}
-
-            <ThesisItem />
-
             <ThesisPageButton />
-        </ThesisContext.Provider>
+        </ThesisTableContext.Provider>
     );
 }

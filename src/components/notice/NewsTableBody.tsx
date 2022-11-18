@@ -57,8 +57,8 @@ function NewsTableBody<N extends CenterNews | EventNews>({
                                             content: data.content,
                                         },
                                     }}
-                                    // as로 바뀌면서 새로고침하는 경우 쿼리 값이 사라지는 현상 => ssr?
-                                    as={`/notice/${news}${index + 1}`}
+
+                                    // as={`/notice/${news}${index + 1}`}
                                 >
                                     <a className='font-bold'>{data.title}</a>
                                 </Link>
@@ -75,10 +75,12 @@ function NewsTableBody<N extends CenterNews | EventNews>({
                                         className='flex hover:underline hover:underline-offset-2'
                                         href={data.fileUrl}
                                     >
-                                        <ImFileText2
-                                            className='ml-2 cursor-pointer hover:scale-110'
-                                            size={20}
-                                        />
+                                        {(data.fileUrl=="empty") ? (<></>) : (
+                                            <ImFileText2
+                                                className='ml-2 cursor-pointer hover:scale-110'
+                                                size={20}
+                                            />
+                                        )}
                                     </a>
                                 </div>
                                 {user && (
