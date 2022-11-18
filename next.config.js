@@ -7,7 +7,7 @@ module.exports = {
     images: {
         domains: [
             "www.inha.ac.kr",
-            "www.nia.or.kr",
+            
             "bit.ly",
             "p-yong21c.inha.ac.kr",
             "firebasestorage.googleapis.com",
@@ -16,6 +16,14 @@ module.exports = {
             "www.ksif.or.kr",
             "www.ikefbooks.com",
             "sdf.seoul.kr",
+            //아래는 오픈데이터 사이트 링크
+            "www.nia.or.kr",
+            "www.keris.or.kr",
+            "www.bigkinds.or.kr",
+            "kess.kedi.re.kr",
+            "kbig.kr",
+            "data.gg.go.kr"
+
         ],
     },
 };

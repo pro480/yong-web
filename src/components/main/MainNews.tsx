@@ -54,15 +54,17 @@ function MainNews() {
             <div className='flex h-full w-full flex-wrap justify-center gap-y-6 gap-x-16 md:justify-around lg:grid lg:grid-cols-3 lg:gap-x-6 xl:gap-x-12'>
                 <NewsCard
                     href='/notice/center_news'
-                    data={centerNewsData as CenterNews}
+                    data={
+                        centerNewsData ? (centerNewsData as CenterNews) : null
+                    }
                     title='센터 소식'
                 />
                 <NewsCard
                     href='/notice/event_news'
-                    data={eventNewsData as EventNews}
+                    data={eventNewsData ? (eventNewsData as EventNews) : null}
                     title='행사 소식'
                 />
-                <MainNewsRecruit href='/notice/recruit' title='연구원 모집' />
+                <MainNewsRecruit href='/notice/recruit' title='채용 소식' />
             </div>
         </div>
     );

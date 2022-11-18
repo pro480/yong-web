@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React from "react";
 import Report from "../../src/components/data/Report";
-import ThesisMain from "../../src/components/data/ThesisMain";
+import ThesisTable from "../../src/components/data/ThesisTable";
 
 function Paper() {
-    // const [tab, setTab] = useState("thesis");
     const router = useRouter();
     const tab = router.query.tab || "thesis";
 
@@ -33,7 +32,7 @@ function Paper() {
 
             <div>
                 {/* 논문 */}
-                {tab === "thesis" ? <ThesisMain /> : <Report />}
+                {tab === "thesis" ? <ThesisTable /> : <Report />}
             </div>
         </div>
     );
