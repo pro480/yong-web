@@ -10,7 +10,7 @@ export default function ReportItem() {
 
     return (
         <React.Fragment>
-            <div className='my-5 grid grid-cols-2 items-center gap-y-16 gap-x-1 self-center lg:grid-cols-3 xl:grid-cols-4'>
+            <div className='my-5 grid grid-cols-2 items-center gap-y-16 gap-x-4 self-center sm:gap-x-12 lg:grid-cols-3 xl:grid-cols-4'>
                 {researchList
                     ?.sort(
                         (a, b) =>
@@ -25,29 +25,25 @@ export default function ReportItem() {
                     .map((docSnapshot) => {
                         const items = docSnapshot.data();
                         return (
-                            <div
-                                key={docSnapshot.id}
-                                className='flex h-[340px] w-[170px] flex-col justify-between sm:h-[440px] sm:w-[220px] md:h-[480px] md:w-[240px] xl:h-[500px] xl:w-[250px]'
-                            >
-                                <div className=' relative h-full border border-gray-300 xl:h-[352px] '>
+                            <div key={docSnapshot.id} className='flex flex-col'>
+                                <div className='relative aspect-[1/1.414] w-full border border-gray-300 before:float-left before:pt-[141.4%]  '>
                                     <Image
                                         src={items.imgUrl}
                                         layout='fill'
-                                        objectFit='contain'
                                         alt='연구 보고서'
                                         priority={true}
                                         quality={50}
                                     />
                                 </div>
-                                <div className=' flex flex-col justify-around p-1'>
+                                <div className='flex flex-col justify-around p-1'>
                                     <div className='py-1'>
-                                        <div className='sm:text-lg xl:text-xl'>
+                                        <div className='overflow-hidden text-ellipsis whitespace-nowrap text-center text-xs xs:text-sm sm:text-base'>
                                             {items.title}
                                         </div>
                                     </div>
                                     <div className='flex justify-between'>
                                         <div className='py-1'>
-                                            <div className=' text-[11px] text-GRAY_COLOR-500 sm:text-[13px] xl:text-sm'>
+                                            <div className=' text-xs text-GRAY_COLOR-500  xl:text-sm'>
                                                 연구자 |{" "}
                                                 <span>
                                                     {" "}
@@ -59,12 +55,6 @@ export default function ReportItem() {
                                                 <span>{items.year}</span>
                                             </div>
                                         </div>
-                                        <a
-                                            className='mx-2 h-[24px] w-[30px] cursor-pointer bg-PRIMARY_COLOR-300 text-center text-[13px] text-white hover:bg-PRIMARY_COLOR-600 sm:h-[30px] sm:w-[40px] sm:text-base xl:h-[30px] xl:w-[40px] xl:text-base'
-                                            href={items.fileUrl}
-                                        >
-                                            <span>pdf</span>
-                                        </a>
                                     </div>
                                     {user && (
                                         <div className='flex py-2'>
@@ -77,6 +67,12 @@ export default function ReportItem() {
                                             />
                                         </div>
                                     )}
+                                    <a
+                                        className='flex h-fit w-fit cursor-pointer bg-PRIMARY_COLOR-300 px-2 pb-1 text-center text-xs text-white hover:bg-PRIMARY_COLOR-600'
+                                        href={items.fileUrl}
+                                    >
+                                        <span>pdf</span>
+                                    </a>
                                 </div>
                             </div>
                         );
