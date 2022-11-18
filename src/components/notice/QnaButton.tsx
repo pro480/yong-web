@@ -35,7 +35,7 @@ export function QnaPageButton() {
             <ul className='inline-flex items-center -space-x-px '>
                 <li>
                     <button
-                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-3 px-2 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
+                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-2 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500 md:py-3'
                         onClick={() => {
                             setPageNumber(1);
                         }}
@@ -45,7 +45,7 @@ export function QnaPageButton() {
                 </li>
                 <li>
                     <button
-                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-3 px-2 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
+                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-2 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500 md:py-3'
                         onClick={() => {
                             buttonOffset == 1
                                 ? (buttonOffset = 1)
@@ -64,11 +64,11 @@ export function QnaPageButton() {
                         }}
                     >
                         {pageNumber == buttonOffset ? (
-                            <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 py-2 px-3 text-sm text-PRIMARY_COLOR-500'>
+                            <span className='m-1 border border-PRIMARY_COLOR-500 bg-GRAY_COLOR-500 px-2 py-1 text-sm text-PRIMARY_COLOR-500 md:py-2 md:px-3'>
                                 {buttonOffset}
                             </span>
                         ) : (
-                            <span className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500'>
+                            <span className='m-1 border border-PRIMARY_COLOR-500 bg-white px-2 py-1 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 md:py-2 md:px-3'>
                                 {buttonOffset}
                             </span>
                         )}
@@ -82,11 +82,11 @@ export function QnaPageButton() {
                             }}
                         >
                             {pageNumber == buttonOffset + 1 ? (
-                                <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 py-2 px-3 text-sm text-PRIMARY_COLOR-500'>
+                                <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 px-2 py-1 text-sm text-PRIMARY_COLOR-500 md:py-2 md:px-3'>
                                     {buttonOffset + 1}
                                 </span>
                             ) : (
-                                <span className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500'>
+                                <span className='m-1 border border-PRIMARY_COLOR-500 bg-white px-2 py-1 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 md:py-2 md:px-3'>
                                     {buttonOffset + 1}
                                 </span>
                             )}
@@ -101,11 +101,11 @@ export function QnaPageButton() {
                             }}
                         >
                             {pageNumber == buttonOffset + 2 ? (
-                                <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 py-2 px-3 text-sm text-PRIMARY_COLOR-500'>
+                                <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 px-2 py-1 text-sm text-PRIMARY_COLOR-500 md:py-2 md:px-3'>
                                     {buttonOffset + 2}
                                 </span>
                             ) : (
-                                <span className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500'>
+                                <span className='m-1 border border-PRIMARY_COLOR-500 bg-white px-2 py-1 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 md:py-2 md:px-3'>
                                     {buttonOffset + 2}
                                 </span>
                             )}
@@ -120,11 +120,11 @@ export function QnaPageButton() {
                             }}
                         >
                             {pageNumber == buttonOffset + 3 ? (
-                                <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 py-2 px-3 text-sm text-PRIMARY_COLOR-500'>
+                                <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 px-2 py-1 text-sm text-PRIMARY_COLOR-500 md:py-2 md:px-3'>
                                     {buttonOffset + 3}
                                 </span>
                             ) : (
-                                <span className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500'>
+                                <span className='m-1 border border-PRIMARY_COLOR-500 bg-white px-2 py-1 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 md:py-2 md:px-3'>
                                     {buttonOffset + 3}
                                 </span>
                             )}
@@ -139,11 +139,11 @@ export function QnaPageButton() {
                             }}
                         >
                             {pageNumber == buttonOffset + 4 ? (
-                                <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 py-2 px-3 text-sm text-PRIMARY_COLOR-500'>
+                                <span className='m-1 border border-PRIMARY_COLOR-500  bg-GRAY_COLOR-500 px-2 py-1 text-sm text-PRIMARY_COLOR-500 md:py-2 md:px-3'>
                                     {buttonOffset + 4}
                                 </span>
                             ) : (
-                                <span className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-3 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500'>
+                                <span className='m-1 border border-PRIMARY_COLOR-500 bg-white px-2 py-1 text-sm text-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 md:py-2 md:px-3'>
                                     {buttonOffset + 4}
                                 </span>
                             )}
@@ -152,7 +152,7 @@ export function QnaPageButton() {
                 )}
                 <li>
                     <button
-                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-3 px-2 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
+                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-2 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500 md:py-3'
                         onClick={() => {
                             buttonOffset < maxOffset
                                 ? (buttonOffset = buttonOffset + 5)
@@ -165,7 +165,7 @@ export function QnaPageButton() {
                 </li>
                 <li>
                     <button
-                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-3 px-2 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500'
+                        className='m-1 border border-PRIMARY_COLOR-500 bg-white py-2 px-2 text-sm text-PRIMARY_COLOR-500 hover:border-PRIMARY_COLOR-500 hover:bg-GRAY_COLOR-500 hover:text-PRIMARY_COLOR-500 md:py-3'
                         onClick={() => {
                             buttonOffset = maxOffset;
                             setPageNumber(qnaLength);

@@ -15,11 +15,11 @@ function Post({ router: { query } }: any) {
                 </thead>
             </table>
 
-            <div className='relative w-full pb-10 text-sm font-light text-gray-600 sm:text-lg'>
+            <div className='relative w-full pb-10 text-[13px] font-light text-gray-600 sm:text-lg'>
                 <tr>
                     <th
                         scope='row'
-                        className='absolute right-40 flex pr-6 sm:right-60'
+                        className='absolute right-40 flex pr-6 sm:right-60 '
                     >
                         작성일 :
                     </th>
@@ -71,7 +71,7 @@ function Post({ router: { query } }: any) {
 
                     {/* 연구자 */}
                     <div className='col-span-2 flex '>
-                        <div className='w-[30%] bg-gray-200 p-2 text-center text-black md:w-[24%] lg:w-[20%]'>
+                        <div className='w-[30%] bg-gray-200 p-1 text-center text-[11px] text-black sm:text-sm md:w-[24%] md:text-sm lg:w-[20%] xl:text-lg'>
                             연구자
                         </div>
                         <div className='w-[70%] p-2 md:w-[76%] lg:w-[80%]'>
@@ -81,7 +81,7 @@ function Post({ router: { query } }: any) {
 
                     {/* 발행년도 */}
                     <div className='col-span-2 flex'>
-                        <div className='w-[38%] bg-gray-200 p-2 text-center text-black md:w-[30%] lg:w-[20%]'>
+                        <div className='w-[38%] bg-gray-200 p-1 text-center text-[11px] text-black sm:text-sm md:w-[30%] md:text-sm lg:w-[20%] xl:text-lg'>
                             발행년도
                         </div>
                         <div className='w-[62%] p-2 md:w-[70%] lg:w-[80%]'>
