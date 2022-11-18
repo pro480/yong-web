@@ -5,7 +5,7 @@ import {
     useFirestoreCollectionMutation,
     useFirestoreDocumentMutation,
 } from "@react-query-firebase/firestore";
-import { collection, doc, } from "@firebase/firestore";
+import { collection, doc } from "@firebase/firestore";
 import { db, storage } from "../../../firebase";
 import { NewsTableContext } from "./NewsTable";
 import { NewsTableCancelButton } from "./NewsTableButton";
@@ -31,16 +31,27 @@ interface Props {
 
 function NewsTableToggle({ news }: Props) {
     const today = moment();
-    const { selectedNews ,collectionRef, selectedDocId, selectedIndex, setIsEditing } = useContext(NewsTableContext);
+    const {
+        selectedNews,
+        collectionRef,
+        selectedDocId,
+        selectedIndex,
+        setIsEditing,
+    } = useContext(NewsTableContext);
     const [editFile, setEditFile] = useState(false);
-    const { register, reset, handleSubmit, formState: {errors} } = useForm<Inputs>({
+    const {
+        register,
+        reset,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<Inputs>({
         defaultValues: useMemo(() => {
             if (selectedNews) {
                 return selectedNews;
             }
         }, [selectedNews]),
     });
-    
+
     useEffect(() => {
         if (selectedNews) {
             reset(selectedNews);
@@ -49,13 +60,7 @@ function NewsTableToggle({ news }: Props) {
 
     const addMutation = useFirestoreCollectionMutation(collectionRef);
     const updateMutation = useFirestoreDocumentMutation(
-        doc(
-            collection(
-                db, 
-                news
-            ), 
-            `${selectedDocId}`
-        ),
+        doc(collection(db, news), `${selectedDocId}`),
         { merge: true }
     );
 
@@ -127,6 +132,7 @@ function NewsTableToggle({ news }: Props) {
         setIsEditing(false);
     };
 
+
     const onUpdateNews: SubmitHandler<Inputs> = (data) => {
         if (editFile) {
             uploadFileAndAddDoc(data, updateMutation);
@@ -139,10 +145,10 @@ function NewsTableToggle({ news }: Props) {
         }
         setIsEditing(false);
     };
-    
+
     return (
         <form
-            className='relative text-xs sm:text-sm flex-col w-full items-center justify-around border-b border-gray-200 bg-GRAY_COLOR-200 '
+            className='relative w-full flex-col items-center justify-around border-b border-gray-200 bg-GRAY_COLOR-200 text-xs sm:text-sm '
             onSubmit={
                 selectedNews
                     ? handleSubmit(onUpdateNews)
@@ -150,7 +156,7 @@ function NewsTableToggle({ news }: Props) {
             }
         >
             {/* input */}
-            <div className="flex items-center justify-around h-10">
+            <div className='flex h-10 items-center justify-around'>
                 <div className='w-[5%] text-center'>{selectedIndex + 1}</div>
                 <label className='w-[45%] p-1'>
                     <input
@@ -171,9 +177,15 @@ function NewsTableToggle({ news }: Props) {
                     />
                 </label>
 
-                {selectedNews?(
+                {selectedNews ? (
                     <label className='w-[15%] text-right'>
-                        {`${selectedNews.createdAt.slice(0,4)}-${selectedNews.createdAt.slice(4,6)}-${selectedNews.createdAt.slice(6,8)}`}
+                        {`${selectedNews.createdAt.slice(
+                            0,
+                            4
+                        )}-${selectedNews.createdAt.slice(
+                            4,
+                            6
+                        )}-${selectedNews.createdAt.slice(6, 8)}`}
                     </label>
                 ) : (
                     <label className='w-[15%] text-right'>
@@ -202,34 +214,34 @@ function NewsTableToggle({ news }: Props) {
                                 </IconButton>
                             )}
                         </label>
-                        <label className='absolute w-15 z-50 hidden lg:flex right-2 text-sm bg-gray-100'>
+                        <label className='w-15 absolute right-2 z-50 hidden bg-gray-100 text-sm lg:flex'>
                             <input type='submit' className=' border p-1' />
                             <NewsTableCancelButton />
-                        </label> 
+                        </label>
                     </div>
                 ) : (
                     <>
-                        <label className='w-[20%] flex items-center text-right'>
+                        <label className='flex w-[20%] items-center text-right'>
                             <input
-                                className='w-full text-xs pl-5'
+                                className='w-full pl-5 text-xs'
                                 type='file'
                                 {...register("newsFile", { 
                                     // required: selectedNews ? false : true 
                                     required: false
                                 })}
                             />
-                            <label className='absolute w-15 hidden lg:flex right-2 text-sm bg-gray-100'>
+                            <label className='w-15 absolute right-2 hidden bg-gray-100 text-sm lg:flex'>
                                 <input type='submit' className=' border p-1' />
-                            </label> 
+                            </label>
                         </label>
-                    </>                   
-                )}  
+                    </>
+                )}
             </div>
             <label>
                 <textarea
-                    placeholder="게시글 본문 내용을 작성해주세요."
-                    className='w-full text-sm pl-5 border-gray-700'
-                    {...register("content", { 
+                    placeholder='게시글 본문 내용을 작성해주세요.'
+                    className='w-full border-gray-700 pl-5 text-sm'
+                    {...register("content", {
                         required: true,
                     })}
                 />

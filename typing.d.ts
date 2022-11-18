@@ -150,9 +150,11 @@ export interface Project {
 }
 
 export interface Thesis {
-    createdAt: string; // 파일 올린 날짜
-    type: string; // 학회지
-    researcher: string; // 연구자
     title: string; // 제목
+    createdAt: string; // 파일 올린 날짜
+    writer: string; // 작성자
+
+    type: string; // 학회지
+    researcher: string; //연구자
     year: string; //발행년도
 }
