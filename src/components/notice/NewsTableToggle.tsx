@@ -31,13 +31,8 @@ interface Props {
 
 function NewsTableToggle({ news }: Props) {
     const today = moment();
-    const {
-        selectedNews,
-        collectionRef,
-        selectedDocId,
-        selectedIndex,
-        setIsEditing,
-    } = useContext(NewsTableContext);
+    const { selectedNews, collectionRef, selectedDocId, setIsEditing } =
+        useContext(NewsTableContext);
     const [editFile, setEditFile] = useState(false);
     const {
         register,
@@ -72,11 +67,13 @@ function NewsTableToggle({ news }: Props) {
         let file = data.newsFile[0];
         if (file) {
             const storageRef = ref(
-                storage, 
-                (news === "센터 소식") ? "documents/centerNews/" + file.name : "documents/eventNews/" + file.name
+                storage,
+                news === "센터 소식"
+                    ? "documents/centerNews/" + file.name
+                    : "documents/eventNews/" + file.name
             );
             const uploadFile = uploadBytesResumable(storageRef, file);
-    
+
             uploadFile.on(
                 "state_changed",
                 (snapshot) => {
@@ -92,7 +89,7 @@ function NewsTableToggle({ news }: Props) {
                             break;
                     }
                 },
-    
+
                 (error) => {
                     switch (error.code) {
                         case "storage/unauthorized":
@@ -107,16 +104,18 @@ function NewsTableToggle({ news }: Props) {
                     }
                 },
                 () => {
-                    getDownloadURL(uploadFile.snapshot.ref).then((downloadURL) => {
-                        addMutation.mutate({
-                            title: data.title, // 제목
-                            writer: data.writer, // 작성자
-                            createdAt: today.format("YYYYMMDDHHmmss"), // 등록일
-                            content: data.content, // 게시글 본문
-                            fileUrl: downloadURL, // 첨부파일 주소
-                            news: news,
-                        });
-                    });
+                    getDownloadURL(uploadFile.snapshot.ref).then(
+                        (downloadURL) => {
+                            addMutation.mutate({
+                                title: data.title, // 제목
+                                writer: data.writer, // 작성자
+                                createdAt: today.format("YYYYMMDDHHmmss"), // 등록일
+                                content: data.content, // 게시글 본문
+                                fileUrl: downloadURL, // 첨부파일 주소
+                                news: news,
+                            });
+                        }
+                    );
                 }
             );
         } else {
@@ -130,8 +129,7 @@ function NewsTableToggle({ news }: Props) {
             });
         }
         setIsEditing(false);
-    };
-
+    }
 
     const onUpdateNews: SubmitHandler<Inputs> = (data) => {
         if (editFile) {
@@ -157,7 +155,6 @@ function NewsTableToggle({ news }: Props) {
         >
             {/* input */}
             <div className='flex h-10 items-center justify-around'>
-                <div className='w-[5%] text-center'>{selectedIndex + 1}</div>
                 <label className='w-[45%] p-1'>
                     <input
                         className=' w-full border border-gray-700 text-center'
@@ -193,23 +190,23 @@ function NewsTableToggle({ news }: Props) {
                     </label>
                 )}
 
-                {selectedNews && !editFile? (     
-                    <div className='w-[20%] flex items-center'>
-                        <label className='flex h-12 w-full items-left justify-center self-center'>
-                            {(selectedNews.fileUrl=="empty") ? (
+                {selectedNews && !editFile ? (
+                    <div className='flex w-[20%] items-center'>
+                        <label className='items-left flex h-12 w-full justify-center self-center'>
+                            {selectedNews.fileUrl == "empty" ? (
                                 <input
-                                    className='w-full self-center text-xs pl-5'
+                                    className='w-full self-center pl-5 text-xs'
                                     type='file'
-                                    {...register("newsFile", { 
-                                        // required: selectedNews ? false : true 
-                                        required: false
+                                    {...register("newsFile", {
+                                        // required: selectedNews ? false : true
+                                        required: false,
                                     })}
                                 />
                             ) : (
                                 <IconButton
-                                    className='flex self-center hover:underline hover:underline-offset-2 text-black'
-                                    onClick={() => setEditFile(true)}>
-
+                                    className='flex self-center text-black hover:underline hover:underline-offset-2'
+                                    onClick={() => setEditFile(true)}
+                                >
                                     <ImFileText2 className='ml-2' size={20} />
                                 </IconButton>
                             )}
@@ -225,9 +222,9 @@ function NewsTableToggle({ news }: Props) {
                             <input
                                 className='w-full pl-5 text-xs'
                                 type='file'
-                                {...register("newsFile", { 
-                                    // required: selectedNews ? false : true 
-                                    required: false
+                                {...register("newsFile", {
+                                    // required: selectedNews ? false : true
+                                    required: false,
                                 })}
                             />
                             <label className='w-15 absolute right-2 hidden bg-gray-100 text-sm lg:flex'>
