@@ -23,7 +23,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
     return (
         <section className='pb-1 w-full flex us:flex-col xs:flex-row xs:justify-between'>
             {/*이미지 사이즈*/}
-            <div className='relative us:w-[50%] xs:w-[40%] sm:w-[25%]'>
+            <div className='relative xs:w-[40%] sm:w-[25%]'>
                 <Image
                     src={member.imageUrl}
                     alt='멤버사진'
