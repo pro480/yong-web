@@ -10,6 +10,12 @@ const Home: NextPage = () => {
         <div className='relative w-full'>
             <Head>
                 <title>EBA | 교육 빅데이터 응용연구센터</title>
+                <meta
+                    name="description"
+                    content={
+                        "빅데이터(Big Data)와 인공지능(AI) 기반 교육 분야 연구의 허브"
+                    }
+                />
             </Head>
             <MainPageBanner />
             <ResearchReport />
