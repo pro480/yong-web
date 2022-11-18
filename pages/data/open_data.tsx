@@ -2,14 +2,17 @@ import React from "react";
 
 import { OpenDataCard } from "../../src/components/data/open_data_card";
 import Kict from "../../public/images/opendatalogo/Kict.png";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 import NIA from "../../public/images/opendatalogo/NIA.png";
 import KERIS from "../../public/images/opendatalogo/KERIS.png";
 import BIGKinds from "../../public/images/opendatalogo/BIGKinds.png";
 import KESS from "../../public/images/opendatalogo/KESS.png";
 import GDD from "../../public/images/opendatalogo/GDD.png";
+
 function Open_data() {
     return (
         <main className='grid grid-cols-1 items-center gap-y-16 gap-x-14 self-center md:grid-cols-2 xl:grid-cols-3'>
+            <HeadMeta title={"EBA | 오픈데이터"} description={"오픈데이터 소스 링크들입니다"}/>
             <OpenDataCard
                 imgUrl={NIA}
                 title_KO='NIA(한국지능정보사회진흥원)'

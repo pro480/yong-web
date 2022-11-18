@@ -1,9 +1,11 @@
 import React from "react";
 import NewsTable from "../../src/components/notice/NewsTable";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Event_news() {
     return (
         <div>
+            <HeadMeta title={"EBA | 행사 소식"} description={"EBA센터 행사 소식입니다"}/>
             <NewsTable news='행사 소식' />
         </div>
     );

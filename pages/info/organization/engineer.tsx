@@ -2,6 +2,7 @@ import React from "react";
 import NameCard from "../../../src/components/info/NameCard";
 import { InternalMember } from "../../../typing";
 import useFirebase from "../../../src/hooks/useFirebase";
+import HeadMeta from "../../../src/components/common/Layout/HeadMeta";
 
 function Engineer() {
     const {  collectionQuery } = useFirebase<InternalMember>(
@@ -15,6 +16,7 @@ function Engineer() {
 
     return (
         <div>
+            <HeadMeta title={"EBA | 센터 연구원"} description={"EBA센터 연구원"}/>
             <section className='grid grid-cols-1 gap-y-6 gap-x-4 px-2 md:px-5 lg:grid-cols-2 xl:gap-x-8'>
                 {memberList?.map((docSnapshot) => {
                     const member = docSnapshot.data();

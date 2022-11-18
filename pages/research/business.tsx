@@ -14,6 +14,7 @@ import {
 } from "@firebase/firestore";
 import ProjectToggle from "../../src/components/research/ProjectToggle";
 import moment from "moment";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 interface ProjectContextProps {
     modalOpen: boolean;
@@ -58,6 +59,7 @@ function Business() {
     return (
         <ProjectContext.Provider value={value}>
             <div className='flex flex-col'>
+                <HeadMeta title={"EBA | 연구 및 사업"} description={"EBA센터 연구 및 사업"}/>
                 {/* 필터 */}
                 <div className='flex pb-10 text-sm md:text-base'>
                     <div

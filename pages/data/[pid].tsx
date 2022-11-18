@@ -1,10 +1,12 @@
 import { withRouter } from "next/router";
 import useAuth from "../../src/hooks/useAuth";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Post({ router: { query } }: any) {
     const { user } = useAuth();
     return (
         <div>
+            <HeadMeta title={"EBA | "+query.title} description={"상세페이지입니다"}/>
             <table className='w-full table-auto border-t border-t-black'>
                 <thead>
                     <tr className='h-16 bg-PRIMARY_COLOR-500/40 text-sm uppercase leading-normal text-gray-700'>

@@ -1,11 +1,13 @@
 import React from "react";
 import bannerImage from "../../public/images/major/evaluationbanner.jpg";
 import MajorForm from "../../src/components/major/MajorForm";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Edu_evaluation() {
     return (
         <div>
             <div>
+                <HeadMeta title={"EBA | 교육평가"} description={"교육평가 전공에 대해 소개합니다"}/>
                 <MajorForm
                     bannerTitle='교육평가'
                     bannerContent='교육평가 전공에 대해 소개합니다.'
