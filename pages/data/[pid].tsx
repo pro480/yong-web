@@ -38,45 +38,55 @@ function Post({ router: { query } }: any) {
             </div>
 
             <div className='pt-10'>
-                <div className='m-5 grid w-[1050px]  grid-cols-4 border border-gray-400 text-lg '>
+                <div className='m-5 grid grid-cols-4 border  border-gray-400 text-[12px]  md:text-sm xl:text-lg '>
                     {/* 제목 */}
-                    <div className='col-span-4 flex border-b border-gray-300'>
-                        <div className='text-bold w-[10%]  border-b border-gray-300 bg-gray-200 p-2 text-center text-black'>
+                    <div className='col-span-4 flex border-b border-gray-300 '>
+                        <div className='text-bold w-[15%] border-b  border-gray-300 bg-gray-200 p-2 text-center text-black md:w-[12%] lg:w-[10%]'>
                             제목
                         </div>
-                        <div className='w-[90%] p-2'>{query.title}</div>
+                        <div className='w-[85%] p-2 md:w-[88%] lg:w-[90%]'>
+                            {query.title}
+                        </div>
                     </div>
 
                     {/* 유형 */}
                     <div className='col-span-2 flex border-b border-gray-300 '>
-                        <div className='w-[20%] border-b border-gray-300 bg-gray-200 p-2 text-center text-black'>
+                        <div className='w-[30%] border-b border-gray-300 bg-gray-200 p-2 text-center text-black md:w-[24%] lg:w-[20%]'>
                             유형
                         </div>
-                        <div className='w-[80%] p-2'>논문</div>
+                        <div className='w-[70%] p-2 md:w-[76%] lg:w-[80%]'>
+                            논문
+                        </div>
                     </div>
 
                     {/* 학회지 */}
                     <div className='col-span-2 flex border-b border-gray-300 '>
-                        <div className='w-[20%] border-b border-gray-300 bg-gray-200 p-2 text-center text-black'>
+                        <div className='w-[38%] border-b border-gray-300 bg-gray-200 p-2 text-center text-black md:w-[30%] lg:w-[20%]'>
                             학회지
                         </div>
-                        <div className='w-[80%] p-2'>{query.type}</div>
+                        <div className='w-[62%] p-2 md:w-[70%] lg:w-[80%]'>
+                            {query.type}
+                        </div>
                     </div>
 
                     {/* 연구자 */}
                     <div className='col-span-2 flex '>
-                        <div className='w-[20%] bg-gray-200 p-2 text-center text-black'>
+                        <div className='w-[30%] bg-gray-200 p-2 text-center text-black md:w-[24%] lg:w-[20%]'>
                             연구자
                         </div>
-                        <div className='w-[80%] p-2'>{query.researcher}</div>
+                        <div className='w-[70%] p-2 md:w-[76%] lg:w-[80%]'>
+                            {query.researcher}
+                        </div>
                     </div>
 
                     {/* 발행년도 */}
                     <div className='col-span-2 flex'>
-                        <div className='w-[20%] bg-gray-200 p-2 text-center text-black'>
+                        <div className='w-[38%] bg-gray-200 p-2 text-center text-black md:w-[30%] lg:w-[20%]'>
                             발행년도
                         </div>
-                        <div className='w-[80%] p-2'>{query.year}</div>
+                        <div className='w-[62%] p-2 md:w-[70%] lg:w-[80%]'>
+                            {query.year}
+                        </div>
                     </div>
                 </div>
             </div>

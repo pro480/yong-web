@@ -28,10 +28,10 @@ export default function ThesisTableBody() {
                     return (
                         <tr
                             key={docSnapshot.id}
-                            className='border-b border-gray-200 text-xs hover:bg-gray-100 sm:text-sm'
+                            className='border-b border-gray-200 text-xs text-[11px] hover:bg-gray-100 sm:text-sm'
                         >
                             <td className='text-center'>{No}</td>
-                            <td className='cursor-pointer py-3 text-center hover:scale-105'>
+                            <td className='cursor-pointer py-3 px-2 text-left hover:scale-105 '>
                                 <Link
                                     href={{
                                         pathname: `/data/${"thesis"}${No}`,
