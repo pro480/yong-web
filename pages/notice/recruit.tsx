@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -37,6 +38,7 @@ function Recruit() {
     }
     return (
         <div>
+            <HeadMeta title={"EBA | 연구원 모집"} description={"EBA센터 연구원 모집 공고입니다"}/>
             <div className='flex w-full justify-center '>
                 <Document
                     className='border'

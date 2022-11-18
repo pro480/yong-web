@@ -2,6 +2,7 @@ import Router, { useRouter, withRouter } from "next/router";
 import { ImFileText2 } from "react-icons/im";
 import Image from "next/image";
 import { query } from "firebase/firestore";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 export default function Post() {
     const router = useRouter()
@@ -19,6 +20,7 @@ export default function Post() {
     
     return (
         <>
+            <HeadMeta title={"EBA | "+title} description={"공지사항 게시물입니다"}/>
             <table className='w-full table-auto border-t border-t-black'>
                 <thead>
                     <tr className='h-16 bg-PRIMARY_COLOR-500/40 text-sm uppercase leading-normal text-gray-700'>

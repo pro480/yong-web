@@ -2,10 +2,12 @@ import React from "react";
 
 import { OpenDataCard } from "../../src/data/open_data_card";
 import Kict from "../../public/images/opendatalogo/Kict.png";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Open_data() {
     return (
         <main className='grid grid-cols-1 items-center gap-y-16 gap-x-14 self-center md:grid-cols-2 xl:grid-cols-3'>
+            <HeadMeta title={"EBA | 오픈데이터"} description={"오픈데이터 소스 링크들입니다"}/>
             <OpenDataCard
                 imgUrl='https://www.nia.or.kr/img/nia_kor/ci_03.png'
                 title_KO='NIA(한국지능정보사회진흥원)'

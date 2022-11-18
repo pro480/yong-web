@@ -1,10 +1,12 @@
 import React from "react";
 import bannerImage from "../../public/images/major/indexbanner.jpg";
 import MajorForm from "../../src/components/major/MajorForm";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Edudata_science() {
     return (
         <div>
+            <HeadMeta title={"EBA | 에듀데이터사이언스"} description={"에듀데이터사이언스 전공에 대해 소개합니다"}/>
             <MajorForm
                 bannerTitle='에듀데이터사이언스'
                 bannerContent='에듀데이터사이언스 전공에 대해 소개합니다.'

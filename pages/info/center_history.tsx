@@ -1,10 +1,12 @@
 import React from "react";
 import HistoryCard from "../../src/components/info/HistoryCard";
 import HorizontalRule from "../../src/components/common/HorizontalRule";
+import HeadMeta from "../../src/components/common/Layout/HeadMeta";
 
 function Center_history() {
     return (
         <div>
+            <HeadMeta title={"EBA | 센터연혁"} description={"EBA센터 연혁"}/>
             {/*2022년*/}
             <HistoryCard
                 year={2022}
