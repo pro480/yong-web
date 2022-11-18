@@ -72,7 +72,7 @@ function Header() {
                         <div className='text-PRIMARY_FONT_COLOR flex h-12 items-center px-3 desktop:w-[500px] desktop:justify-between'>
                             <a
                                 target='_blank'
-                                href='https://github.com/pro480/yong-web'
+                                // href='https://github.com/pro480/yong-web'
                                 rel='noopener noreferrer'
                                 className='mr-5 hover:scale-110'
                             >
