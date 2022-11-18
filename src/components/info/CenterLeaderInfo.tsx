@@ -3,7 +3,6 @@ import Image from "next/image";
 import symbolImage from "../../../public/images/logo/symbol_outline.png";
 import logo_EN from "../../../public/images/logo/logo_EN.png";
 import centerLeaderImage from "../../../public/images/centerLeader.png";
-import triangle from "../../../public/images/triangle.png";
 import { useTranslation } from "next-i18next";
 
 function CenterLeaderInfo() {
