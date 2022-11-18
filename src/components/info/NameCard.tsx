@@ -23,8 +23,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
     return (
         <section className='pb-1 w-full flex us:flex-col xs:flex-row xs:justify-between'>
             {/*이미지 사이즈*/}
-            {/* <div className='relative us:mt-7 xs:my-auto xs:relative us:w-[70%] xs:w-[40%] sm:w-[25%]'> */}
-            <div className='relative xs:mt-7 us:w-[50%] xs:w-[40%] sm:w-[25%]'>
+            <div className='relative us:w-[50%] xs:w-[40%] sm:w-[25%]'>
                 <Image
                     src={member.imageUrl}
                     alt='멤버사진'
@@ -40,7 +39,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
                     <h1 className={`pb-1 font-semibold text-PRIMARY_COLOR-800 ${
                                     isBig
                                         ? "us:text-xl md:text-2xl lg:text-3xl"
-                                        : "sm:text-xl             lg:text-2xl"
+                                        : "sm:text-xl lg:text-2xl"
                     }`}>
                         {member.name}
                     </h1>
@@ -54,7 +53,7 @@ function NameCard<T extends InternalMember | GraduateMember>({
                     </a>
                 </header>
 
-                {/* <div className={ (document.body.offsetWidth < 440) ? 'hidden' : ''}> 모바일 사이즈 약력 삭제 */}
+                {/*모바일 사이즈 약력 삭제 */}
                 <div className='us:hidden xs:contents'>
                     <div className={`flex pb-1 justify-between text-base md:text-lg xl:text-xl ${
                                     isBig
