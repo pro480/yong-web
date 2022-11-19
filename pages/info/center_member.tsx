@@ -17,9 +17,16 @@ function Center_member() {
             {team.map((team) => {
                 const memberList = collectionQuery.data?.docs.filter(
                     (docSnapshot) => {
-                        if (docSnapshot.data().team) {
-                            return docSnapshot.data().team === team;
-                        }
+//각 팀 모두 나오게 함
+                        return (team === "센터장" 
+                        ? docSnapshot.data().team === "센터장"
+                        : docSnapshot.data().team !== "센터장");
+//각 팀 팀 인원만 나오게 함
+                        // if (docSnapshot.data().team) {
+                        //     return docSnapshot.data().team === team;
+                        // }
+
+
                     }
                 );
                 return (

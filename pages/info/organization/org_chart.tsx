@@ -18,7 +18,7 @@ function Org_chart() {
             <div className='relative flex flex-col items-center text-white '>
                 <div className='w-5/12 rounded-lg border-4 border-solid border-PRIMARY_COLOR-500'>
                     {/* 그림 하나로 합치기 */}
-                    <div className='relative px-2'>
+                    <div className='relative pt-1 px-2'>
                         <Image
                             src={sym_logo_EN}
                             objectFit='contain'
@@ -30,7 +30,7 @@ function Org_chart() {
                 <div className='h-6 w-px border-l-2 border-l-PRIMARY_COLOR-500 '></div>
 
                 <div className='w-1/3'>
-                    <OrganizationCard title='센터장' href='/info' />
+                    <OrganizationCard title='센터장' href='/info/center_info' />
                 </div>
                 {/* 선 반응형 */}
                 <div className=' h-10 w-px border-l-2 border-l-PRIMARY_COLOR-500 '></div>
