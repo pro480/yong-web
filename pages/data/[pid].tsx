@@ -31,7 +31,7 @@ function Post({ router: { query } }: any) {
 
                     <th
                         scope='row'
-                        className='absolute right-10 flex sm:right-16'
+                        className='absolute whitespace-nowrap right-10 flex sm:right-16'
                     >
                         작성자 :
                     </th>
