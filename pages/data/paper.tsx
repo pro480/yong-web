@@ -14,7 +14,7 @@ function Paper() {
             {/*카테고리*/}
             <div className='flex pb-10 text-sm md:text-base'>
                 <div
-                    className='w-24 cursor-pointer border px-4 py-3 text-center  hover:border-t-2 hover:border-b-0 hover:border-t-black '
+                    className='w-24 cursor-pointer border px-3 py-3 text-center  hover:border-t-2 hover:border-b-0 hover:border-t-black '
                     onClick={() => {
                         router.replace({ query: { tab: "thesis" } });
                     }}
@@ -22,7 +22,7 @@ function Paper() {
                     논문
                 </div>
                 <div
-                    className='w-40 cursor-pointer border px-4 py-3 text-center hover:border-t-2 hover:border-b-0 hover:border-t-black'
+                    className='w-40 cursor-pointer border px-1 py-3 text-center hover:border-t-2 hover:border-b-0 hover:border-t-black'
                     onClick={() => {
                         router.replace({ query: { tab: "report" } });
                     }}

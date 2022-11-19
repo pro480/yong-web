@@ -24,7 +24,7 @@ export default function Post() {
                 </thead>
             </table>
 
-            <div className='relative w-full pb-10 text-sm font-light text-gray-600 sm:text-lg'>
+            <div className='relative w-full pb-10 text-[13px] font-light text-gray-600 sm:text-lg'>
                 <tr>
                     <th
                         scope='row'
