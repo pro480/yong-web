@@ -17,12 +17,12 @@ interface Props {
 }
 interface Inputs {
     name: string; // 이름
-    email: string; // 개인 이메일
     major: string; //전공
     imageFile: File[]; // 사진 주소
     department: string; // 소속 (ex.인하대학교 교육학과 교수)
     history: string[]; // 약력
     team: Team; // 소속 조직
+    email?: string; // 개인 이메일
     course?: Course;
 }
 
@@ -76,7 +76,9 @@ function MemberToggle({ team }: Props) {
         let file = data.imageFile[0];
         const storageRef = ref(
             storage,
-            data.team ? "images/internalMembers/"+ file.name : "images/alumni/" + file.name
+            data.team
+                ? "images/internalMembers/" + file.name
+                : "images/alumni/" + file.name
         );
         const uploadImage = uploadBytesResumable(storageRef, file);
 
@@ -120,7 +122,7 @@ function MemberToggle({ team }: Props) {
                 getDownloadURL(uploadImage.snapshot.ref).then((downloadURL) => {
                     mutation.mutate({
                         name: data.name, // 이름
-                        email: data.email, // 개인 이메일
+                        email: data.email ? data.email : null, // 개인 이메일
                         major: data.major, //전공
                         imageUrl: downloadURL, // 사진 주소
                         department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
@@ -140,7 +142,7 @@ function MemberToggle({ team }: Props) {
         } else {
             updateMutation.mutate({
                 name: data.name, // 이름
-                email: data.email, // 개인 이메일
+                email: data.email ? data.email : null, // 개인 이메일
                 major: data.major, //전공
                 department: data.department, // 소속 (ex.인하대학교 교육학과 교수)
                 course: data.course,
@@ -186,7 +188,7 @@ function MemberToggle({ team }: Props) {
                         src={selectedMember.imageUrl}
                         layout='fill'
                         objectFit='cover'
-                        alt="이미지입력"
+                        alt='이미지입력'
                     />
                     <button
                         className='absolute right-2 bottom-2 z-50 border bg-GRAY_COLOR-600 text-sm'
@@ -250,7 +252,7 @@ function MemberToggle({ team }: Props) {
                             className='h-8 border border-gray-700  pl-3'
                             type='email'
                             placeholder='E-mail'
-                            {...register("email", { required: true })}
+                            {...register("email")}
                         />
                         {errors.email && (
                             <p className='text-sm text-SUB_COLOR-500'>

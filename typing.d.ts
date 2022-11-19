@@ -30,13 +30,13 @@ export interface SiteMap {
 
 export interface InternalMember {
     name: string; // 이름
-    email: string; // 개인 이메일
     major: string; //전공
     imageUrl: string; // 사진 주소
     department: string; // 소속 (ex.인하대학교 교육학과 교수)
     history: string[]; // 약력
     course: Course;
     team: Team; // 소속 조직
+    email?: string; // 개인 이메일
 }
 
 export type Course = "학부연구생" | "석사 과정" | "박사 과정" | "교수";
