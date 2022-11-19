@@ -73,7 +73,7 @@ function MemberList<T extends InternalMember | GraduateMember>({
                     className={`xs:w-full ${
                         isBig
                             ? ""
-                            : "grid grid-cols-1 gap-y-6 gap-x-4 px-2 md:px-7 lg:grid-cols-2 xl:gap-x-10"
+                            : "grid grid-cols-2 gap-y-6 gap-x-12 px-2 sm:gap-x-2"
                     }
                     `}
                 >
@@ -82,9 +82,7 @@ function MemberList<T extends InternalMember | GraduateMember>({
                         return (
                             <div
                                 key={docSnapshot.id}
-                                className={` h-fit xs:p-2 ${
-                                    isBig ? "py-10" : ""
-                                }`}
+                                className={` h-fit xs:p-2 ${isBig ? "" : ""}`}
                             >
                                 <NameCard
                                     isEditable={true}
