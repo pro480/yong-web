@@ -14,12 +14,16 @@ const HeadMeta = ({title, description}:Props) => {
                 name="description"
                 content = {description}
             />
-            {/* 이미지 */}
+
+            {/* opengraph 타이틀, 설명, 이미지 */}
+            <meta property='og:title' content={title}/>
+            <meta property='og:description' content={description}/>
             <meta property='og:image' content={logo}/>
+
             {/* 검색 키워드 */}
             <meta
                 name="keywords"
-                content = "eba, 빅데이터 연구, bigdata research ,빅데이터, bigdata, big data, education big data, 교육 빅데이터"
+                content = "eba, 빅데이터 연구, bigdata research, 빅데이터, bigdata, big data, education big data, 교육 빅데이터"
             />
             {/* 인코딩 */}
             <meta charSet="URF-8"/>
