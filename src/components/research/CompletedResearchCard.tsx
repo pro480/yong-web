@@ -44,7 +44,7 @@ function CompletedResearchCard({ project, docID }: Props) {
             <div className='flex flex-1 flex-col gap-y-2'>
                 <div className='flex items-center gap-x-2'>
                     <span className='flex items-center text-PRIMARY_COLOR-500'>
-                        수탁 기관
+                        발주 기관
                     </span>
                     <div className='h-4 border-r-2 border-PRIMARY_COLOR-500'></div>
                     {project.consignment.map((consignment, index) => (

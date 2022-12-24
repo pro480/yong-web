@@ -118,7 +118,7 @@ function ProgressResearchCard({ project, docID }: Props) {
             <div className='flex h-full flex-1 flex-col gap-y-1 desktop:gap-y-2'>
                 <div className='flex items-center text-xs sm:text-base xl:text-lg'>
                     <span className='flex items-center text-PRIMARY_COLOR-500'>
-                        수탁 기관
+                        발주 기관
                     </span>
                     <div className='mx-2 h-3 border-r-2 border-PRIMARY_COLOR-500'></div>
                     {project.consignment.map((consignment, index) => (

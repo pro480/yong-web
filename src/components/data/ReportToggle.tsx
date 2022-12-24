@@ -230,12 +230,12 @@ export default function ReportToggle() {
                             />
                         </div>
                         <div className='p-1'>
-                            연구자 :
+                            연구책임자 :
                             <input
                                 {...register("researcher", {
                                     required: true,
                                 })}
-                                placeholder='연구자를 입력해 주세요'
+                                placeholder='연구책임자를 입력해 주세요'
                                 className='h-[25px] p-2 lg:h-[30px]'
                             />
                         </div>

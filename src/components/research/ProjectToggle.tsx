@@ -109,7 +109,7 @@ function ProjectToggle() {
             </label>
             <label className='flex flex-col'>
                 <div className='flex gap-x-4'>
-                    수탁 기관 (최대 8개)
+                    발주 기관 (최대 8개)
                     <button
                         className='flex w-fit border bg-PRIMARY_COLOR-50 px-2'
                         onClick={(e) => {
@@ -117,7 +117,7 @@ function ProjectToggle() {
                             addConsignment();
                         }}
                     >
-                        수탁 기관 추가
+                        발주 기관 추가
                     </button>
                     <button
                         className='flex w-fit border bg-PRIMARY_COLOR-50 px-2'
@@ -126,7 +126,7 @@ function ProjectToggle() {
                             deletedConsignment();
                         }}
                     >
-                        수탁 기관 삭제
+                        발주 기관 삭제
                     </button>
                 </div>
 
@@ -136,7 +136,7 @@ function ProjectToggle() {
                             key={index}
                             className='m-1 h-7 w-[20%] border border-gray-700  pl-3'
                             type='history'
-                            placeholder='수탁 기관'
+                            placeholder='발주 기관'
                             {...register(`consignment.${index}`, {
                                 required: true,
                             })}

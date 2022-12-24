@@ -44,7 +44,7 @@ export default function ReportItem() {
                                     <div className='flex justify-between'>
                                         <div className='py-1'>
                                             <div className=' text-xs text-GRAY_COLOR-500  xl:text-sm'>
-                                                연구자 |{" "}
+                                                연구책임자 |{" "}
                                                 <span>
                                                     {" "}
                                                     {items.researcher}{" "}
