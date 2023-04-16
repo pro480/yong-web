@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+    font-family: "Noto Sans KR", "Open Sans", sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #c2c6d2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #0066B3;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #004980;
+}
+
+@layer components {
+    .organizationNode {
+        @apply flex h-1/2 w-28 cursor-pointer items-center justify-center rounded-full border text-xs font-semibold sm:w-36 md:w-44 md:text-base;
+    }
+
+    .organizationTitle {
+        @apply h-full w-fit whitespace-nowrap border-b border-b-PRIMARY_COLOR-500 pb-2 text-2xl font-semibold text-PRIMARY_COLOR-500;
+    }
+
+    .info_pattern {
+        @apply flex h-[250px] w-3/5 items-center bg-PRIMARY_COLOR-500 pl-12 text-xl text-white;
+    }
+
+    .history_division {
+        @apply mx-2 before:mt-2 before:block before:h-2 before:w-2 before:rounded-full before:border-2 before:border-PRIMARY_COLOR-500 before:content-[""] after:mx-auto after:block after:h-9 after:w-0 after:border after:border-dashed after:border-PRIMARY_COLOR-50 xs:mx-4 md:mx-6 md:before:h-3 md:before:w-3 2xl:mx-10;
+    }
+
+    .main_news_bg {
+        background-image: linear-gradient(
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.4)
+            ),
+            url("/images/main/news.jpg");
+    }
+
+    .main_info_item_content {
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    @media (min-width: 1024px) {
+        .main_info_item_content {
+            -webkit-line-clamp: 9;
+        }
+    }
+
+    @media (min-width: 1240px) {
+        .main_info_item_content {
+            -webkit-line-clamp: 10;
+        }
+    }
+
+    .font-spoqa {
+        font-family: "Spoqa Han Sans Neo", "sans-serif";
+    }
+
+    @media not all and (min-resolution: 0.001dpcm) {
+        @supports (-webkit-appearance: none) {
+            /* 이 안에 Safari(10.1 이상)에서만 적용할 스타일 작성 */
+            .ios-16-9 :before {
+                float: left;
+                padding-top: 56.25%;
+                content: "";
+            }
+
+            .ios-16-9 :after {
+                display: block;
+                content: "";
+                clear: both;
+            }
+        }
+    }
+}

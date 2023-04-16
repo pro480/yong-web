@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Commit Convention
 
-## Getting Started
+### 1. Commit Message Structure
 
-First, run the development server:
+기본적으로 커밋 메시지는 아래와 같이 제목/본문/꼬리말로 구성한다.
 
-```bash
-npm run dev
-# or
-yarn dev
+```text
+type : subject
+
+body
+
+footer
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Commit Type
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- feat : 새로운 기능 추가
+- fix : 버그 수정
+- docs : 문서 수정
+- style : 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
+- refactor : 코드 리펙토링
+- test : 테스트 코드, 리펙토링 테스트 코드 추가
+- chore : 빌드 업무 수정, 패키지 매니저 수정
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### 3. Subject
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- 제목은 50자를 넘기지 않고, 대문자로 작성하고 마침표를 붙이지 않는다.
+- 과거시제를 사용하지 않고 명령어로 작성한다.
+    - "Fixed" --> "Fix"
+    - "Added" --> "Add"
 
-## Learn More
+### 4. Body
 
-To learn more about Next.js, take a look at the following resources:
+- 선택사항이기 때문에 모든 커밋에 본문내용을 작성할 필요는 없다.
+- 부연설명이 필요하거나 커밋의 이유를 설명할 경우 작성해준다.
+- 72자를 넘기지 않고 제목과 구분되기 위해 한칸을 띄워 작성한다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 5. footer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- 선택사항이기 때문에 모든 커밋에 꼬리말을 작성할 필요는 없다.
+- issue tracker id를 작성할 때 사용한다.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Reference : [https://doublesprogramming.tistory.com/256](https://doublesprogramming.tistory.com/256)
